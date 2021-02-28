@@ -56,3 +56,22 @@ function selleradise_widgets_locate_template($template_names, $load = false, $re
 
     return $located;
 }
+
+
+if (!function_exists('selleradise_plugin_assets')) {
+    /**
+     * Get assets folder url.
+     *
+     * @param  string  $path
+     * @return string
+     */
+
+    function selleradise_plugin_assets($path)
+    {
+        if (!$path) {
+            return;
+        }
+
+        return SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/' . $path;
+    }
+}

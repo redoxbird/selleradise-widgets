@@ -1,0 +1,99 @@
+.elementor-column-gap-default
+  > .elementor-column
+  > .elementor-element-populated {
+  padding: 0;
+}
+.heroSlider--promotional {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+
+  .swiper-slide {
+    @extend .flex-center;
+    @extend .background-image;
+    position: relative;
+    border-radius: var(--border-radius-base);
+    min-height: 35rem;
+    overflow: hidden;
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 5rem;
+      background-color: var(--color-main);
+      color: var(--color-light);
+      overflow: hidden;
+      flex: 1;
+      align-self: stretch;
+
+      .title,
+      .description,
+      .button--cta {
+        transform-origin: left;
+      }
+
+      .title {
+        font-size: 3rem;
+        margin-top: 0;
+      }
+
+      .button--cta {
+        background-color: var(--color-light);
+        color: var(--color-main);
+        margin-top: 2.5rem;
+        transition: inherit;
+      }
+    }
+
+    .image {
+      @extend .img-background;
+      width: 35rem;
+      height: 35rem;
+    }
+  }
+
+  .naviagtionWrap {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    z-index: 10;
+
+    > .navigationButton {
+      position: relative;
+      z-index: 10;
+      border: 0;
+      background-color: var(--color-dark);
+      color: var(--color-light);
+      width: 2rem;
+      height: 2rem;
+      outline: none;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--color-light);
+        color: var(--color-dark);
+      }
+
+      &:first-child {
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
+    }
+  }
+}

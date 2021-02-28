@@ -12,6 +12,7 @@ class Elementor
     public static function get_widgets()
     {
         return [
+            Elementor\HeroSlider::class,
             Elementor\Categories::class,
             Elementor\Products::class,
         ];

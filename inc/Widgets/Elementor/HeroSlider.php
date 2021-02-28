@@ -9,18 +9,12 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
-use WC_Product_Query;
-
-class Products extends \Elementor\Widget_Base
+class HeroSlider extends \Elementor\Widget_Base
 {
 
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
-
-        // if ((\Elementor\Plugin::$instance->editor->is_edit_mode())) {
-        //     wp_register_script('script-handle', get_template_directory_uri() . '/assets/dist/js/app.js', ['elementor-frontend'], '1.0.0', true);
-        // }
 
         wp_register_script('script-handle', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], time(), true);
 
@@ -43,7 +37,7 @@ class Products extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'selleradise-products';
+        return 'selleradise-hero-slider';
     }
 
     /**
@@ -58,7 +52,7 @@ class Products extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Products', 'selleradise-widgets');
+        return __('Hero Slider', 'selleradise-widgets');
     }
 
     /**
@@ -105,13 +99,13 @@ class Products extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __('Content', 'plugin-name'),
+                'label' => __('Content', 'selleradise-widgets'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
-            'name',
+            'title',
             [
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::TEXT,
@@ -122,18 +116,39 @@ class Products extends \Elementor\Widget_Base
         $this->add_control(
             'card_type',
             [
-                'label' => __('Card Type', 'selleradise-widgets'),
+                'label' => __('Type', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
-                    'default' => esc_html__('Default', 'selleradise'),
-                    'minimal' => esc_html__('Minimal', 'selleradise'),
-                    'simple' => esc_html__('Simple', 'selleradise'),
-                    'list' => esc_html__('Robust', 'selleradise'),
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'card' => esc_html__('Card', 'selleradise-widgets'),
+                    'smallCard' => esc_html__('Small Card', 'selleradise-widgets'),
+                    'imageCard' => esc_html__('Image Card', 'selleradise-widgets'),
+                    'imageOnly' => esc_html__('Image Only', 'selleradise-widgets'),
+                    'textOnly' => esc_html__('Text Only', 'selleradise-widgets'),
                 ],
             ]
         );
 
+        $this->end_controls_section();
+
+             $this->start_controls_section(
+			'style_section',
+			[
+				'label' => __( 'Style', 'selleradise-widgets' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'background',
+				'label' => __( 'Background', 'selleradise-widgets' ),
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .swiper-slide .content',
+			]
+		);
         $this->end_controls_section();
 
     }
@@ -150,45 +165,7 @@ class Products extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        $args = [
-            'limit' => $settings['limit'] ?? 8,
-        ];
-
-        $url_params = [];
-
-        if (isset($settings['categories']) && $settings['categories'] && !empty($settings['categories'])) {
-            $args['category'] = $settings['categories'];
-            $url_params['product_cat'] = implode(',', $settings['categories']);
-        }
-
-        if (isset($settings['status']) && $settings['status'] == 'featured') {
-            $args['featured'] = true;
-        }
-
-        if (isset($settings['status']) && $settings['status'] == 'onsale') {
-            $args['selleradise_onsale'] = true;
-        }
-
-        $order_by = $settings['orderby'] ?? 'date';
-        $order = $settings['order'] ?? 'DESC';
-        $order_args = WC()->query->get_catalog_ordering_args($order_by, $order);
-        $args = array_merge($args, $order_args);
-
-        $url_params['orderby'] = $order_by;
-        $url_params['order'] = $order;
-
-        $products_query = new WC_Product_Query($args);
-        $products = $products_query->get_products();
-
-        $shop_link = wc_get_page_permalink('shop');
-        $more_link = $shop_link . "?" . http_build_query($url_params);
-
-        selleradise_locate_template('views/widgets/products', null, [
-            'products' => $products,
-            'fields' => $settings,
-            'more_link' => $more_link]
-        );
-
+        selleradise_locate_template('views/widgets/hero/slider', 'promotional', ["settings" => $settings]);
     }
 
 }
