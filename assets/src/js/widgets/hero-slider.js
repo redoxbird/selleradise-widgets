@@ -6,12 +6,15 @@ export class HeroSlider extends elementorModules.frontend.handlers.Base {
 
   init() {
     new Swiper(".heroSlider--promotional", {
-      duration: 600,
       preloadImages: false,
       loop: true,
       slidesPerView: 1.5,
       centeredSlides: true,
       spaceBetween: 50,
+      parallax: true,
+      autoplay: {
+        delay: 10000,
+      },
       lazy: {
         loadPrevNext: false,
       },
@@ -20,8 +23,8 @@ export class HeroSlider extends elementorModules.frontend.handlers.Base {
         type: "fraction",
       },
       navigation: {
-        nextEl: ".sliderNavButtons .next",
-        prevEl: ".sliderNavButtons .previous",
+        nextEl: ".heroSlider--promotional .sliderNavButtons .next",
+        prevEl: ".heroSlider--promotional .sliderNavButtons .previous",
       },
     });
   }

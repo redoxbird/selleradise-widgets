@@ -22,57 +22,58 @@
       justify-content: center;
       align-items: flex-start;
       flex-direction: column;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60%;
+      height: 35rem;
       padding: 5rem;
-      background-color: var(--color-main);
+      background-color: transparent;
       color: var(--color-light);
       overflow: hidden;
       flex: 1;
       align-self: stretch;
-
-      .title,
-      .description,
-      .button--cta {
-        transform-origin: left;
-      }
+      z-index: 10;
 
       .title {
-        font-size: 3rem;
-        margin-top: 0;
+        @include font-size(h1);
+        margin: 0;
       }
 
-      .button--cta {
-        background-color: var(--color-light);
-        color: var(--color-main);
-        margin-top: 2.5rem;
-        transition: inherit;
+      .description {
+        @include font-size(p);
       }
-    }
 
-    .image {
-      @extend .img-background;
-      width: 35rem;
-      height: 35rem;
+      .actions {
+        margin-top: 1.5rem;
+
+        .button--secondary {
+          background-color: transparent;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
     }
   }
 
-  .naviagtionWrap {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    z-index: 10;
-
-    > .navigationButton {
-      position: relative;
+  .sliderNavButtons {
+    > .previous,
+    > .next {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      top: 1.5rem;
+      height: 35rem;
+      width: 35rem;
+      padding: 5rem;
       z-index: 10;
       border: 0;
-      background-color: var(--color-dark);
-      color: var(--color-light);
-      width: 2rem;
-      height: 2rem;
+      background-color: rgba(var(--color-text-rgb), 0.5);
+      color: var(--color-background);
       outline: none;
+      opacity: 0;
+      transition: all 400ms easing(out-expo);
 
       svg {
         width: 1.5rem;
@@ -81,19 +82,27 @@
 
       &:hover,
       &:focus {
-        background-color: var(--color-light);
-        color: var(--color-dark);
+        opacity: 1;
+        transform: translate(0);
       }
+    }
 
-      &:first-child {
-        border-top-left-radius: 0.25rem;
-        border-bottom-left-radius: 0.25rem;
-      }
+    .previous {
+      justify-content: flex-end;
+      border-top-right-radius: 100%;
+      border-bottom-right-radius: 100%;
+      transform: translate(-2.5rem, 0);
+      margin-left: -25rem;
+    }
 
-      &:last-child {
-        border-top-right-radius: 0.25rem;
-        border-bottom-right-radius: 0.25rem;
-      }
+    .next {
+      justify-content: flex-start;
+      right: 0;
+      left: auto;
+      border-top-left-radius: 100%;
+      border-bottom-left-radius: 100%;
+      transform: translate(2.5rem, 0);
+      margin-right: -25rem;
     }
   }
 }

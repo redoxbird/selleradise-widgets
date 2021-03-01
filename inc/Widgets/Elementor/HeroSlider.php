@@ -104,7 +104,20 @@ class HeroSlider extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
+        $slide = new \Elementor\Repeater();
+
+        $slide->add_control(
+            'image',
+            [
+                'label' => __('Choose Image', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $slide->add_control(
             'title',
             [
                 'label' => __('Title', 'selleradise-widgets'),
@@ -113,42 +126,106 @@ class HeroSlider extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'card_type',
+        $slide->add_control(
+            'description',
             [
-                'label' => __('Type', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'card' => esc_html__('Card', 'selleradise-widgets'),
-                    'smallCard' => esc_html__('Small Card', 'selleradise-widgets'),
-                    'imageCard' => esc_html__('Image Card', 'selleradise-widgets'),
-                    'imageOnly' => esc_html__('Image Only', 'selleradise-widgets'),
-                    'textOnly' => esc_html__('Text Only', 'selleradise-widgets'),
+                'label' => __('Description', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'rows' => 5,
+            ]
+        );
+
+        $slide->add_control(
+            'call_to_action_primary',
+            [
+                'label' => __('Primary Call To Action', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::URL,
+            ]
+        );
+
+        $slide->add_control(
+            'call_to_action_secondary',
+            [
+                'label' => __('Secondary Call To Action', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::URL,
+            ]
+        );
+
+        $slide->add_control(
+            'text_color',
+            [
+                'label' => __('Text Color', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
                 ],
+            ]
+        );
+
+        $slide->add_control(
+            'button_text_color',
+            [
+                'label' => __('Button Text Color', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_2,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'slide',
+            [
+                'label' => __('Slides', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $slide->get_controls(),
+                'default' => [
+                    [
+                        'title' => __('Title #1', 'selleradise-widgets'),
+                    ],
+                ],
+                'title_field' => '{{{ title }}}',
             ]
         );
 
         $this->end_controls_section();
 
-             $this->start_controls_section(
-			'style_section',
-			[
-				'label' => __( 'Style', 'selleradise-widgets' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
+        $this->start_controls_section(
+            'style_section',
+            [
+                'label' => __('Style', 'selleradise-widgets'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+
+            ]
+        );
+
+        $this->add_control(
+            'slider_type',
+            [
+                'label' => __('Slider Type', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'carousal' => esc_html__('Carousal', 'selleradise-widgets'),
+                ],
+            ]
+        );
 
         $this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name' => 'background',
-				'label' => __( 'Background', 'selleradise-widgets' ),
-				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .swiper-slide .content',
-			]
-		);
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'background',
+                'label' => __('Background', 'selleradise-widgets'),
+                'types' => ['classic', 'gradient', 'video'],
+                'selector' => '{{WRAPPER}} .swiper-slide .content',
+                'condition' => [
+                    'slider_type' => 'carousal',
+                ],
+            ]
+        );
         $this->end_controls_section();
 
     }
