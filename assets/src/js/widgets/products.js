@@ -31,6 +31,8 @@ export class Product extends elementorModules.frontend.handlers.Base {
       }
     );
 
+    console.log(productWidgetDefault);
+
     new Swiper(".sectionProducts.cardType--list .products", {
       duration: 600,
       lazy: {

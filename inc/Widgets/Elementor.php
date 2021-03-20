@@ -15,6 +15,7 @@ class Elementor
             Elementor\HeroSlider::class,
             Elementor\Categories::class,
             Elementor\Products::class,
+            Elementor\Accordion::class,
         ];
     }
 

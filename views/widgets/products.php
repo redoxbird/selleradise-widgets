@@ -1,3 +1,16 @@
+<?php
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
+
+if ($args) {
+    extract($args);
+}
+
+?>
+
 <div class="sectionProducts cardType--<?php echo esc_attr($fields['card_type'] ?: 'default') ?>">
 
   <div class="sectionHead--default">
@@ -9,8 +22,8 @@
       <?php 
         foreach ($products as $key => $product) {
             do_action('woocommerce_shop_loop');
-            
-            selleradise_get_template_part('views/components/product/card', $fields['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']);
+
+            selleradise_locate_template('views/components/product/card', $fields['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']);
         }
       ?>
 

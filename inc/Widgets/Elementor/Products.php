@@ -148,6 +148,11 @@ class Products extends \Elementor\Widget_Base
      */
     protected function render()
     {
+
+        if (!class_exists('WooCommerce')) {
+            return;
+        }
+        
         $settings = $this->get_settings_for_display();
 
         $args = [
@@ -183,10 +188,12 @@ class Products extends \Elementor\Widget_Base
         $shop_link = wc_get_page_permalink('shop');
         $more_link = $shop_link . "?" . http_build_query($url_params);
 
+
         selleradise_locate_template('views/widgets/products', null, [
             'products' => $products,
             'fields' => $settings,
-            'more_link' => $more_link]
+            'more_link' => $more_link
+            ]
         );
 
     }

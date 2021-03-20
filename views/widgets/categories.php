@@ -1,5 +1,13 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
+if ($args) {
+    extract($args);
+}
+
 if (!$settings) {
     return;
 }

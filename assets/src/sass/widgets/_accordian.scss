@@ -1,0 +1,48 @@
+.selleradiseAccordion {
+  padding: 2.5rem $page-padding;
+  background-color: var(--color-background-mild);
+  color: var(--color-text);
+
+  &--bellow {
+    margin: 1rem;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-half);
+    overflow: hidden;
+    box-shadow: 0 0.1rem 0.2rem var(--color-shadow);
+  }
+
+  &--trigger {
+    width: 100%;
+    background-color: transparent;
+    padding: 1.5rem 2.5rem;
+    text-align-last: left;
+    outline: none;
+    border: none;
+  }
+
+  &--title {
+    @include font-size(h5);
+    color: var(--color-text);
+    width: 100%;
+    margin: 0;
+  }
+
+  &--description {
+    @include font-size(p);
+    padding: 0 2.5rem 2.5rem 2.5rem;
+    transition: all 400ms easing(out-expo);
+    transform-origin: top;
+
+    &-enter-start,
+    &-leave-end {
+      opacity: 0;
+      transform: scale(1, 0);
+    }
+
+    &-enter-end,
+    &-leave-start {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

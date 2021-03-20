@@ -1,30 +1,28 @@
 <?php
 
-function selleradise_locate_template($slug, $name = null, $data = [])
-{
-    
-    $templates = [];
-    $name = (string) $name;
+if (!function_exists('selleradise_locate_template')) {
+    function selleradise_locate_template($slug, $name = null, $args = [])
+    {
 
-    if ('' !== $name) {
-        $templates[] = "{$slug}-{$name}.php";
+        $templates = [];
+        $name = (string) $name;
+
+        if ('' !== $name) {
+            $templates[] = "{$slug}-{$name}.php";
+        }
+
+        $templates[] = "{$slug}.php";
+
+        $template = selleradise_widgets_locate_template($templates, false);
+
+        if (!$template) {
+            return;
+        }
+
+        include $template;
     }
 
-    $templates[] = "{$slug}.php";
-
-    $template = selleradise_widgets_locate_template($templates, false);
-
-    if (!$template) {
-        return;
-    }
-
-    if ($data) {
-        extract($data);
-    }
-
-    include $template;
 }
-
 
 function selleradise_widgets_locate_template($template_names, $load = false, $require_once = true, $args = array())
 {
@@ -34,8 +32,8 @@ function selleradise_widgets_locate_template($template_names, $load = false, $re
         if (!$template_name) {
             continue;
         }
-        if (file_exists(plugin_dir_path( dirname( __FILE__ ) ). $template_name)) {
-            $located = plugin_dir_path( dirname( __FILE__ ) ). $template_name;
+        if (file_exists(plugin_dir_path(dirname(__FILE__)) . $template_name)) {
+            $located = plugin_dir_path(dirname(__FILE__)) . $template_name;
             break;
         }
         if (file_exists(STYLESHEETPATH . '/' . $template_name)) {
@@ -57,7 +55,6 @@ function selleradise_widgets_locate_template($template_names, $load = false, $re
     return $located;
 }
 
-
 if (!function_exists('selleradise_plugin_assets')) {
     /**
      * Get assets folder url.
@@ -75,8 +72,6 @@ if (!function_exists('selleradise_plugin_assets')) {
         return SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/' . $path;
     }
 }
-
-
 
 if (!function_exists('selleradise_get_color_contrast')) {
 
@@ -123,3 +118,20 @@ if (!function_exists('selleradise_get_color_contrast')) {
     }
 }
 
+
+
+if (!function_exists('selleradise_get_alpine_transition_names')) {
+
+
+    function selleradise_get_alpine_transition_names($name)
+    {
+
+        return "x-transition:enter='$name-enter' 
+        x-transition:enter-start='$name-enter-start'
+        x-transition:enter-end='$name-enter-end'
+        x-transition:leave='$name-leave'
+        x-transition:leave-start='$name-leave-start'
+        x-transition:leave-end='$name-leave-end'";
+
+    }
+}
