@@ -1,0 +1,38 @@
+.selleradiseTabs {
+  padding: 2.5rem $page-padding;
+  background-color: var(--color-background);
+  color: var(--color-text);
+
+  .triggers {
+    @extend .flex-start;
+    width: 100%;
+    position: relative;
+    height: auto;
+
+    .trigger {
+      @include font-size(p);
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-weight: 500;
+      padding: 0.75rem 2rem;
+      border-radius: 5rem;
+
+      // &.isSelected {
+      //   background-color: rgba(var(--color-text-rgb), 0.05);
+      // }
+    }
+
+    .highlighter {
+      width: 100px;
+      height: 100%;
+      background-color: rgba(var(--color-text-rgb), 0.05);
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all 400ms easing(out-expo);
+      pointer-events: none;
+      border-radius: 5rem;
+    }
+  }
+}

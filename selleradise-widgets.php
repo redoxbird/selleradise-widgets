@@ -38,6 +38,8 @@ if (!defined('WPINC')) {
 
 define('SELLERADISE_WIDGETS_VERSION', '1.0.0');
 define('SELLERADISE_WIDGETS_DIR_URI', plugin_dir_url(__FILE__));
+define('SELLERADISE_WIDGETS_DIR_PATH', plugin_dir_path(__FILE__));
+
 
 
 if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')):

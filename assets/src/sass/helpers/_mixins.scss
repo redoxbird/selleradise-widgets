@@ -38,5 +38,9 @@
     @media (max-width: 1050px) and (min-width: 480px) {
       @content;
     }
+  } @else if $point == mobileAndTablet {
+    @media (max-width: 1050px) {
+      @content;
+    }
   }
 }

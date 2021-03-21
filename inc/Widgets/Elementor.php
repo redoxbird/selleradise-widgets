@@ -16,6 +16,7 @@ class Elementor
             Elementor\Categories::class,
             Elementor\Products::class,
             Elementor\Accordion::class,
+            Elementor\Tabs::class,
         ];
     }
 

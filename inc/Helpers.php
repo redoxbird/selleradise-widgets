@@ -123,15 +123,42 @@ if (!function_exists('selleradise_get_color_contrast')) {
 if (!function_exists('selleradise_get_alpine_transition_names')) {
 
 
-    function selleradise_get_alpine_transition_names($name)
+    function selleradise_get_alpine_transition_names()
     {
 
-        return "x-transition:enter='$name-enter' 
-        x-transition:enter-start='$name-enter-start'
-        x-transition:enter-end='$name-enter-end'
-        x-transition:leave='$name-leave'
-        x-transition:leave-start='$name-leave-start'
-        x-transition:leave-end='$name-leave-end'";
+        return "x-transition:enter='enter' 
+        x-transition:enter-start='enter-start'
+        x-transition:enter-end='enter-end'
+        x-transition:leave='leave'
+        x-transition:leave-start='leave-start'
+        x-transition:leave-end='leave-end'";
 
+    }
+}
+
+
+if (!function_exists('selleradise_widgets_svg')) {
+    /**
+     * Get inline svg from a file.
+     *
+     * @param  string  $filename
+     * @return string xml
+     */
+
+    function selleradise_widgets_svg($filename)
+    {
+        if (!$filename) {
+            return;
+        }
+
+        
+        $file_location = SELLERADISE_WIDGETS_DIR_PATH . 'assets/dist/svg/' . $filename . '.svg';
+    
+        if (!file_exists($file_location)) {
+            return;
+        }
+        
+
+        return file_get_contents($file_location);
     }
 }

@@ -54,7 +54,7 @@ class Accordion extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'fa fa-caret-down';
+        return 'far fa-caret-square-down';
     }
 
     /**
@@ -88,6 +88,15 @@ class Accordion extends \Elementor\Widget_Base
             [
                 'label' => __('Content', 'selleradise-widgets'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'section_title',
+            [
+                'label' => __('Section Title', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'input_type' => 'text',
             ]
         );
 

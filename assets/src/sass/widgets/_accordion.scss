@@ -1,0 +1,101 @@
+.selleradiseAccordion {
+  padding: 2.5rem $page-padding * 3;
+  background-color: var(--color-background-mild);
+  color: var(--color-text);
+
+  .sectionTitle {
+    width: 100%;
+  }
+
+  .bellow {
+    margin: 1rem 0;
+    border-radius: var(--border-radius-half);
+    overflow: hidden;
+    box-shadow: 0 0.1rem 0.2rem var(--color-shadow);
+    background-color: var(--color-background);
+
+    .trigger {
+      @extend .flex-between;
+      width: 100%;
+      background-color: transparent;
+      color: inherit;
+      padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+      text-align-last: left;
+      outline: none;
+      border: none;
+      perspective: 850px;
+      border-radius: var(--border-radius-half);
+
+      .title {
+        @include font-size(p);
+        color: rgba(var(--color-text-rgb), 0.8);
+        margin: 0;
+        flex: 1;
+        transition: all 400ms easing(out-expo);
+      }
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        transition: all 400ms easing(out-expo);
+        transform-origin: center;
+      }
+
+      &:hover {
+        .title {
+          color: var(--color-text);
+        }
+      }
+
+      .using-tab &:focus {
+        box-shadow: inset 0 0 0 0.1em var(--color-main);
+      }
+    }
+
+    &.isOpen {
+      .trigger {
+        svg {
+          transform: rotateX(180deg);
+        }
+
+        .title {
+          color: var(--color-text);
+        }
+      }
+
+      .description {
+        padding-bottom: 1.5rem;
+      }
+    }
+
+    .description {
+      @include font-size(small);
+      padding: 0 2.5rem 0 2.5rem;
+      transform-origin: top;
+      position: relative;
+      transition: all 400ms easing(out-expo);
+
+      > *:first-child {
+        margin-top: 0;
+      }
+
+      > *:last-child {
+        margin-bottom: 0;
+      }
+
+      &.enter-start,
+      &.leave-end {
+        max-height: 0;
+      }
+
+      &.enter-end,
+      &.leave-start {
+        max-height: 50rem;
+      }
+    }
+  }
+
+  @include device(mobileAndTablet) {
+    padding: 1rem 1.5rem;
+  }
+}
