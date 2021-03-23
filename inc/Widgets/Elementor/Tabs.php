@@ -69,7 +69,7 @@ class Tabs extends \Elementor\Widget_Base
      */
     public function get_categories()
     {
-        return ['theme-elements'];
+        return ['selleradise'];
     }
 
     /**
@@ -119,6 +119,11 @@ class Tabs extends \Elementor\Widget_Base
                 'default' => [
                     [
                         'title' => __('Title #1', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper, euismod velit ut, porta risus. Morbi lobortis scelerisque massa, nec dignissim ante commodo at. Donec non mollis nisl, et varius nisi. Nulla vel finibus justo. Phasellus quis urna tellus. Fusce eget consequat erat. Sed gravida sollicitudin velit nec consectetur. Maecenas feugiat bibendum metus in viverra. In commodo viverra odio sit amet porta. Phasellus interdum placerat ipsum, a posuere ex euismod vitae. Nulla at turpis eget eros dignissim ultrices.'
+                    ],
+                    [
+                        'title' => __('Title #2', 'selleradise-widgets'),
+                        'description' => 'Etiam ut consectetur tellus. Sed iaculis eget dui id ultrices. In id lacus ipsum. Morbi pretium consequat magna in luctus. Cras elit mi, gravida eget sapien eu, suscipit lacinia sapien. Sed porta lobortis est, tempor mattis nisi faucibus quis. Duis ac lacus finibus, fringilla mauris in, tincidunt neque. Nam sed libero venenatis, elementum ipsum eget, viverra metus. Praesent sapien dolor, tincidunt sit amet nisl vestibulum, placerat blandit nulla. Nam tincidunt dapibus magna ac placerat.'
                     ],
                 ],
                 'title_field' => '{{{ title }}}',

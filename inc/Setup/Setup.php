@@ -17,6 +17,7 @@ class Setup
 
         add_action('plugins_loaded', [$this, 'set_locale'], 'load_plugin_textdomain');
         add_action('init', [$this, 'register_elementor_widgets']);
+        add_action('elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories']);
 
     }
 
@@ -92,15 +93,28 @@ class Setup
 
     public static function register_elementor_widgets()
     {
-        if(!class_exists('\Elementor\Widget_Base')) {
+        if (!class_exists('\Elementor\Widget_Base')) {
             return;
         }
-        
+
         $class = new \Selleradise_Widgets\Widgets\Elementor;
 
         if (method_exists($class, 'register')) {
             $class->register();
         }
+
+    }
+
+    public function add_elementor_widget_categories($elements_manager)
+    {
+
+        $elements_manager->add_category(
+            'selleradise',
+            [
+                'title' => __('Selleradise', 'selleradise-widgets'),
+                'icon' => 'fa fa-umbrella-beach',
+            ]
+        );
 
     }
 

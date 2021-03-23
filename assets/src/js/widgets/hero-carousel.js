@@ -1,11 +1,11 @@
-export class HeroSlider extends elementorModules.frontend.handlers.Base {
+export class HeroCarousel extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
     this.init();
   }
 
   init() {
-    new Swiper(".heroSlider--promotional", {
+    new Swiper(".heroCarousel--default", {
       preloadImages: false,
       loop: true,
       slidesPerView: 1.5,
@@ -19,12 +19,12 @@ export class HeroSlider extends elementorModules.frontend.handlers.Base {
         loadPrevNext: false,
       },
       pagination: {
-        el: ".heroSlider--promotional .swiper-pagination",
+        el: ".heroCarousel--default .swiper-pagination",
         type: "fraction",
       },
       navigation: {
-        nextEl: ".heroSlider--promotional .sliderNavButtons .next",
-        prevEl: ".heroSlider--promotional .sliderNavButtons .previous",
+        nextEl: ".heroCarousel--default .sliderNavButtons .next",
+        prevEl: ".heroCarousel--default .sliderNavButtons .previous",
       },
     });
   }

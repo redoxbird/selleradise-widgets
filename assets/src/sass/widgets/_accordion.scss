@@ -1,5 +1,5 @@
 .selleradiseAccordion {
-  padding: 2.5rem $page-padding * 3;
+  padding: 2.5rem $page-padding;
   background-color: var(--color-background-mild);
   color: var(--color-text);
 
@@ -69,11 +69,11 @@
     }
 
     .description {
-      @include font-size(small);
+      @include font-size(p);
       padding: 0 2.5rem 0 2.5rem;
       transform-origin: top;
       position: relative;
-      transition: all 400ms easing(out-expo);
+      transition: all 400ms easing(out-cubic);
 
       > *:first-child {
         margin-top: 0;

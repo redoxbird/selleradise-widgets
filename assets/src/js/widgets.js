@@ -1,5 +1,5 @@
 import { Product } from "./widgets/products";
-import { HeroSlider } from "./widgets/hero-slider";
+import { HeroCarousel } from "./widgets/hero-carousel";
 
 jQuery(window).on("elementor/frontend/init", () => {
   elementorFrontend.hooks.addAction(
@@ -12,9 +12,9 @@ jQuery(window).on("elementor/frontend/init", () => {
   );
 
   elementorFrontend.hooks.addAction(
-    "frontend/element_ready/selleradise-hero-slider.default",
+    "frontend/element_ready/selleradise-hero-carousel.default",
     function ($element) {
-      elementorFrontend.elementsHandler.addHandler(HeroSlider, {
+      elementorFrontend.elementsHandler.addHandler(HeroCarousel, {
         $element,
       });
     }

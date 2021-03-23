@@ -1,6 +1,6 @@
 <?php
 
-namespace Selleradise_Widgets\Widgets;
+namespace Selleradise_Widgets\Controls;
 
 class Elementor
 {
@@ -12,11 +12,7 @@ class Elementor
     public static function get_widgets()
     {
         return [
-            Elementor\HeroCarousel::class,
-            Elementor\Categories::class,
-            Elementor\Products::class,
-            Elementor\Accordion::class,
-            Elementor\Tabs::class,
+            Elementor\Group_Control_Link::class,
         ];
     }
 
@@ -31,8 +27,6 @@ class Elementor
 
             \Elementor\Plugin::instance()->widgets_manager->register_widget_type($service);
         }
-
-        \Elementor\Plugin::instance()->controls_manager->add_group_control('selleradise_link', self::instantiate(Elementor\Group_Control_Link::class));
     }
 
     /**

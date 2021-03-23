@@ -5,3 +5,91 @@ export async function checkElement(selector) {
 
   return document.querySelector(selector);
 }
+
+export function lazyLoad() {
+  const images = document.querySelectorAll(
+    "[data-src]:not(.loading):not(.loaded)"
+  );
+  const backImages = document.querySelectorAll(
+    "[data-image-src]:not(.loading):not(.loaded)"
+  );
+
+  if (!images && !backImages) {
+    return;
+  }
+
+  const lazyLoadImg = function (target) {
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        entry.target.classList.add("loading");
+        const dataSrc = entry.target.getAttribute("data-src");
+
+        if (entry.isIntersecting && dataSrc) {
+          entry.target.setAttribute("src", dataSrc);
+
+          entry.target.onload = function () {
+            entry.target.classList.remove("loading");
+            entry.target.classList.add("loaded");
+          };
+
+          observer.disconnect();
+        }
+      });
+    });
+
+    io.observe(target);
+  };
+
+  const lazyLoadBack = function (target) {
+    const io = new IntersectionObserver((entries, observer) => {
+      //console.log(entries)
+      entries.forEach((entry) => {
+        entry.target.classList.add("loading");
+        const dataUrl = entry.target.getAttribute("data-image-src");
+
+        if (entry.isIntersecting) {
+          if (dataUrl) {
+            entry.target.style.backgroundImage = `url(${dataUrl})`;
+          }
+
+          entry.target.classList.add("loaded");
+          entry.target.classList.remove("loading");
+
+          observer.disconnect();
+        }
+      });
+    });
+
+    io.observe(target);
+  };
+
+  var normalLoadImg = function (entry) {
+    var dataSrc = entry.getAttribute("data-src");
+
+    if (dataSrc) {
+      entry.setAttribute("src", dataSrc);
+
+      entry.onload = function () {
+        entry.classList.add("loaded");
+      };
+    }
+  };
+
+  var normalLoadBack = function (entry) {
+    var dataUrl = entry.getAttribute("data-image-src");
+
+    if (dataUrl) {
+      entry.style.backgroundImage = `url(${dataUrl})`;
+    }
+
+    entry.classList.add("loaded");
+  };
+
+  if ("IntersectionObserver" in window) {
+    images.forEach(lazyLoadImg);
+    backImages.forEach(lazyLoadBack);
+  } else {
+    images.forEach(normalLoadImg);
+    backImages.forEach(normalLoadBack);
+  }
+}

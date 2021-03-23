@@ -1,3 +1,4 @@
+import { lazyLoad } from "../helpers";
 export class Product extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
@@ -5,6 +6,7 @@ export class Product extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
+    lazyLoad();
     const productWidgetDefault = new Swiper(
       ".sectionProducts:not(.cardType--list) .products",
       {
@@ -30,8 +32,6 @@ export class Product extends elementorModules.frontend.handlers.Base {
         },
       }
     );
-
-    console.log(productWidgetDefault);
 
     new Swiper(".sectionProducts.cardType--list .products", {
       duration: 600,
@@ -73,15 +73,3 @@ export class Product extends elementorModules.frontend.handlers.Base {
     });
   }
 }
-
-// setTimeout(() => {
-//   if (window.elementorFrontend) {
-//     console.log(elementorFrontend);
-//     elementorFrontend.hooks.addAction(
-//       "frontend/element_ready/selleradise-products.default",
-//       function ($scope) {
-
-//       }
-//     );
-//   }
-// }, 1000);

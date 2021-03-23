@@ -69,7 +69,7 @@ class Accordion extends \Elementor\Widget_Base
      */
     public function get_categories()
     {
-        return ['theme-elements'];
+        return ['selleradise'];
     }
 
     /**

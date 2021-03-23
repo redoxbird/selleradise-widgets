@@ -73,7 +73,7 @@ class Products extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'fa fa-code';
+        return 'fa fa-shopping-basket';
     }
 
     /**
@@ -88,7 +88,7 @@ class Products extends \Elementor\Widget_Base
      */
     public function get_categories()
     {
-        return ['theme-elements'];
+        return ['selleradise'];
     }
 
     /**

@@ -9,7 +9,7 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
-class HeroSlider extends \Elementor\Widget_Base
+class HeroCarousel extends \Elementor\Widget_Base
 {
 
     public function __construct($data = [], $args = null)
@@ -37,7 +37,7 @@ class HeroSlider extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'selleradise-hero-slider';
+        return 'selleradise-hero-carousel';
     }
 
     /**
@@ -52,7 +52,7 @@ class HeroSlider extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Hero Slider', 'selleradise-widgets');
+        return __('Hero Carousel', 'selleradise-widgets');
     }
 
     /**
@@ -67,7 +67,7 @@ class HeroSlider extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'fa fa-code';
+        return 'fa fa-ellipsis-h';
     }
 
     /**
@@ -82,7 +82,7 @@ class HeroSlider extends \Elementor\Widget_Base
      */
     public function get_categories()
     {
-        return ['theme-elements'];
+        return ['selleradise'];
     }
 
     /**
@@ -93,7 +93,7 @@ class HeroSlider extends \Elementor\Widget_Base
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls()
+    protected function register_controls()
     {
 
         $this->start_controls_section(
@@ -107,6 +107,19 @@ class HeroSlider extends \Elementor\Widget_Base
         $slide = new \Elementor\Repeater();
 
         $slide->add_control(
+            'type',
+            [
+                'label' => __('Type', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Image With Content', 'selleradise-widgets'),
+                    'image_only' => esc_html__('Image Only', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $slide->add_control(
             'image',
             [
                 'label' => __('Choose Image', 'selleradise-widgets'),
@@ -114,6 +127,7 @@ class HeroSlider extends \Elementor\Widget_Base
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
+
             ]
         );
 
@@ -123,6 +137,9 @@ class HeroSlider extends \Elementor\Widget_Base
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'condition' => [
+                    'type' => 'default',
+                ],
             ]
         );
 
@@ -132,22 +149,63 @@ class HeroSlider extends \Elementor\Widget_Base
                 'label' => __('Description', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'rows' => 5,
+                'condition' => [
+                    'type' => 'default',
+                ],
             ]
         );
 
         $slide->add_control(
-            'call_to_action_primary',
+            'show_primary_cta',
             [
-                'label' => __('Primary Call To Action', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::URL,
+                'label' => __('Primary CTA', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __('Show', 'your-plugin'),
+                'label_off' => __('Hide', 'your-plugin'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'condition' => [
+                    'type' => 'default',
+                ],
+            ]
+        );
+
+        $slide->add_group_control(
+            Group_Control_Link::get_type(),
+            [
+                'name' => 'cta_primary',
+                'label' => __('Primary CTA', 'selleradise-widgets'),
+                'condition' => [
+                    'show_primary_cta' => 'yes',
+                    'type' => 'default',
+                ],
             ]
         );
 
         $slide->add_control(
-            'call_to_action_secondary',
+            'show_secondary_cta',
             [
-                'label' => __('Secondary Call To Action', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::URL,
+                'label' => __('Secondary CTA', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __('Show', 'your-plugin'),
+                'label_off' => __('Hide', 'your-plugin'),
+                'return_value' => 'yes',
+                'default' => 0,
+                'condition' => [
+                    'type' => 'default',
+                ],
+            ]
+        );
+
+        $slide->add_group_control(
+            Group_Control_Link::get_type(),
+            [
+                'name' => 'cta_secondary',
+                'label' => __('Primary CTA', 'selleradise-widgets'),
+                'condition' => [
+                    'show_secondary_cta' => 'yes',
+                    'type' => 'default',
+                ],
             ]
         );
 
@@ -159,6 +217,9 @@ class HeroSlider extends \Elementor\Widget_Base
                 'scheme' => [
                     'type' => \Elementor\Scheme_Color::get_type(),
                     'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'condition' => [
+                    'type' => 'default',
                 ],
             ]
         );
@@ -172,6 +233,20 @@ class HeroSlider extends \Elementor\Widget_Base
                     'type' => \Elementor\Scheme_Color::get_type(),
                     'value' => \Elementor\Scheme_Color::COLOR_2,
                 ],
+                'condition' => [
+                    'type' => 'default',
+                ],
+            ]
+        );
+
+        $slide->add_group_control(
+            Group_Control_Link::get_type(),
+            [
+                'name' => 'image_link',
+                'label' => __('Image Link', 'selleradise-widgets'),
+                'condition' => [
+                    'type' => 'image_only',
+                ],
             ]
         );
 
@@ -183,8 +258,36 @@ class HeroSlider extends \Elementor\Widget_Base
                 'fields' => $slide->get_controls(),
                 'default' => [
                     [
-                        'title' => __('Title #1', 'selleradise-widgets'),
+                        'title' => __('Get the light where it is needed the most.', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
+                        'image' => [
+                            'url' => 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                        ],
+                        'cta_primary_text' => 'Top Rated Lamps',
+                        'cta_primary_url' => '#',
+                        'text_color' => '#212121',
+                        'button_text_color' => '#fff',
                     ],
+                    [
+                        'title' => __('A good chair can prevent health issues.', 'selleradise-widgets'),
+                        'image' => [
+                            'url' => 'https://images.unsplash.com/photo-1534361227963-bbac191159cc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                        ],
+                        'cta_primary_text' => 'Top Rated Beds',
+                        'cta_primary_url' => '#',
+                        'text_color' => '#025EA9',
+                        'button_text_color' => '#fff',
+                    ],
+                    [
+                        'title' => __('Get the best nap of your life.', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
+                        'image' => [
+                            'url' => 'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2400&q=80',
+                        ],
+                        'cta_primary_text' => 'Top Rated Beds',
+                        'cta_primary_url' => '#',
+                    ],
+
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -242,7 +345,7 @@ class HeroSlider extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_locate_template('views/widgets/hero/slider', 'promotional', ["settings" => $settings]);
+        selleradise_locate_template('views/widgets/hero/carousel', null, ["settings" => $settings]);
     }
 
 }
