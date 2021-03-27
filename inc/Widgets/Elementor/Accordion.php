@@ -97,6 +97,7 @@ class Accordion extends \Elementor\Widget_Base
                 'label' => __('Section Title', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('Frequently Asked Questions', 'selleradise-widgets'),
             ]
         );
 
@@ -107,7 +108,6 @@ class Accordion extends \Elementor\Widget_Base
             [
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'input_type' => 'text',
             ]
         );
 
@@ -127,7 +127,12 @@ class Accordion extends \Elementor\Widget_Base
                 'fields' => $accordion->get_controls(),
                 'default' => [
                     [
-                        'title' => __('Title #1', 'selleradise-widgets'),
+                        'title' => __('What are some of the main features of selleradise?', 'selleradise-widgets'),
+                        'description' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet turpis in lacus finibus volutpat commodo at lectus. Phasellus rutrum orci eget tincidunt consequat. Morbi sed eros sit amet elit aliquet cursus id at nunc. Suspendisse tristique dignissim efficitur. Phasellus semper, quam ac maximus porta, ante risus commodo urna, in mattis elit arcu eget arcu. Proin ac dolor vel nibh gravida aliquam vel sit amet elit. Integer vel urna arcu. Morbi nec felis tempus, efficitur diam eget.', 'selleradise-widgets'),
+                    ],
+                    [
+                        'title' => __('Is selleradise theme accessible?', 'selleradise-widgets'),
+                        'description' => __('Yes, selleradise is fully accessible.', 'selleradise-widgets'),
                     ],
                 ],
                 'title_field' => '{{{ title }}}',

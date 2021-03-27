@@ -27,11 +27,14 @@
       border-radius: var(--border-radius-half);
 
       .title {
-        @include font-size(p);
+        @include font-size(h5);
+        font-family: var(--font-primary);
+        font-weight: 500;
         color: rgba(var(--color-text-rgb), 0.8);
         margin: 0;
         flex: 1;
         transition: all 400ms easing(out-expo);
+        text-align: left;
       }
 
       svg {
@@ -73,7 +76,7 @@
       padding: 0 2.5rem 0 2.5rem;
       transform-origin: top;
       position: relative;
-      transition: all 400ms easing(out-cubic);
+      transition: all 400ms easing(out-expo);
 
       > *:first-child {
         margin-top: 0;

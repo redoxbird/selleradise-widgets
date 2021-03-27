@@ -9,6 +9,8 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use \Elementor\Controls_Manager;
+
 class HeroCarousel extends \Elementor\Widget_Base
 {
 
@@ -100,7 +102,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'content_section',
             [
                 'label' => __('Content', 'selleradise-widgets'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -110,7 +112,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'type',
             [
                 'label' => __('Type', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::SELECT,
+                'type' => Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
                     'default' => esc_html__('Image With Content', 'selleradise-widgets'),
@@ -123,7 +125,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'image',
             [
                 'label' => __('Choose Image', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
+                'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
@@ -135,7 +137,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'title',
             [
                 'label' => __('Title', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
                 'condition' => [
                     'type' => 'default',
@@ -147,7 +149,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'description',
             [
                 'label' => __('Description', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'type' => Controls_Manager::TEXTAREA,
                 'rows' => 5,
                 'condition' => [
                     'type' => 'default',
@@ -159,7 +161,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'show_primary_cta',
             [
                 'label' => __('Primary CTA', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Show', 'your-plugin'),
                 'label_off' => __('Hide', 'your-plugin'),
                 'return_value' => 'yes',
@@ -186,7 +188,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'show_secondary_cta',
             [
                 'label' => __('Secondary CTA', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Show', 'your-plugin'),
                 'label_off' => __('Hide', 'your-plugin'),
                 'return_value' => 'yes',
@@ -213,10 +215,15 @@ class HeroCarousel extends \Elementor\Widget_Base
             'text_color',
             [
                 'label' => __('Text Color', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::COLOR,
+                'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => \Elementor\Scheme_Color::get_type(),
                     'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide .content' => 'color: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide .button--primary' => 'background-color: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide .button--secondary' => 'color: {{value}};',
                 ],
                 'condition' => [
                     'type' => 'default',
@@ -228,7 +235,7 @@ class HeroCarousel extends \Elementor\Widget_Base
             'button_text_color',
             [
                 'label' => __('Button Text Color', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::COLOR,
+                'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => \Elementor\Scheme_Color::get_type(),
                     'value' => \Elementor\Scheme_Color::COLOR_2,
@@ -250,85 +257,69 @@ class HeroCarousel extends \Elementor\Widget_Base
             ]
         );
 
+        $slide->add_control(
+            'content_position',
+            [
+                'label' => __('Content Position', 'selleradise-widgets'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['%', 'px'],
+                'allowed_dimensions' => ['top', 'left'],
+                'default' => [
+                    "isLinked" => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide .content' => 'top: {{TOP}}{{UNIT}}; right: {{RIGHT}}{{UNIT}}; bottom: {{BOTTOM}}{{UNIT}}; left: {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'type' => 'default',
+                ],
+            ]
+        );
+
         $this->add_control(
             'slide',
             [
                 'label' => __('Slides', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
+                'type' => Controls_Manager::REPEATER,
                 'fields' => $slide->get_controls(),
                 'default' => [
                     [
                         'title' => __('Get the light where it is needed the most.', 'selleradise-widgets'),
                         'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
                         'image' => [
-                            'url' => 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                            'url' => 'https://images.unsplash.com/photo-1604572689968-e608a2332849?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80',
+                        ],
+                        'cta_primary_text' => 'Most popular Lamps',
+                        'cta_primary_url' => '#',
+                        'text_color' => '#FFF4E0',
+                        'button_text_color' => '#8E3B15',
+                    ],
+                    [
+                        'title' => __('Sit in peace and relax your mild.', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
+                        'image' => [
+                            'url' => 'https://images.unsplash.com/photo-1610559176044-d2695ca6c63d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1521&q=80',
                         ],
                         'cta_primary_text' => 'Top Rated Lamps',
                         'cta_primary_url' => '#',
-                        'text_color' => '#212121',
+                        'text_color' => '#373A3C',
                         'button_text_color' => '#fff',
                     ],
                     [
-                        'title' => __('A good chair can prevent health issues.', 'selleradise-widgets'),
+                        'title' => __('A good chair can improve your health.', 'selleradise-widgets'),
                         'image' => [
                             'url' => 'https://images.unsplash.com/photo-1534361227963-bbac191159cc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
                         ],
-                        'cta_primary_text' => 'Top Rated Beds',
+                        'cta_primary_text' => 'Top Rated Chairs',
                         'cta_primary_url' => '#',
                         'text_color' => '#025EA9',
                         'button_text_color' => '#fff',
                     ],
-                    [
-                        'title' => __('Get the best nap of your life.', 'selleradise-widgets'),
-                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
-                        'image' => [
-                            'url' => 'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2400&q=80',
-                        ],
-                        'cta_primary_text' => 'Top Rated Beds',
-                        'cta_primary_url' => '#',
-                    ],
-
                 ],
                 'title_field' => '{{{ title }}}',
             ]
         );
 
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'style_section',
-            [
-                'label' => __('Style', 'selleradise-widgets'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-
-            ]
-        );
-
-        $this->add_control(
-            'slider_type',
-            [
-                'label' => __('Slider Type', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'carousal' => esc_html__('Carousal', 'selleradise-widgets'),
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'background',
-                'label' => __('Background', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient', 'video'],
-                'selector' => '{{WRAPPER}} .swiper-slide .content',
-                'condition' => [
-                    'slider_type' => 'carousal',
-                ],
-            ]
-        );
         $this->end_controls_section();
 
     }

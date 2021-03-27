@@ -18,9 +18,11 @@ if(!$bellows) {
 
 <section class="selleradiseAccordion" x-data="{opened: '0'}">
 
-  <div class="sectionTitle">
-    <h2><?php echo $settings['section_title']; ?></h2>
-  </div>
+  <?php if($settings['section_title']): ?>
+    <div class="sectionTitle">
+      <h2><?php echo $settings['section_title']; ?></h2>
+    </div>
+  <?php endif; ?>
 
   <?php foreach($bellows as $key => $bellow): ?>
 

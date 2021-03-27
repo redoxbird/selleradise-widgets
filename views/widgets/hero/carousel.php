@@ -11,6 +11,7 @@ if (!isset($settings)) {
     return;
 }
 
+
 ?>
 
 <div class="heroCarousel--default">
@@ -22,17 +23,17 @@ if (!isset($settings)) {
 
     <div class="swiper-wrapper">
         <?php foreach ($settings['slide'] as $key => $slide): ?>
-        
-            <?php if(isset($slide['type']) && $slide['type'] === 'default'): ?>
 
-                <div class="swiper-slide" style="background-image: url(<?php echo esc_url($slide['image']['url']); ?>)">
-                    <div
-                        class="content" style="color: <?php echo esc_attr($slide['text_color']); ?>" >
-                        <h2 class="title"><?php echo esc_html($slide['title']) ?></h2>
+	            <?php if (isset($slide['type']) && $slide['type'] === 'default'): ?>
 
-                        <?php if ($slide['description']): ?>
-                            <p class="description"><?php echo esc_html($slide['description']) ?></p>
-                        <?php endif;?>
+	                <div class="swiper-slide elementor-repeater-item-<?php echo $slide['_id']; ?>" style="background-image: url(<?php echo esc_url($slide['image']['url']); ?>)">
+	                    <div
+	                        class="content">
+	                        <h2 class="title"><?php echo esc_html($slide['title']) ?></h2>
+
+	                        <?php if ($slide['description']): ?>
+	                            <p class="description"><?php echo esc_html($slide['description']) ?></p>
+	                        <?php endif;?>
 
                         <div class="actions">
                             <?php if ($slide['show_primary_cta'] === 'yes'): ?>
@@ -40,7 +41,7 @@ if (!isset($settings)) {
                                     href="<?php echo esc_html($slide['cta_primary_url']['url'] ?? '#'); ?>"
                                     target="<?php echo esc_html($slide['cta_primary_target'] ? '_blank' : null); ?>"
                                     class="button--primary"
-                                    style="background-color: <?php echo esc_attr($slide['text_color']); ?>; color: <?php echo esc_attr($slide['button_text_color']); ?>">
+                                    style="color: <?php echo esc_attr($slide['button_text_color']); ?>">
                                     <?php echo esc_html($slide['cta_primary_text'] ?? __('Learn More', 'selleradise-widgets')); ?>
                                 </a>
                             <?php endif;?>
@@ -49,27 +50,26 @@ if (!isset($settings)) {
                                 <a
                                     href="<?php echo esc_html($slide['cta_secondary_url']['url'] ?? '#'); ?>"
                                     target="<?php echo esc_html($slide['cta_secondary_target'] ? '_blank' : null); ?>"
-                                    class="button--secondary"
-                                    style="color: <?php echo esc_attr($slide['text_color']); ?>">
+                                    class="button--secondary">
                                     <?php echo esc_html($slide['cta_secondary_text'] ?? __('Learn More', 'selleradise-widgets')); ?>
                                 </a>
                             <?php endif;?>
 
-                        
+
                         </div>
                     </div>
                 </div>
 
             <?php else: ?>
 
-                <a 
-                    href="<?php echo esc_html($slide['image_link_url']['url'] ?? '#'); ?>"                
+                <a
+                    href="<?php echo esc_html($slide['image_link_url']['url'] ?? '#'); ?>"
                     target="<?php echo esc_html($slide['image_link_target'] ? '_blank' : null); ?>"
                     aria-label="<?php echo esc_html($slide['image_link_text'] ?? null); ?>"
                     class="swiper-slide" style="background-image: url(<?php echo esc_url($slide['image']['url']); ?>)">
                 </a>
 
-            <?php endif; ?>
+            <?php endif;?>
 
         <?php endforeach;?>
     </div>
