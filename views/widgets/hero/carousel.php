@@ -41,7 +41,7 @@ if (!isset($settings)) {
                                     href="<?php echo esc_html($slide['cta_primary_url']['url'] ?? '#'); ?>"
                                     target="<?php echo esc_html($slide['cta_primary_target'] ? '_blank' : null); ?>"
                                     class="button--primary"
-                                    style="color: <?php echo esc_attr($slide['button_text_color']); ?>">
+                                >
                                     <?php echo esc_html($slide['cta_primary_text'] ?? __('Learn More', 'selleradise-widgets')); ?>
                                 </a>
                             <?php endif;?>

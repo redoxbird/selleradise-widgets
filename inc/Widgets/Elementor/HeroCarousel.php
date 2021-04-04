@@ -240,6 +240,9 @@ class HeroCarousel extends \Elementor\Widget_Base
                     'type' => \Elementor\Scheme_Color::get_type(),
                     'value' => \Elementor\Scheme_Color::COLOR_2,
                 ],
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide .button--primary' => 'color: {{value}};',
+                ],
                 'condition' => [
                     'type' => 'default',
                 ],

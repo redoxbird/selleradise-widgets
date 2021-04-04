@@ -10,6 +10,7 @@
 namespace Selleradise_Widgets\Widgets\Elementor;
 
 use WC_Product_Query;
+use \Elementor\Controls_Manager;
 
 class Products extends \Elementor\Widget_Base
 {
@@ -106,7 +107,7 @@ class Products extends \Elementor\Widget_Base
             'content_section',
             [
                 'label' => __('Content', 'plugin-name'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -114,7 +115,7 @@ class Products extends \Elementor\Widget_Base
             'name',
             [
                 'label' => __('Title', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
             ]
         );
@@ -123,7 +124,7 @@ class Products extends \Elementor\Widget_Base
             'card_type',
             [
                 'label' => __('Card Type', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::SELECT,
+                'type' => Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
                     'default' => esc_html__('Default', 'selleradise'),
@@ -131,6 +132,71 @@ class Products extends \Elementor\Widget_Base
                     'simple' => esc_html__('Simple', 'selleradise'),
                     'list' => esc_html__('Robust', 'selleradise'),
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'status',
+            [
+                'label' => __('Status', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => '',
+                'options' => [
+                    '' => esc_html__('Any', 'selleradise-widgets'),
+                    'featured' => esc_html__('Featured', 'selleradise-widgets'),
+                    'onsale' => esc_html__('On Sale', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'orderby',
+            [
+                'label' => __('Order By', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'menu_order',
+                'options' => [
+                    'menu_order' => esc_html__('Default', 'selleradise-widgets'),
+                    'date' => esc_html__('Date', 'selleradise-widgets'),
+                    'price' => esc_html__('Price', 'selleradise-widgets'),
+                    'title' => esc_html__('Title', 'selleradise-widgets'),
+                    'rand' => esc_html__('Random', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'order',
+            [
+                'label' => __('Order', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'ASC',
+                'options' => [
+                    'ASC' => esc_html__('Ascending', 'selleradise-widgets'),
+                    'DESC' => esc_html__('Descending', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'categories',
+            [
+                'label' => __('Categories', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT2,
+                'options' => $this->get_select_categories(),
+                'multiple' => true,
+            ]
+        );
+
+        $this->add_control(
+            'limit',
+            [
+                'label' => __('Limit', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+				'max' => 50,
+				'step' => 1,
+				'default' => 5,
             ]
         );
 
@@ -152,7 +218,7 @@ class Products extends \Elementor\Widget_Base
         if (!class_exists('WooCommerce')) {
             return;
         }
-        
+
         $settings = $this->get_settings_for_display();
 
         $args = [
@@ -188,14 +254,41 @@ class Products extends \Elementor\Widget_Base
         $shop_link = wc_get_page_permalink('shop');
         $more_link = $shop_link . "?" . http_build_query($url_params);
 
-
         selleradise_locate_template('views/widgets/products', null, [
             'products' => $products,
             'fields' => $settings,
-            'more_link' => $more_link
-            ]
+            'more_link' => $more_link,
+        ]
         );
 
+    }
+
+
+    public function get_select_categories($limit = 1000)
+    {
+        $terms = get_terms(array(
+            'taxonomy' => 'product_cat',
+            'hide_empty' => false,
+            'orderby' => 'count',
+            'order' => 'DESC',
+            'number' => $limit,
+        ));
+
+        if (!$terms) {
+            return;
+        }
+
+        $product_categories = [];
+
+        $product_categories['all'] = 'All Categories';
+
+        // dd($terms);
+
+        foreach ($terms as $term) {
+            $product_categories[$term->slug] = $term->name;
+        }
+
+        return $product_categories;
     }
 
 }
