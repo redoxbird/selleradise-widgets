@@ -1,6 +1,6 @@
 <?php
 
-namespace Selleradise_Widgets\Widgets\Elementor;
+namespace Selleradise_Widgets\Controls\Elementor;
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Base;

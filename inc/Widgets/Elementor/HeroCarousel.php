@@ -10,6 +10,7 @@
 namespace Selleradise_Widgets\Widgets\Elementor;
 
 use \Elementor\Controls_Manager;
+use Selleradise_Widgets\Controls\Elementor\Group_Control_Link;
 
 class HeroCarousel extends \Elementor\Widget_Base
 {

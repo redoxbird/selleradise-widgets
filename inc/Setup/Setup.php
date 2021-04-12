@@ -97,10 +97,15 @@ class Setup
             return;
         }
 
-        $class = new \Selleradise_Widgets\Widgets\Elementor;
+        $widgets_class = new \Selleradise_Widgets\Widgets\Elementor;
+        $controls_class = new \Selleradise_Widgets\Controls\Elementor;
 
-        if (method_exists($class, 'register')) {
-            $class->register();
+        if (method_exists($widgets_class, 'register')) {
+            $widgets_class->register();
+        }
+
+        if (method_exists($controls_class, 'register')) {
+            $controls_class->register();
         }
 
     }

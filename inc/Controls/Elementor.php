@@ -24,8 +24,8 @@ class Elementor
     {
         foreach (self::get_widgets() as $class) {
             $service = self::instantiate($class);
-
-            \Elementor\Plugin::instance()->widgets_manager->register_widget_type($service);
+            
+            \Elementor\Plugin::instance()->controls_manager->add_group_control('selleradise_link', $service);
         }
     }
 
