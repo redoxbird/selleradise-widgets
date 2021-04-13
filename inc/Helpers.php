@@ -1,7 +1,7 @@
 <?php
 
-if (!function_exists('selleradise_locate_template')) {
-    function selleradise_locate_template($slug, $name = null, $args = [])
+if (!function_exists('selleradise_widgets_get_template_part')) {
+    function selleradise_widgets_get_template_part($slug, $name = null, $args = [])
     {
 
         $templates = [];

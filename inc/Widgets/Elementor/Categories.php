@@ -133,7 +133,7 @@ class Categories extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_locate_template('views/widgets/categories', null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('views/widgets/categories', null, ["settings" => $settings]);
     }
 
 }

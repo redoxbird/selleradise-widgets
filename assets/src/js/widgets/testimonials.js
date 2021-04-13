@@ -1,3 +1,5 @@
+import { device } from "../helpers";
+
 export class Testimonials extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
@@ -7,15 +9,15 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
   init() {
     const slider = new Swiper(".selleradise_Testimonials--default__quotes", {
       duration: 600,
+      autoHeight: true,
+      spaceBetween: 50,
       lazy: {
         loadPrevNext: false,
       },
-      direction: "vertical",
       keyboard: {
         enabled: true,
         onlyInViewport: true,
       },
-      autoHeight: true,
       pagination: {
         el: ".selleradise_Testimonials--default__quotes > .swiper-pagination",
         type: "fraction",
@@ -23,6 +25,12 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
       navigation: {
         nextEl: ".productPage--default .navigation .next",
         prevEl: ".productPage--default .navigation .previous",
+      },
+      breakpoints: {
+        768: {
+          direction: "vertical",
+          spaceBetween: 0,
+        },
       },
       on: {
         init: function () {
@@ -32,8 +40,16 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
     });
 
     function profileItems(slider) {
-      const profileItems = document.querySelectorAll(
-        ".selleradise_Testimonials--default__profiles li"
+      const profileList = document.querySelector(
+        ".selleradise_Testimonials--default__profiles"
+      );
+
+      const profileItems = profileList.querySelectorAll(
+        ".selleradise_Testimonials--default__profile"
+      );
+
+      const highlighter = profileList.querySelector(
+        ".selleradise_Testimonials--default__highlighter"
       );
 
       if (profileItems.length < 1) {
@@ -51,25 +67,38 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
         }
       }
 
-      function toggleActiveClass() {
-        for (const index in profileItems) {
-          if (Object.hasOwnProperty.call(profileItems, index)) {
-            const item = profileItems[index];
-            const dataIndex = item.getAttribute("data-slide-index");
+      function toggleActiveElement() {
+        const active = document.querySelector(
+          `.selleradise_Testimonials--default__profile[data-slide-index="${slider.realIndex}"]`
+        );
 
-            if (parseInt(dataIndex) === slider.realIndex) {
-              item.classList.add("active");
-            } else {
-              item.classList.remove("active");
-            }
-          }
+        if (!active) {
+          return;
         }
+
+        anime({
+          duration: 400,
+          targets: highlighter,
+          translateY: active.offsetTop,
+          translateX: active.offsetLeft,
+          height: active.offsetHeight,
+          width: active.offsetWidth,
+          easing: "easeOutExpo",
+        });
+
+        anime({
+          duration: 400,
+          targets: profileList,
+          easing: "easeOutExpo",
+          scrollTop: active.offsetTop,
+          scrollLeft: active.offsetLeft,
+        });
       }
 
-      toggleActiveClass();
+      toggleActiveElement();
 
       slider.on("slideChange", function () {
-        toggleActiveClass();
+        toggleActiveElement();
       });
     }
   }

@@ -23,7 +23,7 @@ if ($args) {
         foreach ($products as $key => $product) {
             do_action('woocommerce_shop_loop');
 
-            selleradise_locate_template('views/components/product/card', $fields['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']);
+            selleradise_widgets_get_template_part('views/components/product/card', $fields['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']);
         }
       ?>
 

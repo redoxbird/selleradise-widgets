@@ -140,7 +140,7 @@ class Testimonials extends \Elementor\Widget_Base
             [
                 'label' => __('Rating', 'selleradise-widgets'),
                 'type' => Controls_Manager::NUMBER,
-                'min' => 1,
+                'min' => 0,
                 'max' => 5,
                 'step' => 0.1,
                 'default' => 4.5,
@@ -209,7 +209,7 @@ class Testimonials extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_locate_template('views/widgets/testimonials', null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('views/widgets/testimonials', null, ["settings" => $settings]);
     }
 
 }
