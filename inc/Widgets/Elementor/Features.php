@@ -125,6 +125,26 @@ class Features extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'section_type',
+            [
+                'label' => __('Section Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'list',
+                'options' => [
+                    'list' => esc_html__('Default', 'selleradise'),
+                    'bullet' => esc_html__('Quick Points', 'selleradise'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hr',
+            [
+                'type' => Controls_Manager::DIVIDER,
+            ]
+        );
+
         $features = new \Elementor\Repeater();
 
         $features->add_control(
@@ -148,6 +168,13 @@ class Features extends \Elementor\Widget_Base
             [
                 'label' => _x('Description', 'Feature', 'selleradise-widgets'),
                 'type' => Controls_Manager::WYSIWYG,
+            ]
+        );
+
+        $features->add_control(
+            'hr',
+            [
+                'type' => Controls_Manager::DIVIDER,
             ]
         );
 
@@ -206,7 +233,9 @@ class Features extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part('views/widgets/features', 'list', ["settings" => $settings]);
+        $type = isset($settings['section_type']) && $settings['section_type'] ? $settings['section_type'] : 'list';
+
+        selleradise_widgets_get_template_part('views/widgets/features', $type, ["settings" => $settings]);
     }
 
 }

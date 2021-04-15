@@ -162,3 +162,28 @@ if (!function_exists('selleradise_widgets_svg')) {
         return file_get_contents($file_location);
     }
 }
+
+
+if (!function_exists('selleradise_truncate')) {
+    /**
+     * Truncates a string with a given length.
+     *
+     * @param  string  $string
+     * @param  int  $length
+     * @param  string  $append
+     * @return string
+     */
+
+    function selleradise_truncate($string, $length = 100, $append = "&hellip;")
+    {
+        $string = trim($string);
+
+        if (strlen($string) > $length) {
+            $string = wordwrap($string, $length);
+            $string = explode("\n", $string, 2);
+            $string = $string[0] . $append;
+        }
+
+        return $string;
+    }
+}
