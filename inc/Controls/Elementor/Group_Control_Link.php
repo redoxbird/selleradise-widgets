@@ -60,18 +60,18 @@ class Group_Control_Link extends Group_Control_Base
         $fields = [];
 
         $fields['url'] = [
-            'label' => __('URL', 'Link Control', 'selleradise-widgets'),
+            'label' => _x('URL', 'Link Control', 'selleradise-widgets'),
             'type' => Controls_Manager::URL,
         ];
 
         $fields['text'] = [
-            'label' => __('Text', 'Link Control', 'selleradise-widgets'),
+            'label' => _x('Text', 'Link Control', 'selleradise-widgets'),
             'type' => Controls_Manager::TEXT,
             'input_type' => 'text',
         ];
 
         $fields['target'] = [
-            'label' => __('Open In New Tab', 'Link Control', 'selleradise-widgets'),
+            'label' => _x('Open In New Tab', 'Link Control', 'selleradise-widgets'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'label_on' => __('Yes', 'your-plugin'),
             'label_off' => __('No', 'your-plugin'),

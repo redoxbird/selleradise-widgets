@@ -163,8 +163,8 @@ class HeroCarousel extends \Elementor\Widget_Base
             [
                 'label' => __('Primary CTA', 'selleradise-widgets'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'your-plugin'),
-                'label_off' => __('Hide', 'your-plugin'),
+                'label_on' => __('Show', 'selleradise-widgets'),
+                'label_off' => __('Hide', 'selleradise-widgets'),
                 'return_value' => 'yes',
                 'default' => 'yes',
                 'condition' => [
@@ -190,8 +190,8 @@ class HeroCarousel extends \Elementor\Widget_Base
             [
                 'label' => __('Secondary CTA', 'selleradise-widgets'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'your-plugin'),
-                'label_off' => __('Hide', 'your-plugin'),
+                'label_on' => __('Show', 'selleradise-widgets'),
+                'label_off' => __('Hide', 'selleradise-widgets'),
                 'return_value' => 'yes',
                 'default' => 0,
                 'condition' => [

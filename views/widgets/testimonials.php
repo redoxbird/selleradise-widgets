@@ -19,7 +19,14 @@ if (!$testimonies) {
 ?>
 
 <section class="selleradise_Testimonials--default">
-  <h2 class="selleradise_Testimonials--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
+
+  <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+    <p class="selleradise_Testimonials--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+  <?php endif;?>
+
+  <?php if(isset($settings['section_title']) && $settings['section_title']): ?>
+    <h2 class="selleradise_Testimonials--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
+  <?php endif; ?>
 
   <ul class="selleradise_Testimonials--default__profiles">
     <li class="selleradise_Testimonials--default__highlighter"></li>

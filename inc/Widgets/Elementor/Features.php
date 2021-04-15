@@ -9,9 +9,10 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use Selleradise_Widgets\Controls\Elementor\Group_Control_Link;
 use \Elementor\Controls_Manager;
 
-class Testimonials extends \Elementor\Widget_Base
+class Features extends \Elementor\Widget_Base
 {
 
     public function __construct($data = [], $args = null)
@@ -39,7 +40,7 @@ class Testimonials extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'selleradise-testimonials';
+        return 'selleradise-features';
     }
 
     /**
@@ -54,7 +55,7 @@ class Testimonials extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Testimonials', 'selleradise-widgets');
+        return __('Features List', 'selleradise-widgets');
     }
 
     /**
@@ -124,74 +125,61 @@ class Testimonials extends \Elementor\Widget_Base
             ]
         );
 
-        $testimony = new \Elementor\Repeater();
+        $features = new \Elementor\Repeater();
 
-        $testimony->add_control(
+        $features->add_control(
+            'icon',
+            [
+                'label' => _x('Icon', 'Feature', 'selleradise-widgets'),
+                'type' => Controls_Manager::ICONS,
+            ]
+        );
+
+        $features->add_control(
             'title',
             [
-                'label' => __('Title', 'selleradise-widgets'),
+                'label' => _x('Title', 'Feature', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
             ]
         );
 
-        $testimony->add_control(
-            'quote',
+        $features->add_control(
+            'description',
             [
-                'label' => __('Quote', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXTAREA,
-                'rows' => 5,
+                'label' => _x('Description', 'Feature', 'selleradise-widgets'),
+                'type' => Controls_Manager::WYSIWYG,
             ]
         );
 
-        $testimony->add_control(
-            'rating',
+        $features->add_control(
+            'show_cta',
             [
-                'label' => __('Rating', 'selleradise-widgets'),
-                'type' => Controls_Manager::NUMBER,
-                'min' => 0,
-                'max' => 5,
-                'step' => 0.1,
-                'default' => 4.5,
+                'label' => __('Show Call To Action', 'selleradise-widgets'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Show', 'selleradise-widgets'),
+                'label_off' => __('Hide', 'selleradise-widgets'),
+                'return_value' => 'yes',
+                'default' => 0,
             ]
         );
 
-        $testimony->add_control(
-            'profile_picture',
+        $features->add_group_control(
+            Group_Control_Link::get_type(),
             [
-                'label' => __('Choose Profile Picture', 'selleradise-widgets'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                'name' => 'cta',
+                'label' => __('Call To Action', 'selleradise-widgets'),
+                'condition' => [
+                    'show_cta' => 'yes',
                 ],
-
-            ]
-        );
-
-        $testimony->add_control(
-            'profile_name',
-            [
-                'label' => __('Name', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-            ]
-        );
-
-        $testimony->add_control(
-            'profile_info',
-            [
-                'label' => __('Secondary Information', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
             ]
         );
 
         $this->add_control(
-            'testimonies',
+            'features',
             [
-                'label' => __('Testimonies', 'selleradise-widgets'),
+                'label' => __('Features', 'selleradise-widgets'),
                 'type' => Controls_Manager::REPEATER,
-                'fields' => $testimony->get_controls(),
+                'fields' => $features->get_controls(),
                 'title_field' => '{{{ title }}}',
                 'default' => [
                     [
@@ -218,7 +206,7 @@ class Testimonials extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part('views/widgets/testimonials', null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('views/widgets/features', 'list', ["settings" => $settings]);
     }
 
 }

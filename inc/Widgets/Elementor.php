@@ -18,6 +18,7 @@ class Elementor
             Elementor\Accordion::class,
             Elementor\Tabs::class,
             Elementor\Testimonials::class,
+            Elementor\Features::class,
         ];
     }
 
