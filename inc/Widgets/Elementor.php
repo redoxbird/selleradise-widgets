@@ -19,6 +19,7 @@ class Elementor
             Elementor\Tabs::class,
             Elementor\Testimonials::class,
             Elementor\Features::class,
+            Elementor\CTA::class,
         ];
     }
 

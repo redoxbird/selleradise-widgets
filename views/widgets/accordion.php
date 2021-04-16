@@ -32,14 +32,12 @@ if(!$bellows) {
         aria-controls="selleradise_Accordion__description-<?php echo esc_attr($key); ?>"
         x-on:click="opened !== '<?php echo esc_attr($key); ?>' ? opened = '<?php echo esc_attr($key); ?>' : opened = null;"
         x-bind:aria-expanded="opened === '<?php echo esc_attr($key); ?>' ? true : false">
-
-        <span>
-          <?php echo selleradise_widgets_svg('material/chevron-down'); ?>
-        </span>
-
         <h3>
           <?php echo esc_html( $bellow['title'] ); ?>
         </h3>
+        <span>
+          <?php echo selleradise_widgets_svg('material/chevron-down'); ?>
+        </span>
       </button>
 
       <div 

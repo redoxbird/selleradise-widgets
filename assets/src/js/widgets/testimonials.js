@@ -76,15 +76,17 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
           return;
         }
 
-        anime({
-          duration: 400,
-          targets: highlighter,
-          translateY: active.offsetTop,
-          translateX: active.offsetLeft,
-          height: active.offsetHeight,
-          width: active.offsetWidth,
-          easing: "easeOutExpo",
-        });
+        if (device("desktop")) {
+          anime({
+            duration: 400,
+            targets: highlighter,
+            translateY: active.offsetTop,
+            translateX: active.offsetLeft,
+            height: active.offsetHeight,
+            width: active.offsetWidth,
+            easing: "easeOutExpo",
+          });
+        }
 
         anime({
           duration: 400,
