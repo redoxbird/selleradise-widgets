@@ -6,7 +6,9 @@ export class Product extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
-    lazyLoad();
+    if (this.isEdit) {
+      lazyLoad(this.$element[0]);
+    }
     const productWidgetDefault = new Swiper(
       ".sectionProducts:not(.cardType--list) .products",
       {

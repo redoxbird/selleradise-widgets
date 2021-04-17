@@ -9,6 +9,8 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use \Elementor\Controls_Manager;
+
 class Categories extends \Elementor\Widget_Base
 {
 
@@ -87,7 +89,7 @@ class Categories extends \Elementor\Widget_Base
             'content_section',
             [
                 'label' => __('Content', 'plugin-name'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -95,27 +97,40 @@ class Categories extends \Elementor\Widget_Base
             'title',
             [
                 'label' => __('Title', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
             ]
         );
 
         $this->add_control(
-			'card_type',
-			[
-				'label' => __( 'Type', 'selleradise-widgets' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'default',
-				'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'card' => esc_html__('Card', 'selleradise-widgets'),
-                    'smallCard' => esc_html__('Small Card', 'selleradise-widgets'),
-                    'imageCard' => esc_html__('Image Card', 'selleradise-widgets'),
-                    'imageOnly' => esc_html__('Image Only', 'selleradise-widgets'),
-                    'textOnly' => esc_html__('Text Only', 'selleradise-widgets'),
-				],
-			]
-		);
+            'card_type',
+            [
+                'label' => __('Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default'   => esc_html__('Default', 'selleradise-widgets'),
+                    'rounded'   => esc_html__('Rounded', 'selleradise-widgets'),
+                    'cardSmall' => esc_html__('Small Card', 'selleradise-widgets'),
+                    'cardImage' => esc_html__('Image Card', 'selleradise-widgets'),
+                    'onlyImage' => esc_html__('Image Only', 'selleradise-widgets'),
+                    'onlyText'  => esc_html__('Text Only', 'selleradise-widgets'),
+                    'pill'      => esc_html__('Pill', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'limit',
+            [
+                'label' => __('Limit', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 100,
+                'step' => 1,
+                'default' => 14,
+            ]
+        );
 
         $this->end_controls_section();
 

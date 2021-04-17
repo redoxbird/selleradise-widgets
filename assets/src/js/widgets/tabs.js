@@ -21,8 +21,8 @@ export class Tabs extends elementorModules.frontend.handlers.Base {
     }
 
     function setSelected(oldVal, newVal) {
-      triggers[newVal].classList.remove(`${triggerClass}--selected`);
-      triggers[oldVal].classList.add(`${triggerClass}--selected`);
+      triggers[oldVal].classList.remove(`${triggerClass}--selected`);
+      triggers[newVal].classList.add(`${triggerClass}--selected`);
 
       tabs[oldVal].classList.remove(`${tabClass}--selected`);
       tabs[newVal].classList.add(`${tabClass}--selected`);

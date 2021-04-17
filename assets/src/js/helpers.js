@@ -26,11 +26,11 @@ export async function checkElement(selector) {
   return document.querySelector(selector);
 }
 
-export function lazyLoad() {
-  const images = document.querySelectorAll(
+export function lazyLoad(context = document) {
+  const images = context.querySelectorAll(
     "[data-src]:not(.loading):not(.loaded)"
   );
-  const backImages = document.querySelectorAll(
+  const backImages = context.querySelectorAll(
     "[data-image-src]:not(.loading):not(.loaded)"
   );
 
