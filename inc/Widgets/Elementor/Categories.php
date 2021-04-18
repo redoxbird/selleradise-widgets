@@ -109,21 +109,33 @@ class Categories extends \Elementor\Widget_Base
                 'type' => Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
-                    'default'   => esc_html__('Default', 'selleradise-widgets'),
-                    'rounded'   => esc_html__('Rounded', 'selleradise-widgets'),
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'rounded' => esc_html__('Rounded', 'selleradise-widgets'),
                     'cardSmall' => esc_html__('Small Card', 'selleradise-widgets'),
                     'cardImage' => esc_html__('Image Card', 'selleradise-widgets'),
                     'onlyImage' => esc_html__('Image Only', 'selleradise-widgets'),
-                    'onlyText'  => esc_html__('Text Only', 'selleradise-widgets'),
-                    'pill'      => esc_html__('Pill', 'selleradise-widgets'),
+                    'onlyText' => esc_html__('Text Only', 'selleradise-widgets'),
+                    'pill' => esc_html__('Pill', 'selleradise-widgets'),
                 ],
             ]
         );
 
         $this->add_control(
-            'limit',
+            'number',
             [
                 'label' => __('Limit', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 1000,
+                'step' => 1,
+                'default' => 14,
+            ]
+        );
+
+        $this->add_control(
+            'page_size',
+            [
+                'label' => __('Page Size', 'selleradise-widgets'),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 100,
@@ -131,6 +143,84 @@ class Categories extends \Elementor\Widget_Base
                 'default' => 14,
             ]
         );
+
+        $this->add_control(
+            'hide_empty',
+            [
+                'label' => __('Hide Empty', 'selleradise-widgets'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'selleradise-widgets'),
+                'label_off' => __('No', 'selleradise-widgets'),
+                'return_value' => true,
+                'default' => true,
+            ]
+        );
+
+        $this->add_control(
+            'orderby',
+            [
+                'label' => __('Order By', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'count',
+                'options' => [
+                    'name' => __('Name', 'selleradise-widgets'),
+                    'count' => __('Count', 'selleradise-widgets'),
+                    'id' => __('ID', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'order',
+            [
+                'label' => __('Order', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'ASC',
+                'options' => [
+                    'ASC' => __('Ascending', 'selleradise-widgets'),
+                    'DESC' => __('Descending', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'aspect_ratio_heading',
+            [
+                'label' => __('Image Aspect Ratio', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'image_ratio_width',
+            [
+                'label' => __('X', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 4,
+            ]
+        );
+
+        $this->add_control(
+            'image_ratio_height',
+            [
+                'label' => __('Y', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 5,
+            ]
+        );
+
+        // $this->add_control(
+        //     'hierarchical',
+        //     [
+        //         'label' => __('Hierarchical', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::SWITCHER,
+        //         'label_on' => __('Yes', 'selleradise-widgets'),
+        //         'label_off' => __('No', 'selleradise-widgets'),
+        //         'return_value' => true,
+        //         'default' => true,
+        //     ]
+        // );
 
         $this->end_controls_section();
 
@@ -147,8 +237,31 @@ class Categories extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $terms = [];
 
-        selleradise_widgets_get_template_part('views/widgets/categories', null, ["settings" => $settings]);
+        $available_args = ["hide_empty", "orderby", "order", "number"];
+
+        $args = [];
+
+        foreach ($available_args as $index => $arg) {
+            if (isset($settings[$arg]) && $settings[$arg]) {
+                $args[$arg] = $settings[$arg];
+            }
+        }
+
+        // if (isset($settings["hierarchical"]) && $settings["hierarchical"]) {
+        //     $args["parent"] = false;
+        // }
+
+        $terms = get_terms('product_cat', $args);
+
+        if (empty($terms)) {
+            return;
+        }
+
+        selleradise_widgets_get_template_part('views/widgets/categories', null,
+            ["settings" => $settings, "categories" => $terms]
+        );
     }
 
 }
