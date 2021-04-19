@@ -30,12 +30,14 @@ $page_size = isset($settings["page_size"]) && $settings["page_size"] ? $settings
     style="--ratio: <?php echo (int) $settings['image_ratio_height'] / (int) $settings['image_ratio_width']; ?>"
     data-selleradise-categories-page-size="<?php echo $page_size; ?>">
 
-    <?php if (isset($settings['title']) && $settings['title']): ?>
-        <h2 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__title">
-            <?php echo $settings['title'] ?: esc_html__('Categories', 'selleradise'); ?>
-        </h2>
+    <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+        <p class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
     <?php endif;?>
 
+    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+        <h2 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__title"><?php echo esc_html($settings['section_title']); ?></h2>
+    <?php endif;?>
+    
     <ul class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__list">
         <?php foreach ($categories as $index => $category): 
             $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true); ?>

@@ -9,6 +9,8 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use \Elementor\Controls_Manager;
+
 class Accordion extends \Elementor\Widget_Base
 {
 
@@ -95,9 +97,17 @@ class Accordion extends \Elementor\Widget_Base
             'section_title',
             [
                 'label' => __('Section Title', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
-                'default' => __('Frequently Asked Questions', 'selleradise-widgets'),
+            ]
+        );
+
+        $this->add_control(
+            'section_subtitle',
+            [
+                'label' => __('Section Subtitle', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
             ]
         );
 

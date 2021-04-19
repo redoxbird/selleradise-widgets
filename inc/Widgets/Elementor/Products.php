@@ -112,9 +112,18 @@ class Products extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'name',
+            'section_title',
             [
-                'label' => __('Title', 'selleradise-widgets'),
+                'label' => __('Section Title', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+            ]
+        );
+
+        $this->add_control(
+            'section_subtitle',
+            [
+                'label' => __('Section Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
             ]
@@ -194,9 +203,9 @@ class Products extends \Elementor\Widget_Base
                 'label' => __('Limit', 'selleradise-widgets'),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
-				'max' => 50,
-				'step' => 1,
-				'default' => 5,
+                'max' => 50,
+                'step' => 1,
+                'default' => 5,
             ]
         );
 
@@ -256,13 +265,12 @@ class Products extends \Elementor\Widget_Base
 
         selleradise_widgets_get_template_part('views/widgets/products', null, [
             'products' => $products,
-            'fields' => $settings,
+            'settings' => $settings,
             'more_link' => $more_link,
         ]
         );
 
     }
-
 
     public function get_select_categories($limit = 1000)
     {

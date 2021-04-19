@@ -18,9 +18,13 @@ if(!$bellows) {
 
 <section class="selleradise_Accordion">
 
-  <?php if($settings['section_title']): ?>
-    <h2 class="selleradise_Accordion__title"><?php echo $settings['section_title']; ?></h2>
-  <?php endif; ?>
+  <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+    <p class="selleradise_Features--bullet__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+  <?php endif;?>
+
+  <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+    <h2 class="selleradise_Features--bullet__title"><?php echo esc_html($settings['section_title']); ?></h2>
+  <?php endif;?>
 
   <?php foreach($bellows as $key => $bellow): ?>
 

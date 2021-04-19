@@ -20,7 +20,7 @@ export class Product extends elementorModules.frontend.handlers.Base {
           enabled: true,
           onlyInViewport: true,
         },
-        slidesPerView: 4,
+        slidesPerView: 1,
         watchSlidesVisibility: true,
         spaceBetween: 55,
         pagination: {
@@ -31,6 +31,11 @@ export class Product extends elementorModules.frontend.handlers.Base {
         navigation: {
           nextEl: ".productPage--default .navigation .next",
           prevEl: ".productPage--default .navigation .previous",
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 4,
+          },
         },
       }
     );
@@ -46,7 +51,7 @@ export class Product extends elementorModules.frontend.handlers.Base {
           enabled: true,
           onlyInViewport: true,
         },
-        slidesPerView: 1.3,
+        slidesPerView: 1,
         autoHeight: true,
         watchSlidesVisibility: true,
         spaceBetween: 50,
@@ -58,6 +63,11 @@ export class Product extends elementorModules.frontend.handlers.Base {
         navigation: {
           nextEl: ".productPage--default .navigation .next",
           prevEl: ".productPage--default .navigation .previous",
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1.3,
+          },
         },
       }
     );

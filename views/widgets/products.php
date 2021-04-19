@@ -11,9 +11,15 @@ if ($args) {
 
 ?>
 
-<div class="selleradiseWidgets_Products cardType--<?php echo esc_attr($fields['card_type'] ?: 'default') ?>">
+<div class="selleradiseWidgets_Products cardType--<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
 
-  <h2 class="selleradiseWidgets_Products__title"><?php esc_html_e($fields['name'] ?: __('Products', 'selleradise-widgets'));?></h2>
+ <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+    <p class="selleradiseWidgets_Products__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+  <?php endif;?>
+
+  <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+    <h2 class="selleradiseWidgets_Products__title"><?php echo esc_html($settings['section_title']); ?></h2>
+  <?php endif;?>
 
   <div class="selleradiseWidgets_Products__products">
     <ul class="swiper-wrapper">
@@ -21,7 +27,7 @@ if ($args) {
         foreach ($products as $key => $product) {
             do_action('woocommerce_shop_loop');
 
-            selleradise_widgets_get_template_part('views/components/product/card', $fields['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']);
+            selleradise_widgets_get_template_part('views/components/product/card', $settings['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']);
         }
       ?>
 

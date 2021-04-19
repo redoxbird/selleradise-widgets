@@ -88,17 +88,36 @@ class Categories extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __('Content', 'plugin-name'),
+                'label' => __('Content', 'selleradise-widgets'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $this->add_control(
-            'title',
+            'section_title',
             [
-                'label' => __('Title', 'selleradise-widgets'),
+                'label' => __('Section Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+            ]
+        );
+
+        $this->add_control(
+            'section_subtitle',
+            [
+                'label' => __('Section Subtitle', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'settings_section',
+            [
+                'label' => __('Settings', 'selleradise-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -135,12 +154,12 @@ class Categories extends \Elementor\Widget_Base
         $this->add_control(
             'page_size',
             [
-                'label' => __('Page Size', 'selleradise-widgets'),
+                'label' => __('Load Size', 'selleradise-widgets'),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 100,
                 'step' => 1,
-                'default' => 14,
+                'default' => 10,
             ]
         );
 
@@ -175,7 +194,7 @@ class Categories extends \Elementor\Widget_Base
             [
                 'label' => __('Order', 'selleradise-widgets'),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'ASC',
+                'default' => 'DESC',
                 'options' => [
                     'ASC' => __('Ascending', 'selleradise-widgets'),
                     'DESC' => __('Descending', 'selleradise-widgets'),
@@ -189,6 +208,9 @@ class Categories extends \Elementor\Widget_Base
                 'label' => __('Image Aspect Ratio', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
+                'condition' => [
+                    'card_type' => ['default', 'onlyImage'],
+                ],
             ]
         );
 
@@ -198,6 +220,9 @@ class Categories extends \Elementor\Widget_Base
                 'label' => __('X', 'selleradise-widgets'),
                 'type' => Controls_Manager::NUMBER,
                 'default' => 4,
+                'condition' => [
+                    'card_type' => ['default', 'onlyImage'],
+                ],
             ]
         );
 
@@ -207,6 +232,9 @@ class Categories extends \Elementor\Widget_Base
                 'label' => __('Y', 'selleradise-widgets'),
                 'type' => Controls_Manager::NUMBER,
                 'default' => 5,
+                'condition' => [
+                    'card_type' => ['default', 'onlyImage'],
+                ],
             ]
         );
 
