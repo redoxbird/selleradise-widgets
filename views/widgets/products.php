@@ -11,13 +11,11 @@ if ($args) {
 
 ?>
 
-<div class="sectionProducts cardType--<?php echo esc_attr($fields['card_type'] ?: 'default') ?>">
+<div class="selleradiseWidgets_Products cardType--<?php echo esc_attr($fields['card_type'] ?: 'default') ?>">
 
-  <div class="sectionHead--default">
-      <h3 class="title"><?php esc_html_e($fields['name'] ?: 'Products');?></h3>
-  </div>
+  <h2 class="selleradiseWidgets_Products__title"><?php esc_html_e($fields['name'] ?: __('Products', 'selleradise-widgets'));?></h2>
 
-  <div class="products">
+  <div class="selleradiseWidgets_Products__products">
     <ul class="swiper-wrapper">
       <?php 
         foreach ($products as $key => $product) {

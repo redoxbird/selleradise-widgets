@@ -22,10 +22,12 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       section.getAttribute("data-selleradise-categories-page-size")
     );
 
+    const items = section.querySelectorAll(
+      ".selleradiseWidgets_Categories__item--hidden"
+    );
+
     function pagination() {
-      const items = section.querySelectorAll(
-        ".selleradiseWidgets_Categories__item--notLoaded"
-      );
+      let offset = 0;
 
       if (items.length <= 0) {
         loadMoreBtn.setAttribute("disabled", "disabled");
@@ -33,20 +35,19 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       }
 
       function loadItems() {
-        const items = section.querySelectorAll(
-          ".selleradiseWidgets_Categories__item--notLoaded"
-        );
+        let realIndex = -1;
 
-        if (items.length <= pageSize) {
+        if (items.length - 1 <= offset) {
           loadMoreBtn.setAttribute("disabled", "disabled");
         }
 
-        for (let index = 0; index < pageSize; index++) {
+        for (let index = offset; index < offset + pageSize; index++) {
           const item = items[index];
+          realIndex++;
 
           if (item) {
             item.classList.remove(
-              "selleradiseWidgets_Categories__item--notLoaded"
+              "selleradiseWidgets_Categories__item--hidden"
             );
 
             anime({
@@ -54,11 +55,13 @@ export class Categories extends elementorModules.frontend.handlers.Base {
               targets: item,
               opacity: [0, 1],
               translateY: [100, 0],
-              delay: index * 50,
+              delay: realIndex * 50,
               easing: "easeOutExpo",
             });
           }
         }
+
+        offset = offset + pageSize;
       }
 
       loadMoreBtn.addEventListener("click", function () {

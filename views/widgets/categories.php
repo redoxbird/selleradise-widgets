@@ -41,7 +41,7 @@ $page_size = isset($settings["page_size"]) && $settings["page_size"] ? $settings
             $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true); ?>
 
             <li 
-                class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item <?php echo $index >= $page_size ? 'selleradiseWidgets_Categories__item--notLoaded' : null; ?>" >
+                class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item <?php echo $index >= $page_size ? 'selleradiseWidgets_Categories__item--hidden' : null; ?>" >
                 <a href="<?php echo esc_url(get_term_link($category)); ?>">
 
                     <?php if ($hide_image): ?>
