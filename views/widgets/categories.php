@@ -22,6 +22,16 @@ $description_length = [
 
 $page_size = isset($settings["page_size"]) && $settings["page_size"] ? $settings["page_size"] : 8;
 
+$load_more_icon = [
+    'default' => 'chevron-down',
+    'rounded' => 'chevron-down',
+    'cardSmall' => 'chevron-down',
+    'cardImage' => 'chevron-down',
+    'onlyImage' => 'chevron-down',
+    'pill' => 'plus',
+    'onlyText' => 'plus',
+];
+
 ?>
 
 
@@ -81,7 +91,7 @@ $page_size = isset($settings["page_size"]) && $settings["page_size"] ? $settings
         <li class="selleradiseWidgets_Categories__loadMore">
             <button>
                 <span><?php esc_attr_e( "Load More", "selleradise-widgets" ); ?></span>
-                <?php echo selleradise_widgets_svg('material/plus'); ?>
+                <?php echo selleradise_widgets_svg('material/'. $load_more_icon[$settings['card_type']] ); ?>
             </button>
         </li>
     </ul>

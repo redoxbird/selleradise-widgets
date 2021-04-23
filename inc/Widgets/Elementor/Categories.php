@@ -154,7 +154,7 @@ class Categories extends \Elementor\Widget_Base
         $this->add_control(
             'page_size',
             [
-                'label' => __('Load Size', 'selleradise-widgets'),
+                'label' => __('Chunk Size', 'selleradise-widgets'),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 100,
