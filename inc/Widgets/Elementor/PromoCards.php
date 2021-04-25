@@ -12,7 +12,7 @@ namespace Selleradise_Widgets\Widgets\Elementor;
 use Selleradise_Widgets\Controls\Elementor\Group_Control_Link;
 use \Elementor\Controls_Manager;
 
-class CTA extends \Elementor\Widget_Base
+class PromoCards extends \Elementor\Widget_Base
 {
 
     public function __construct($data = [], $args = null)
@@ -40,7 +40,7 @@ class CTA extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'selleradise-cta';
+        return 'selleradise-promo-cards';
     }
 
     /**
@@ -55,7 +55,7 @@ class CTA extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Call TO Action', 'selleradise-widgets');
+        return __('Promo Cards', 'selleradise-widgets');
     }
 
     /**
@@ -108,7 +108,7 @@ class CTA extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'title',
+            'section_title',
             [
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
@@ -117,66 +117,20 @@ class CTA extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'description',
+            'section_subtitle',
+            [
+                'label' => __('Subtitle', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+            ]
+        );
+
+        $this->add_control(
+            'section_description',
             [
                 'label' => __('Description', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXTAREA,
-                'rows' => 10,
-            ]
-        );
-
-        $this->add_control(
-            'cta_heading',
-            [
-                'label' => __('Call To Action Link', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Link::get_type(),
-            [
-                'name' => 'cta',
-                'label' => __('Link', 'selleradise-widgets'),
-            ]
-        );
-
-        $this->add_control(
-            'background_heading',
-            [
-                'label' => __('Background', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'background',
-                'label' => __('Background', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient', 'video'],
-                'selector' => '{{WRAPPER}} .selleradise_CTA--default',
-            ]
-        );
-
-        $this->add_control(
-            'overlay_heading',
-            [
-                'label' => __('Overlay', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'overlay',
-                'label' => __('Overlay', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient', 'video'],
-                'selector' => '{{WRAPPER}} .selleradise_CTA--default__overlay',
+                'input_type' => 'text',
             ]
         );
 
@@ -196,9 +150,7 @@ class CTA extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        // $type = isset($settings['section_type']) && $settings['section_type'] ? $settings['section_type'] : 'list';
-
-        selleradise_widgets_get_template_part('views/widgets/cta', 'default', ["settings" => $settings]);
+        selleradise_widgets_get_template_part('views/widgets/promo-cards', null, ["settings" => $settings]);
     }
 
 }

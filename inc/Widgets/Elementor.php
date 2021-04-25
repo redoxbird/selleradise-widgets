@@ -14,6 +14,7 @@ class Elementor
         return [
             Elementor\Hero::class,
             Elementor\HeroCarousel::class,
+            Elementor\PromoCards::class,
             Elementor\Categories::class,
             Elementor\Products::class,
             Elementor\Accordion::class,

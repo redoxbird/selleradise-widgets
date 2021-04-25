@@ -20,16 +20,16 @@ class Products extends \Elementor\Widget_Base
         parent::__construct($data, $args);
 
         // if ((\Elementor\Plugin::$instance->editor->is_edit_mode())) {
-        //     wp_register_script('script-handle', get_template_directory_uri() . '/assets/dist/js/app.js', ['elementor-frontend'], '1.0.0', true);
+        //     wp_register_script('selleradise-widgets', get_template_directory_uri() . '/assets/dist/js/app.js', ['elementor-frontend'], '1.0.0', true);
         // }
 
-        wp_register_script('script-handle', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], time(), true);
+        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], time(), true);
 
     }
 
     public function get_script_depends()
     {
-        return ['script-handle'];
+        return ['selleradise-widgets'];
     }
 
     /**
@@ -115,15 +115,6 @@ class Products extends \Elementor\Widget_Base
             'section_title',
             [
                 'label' => __('Section Title', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-            ]
-        );
-
-        $this->add_control(
-            'section_subtitle',
-            [
-                'label' => __('Section Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
             ]

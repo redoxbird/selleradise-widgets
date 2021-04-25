@@ -13,13 +13,14 @@ if ($args) {
 
 <div class="selleradiseWidgets_Products cardType--<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
 
- <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-    <p class="selleradiseWidgets_Products__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-  <?php endif;?>
+  <div class="selleradiseWidgets_Products__head">
+    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+      <h2 class="selleradiseWidgets_Products__title"><?php echo esc_html($settings['section_title']); ?></h2>
+    <?php endif;?>
 
-  <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-    <h2 class="selleradiseWidgets_Products__title"><?php echo esc_html($settings['section_title']); ?></h2>
-  <?php endif;?>
+    <a href="" class="selleradiseWidgets_Products__moreLink">See More <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?></a>
+  </div>
+
 
   <div class="selleradiseWidgets_Products__products">
     <ul class="swiper-wrapper">
