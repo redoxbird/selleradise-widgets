@@ -48,8 +48,8 @@ if (!isset($settings)) {
 
                             <?php if ($slide['show_secondary_cta'] === 'yes'): ?>
                                 <a
-                                    href="<?php echo esc_html($slide['cta_secondary_url']['url'] ?? '#'); ?>"
-                                    target="<?php echo esc_html($slide['cta_secondary_target'] ? '_blank' : null); ?>"
+                                    href="<?php echo esc_url($slide['cta_secondary_url']['url'] ?? '#'); ?>"
+                                    target="<?php echo esc_attr($slide['cta_secondary_target'] ? '_blank' : null); ?>"
                                     class="button--secondary">
                                     <?php echo esc_html($slide['cta_secondary_text'] ?? __('Learn More', 'selleradise-widgets')); ?>
                                 </a>

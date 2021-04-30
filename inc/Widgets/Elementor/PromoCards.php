@@ -107,17 +107,10 @@ class PromoCards extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'section_title',
-            [
-                'label' => __('Title', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-            ]
-        );
+        $card = new \Elementor\Repeater();
 
-        $this->add_control(
-            'section_subtitle',
+        $card->add_control(
+            'subtitle',
             [
                 'label' => __('Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
@@ -125,12 +118,108 @@ class PromoCards extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'section_description',
+        $card->add_control(
+            'title',
             [
-                'label' => __('Description', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXTAREA,
+                'label' => __('Title', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+            ]
+        );
+
+        $card->add_control(
+            'cta_heading',
+            [
+                'label' => __('Call to action', 'selleradise-widgets'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $card->add_group_control(
+            Group_Control_Link::get_type(),
+            [
+                'name' => 'cta',
+                'label' => __('Call to action', 'selleradise-widgets'),
+            ]
+        );
+
+        $card->add_control(
+            'image_heading',
+            [
+                'label' => __('Image', 'selleradise-widgets'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $card->add_control(
+            'image',
+            [
+                'label' => __('Choose Image', 'selleradise-widgets'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+
+            ]
+        );
+
+        $this->add_control(
+            'cards',
+            [
+                'label' => __('Cards', 'selleradise-widgets'),
+                'type' => Controls_Manager::REPEATER,
+                'fields' => $card->get_controls(),
+                'title_field' => '{{{ title }}}',
+                'default' => [
+                    [
+                        'title' => __('Upto 50% off.', 'selleradise-widgets'),
+                        'subtitle' => __('Embrace the new style.', 'selleradise-widgets'),
+                        'image' => [
+                            "url" => 'https://redoxbird.com/selleradise/demos/assets/furniture/photo-1598300042247-d088f8ab3a91-removebg-preview.png',
+                        ],
+                        'cta_text' => 'Shop Now',
+                    ],
+                    [
+                        'title' => __('Buy 1 get 1 FREE.', 'selleradise-widgets'),
+                        'subtitle' => __('Most comfortable pillows.', 'selleradise-widgets'),
+                        'image' => [
+                            "url" => 'https://images.unsplash.com/photo-1559051668-9024c9b5e84b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
+                        ],
+                        'cta_text' => 'See Offer',
+                    ],
+                    [
+                        'title' => __('Starting from 500.', 'selleradise-widgets'),
+                        'subtitle' => __('Bestselling furniture.', 'selleradise-widgets'),
+                        'image' => [
+                            "url" => 'https://images.unsplash.com/photo-1616628198591-eaa25811775b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1256&q=80',
+                        ],
+                        'cta_text' => 'Shop Now',
+                    ],
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'settings_section',
+            [
+                'label' => __('Settings', 'selleradise-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'card_type',
+            [
+                'label' => __('Card Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                ],
             ]
         );
 
@@ -150,7 +239,9 @@ class PromoCards extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part('views/widgets/promo-cards', null, ["settings" => $settings]);
+        $type = isset($settings['card_type']) && $settings['card_type'] ? $settings['card_type'] : 'default';
+
+        selleradise_widgets_get_template_part('views/widgets/promo-cards/'.$type, null, ["settings" => $settings]);
     }
 
 }

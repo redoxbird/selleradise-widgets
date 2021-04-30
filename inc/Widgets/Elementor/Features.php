@@ -132,8 +132,8 @@ class Features extends \Elementor\Widget_Base
                 'type' => Controls_Manager::SELECT,
                 'default' => 'list',
                 'options' => [
-                    'list' => esc_html__('Default', 'selleradise'),
-                    'bullet' => esc_html__('Quick Points', 'selleradise'),
+                    'list' => esc_html__('Default', 'selleradise-widgets'),
+                    'bullet' => esc_html__('Quick Points', 'selleradise-widgets'),
                 ],
             ]
         );

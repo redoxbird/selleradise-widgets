@@ -197,7 +197,7 @@ class Hero extends \Elementor\Widget_Base
                 'type' => Controls_Manager::SELECT,
                 'default' => 'common',
                 'options' => [
-                    'common' => esc_html__('Common', 'selleradise'),
+                    'common' => esc_html__('Common', 'selleradise-widgets'),
                 ],
             ]
         );

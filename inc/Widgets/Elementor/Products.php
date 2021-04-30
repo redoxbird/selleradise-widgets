@@ -127,10 +127,10 @@ class Products extends \Elementor\Widget_Base
                 'type' => Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
-                    'default' => esc_html__('Default', 'selleradise'),
-                    'minimal' => esc_html__('Minimal', 'selleradise'),
-                    'simple' => esc_html__('Simple', 'selleradise'),
-                    'list' => esc_html__('Robust', 'selleradise'),
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
+                    'simple' => esc_html__('Simple', 'selleradise-widgets'),
+                    'list' => esc_html__('Robust', 'selleradise-widgets'),
                 ],
             ]
         );
