@@ -8,13 +8,18 @@ if (isset($args)) {
   extract($args);
 }
 
+if(!isset($settings)) {
+  return;
+}
+
 ?>
 
 <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>">
 
   <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
-    <img 
-      src="<?php echo esc_url($settings['image']['url']); ?>" 
+    <img
+      src="<?php echo selleradise_get_image_placeholder(); ?>"
+      data-src="<?php echo esc_url($settings['image']['url']); ?>" 
       alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
     >
   </div>

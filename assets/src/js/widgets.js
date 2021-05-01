@@ -1,3 +1,4 @@
+import { Hero } from "./widgets/hero";
 import { Product } from "./widgets/products";
 import { HeroCarousel } from "./widgets/hero-carousel";
 import { Testimonials } from "./widgets/testimonials";
@@ -6,6 +7,15 @@ import { Accordion } from "./widgets/accordion";
 import { Categories } from "./widgets/categories";
 
 jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-hero.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Hero, {
+        $element,
+      });
+    }
+  );
+
   elementorFrontend.hooks.addAction(
     "frontend/element_ready/selleradise-products.default",
     function ($element) {
