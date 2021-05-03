@@ -221,7 +221,7 @@ class Categories extends \Elementor\Widget_Base
                 'type' => Controls_Manager::NUMBER,
                 'default' => 4,
                 'condition' => [
-                    'card_type' => ['default', 'onlyImage'],
+                    'card_type' => ['default', 'onlyImage', 'cardImage'],
                 ],
             ]
         );
@@ -233,7 +233,7 @@ class Categories extends \Elementor\Widget_Base
                 'type' => Controls_Manager::NUMBER,
                 'default' => 5,
                 'condition' => [
-                    'card_type' => ['default', 'onlyImage'],
+                    'card_type' => ['default', 'onlyImage', 'cardImage'],
                 ],
             ]
         );
