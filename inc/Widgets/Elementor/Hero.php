@@ -113,7 +113,7 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
-                'default' => 'This is a headline that engages people.'
+                'default' => 'This is a headline that engages people.',
             ]
         );
 
@@ -123,7 +123,7 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
-                'default' => 'This provides additional information.'
+                'default' => 'This provides additional information.',
             ]
         );
 
@@ -133,7 +133,7 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Description', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXTAREA,
                 'input_type' => 'text',
-                'default' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit cumque perferendis sequi minus placeat sint pariatur, similique obcaecati incidunt ab blanditiis maiores nisi inventore expedita laborum aut facere possimus aspernatur.'
+                'default' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit cumque perferendis sequi minus placeat sint pariatur, similique obcaecati incidunt ab blanditiis maiores nisi inventore expedita laborum aut facere possimus aspernatur.',
             ]
         );
 
@@ -201,8 +201,27 @@ class Hero extends \Elementor\Widget_Base
                 'default' => 'common',
                 'options' => [
                     'common' => esc_html__('Common', 'selleradise-widgets'),
+                    'simple' => esc_html__('Simple', 'selleradise-widgets'),
                     'centered' => esc_html__('Centered', 'selleradise-widgets'),
                     'furniture' => esc_html__('Furniture', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'text_color',
+            [
+                'label' => __('Text Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_2,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_Hero__content' => 'color: {{value}};',
+                ],
+                'condition' => [
+                    'hero_type' => 'simple',
                 ],
             ]
         );
@@ -225,7 +244,7 @@ class Hero extends \Elementor\Widget_Base
 
         $type = isset($settings['hero_type']) && $settings['hero_type'] ? $settings['hero_type'] : 'common';
 
-        selleradise_widgets_get_template_part('views/widgets/hero/'.$type, null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('views/widgets/hero/' . $type, null, ["settings" => $settings]);
     }
 
 }

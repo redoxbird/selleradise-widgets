@@ -37,7 +37,7 @@ if(!$bellows) {
           <?php echo esc_html( $bellow['title'] ); ?>
         </h3>
         <span>
-          <?php echo selleradise_widgets_svg('material/chevron-down'); ?>
+          <?php echo selleradise_widgets_svg('material/plus'); ?>
         </span>
       </button>
 
