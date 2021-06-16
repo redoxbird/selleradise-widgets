@@ -70,14 +70,14 @@ class Group_Control_Link extends Group_Control_Base
             'input_type' => 'text',
         ];
 
-        $fields['target'] = [
-            'label' => _x('Open In New Tab', 'Link Control', 'selleradise-widgets'),
-            'type' => \Elementor\Controls_Manager::SWITCHER,
-            'label_on' => __('Yes', 'your-plugin'),
-            'label_off' => __('No', 'your-plugin'),
-            'return_value' => 1,
-            'default' => 0,
-        ];
+        // $fields['target'] = [
+        //     'label' => _x('Open In New Tab', 'Link Control', 'selleradise-widgets'),
+        //     'type' => \Elementor\Controls_Manager::SWITCHER,
+        //     'label_on' => __('Yes', 'your-plugin'),
+        //     'label_off' => __('No', 'your-plugin'),
+        //     'return_value' => 1,
+        //     'default' => 0,
+        // ];
         
         return $fields;
     }

@@ -54,7 +54,7 @@ $load_more_icon = [
 
             <li 
                 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item <?php echo $index >= $page_size ? 'selleradiseWidgets_Categories__item--hidden' : null; ?>" >
-                <a href="<?php echo esc_url(get_term_link($category)); ?>">
+                <a class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item-inner" href="<?php echo esc_url(get_term_link($category)); ?>">
 
                     <?php if ($hide_image): ?>
                         <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemImage">
@@ -89,7 +89,7 @@ $load_more_icon = [
         <?php endforeach;?>
 
         <li class="selleradiseWidgets_Categories__loadMore">
-            <button>
+            <button aria-label="<?php esc_attr_e( "Load More", "selleradise-widgets" ); ?>">
                 <span><?php esc_attr_e( "Load More", "selleradise-widgets" ); ?></span>
                 <?php echo selleradise_widgets_svg('material/'. $load_more_icon[$settings['card_type']] ); ?>
             </button>
