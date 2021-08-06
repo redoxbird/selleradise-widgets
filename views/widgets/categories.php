@@ -90,8 +90,8 @@ $load_more_icon = [
 
         <li class="selleradiseWidgets_Categories__loadMore">
             <button aria-label="<?php esc_attr_e( "Load More", "selleradise-widgets" ); ?>">
-                <span><?php esc_attr_e( "Load More", "selleradise-widgets" ); ?></span>
                 <?php echo selleradise_widgets_svg('material/'. $load_more_icon[$settings['card_type']] ); ?>
+                <span><?php esc_attr_e( "Load More", "selleradise-widgets" ); ?></span>
             </button>
         </li>
     </ul>
