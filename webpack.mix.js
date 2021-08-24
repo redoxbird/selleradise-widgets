@@ -7,9 +7,4 @@ mix.browserSync({
 
 mix.setPublicPath("./assets/dist");
 
-mix
-  .js("assets/src/js/widgets.js", "assets/dist/js")
-  .sass("assets/src/sass/style.scss", "assets/dist/css")
-  .options({
-    processCssUrls: false,
-  });
+mix.js("assets/src/js/widgets.js", "assets/dist/js");

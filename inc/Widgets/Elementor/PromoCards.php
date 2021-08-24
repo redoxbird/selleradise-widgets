@@ -128,6 +128,15 @@ class PromoCards extends \Elementor\Widget_Base
         );
 
         $card->add_control(
+            'promo_type',
+            [
+                'label' => __('Promo Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+            ]
+        );
+
+        $card->add_control(
             'cta_heading',
             [
                 'label' => __('Call to action', 'selleradise-widgets'),
@@ -162,6 +171,63 @@ class PromoCards extends \Elementor\Widget_Base
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
 
+            ]
+        );
+
+        $card->add_control(
+            'color_heading',
+            [
+                'label' => __('Colors', 'selleradise-widgets'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+
+        $card->add_control(
+            'color_background',
+            [
+                'label' => __('Background Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} [class$="__item-link"]' => 'color: {{value}};',
+                ],
+            ]
+        );
+
+        $card->add_control(
+            'color_text',
+            [
+                'label' => __('Background Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} [class$="__item-link"]' => 'background-color: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} [class$="__item-image"]' => 'border-color: {{value}};',
+                ],
+            ]
+        );
+
+        $card->add_control(
+            'color_title_background',
+            [
+                'label' => __('Title Background Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} [class$="__item-title"]' => 'background-color: {{value}};',
+                ],
+            ]
+        );
+
+        $card->add_control(
+            'color_title_text',
+            [
+                'label' => __('Title Background Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} [class$="__item-title"]' => 'color: {{value}};',
+                ],
             ]
         );
 
@@ -219,6 +285,7 @@ class PromoCards extends \Elementor\Widget_Base
                 'default' => 'default',
                 'options' => [
                     'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'bold' => esc_html__('Bold', 'selleradise-widgets'),
                 ],
             ]
         );

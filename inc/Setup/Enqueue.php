@@ -53,8 +53,6 @@ class Enqueue
                 true
             );
         };
-
-        wp_enqueue_style('sellaradise-widgets-style', selleradise_plugin_assets('css/style.css'), array(), time(), 'all');
     }
 
 }

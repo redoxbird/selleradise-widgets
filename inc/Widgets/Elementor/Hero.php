@@ -166,22 +166,6 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'secondary_cta_heading',
-            [
-                'label' => __('Secondary CTA', 'selleradise-widgets'),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Link::get_type(),
-            [
-                'name' => 'cta_secondary',
-                'label' => __('Secondary CTA', 'selleradise-widgets'),
-            ]
-        );
 
         $this->end_controls_section();
 

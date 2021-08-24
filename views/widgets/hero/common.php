@@ -16,19 +16,7 @@ if(!isset($settings)) {
 
 <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>">
 
-  <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
-    <img
-      src="<?php echo selleradise_get_image_placeholder(); ?>"
-      data-src="<?php echo esc_url($settings['image']['url']); ?>" 
-      alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
-    >
-  </div>
-
   <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__content">
-    <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-      <p class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-    <?php endif;?>
-
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
       <h1 class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__title"><?php echo esc_html($settings['section_title']); ?></h1>
     <?php endif;?>
@@ -46,16 +34,14 @@ if(!isset($settings)) {
             <?php echo esc_html($settings['cta_primary_text']); ?>
         </a>
     <?php endif;?>
+  </div>
 
-    <?php if (isset($settings['cta_secondary_text']) && $settings['cta_secondary_text']): ?>
-        <a
-            href="<?php echo esc_html($settings['cta_secondary_url']['url'] ?? '#'); ?>"
-            target="<?php echo esc_html($settings['cta_secondary_url']['is_external'] ? '_blank' : null); ?>"
-            class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__secondaryCTA"
-        >
-            <?php echo esc_html($settings['cta_secondary_text']); ?>
-        </a>
-    <?php endif;?>
+  <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
+    <img
+      src="<?php echo selleradise_get_image_placeholder(); ?>"
+      data-src="<?php echo esc_url($settings['image']['url']); ?>" 
+      alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
+    >
   </div>
 
 </div>
