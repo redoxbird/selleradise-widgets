@@ -36,7 +36,7 @@ $load_more_icon = [
 
 
 <div 
-    class="selleradiseWidgets_Categories selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>" 
+    class="selleradiseWidgets_Categories <?php echo sprintf('selleradiseWidgets_Categories--%s', $settings['card_type']); ?>"
     style="--ratio: <?php echo (int) $settings['image_ratio_height'] / (int) $settings['image_ratio_width']; ?>"
     data-selleradise-categories-page-size="<?php echo $page_size; ?>">
 
@@ -56,6 +56,11 @@ $load_more_icon = [
                 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item <?php echo $index >= $page_size ? 'selleradiseWidgets_Categories__item--hidden' : null; ?>" >
                 <a class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item-inner" href="<?php echo esc_url(get_term_link($category)); ?>">
 
+                    <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item-count">
+                        <span><?php echo $category->count; ?></span>
+                        <span><?php _e('Products', 'selleradise'); ?></span>
+                    </div>
+
                     <?php if ($hide_image): ?>
                         <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemImage">
                             <?php if($thumbnail_id): ?>
@@ -74,7 +79,7 @@ $load_more_icon = [
                     <?php endif;?>
 
                     <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemContent">
-                        <p class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemName"><?php echo esc_html($category->name); ?></p>
+                        <h3 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemName"><?php echo esc_html($category->name); ?></h3>
 
                         <?php if ((isset($category->description) && $category->description) && $show_description): ?>
                             <p class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemDescription">

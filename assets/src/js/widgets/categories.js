@@ -29,7 +29,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
     function pagination() {
       let offset = 0;
 
-      if (items.length <= 0) {
+      if (items.length < 1) {
         loadMoreBtn.setAttribute("disabled", "disabled");
         return;
       }
@@ -37,7 +37,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       function loadItems() {
         let realIndex = -1;
 
-        if (items.length - 1 <= offset) {
+        if (items.length <= offset + pageSize) {
           loadMoreBtn.setAttribute("disabled", "disabled");
         }
 
