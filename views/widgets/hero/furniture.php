@@ -21,10 +21,6 @@ if (!isset($settings)) {
       <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
         <h1 class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__title"><?php echo esc_html($settings['section_title']); ?></h1>
       <?php endif;?>
-
-      <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-        <p class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-      <?php endif;?>
     </div>
 
     <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__infoBox">
@@ -42,23 +38,13 @@ if (!isset($settings)) {
           </a>
       <?php endif;?>
 
-      <?php if (isset($settings['cta_secondary_text']) && $settings['cta_secondary_text']): ?>
-          <a
-              href="<?php echo esc_html($settings['cta_secondary_url']['url'] ?? '#'); ?>"
-              target="<?php echo esc_html($settings['cta_secondary_url']['is_external'] ? '_blank' : null); ?>"
-              class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__secondaryCTA"
-          >
-              <?php echo esc_html($settings['cta_secondary_text']); ?>
-          </a>
-      <?php endif;?>
     </div>
 
   </div>
 
   <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
     <img
-      src="<?php echo selleradise_get_image_placeholder(); ?>"
-      data-src="<?php echo esc_url($settings['image']['url']); ?>"
+      src="<?php echo $settings['image'] ? esc_url($settings['image']['url']) : selleradise_get_image_placeholder(); ?>"
       alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
     >
   </div>
