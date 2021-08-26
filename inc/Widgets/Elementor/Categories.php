@@ -134,7 +134,6 @@ class Categories extends \Elementor\Widget_Base
                     'cardImage' => esc_html__('Image Card', 'selleradise-widgets'),
                     'onlyImage' => esc_html__('Image Only', 'selleradise-widgets'),
                     'onlyText' => esc_html__('Text Only', 'selleradise-widgets'),
-                    'pill' => esc_html__('Pill', 'selleradise-widgets'),
                 ],
             ]
         );
@@ -238,17 +237,6 @@ class Categories extends \Elementor\Widget_Base
             ]
         );
 
-        // $this->add_control(
-        //     'hierarchical',
-        //     [
-        //         'label' => __('Hierarchical', 'selleradise-widgets'),
-        //         'type' => Controls_Manager::SWITCHER,
-        //         'label_on' => __('Yes', 'selleradise-widgets'),
-        //         'label_off' => __('No', 'selleradise-widgets'),
-        //         'return_value' => true,
-        //         'default' => true,
-        //     ]
-        // );
 
         $this->end_controls_section();
 
@@ -265,8 +253,9 @@ class Categories extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        
         $terms = [];
-
+        
         $available_args = ["hide_empty", "orderby", "order", "number"];
 
         $args = [];
@@ -276,10 +265,6 @@ class Categories extends \Elementor\Widget_Base
                 $args[$arg] = $settings[$arg];
             }
         }
-
-        // if (isset($settings["hierarchical"]) && $settings["hierarchical"]) {
-        //     $args["parent"] = false;
-        // }
 
         $terms = get_terms('product_cat', $args);
 

@@ -46,17 +46,18 @@ export class Categories extends elementorModules.frontend.handlers.Base {
           realIndex++;
 
           if (item) {
-            item.classList.remove(
-              "selleradiseWidgets_Categories__item--hidden"
-            );
-
             anime({
-              duration: 400,
+              duration: 600,
               targets: item,
               opacity: [0, 1],
               translateY: [100, 0],
               delay: realIndex * 50,
               easing: "easeOutExpo",
+              begin: function () {
+                item.classList.remove(
+                  "selleradiseWidgets_Categories__item--hidden"
+                );
+              },
             });
           }
         }

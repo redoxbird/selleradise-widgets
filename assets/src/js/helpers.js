@@ -28,88 +28,62 @@ export async function checkElement(selector) {
 
 export function lazyLoad(context = document) {
   const images = context.querySelectorAll(
-    "[data-src]:not(.loading):not(.loaded)"
+    "[data-src]:not(.loading):not(.loaded):not(.selleradise_skip-lazy-load)"
   );
-  const backImages = context.querySelectorAll(
+  const backgroundImages = context.querySelectorAll(
     "[data-image-src]:not(.loading):not(.loaded)"
   );
 
-  if (!images && !backImages) {
-    return;
+  const observer = scrollama();
+
+  if (images.length > 0) {
+    observer
+      .setup({
+        step: images,
+        offset: 1,
+        once: true,
+      })
+      .onStepEnter((response) => {
+        const { element, index, direction } = response;
+        const dataSrc = element.getAttribute("data-src");
+
+        if (!dataSrc) {
+          return;
+        }
+
+        element.classList.add("loading");
+        element.setAttribute("src", dataSrc);
+
+        element.onload = function () {
+          element.classList.remove("loading");
+          element.classList.add("loaded");
+        };
+      });
   }
 
-  const lazyLoadImg = function (target) {
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        entry.target.classList.add("loading");
-        const dataSrc = entry.target.getAttribute("data-src");
+  if (backgroundImages.length > 0) {
+    observer
+      .setup({
+        step: backgroundImages,
+        offset: 1,
+        once: true,
+      })
+      .onStepEnter((response) => {
+        const { element, index, direction } = response;
+        const dataUrl = element.getAttribute("data-image-src");
 
-        if (entry.isIntersecting && dataSrc) {
-          entry.target.setAttribute("src", dataSrc);
-
-          entry.target.onload = function () {
-            entry.target.classList.remove("loading");
-            entry.target.classList.add("loaded");
-          };
-
-          observer.disconnect();
+        if (!dataUrl) {
+          return;
         }
-      });
-    });
 
-    io.observe(target);
-  };
+        element.classList.add("loading");
 
-  const lazyLoadBack = function (target) {
-    const io = new IntersectionObserver((entries, observer) => {
-      //console.log(entries)
-      entries.forEach((entry) => {
-        entry.target.classList.add("loading");
-        const dataUrl = entry.target.getAttribute("data-image-src");
-
-        if (entry.isIntersecting) {
-          if (dataUrl) {
-            entry.target.style.backgroundImage = `url(${dataUrl})`;
-          }
-
-          entry.target.classList.add("loaded");
-          entry.target.classList.remove("loading");
-
-          observer.disconnect();
+        if (dataUrl) {
+          element.style.backgroundImage = `url(${dataUrl})`;
         }
+
+        element.classList.add("loaded");
+        element.classList.remove("loading");
       });
-    });
-
-    io.observe(target);
-  };
-
-  var normalLoadImg = function (entry) {
-    var dataSrc = entry.getAttribute("data-src");
-
-    if (dataSrc) {
-      entry.setAttribute("src", dataSrc);
-
-      entry.onload = function () {
-        entry.classList.add("loaded");
-      };
-    }
-  };
-
-  var normalLoadBack = function (entry) {
-    var dataUrl = entry.getAttribute("data-image-src");
-
-    if (dataUrl) {
-      entry.style.backgroundImage = `url(${dataUrl})`;
-    }
-
-    entry.classList.add("loaded");
-  };
-
-  if ("IntersectionObserver" in window) {
-    images.forEach(lazyLoadImg);
-    backImages.forEach(lazyLoadBack);
-  } else {
-    images.forEach(normalLoadImg);
-    backImages.forEach(normalLoadBack);
   }
 }

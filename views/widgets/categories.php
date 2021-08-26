@@ -15,22 +15,10 @@ if (!$settings) {
 $show_description = in_array($settings['card_type'], ['cardImage', 'cardSmall']);
 $hide_image = !in_array($settings['card_type'], ['onlyText']);
 
-$description_length = [
-    "cardImage" => 100,
-    "cardSmall" => 50,
-];
 
 $page_size = isset($settings["page_size"]) && $settings["page_size"] ? $settings["page_size"] : 8;
 
-$load_more_icon = [
-    'default' => 'chevron-down',
-    'rounded' => 'chevron-down',
-    'cardSmall' => 'chevron-down',
-    'cardImage' => 'chevron-down',
-    'onlyImage' => 'chevron-down',
-    'pill' => 'plus',
-    'onlyText' => 'plus',
-];
+
 
 ?>
 
@@ -61,32 +49,26 @@ $load_more_icon = [
                         <span><?php _e('Products', 'selleradise'); ?></span>
                     </div>
 
-                    <?php if ($hide_image): ?>
-                        <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemImage">
-                            <?php if($thumbnail_id): ?>
-                                <img
-                                    data-src="<?php echo esc_url(wp_get_attachment_url($thumbnail_id)); ?>"
-                                    src="<?php echo selleradise_get_image_placeholder(); ?>"
-                                    alt="<?php echo get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>"
-                                />
-                            <?php else: ?>
-                                <img
-                                    src="<?php echo selleradise_get_image_placeholder(); ?>"
-                                    alt=""
-                                />
-                            <?php endif; ?>
-                        </div>
-                    <?php endif;?>
+                    <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemImage">
+                        <?php if($thumbnail_id): ?>
+                            <img
+                                src="<?php echo $thumbnail_id ? esc_url(wp_get_attachment_url($thumbnail_id)) : selleradise_get_image_placeholder(); ?>"
+                                alt="<?php echo get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>"
+                            />
+                        <?php else: ?>
+                            <img
+                                src="<?php echo selleradise_get_image_placeholder(); ?>"
+                                alt=""
+                            />
+                        <?php endif; ?>
+                    </div>
 
                     <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemContent">
                         <h3 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemName"><?php echo esc_html($category->name); ?></h3>
 
-                        <?php if ((isset($category->description) && $category->description) && $show_description): ?>
-                            <p class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemDescription">
-                                <?php echo selleradise_truncate(esc_html($category->description), $description_length[$settings['card_type'] ?? 50]); ?>
-                            </p>
-                        <?php endif;?>
-
+                        <p class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemDescription">
+                            <?php echo selleradise_truncate(esc_html($category->description), 50); ?>
+                        </p>
                     </div>
                 </a>
             </li>
@@ -95,7 +77,7 @@ $load_more_icon = [
 
         <li class="selleradiseWidgets_Categories__loadMore">
             <button aria-label="<?php esc_attr_e( "Load More", "selleradise-widgets" ); ?>">
-                <?php echo selleradise_widgets_svg('material/'. $load_more_icon[$settings['card_type']] ); ?>
+                <?php echo selleradise_widgets_svg('material/chevron-down'); ?>
                 <span><?php esc_attr_e( "Load More", "selleradise-widgets" ); ?></span>
             </button>
         </li>

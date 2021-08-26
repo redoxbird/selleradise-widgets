@@ -218,8 +218,8 @@ class HeroCarousel extends \Elementor\Widget_Base
                 'label' => __('Text Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide .content' => 'color: {{value}};',
@@ -238,8 +238,8 @@ class HeroCarousel extends \Elementor\Widget_Base
                 'label' => __('Button Text Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_2,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_2,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} {{CURRENT_ITEM}}.swiper-slide .button--primary' => 'color: {{value}};',
