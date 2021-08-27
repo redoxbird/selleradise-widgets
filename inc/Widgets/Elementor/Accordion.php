@@ -129,6 +129,24 @@ class Accordion extends \Elementor\Widget_Base
             ]
         );
 
+
+        $accordion->add_control(
+            'category_heading',
+            [
+                'label' => __('Category', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $accordion->add_control(
+            'category',
+            [
+                'label' => __('Category', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+            ]
+        );
+
         $this->add_control(
             'accordion',
             [
@@ -139,10 +157,12 @@ class Accordion extends \Elementor\Widget_Base
                     [
                         'title' => __('What are some of the main features of selleradise?', 'selleradise-widgets'),
                         'description' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet turpis in lacus finibus volutpat commodo at lectus. Phasellus rutrum orci eget tincidunt consequat. Morbi sed eros sit amet elit aliquet cursus id at nunc. Suspendisse tristique dignissim efficitur. Phasellus semper, quam ac maximus porta, ante risus commodo urna, in mattis elit arcu eget arcu. Proin ac dolor vel nibh gravida aliquam vel sit amet elit. Integer vel urna arcu. Morbi nec felis tempus, efficitur diam eget.', 'selleradise-widgets'),
+                        'category' => __('General', 'selleradise-widgets'),
                     ],
                     [
                         'title' => __('Is selleradise theme accessible?', 'selleradise-widgets'),
                         'description' => __('Yes, selleradise is fully accessible.', 'selleradise-widgets'),
+                        'category' => __('General', 'selleradise-widgets'),
                     ],
                 ],
                 'title_field' => '{{{ title }}}',
@@ -167,5 +187,7 @@ class Accordion extends \Elementor\Widget_Base
 
         selleradise_widgets_get_template_part('views/widgets/accordion', null, ["settings" => $settings]);
     }
+
+    
 
 }
