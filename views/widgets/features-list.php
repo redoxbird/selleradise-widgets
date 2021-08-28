@@ -17,13 +17,13 @@ if (!$features) {
 ?>
 
 <section class="selleradise_Features--default">
-  <?php if(isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-    <p class="selleradise_Features--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-  <?php endif; ?>
-
   <?php if(isset($settings['section_title']) && $settings['section_title']): ?>
     <h2 class="selleradise_Features--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
   <?php endif; ?>
+
+  <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+    <p class="selleradise_Features--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+  <?php endif;?>
 
   <ul class="selleradise_Features--default__list">  
     <?php foreach ($features as $index => $feature): ?>

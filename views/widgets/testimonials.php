@@ -20,31 +20,34 @@ if (!$testimonies) {
 
 <section class="selleradise_Testimonials--default">
 
-  <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-    <p class="selleradise_Testimonials--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-  <?php endif;?>
+  <div class="selleradise_Testimonials--default__profiles-outer">
+     <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+      <p class="selleradise_Testimonials--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+    <?php endif;?>
 
-  <?php if(isset($settings['section_title']) && $settings['section_title']): ?>
-    <h2 class="selleradise_Testimonials--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
-  <?php endif; ?>
+    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+      <h2 class="selleradise_Testimonials--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
+    <?php endif;?>
 
-  <ul class="selleradise_Testimonials--default__profiles">
-    <li class="selleradise_Testimonials--default__highlighter"></li>
+    <ul class="selleradise_Testimonials--default__profiles">
 
-    <?php foreach($testimonies as $index => $testimony): ?>
-      <li class="selleradise_Testimonials--default__profile" data-slide-index="<?php echo esc_attr( $index ); ?>">
-        <button>
-          <img src="<?php echo esc_url($testimony['profile_picture']['url']); ?>" alt="">
+      <li class="selleradise_Testimonials--default__highlighter"></li>
 
-          <div>
-            <p><?php echo esc_html($testimony['profile_name']); ?></p>
-            <p><?php echo esc_html($testimony['profile_info']); ?></p>
-          </div>
-        </button>
-      </li>
-    <?php endforeach; ?>
-  
-  </ul>
+      <?php foreach($testimonies as $index => $testimony): ?>
+        <li class="selleradise_Testimonials--default__profile" data-slide-index="<?php echo esc_attr( $index ); ?>">
+          <button>
+            <img src="<?php echo esc_url($testimony['profile_picture']['url']); ?>" alt="">
+
+            <div>
+              <p><?php echo esc_html($testimony['profile_name']); ?></p>
+              <p><?php echo esc_html($testimony['profile_info']); ?></p>
+            </div>
+          </button>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+
+  </div>
 
   <div class="selleradise_Testimonials--default__quotes">
     <div class="swiper-wrapper">

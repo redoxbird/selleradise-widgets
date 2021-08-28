@@ -9,6 +9,8 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use \Elementor\Controls_Manager;
+
 class Tabs extends \Elementor\Widget_Base
 {
 
@@ -88,6 +90,25 @@ class Tabs extends \Elementor\Widget_Base
             [
                 'label' => __('Content', 'selleradise-widgets'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+      
+        $this->add_control(
+            'section_title',
+            [
+                'label' => __('Section Title', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+            ]
+        );
+
+        $this->add_control(
+            'section_subtitle',
+            [
+                'label' => __('Section Subtitle', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
             ]
         );
 
