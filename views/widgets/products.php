@@ -11,31 +11,45 @@ if ($args) {
 
 ?>
 
-<div class="selleradiseWidgets_Products cardType--<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
+<div class="selleradiseWidgets_Products selleradiseWidgets_Products--card_<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
 
   <div class="selleradiseWidgets_Products__head">
-    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-      <h2 class="selleradiseWidgets_Products__title"><?php echo esc_html($settings['section_title']); ?></h2>
-    <?php endif;?>
+    <div>
+      <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+        <h2 class="selleradiseWidgets_Products__title"><?php echo esc_html($settings['section_title']); ?></h2>
+      <?php endif;?>
 
-    <a href="" class="selleradiseWidgets_Products__moreLink">See More <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?></a>
+      <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+        <p class="selleradiseWidgets_Products__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+      <?php endif;?>
+    </div>
+
+    <div class="selleradiseWidgets_Products__slider-buttons">
+      <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--left">
+        <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
+      </button>
+
+      <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--right">
+        <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
+      </button>
+    </div>
+
   </div>
 
 
-  <div class="selleradiseWidgets_Products__products">
+  <div class="selleradiseWidgets_Products__slider">
     <ul class="swiper-wrapper">
       <?php 
         foreach ($products as $key => $product) {
-            do_action('woocommerce_shop_loop');
-
-            selleradise_widgets_get_template_part('views/components/product/card', $settings['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']);
+          selleradise_widgets_get_template_part(
+            'views/components/product/card', 
+            $settings['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']
+          );
         }
       ?>
-
-      <li class="swiper-slide card--viewAll">
-        <a href="<?php echo esc_url($more_link); ?>"> <?php esc_html_e( 'View All', "selleradise" ) ?> </a>
-      </li>
     </ul>
   </div>
+
+  <a href="<?php echo esc_url($more_link); ?>" class="selleradiseWidgets_Products__moreLink">See More <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?></a>
 
 </div>

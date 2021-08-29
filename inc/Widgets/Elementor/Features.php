@@ -130,9 +130,10 @@ class Features extends \Elementor\Widget_Base
             [
                 'label' => __('Section Type', 'selleradise-widgets'),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'list',
+                'default' => 'default',
                 'options' => [
-                    'list' => esc_html__('Default', 'selleradise-widgets'),
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'simple' => esc_html__('Simple', 'selleradise-widgets'),
                     'bullet' => esc_html__('Quick Points', 'selleradise-widgets'),
                 ],
             ]
@@ -233,9 +234,9 @@ class Features extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        $type = isset($settings['section_type']) && $settings['section_type'] ? $settings['section_type'] : 'list';
+        $type = isset($settings['section_type']) && $settings['section_type'] ? $settings['section_type'] : 'default';
 
-        selleradise_widgets_get_template_part('views/widgets/features', $type, ["settings" => $settings]);
+        selleradise_widgets_get_template_part("views/widgets/features/$type", null, ["settings" => $settings]);
     }
 
 }

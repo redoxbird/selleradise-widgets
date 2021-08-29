@@ -121,6 +121,15 @@ class Products extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'section_subtitle',
+            [
+                'label' => __('Section Subtitle', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+            ]
+        );
+
+        $this->add_control(
             'card_type',
             [
                 'label' => __('Card Type', 'selleradise-widgets'),

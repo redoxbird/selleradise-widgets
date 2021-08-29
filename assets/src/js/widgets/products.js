@@ -9,36 +9,32 @@ export class Product extends elementorModules.frontend.handlers.Base {
     if (this.isEdit) {
       lazyLoad(this.$element[0]);
     }
-    const productWidgetDefault = new Swiper(
-      ".selleradiseWidgets_Products:not(.cardType--list) .selleradiseWidgets_Products__products",
-      {
-        duration: 600,
-        lazy: {
-          loadPrevNext: false,
+    const slider = new Swiper(".selleradiseWidgets_Products__slider", {
+      duration: 600,
+      lazy: {
+        loadPrevNext: false,
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      slidesPerView: 1,
+      watchSlidesVisibility: true,
+      spaceBetween: 55,
+      pagination: {
+        el: ".selleradiseWidgets_Products__slider > .swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".selleradiseWidgets_Products__slider-button--right",
+        prevEl: ".selleradiseWidgets_Products__slider-button--left",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
         },
-        keyboard: {
-          enabled: true,
-          onlyInViewport: true,
-        },
-        slidesPerView: 1,
-        watchSlidesVisibility: true,
-        spaceBetween: 55,
-        pagination: {
-          el:
-            ".selleradiseWidgets_Products:not(.cardType--list) .selleradiseWidgets_Products__products > .swiper-pagination",
-          type: "fraction",
-        },
-        navigation: {
-          nextEl: ".productPage--default .navigation .next",
-          prevEl: ".productPage--default .navigation .previous",
-        },
-        breakpoints: {
-          768: {
-            slidesPerView: 4,
-          },
-        },
-      }
-    );
+      },
+    });
 
     new Swiper(
       ".selleradiseWidgets_Products.cardType--list .selleradiseWidgets_Products__products",
@@ -56,8 +52,7 @@ export class Product extends elementorModules.frontend.handlers.Base {
         watchSlidesVisibility: true,
         spaceBetween: 50,
         pagination: {
-          el:
-            ".selleradiseWidgets_Products.cardType--list .selleradiseWidgets_Products__products > .swiper-pagination",
+          el: ".selleradiseWidgets_Products.cardType--list .selleradiseWidgets_Products__products > .swiper-pagination",
           type: "fraction",
         },
         navigation: {
@@ -79,8 +74,7 @@ export class Product extends elementorModules.frontend.handlers.Base {
         loadPrevNext: false,
       },
       pagination: {
-        el:
-          ".selleradiseWidgets_Products .productCard--slider .swiper-pagination",
+        el: ".selleradiseWidgets_Products .productCard--slider .swiper-pagination",
         type: "fraction",
       },
       navigation: {
