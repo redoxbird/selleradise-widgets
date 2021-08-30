@@ -27,7 +27,7 @@ if (!$features) {
 
   <ul class="selleradise_Features--default__list">
     <?php foreach ($features as $index => $feature): ?>
-      <li>
+      <li class="elementor-repeater-item-<?php echo $feature['_id']; ?>">
         <div class="selleradise_Features--default__icon">
           <?php \Elementor\Icons_Manager::render_icon($feature['icon'], ['aria-hidden' => 'true']);?>
         </div>
@@ -37,19 +37,19 @@ if (!$features) {
         <div class="selleradise_Features--default__listDescription">
           <?php echo $feature['description']; ?>
         </div>
-
-        <?php if ($feature['show_cta'] === 'yes'): ?>
-            <a
-                class="selleradise_Features--default__cta"
-                href="<?php echo esc_html($feature['cta_url']['url'] ?? '#'); ?>"
-                target="<?php echo esc_html($feature['cta_target'] ? '_blank' : null); ?>">
-                <?php echo selleradise_widgets_svg('material/arrow-right'); ?>
-                <span> <?php echo esc_html($feature['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?></span>
-            </a>
-        <?php endif;?>
-
       </li>
     <?php endforeach;?>
   </ul>
+
+  <?php if (isset($settings['cta_text']) && $settings['cta_text']): ?>
+    <a
+        href="<?php echo esc_html($settings['cta_url']['url'] ?? '#'); ?>"
+        target="<?php echo esc_html($settings['cta_url']['is_external'] ? '_blank' : null); ?>"
+        class="selleradise_Features--default__cta"
+    >
+      <?php echo esc_html($settings['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?>
+      <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?>
+    </a>
+  <?php endif;?>
 
 </section>

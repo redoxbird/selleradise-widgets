@@ -74,7 +74,7 @@ class Products extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'fa fa-shopping-basket';
+        return 'eicon-single-product';
     }
 
     /**
@@ -256,6 +256,10 @@ class Products extends \Elementor\Widget_Base
 
         $url_params['orderby'] = $order_by;
         $url_params['order'] = $order;
+
+        if ($order_by === 'price' && $order === 'DESC') {
+            $url_params['orderby'] = 'price-desc';
+        }
 
         $products_query = new WC_Product_Query($args);
         $products = $products_query->get_products();

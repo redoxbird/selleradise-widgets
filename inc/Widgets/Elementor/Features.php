@@ -173,32 +173,29 @@ class Features extends \Elementor\Widget_Base
         );
 
         $features->add_control(
-            'hr',
+            'color_main',
             [
-                'type' => Controls_Manager::DIVIDER,
+                'label' => __('Main Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--color-main: {{value}};',
+                ],
             ]
         );
 
-        $features->add_control(
-            'show_cta',
+        $this->add_control(
+            'cta_heading',
             [
-                'label' => __('Show Call To Action', 'selleradise-widgets'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'selleradise-widgets'),
-                'label_off' => __('Hide', 'selleradise-widgets'),
-                'return_value' => 'yes',
-                'default' => 0,
+                'label' => __('Call To Action', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::HEADING,
             ]
         );
 
-        $features->add_group_control(
+        $this->add_group_control(
             Group_Control_Link::get_type(),
             [
                 'name' => 'cta',
-                'label' => __('Call To Action', 'selleradise-widgets'),
-                'condition' => [
-                    'show_cta' => 'yes',
-                ],
+                'label' => __('Link', 'selleradise-widgets'),
             ]
         );
 

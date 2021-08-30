@@ -37,19 +37,18 @@ if (!$features) {
         <div class="selleradise_Features--simple__listDescription">
           <?php echo $feature['description']; ?>
         </div>
-
-        <?php if ($feature['show_cta'] === 'yes'): ?>
-            <a
-                class="selleradise_Features--simple__cta"
-                href="<?php echo esc_html($feature['cta_url']['url'] ?? '#'); ?>"
-                target="<?php echo esc_html($feature['cta_target'] ? '_blank' : null); ?>">
-                <?php echo selleradise_widgets_svg('material/arrow-right'); ?>
-                <span> <?php echo esc_html($feature['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?></span>
-            </a>
-        <?php endif;?>
-
       </li>
     <?php endforeach;?>
   </ul>
+
+  <?php if (isset($settings['cta_text']) && $settings['cta_text']): ?>
+    <a
+        href="<?php echo esc_html($settings['cta_url']['url'] ?? '#'); ?>"
+        target="<?php echo esc_html($settings['cta_url']['is_external'] ? '_blank' : null); ?>"
+        class="selleradise_Features--simple__cta"
+    >
+      <?php echo esc_html($settings['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?>
+    </a>
+  <?php endif;?>
 
 </section>
