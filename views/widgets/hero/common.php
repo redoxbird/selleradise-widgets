@@ -15,6 +15,20 @@ if(!isset($settings)) {
 ?>
 
 <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>">
+  <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
+    <?php if( class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode() ): ?>
+    <img
+      src="<?php echo $settings['image'] ? esc_url($settings['image']['url']) : selleradise_get_image_placeholder(); ?>" 
+      alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
+    >
+    <?php else: ?>
+      <img
+        src="<?php echo selleradise_get_image_placeholder(); ?>"
+        data-src="<?php echo esc_url($settings['image']['url']); ?>" 
+        alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
+      >
+    <?php endif; ?>
+  </div>
 
   <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__content">
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
@@ -34,21 +48,6 @@ if(!isset($settings)) {
             <?php echo esc_html($settings['cta_primary_text']); ?>
         </a>
     <?php endif;?>
-  </div>
-
-  <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
-    <?php if( class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode() ): ?>
-    <img
-      src="<?php echo $settings['image'] ? esc_url($settings['image']['url']) : selleradise_get_image_placeholder(); ?>" 
-      alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
-    >
-    <?php else: ?>
-      <img
-        src="<?php echo selleradise_get_image_placeholder(); ?>"
-        data-src="<?php echo esc_url($settings['image']['url']); ?>" 
-        alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
-      >
-    <?php endif; ?>
   </div>
 
 </div>

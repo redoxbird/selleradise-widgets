@@ -232,6 +232,7 @@ class Products extends \Elementor\Widget_Base
 
         $args = [
             'limit' => $settings['limit'] ?? 8,
+            'visibility' => 'visible',
         ];
 
         $url_params = [];
@@ -259,6 +260,10 @@ class Products extends \Elementor\Widget_Base
 
         if ($order_by === 'price' && $order === 'DESC') {
             $url_params['orderby'] = 'price-desc';
+        }
+
+        if ($order_by === 'menu_order' && $order === 'DESC') {
+            $url_params['orderby'] = 'menu_order-desc';
         }
 
         $products_query = new WC_Product_Query($args);
