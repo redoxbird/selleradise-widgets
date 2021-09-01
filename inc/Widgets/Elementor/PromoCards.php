@@ -190,7 +190,7 @@ class PromoCards extends \Elementor\Widget_Base
                 'label' => __('Main Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--color-main: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-main: {{value}};',
                 ],
             ]
         );
@@ -201,7 +201,7 @@ class PromoCards extends \Elementor\Widget_Base
                 'label' => __('Main Text Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--color-main-text: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-main-text: {{value}};',
                 ],
             ]
         );
@@ -212,7 +212,7 @@ class PromoCards extends \Elementor\Widget_Base
                 'label' => __('Accent Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--color-accent: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-accent: {{value}};',
                 ],
             ]
         );
@@ -223,7 +223,7 @@ class PromoCards extends \Elementor\Widget_Base
                 'label' => __('Accent Text Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--color-accent-text: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-accent-text: {{value}};',
                 ],
             ]
         );

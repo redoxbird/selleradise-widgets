@@ -178,7 +178,7 @@ class Features extends \Elementor\Widget_Base
                 'label' => __('Main Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--color-main: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-main: {{value}};',
                 ],
             ]
         );
