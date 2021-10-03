@@ -130,7 +130,6 @@ class CTA extends \Elementor\Widget_Base
             [
                 'label' => __('Call To Action Link', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
             ]
         );
 
@@ -142,7 +141,17 @@ class CTA extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'style_section',
+            [
+                'label' => __('Style', 'selleradise-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+         $this->add_control(
             'background_heading',
             [
                 'label' => __('Background', 'selleradise-widgets'),
@@ -177,6 +186,48 @@ class CTA extends \Elementor\Widget_Base
                 'label' => __('Overlay', 'selleradise-widgets'),
                 'types' => ['classic', 'gradient', 'video'],
                 'selector' => '{{WRAPPER}} .selleradise_CTA--default__overlay',
+            ]
+        );
+
+        $this->add_control(
+            'colors_heading',
+            [
+                'label' => __('Colors', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'color_text',
+            [
+                'label' => __('Text Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}}' => '--selleradise-color-text: {{value}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'color_main',
+            [
+                'label' => __('Main Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}}' => '--selleradise-color-main: {{value}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'color_main_text',
+            [
+                'label' => __('Main Text Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}}' => '--selleradise-color-main-text: {{value}};',
+                ],
             ]
         );
 
