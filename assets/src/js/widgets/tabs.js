@@ -31,7 +31,9 @@ export class Tabs extends elementorModules.frontend.handlers.Base {
         duration: 400,
         targets: highlighter,
         translateX: triggers[newVal].offsetLeft,
+        translateY: triggers[newVal].offsetTop,
         width: triggers[newVal].offsetWidth,
+        height: triggers[newVal].offsetHeight,
         easing: "easeOutExpo",
       });
 

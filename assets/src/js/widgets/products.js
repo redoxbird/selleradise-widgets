@@ -31,6 +31,9 @@ export class Product extends elementorModules.frontend.handlers.Base {
       },
       breakpoints: {
         768: {
+          slidesPerView: 2,
+        },
+        1024: {
           slidesPerView: 4,
         },
       },
