@@ -11,7 +11,9 @@ if ($args) {
 
 ?>
 
-<div class="selleradiseWidgets_Products selleradiseWidgets_Products--card_<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
+<div 
+  class="selleradiseWidgets_Products"
+  data-selleradise-card-type="<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
 
   <div class="selleradiseWidgets_Products__head">
     <div>
@@ -37,7 +39,7 @@ if ($args) {
   </div>
 
 
-  <div class="selleradiseWidgets_Products__slider">
+  <div class="selleradiseWidgets_Products__slider" >
     <ul class="swiper-wrapper">
       <?php 
         foreach ($products as $key => $product) {

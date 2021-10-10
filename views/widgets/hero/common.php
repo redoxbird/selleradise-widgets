@@ -14,7 +14,7 @@ if(!isset($settings)) {
 
 ?>
 
-<div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>">
+<div class="selleradise_Hero--<?php echo $settings['hero_type'] ?> selleradise_scroll_animate">
   <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
     <?php if( class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode() ): ?>
     <img
