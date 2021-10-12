@@ -136,18 +136,57 @@ class Hero extends \Elementor\Widget_Base
                 'default' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit cumque perferendis sequi minus placeat sint pariatur, similique obcaecati incidunt ab blanditiis maiores nisi inventore expedita laborum aut facere possimus aspernatur.',
             ]
         );
+        
 
         $this->add_control(
-            'image',
+            'background_heading',
             [
-                'label' => __('Choose Image', 'selleradise-widgets'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-
+                'label' => __('Background', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'background',
+                'label' => __('Background', 'selleradise-widgets'),
+                'types' => ['classic', 'gradient', 'video'],
+                'selector' => '{{WRAPPER}} .selleradise_Hero__image',
+            ]
+        );
+
+        $this->add_control(
+            'overlay_heading',
+            [
+                'label' => __('Overlay', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'overlay',
+                'label' => __('Overlay', 'selleradise-widgets'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .selleradise_Hero__content',
+            ]
+        );
+
+        // $this->add_control(
+        //     'image',
+        //     [
+        //         'label' => __('Choose Image', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::MEDIA,
+        //         'default' => [
+        //             'url' => \Elementor\Utils::get_placeholder_image_src(),
+        //         ],
+
+        //     ]
+        // );
 
         $this->add_control(
             'primary_cta_heading',
@@ -182,8 +221,9 @@ class Hero extends \Elementor\Widget_Base
             [
                 'label' => __('Hero Type', 'selleradise-widgets'),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'common',
+                'default' => 'default',
                 'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
                     'common' => esc_html__('Common', 'selleradise-widgets'),
                     'simple' => esc_html__('Simple', 'selleradise-widgets'),
                     'centered' => esc_html__('Centered', 'selleradise-widgets'),

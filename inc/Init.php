@@ -21,6 +21,7 @@ final class Init
 		return [
 			Setup\Setup::class,
 			Setup\Enqueue::class,
+			Setup\PostTypes::class,
 		];
 	}
 

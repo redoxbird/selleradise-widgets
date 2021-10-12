@@ -16,17 +16,14 @@ if (!isset($settings)) {
 
 <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>">
 
-  <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
-    <img
+  <div class="selleradise_Hero__image selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
+    <!-- <img
       src="<?php echo selleradise_get_image_placeholder(); ?>"
       data-src="<?php echo esc_url($settings['image']['url']); ?>"
       alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
-    >
+    > -->
 
     <div class="selleradise_Hero__content selleradise_Hero--<?php echo $settings['hero_type'] ?>__content">
-      <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-        <p class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-      <?php endif;?>
 
       <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
         <h1 class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__title"><?php echo esc_html($settings['section_title']); ?></h1>

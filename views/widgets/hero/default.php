@@ -14,10 +14,8 @@ if (!isset($settings)) {
 
 ?>
 
-<div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>">
-
+<div class="selleradise_Hero--<?php echo $settings['hero_type']; echo class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode() === false ? ' selleradise_scroll_animate' : ''; ?>">
   <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__content">
-
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
       <h1 class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__title"><?php echo esc_html($settings['section_title']); ?></h1>
     <?php endif;?>
@@ -35,18 +33,12 @@ if (!isset($settings)) {
             <?php echo esc_html($settings['cta_primary_text']); ?>
         </a>
     <?php endif;?>
-
-    <?php if (isset($settings['cta_secondary_text']) && $settings['cta_secondary_text']): ?>
-        <a
-            href="<?php echo esc_html($settings['cta_secondary_url']['url'] ?? '#'); ?>"
-            target="<?php echo esc_html($settings['cta_secondary_url']['is_external'] ? '_blank' : null); ?>"
-            class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__secondaryCTA"
-        >
-            <?php echo esc_html($settings['cta_secondary_text']); ?>
-        </a>
-    <?php endif;?>
   </div>
 
-  <div class="selleradise_Hero__image selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">  </div>
+  <div class="selleradise_Hero__image selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
+      <a href="#" data-smoothscroll-y="500" class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__button-scroll selleradise_trigger_smoothscroll">
+        <?php echo selleradise_widgets_svg('material/arrow-down'); ?>
+      </a>
+  </div>
 
 </div>
