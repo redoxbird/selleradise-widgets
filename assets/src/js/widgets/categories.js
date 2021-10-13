@@ -47,7 +47,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
 
           if (item) {
             anime({
-              duration: 600,
+              duration: 800,
               targets: item,
               opacity: [0, 1],
               translateY: [100, 0],

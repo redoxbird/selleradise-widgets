@@ -21,6 +21,7 @@ class Elementor
             Elementor\Tabs::class,
             Elementor\Testimonials::class,
             Elementor\Features::class,
+            Elementor\Incentives::class,
             Elementor\CTA::class,
         ];
     }
