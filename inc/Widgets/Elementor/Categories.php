@@ -272,7 +272,7 @@ class Categories extends \Elementor\Widget_Base
             return;
         }
 
-        selleradise_widgets_get_template_part('views/widgets/categories', null,
+        selleradise_widgets_get_template_part('template-parts/widgets/categories', null,
             ["settings" => $settings, "categories" => $terms]
         );
     }

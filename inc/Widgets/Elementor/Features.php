@@ -233,7 +233,7 @@ class Features extends \Elementor\Widget_Base
 
         $type = isset($settings['section_type']) && $settings['section_type'] ? $settings['section_type'] : 'default';
 
-        selleradise_widgets_get_template_part("views/widgets/features/$type", null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part("template-parts/widgets/features/$type", null, ["settings" => $settings]);
     }
 
 }

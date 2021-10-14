@@ -261,7 +261,7 @@ class Incentives extends \Elementor\Widget_Base
 
         $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
 
-        selleradise_widgets_get_template_part("views/widgets/incentives", null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part("template-parts/widgets/incentives", null, ["settings" => $settings]);
     }
 
 }

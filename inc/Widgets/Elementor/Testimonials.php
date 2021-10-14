@@ -218,7 +218,7 @@ class Testimonials extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part('views/widgets/testimonials', null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('template-parts/widgets/testimonials', null, ["settings" => $settings]);
     }
 
 }

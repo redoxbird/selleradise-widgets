@@ -55,7 +55,7 @@ if (!$testimonies) {
 
         <div class="swiper-slide">
           <h3><?php echo esc_html($testimony['title']); ?></h3>
-          <?php selleradise_widgets_get_template_part('views/widgets/testimonials/rating', null, ["rating" => $testimony['rating']]); ?>
+          <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/rating', null, ["rating" => $testimony['rating']]); ?>
           <blockquote><?php echo esc_html($testimony['quote']); ?></blockquote>
         </div>
 

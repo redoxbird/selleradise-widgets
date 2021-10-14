@@ -272,7 +272,7 @@ class Products extends \Elementor\Widget_Base
         $shop_link = wc_get_page_permalink('shop');
         $more_link = $shop_link . "?" . http_build_query($url_params);
 
-        selleradise_widgets_get_template_part('views/widgets/products', null, [
+        selleradise_widgets_get_template_part('template-parts/widgets/products', null, [
             'products' => $products,
             'settings' => $settings,
             'more_link' => $more_link,

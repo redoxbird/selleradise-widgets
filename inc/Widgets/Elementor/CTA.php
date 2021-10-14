@@ -249,7 +249,7 @@ class CTA extends \Elementor\Widget_Base
 
         // $type = isset($settings['section_type']) && $settings['section_type'] ? $settings['section_type'] : 'list';
 
-        selleradise_widgets_get_template_part('views/widgets/cta', 'default', ["settings" => $settings]);
+        selleradise_widgets_get_template_part('template-parts/widgets/cta', 'default', ["settings" => $settings]);
     }
 
 }

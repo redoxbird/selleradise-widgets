@@ -340,7 +340,7 @@ class HeroCarousel extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part('views/widgets/hero/carousel', null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('template-parts/widgets/hero/carousel', null, ["settings" => $settings]);
     }
 
 }

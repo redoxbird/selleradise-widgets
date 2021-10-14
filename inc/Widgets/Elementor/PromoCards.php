@@ -305,7 +305,7 @@ class PromoCards extends \Elementor\Widget_Base
 
         $type = isset($settings['card_type']) && $settings['card_type'] ? $settings['card_type'] : 'default';
 
-        selleradise_widgets_get_template_part('views/widgets/promo-cards/'.$type, null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/'.$type, null, ["settings" => $settings]);
     }
 
 }

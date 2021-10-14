@@ -44,7 +44,7 @@ if ($args) {
       <?php 
         foreach ($products as $key => $product) {
           selleradise_widgets_get_template_part(
-            'views/components/product/card', 
+            'template-parts/components/product/card', 
             $settings['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']
           );
         }

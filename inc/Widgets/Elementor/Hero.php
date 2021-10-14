@@ -268,7 +268,7 @@ class Hero extends \Elementor\Widget_Base
 
         $type = isset($settings['hero_type']) && $settings['hero_type'] ? $settings['hero_type'] : 'common';
 
-        selleradise_widgets_get_template_part('views/widgets/hero/' . $type, null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('template-parts/widgets/hero/' . $type, null, ["settings" => $settings]);
     }
 
 }
