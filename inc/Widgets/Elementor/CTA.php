@@ -55,7 +55,7 @@ class CTA extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Call TO Action', 'selleradise-widgets');
+        return __('Call To Action', 'selleradise-widgets');
     }
 
     /**
@@ -70,7 +70,7 @@ class CTA extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'fa fa-ellipsis-h';
+        return 'icon-selleradise-logo';
     }
 
     /**

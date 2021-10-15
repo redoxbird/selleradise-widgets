@@ -70,7 +70,7 @@ class Features extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'fa fa-ellipsis-h';
+        return 'icon-selleradise-logo';
     }
 
     /**

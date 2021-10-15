@@ -56,7 +56,7 @@ class Tabs extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'far fa-window-restore';
+        return 'icon-selleradise-logo';
     }
 
     /**

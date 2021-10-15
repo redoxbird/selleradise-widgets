@@ -52,6 +52,9 @@ if ($args) {
     </ul>
   </div>
 
-  <a href="<?php echo esc_url($more_link); ?>" class="selleradiseWidgets_Products__moreLink">See More <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?></a>
+  <a href="<?php echo esc_url($more_link); ?>" class="selleradiseWidgets_Products__moreLink">
+    <?php echo _e('See all', 'selleradise-widgets'); ?> 
+    <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?>
+  </a>
 
 </div>

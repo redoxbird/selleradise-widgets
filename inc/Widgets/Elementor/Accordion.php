@@ -56,7 +56,7 @@ class Accordion extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'far fa-caret-square-down';
+        return 'icon-selleradise-logo';
     }
 
     /**

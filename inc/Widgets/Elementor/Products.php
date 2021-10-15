@@ -74,7 +74,7 @@ class Products extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-single-product';
+        return 'icon-selleradise-logo';
     }
 
     /**

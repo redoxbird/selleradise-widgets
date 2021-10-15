@@ -56,7 +56,7 @@ class Categories extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-product-categories';
+        return 'icon-selleradise-logo';
     }
 
     /**
