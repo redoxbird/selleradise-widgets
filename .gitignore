@@ -42,7 +42,7 @@ Thumbs.db
 # Composer #
 ##########
 vendor
-!assets/js/vendor/
+!assets/vendor/
 composer.lock
 
 # JSHint #

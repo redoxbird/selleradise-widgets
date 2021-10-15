@@ -1,7 +1,7 @@
 let mix = require("laravel-mix");
 
 mix.browserSync({
-  proxy: "http://wordpress.three",
+  proxy: "http://selleradise.local",
   files: ["**/*.php", "assets/dist/css/**/*.css", "assets/dist/js/**/*.js"],
 });
 
