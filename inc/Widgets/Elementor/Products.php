@@ -17,6 +17,7 @@ class Products extends \Elementor\Widget_Base
 
     public function __construct($data = [], $args = null)
     {
+
         parent::__construct($data, $args);
 
         // if ((\Elementor\Plugin::$instance->editor->is_edit_mode())) {

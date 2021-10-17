@@ -11,12 +11,10 @@ class Elementor
      */
     public static function get_widgets()
     {
-        return [
+        $classes = [
             Elementor\Hero::class,
             Elementor\HeroCarousel::class,
             Elementor\PromoCards::class,
-            Elementor\Categories::class,
-            Elementor\Products::class,
             Elementor\Accordion::class,
             Elementor\Tabs::class,
             Elementor\Testimonials::class,
@@ -24,6 +22,13 @@ class Elementor
             Elementor\Incentives::class,
             Elementor\CTA::class,
         ];
+
+        if(class_exists('WooCommerce')) {
+            $classes[] = Elementor\Products::class;
+            $classes[] = Elementor\Categories::class;
+        }
+
+        return $classes;
     }
 
     /**
