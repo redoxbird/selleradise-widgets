@@ -7,4 +7,19 @@ mix.browserSync({
 
 mix.setPublicPath("./assets/dist");
 
-mix.js("assets/src/js/widgets.js", "assets/dist/js");
+mix.webpackConfig({
+  resolve: {
+    alias: {
+      react: "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat", // Must be below test-utils
+      "react/jsx-runtime": "preact/jsx-runtime",
+    },
+  },
+});
+
+mix.babelConfig({
+  plugins: ["@babel/plugin-proposal-class-properties"],
+});
+
+mix.js("assets/src/js/widgets.js", "assets/dist/js").react();

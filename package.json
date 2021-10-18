@@ -18,11 +18,17 @@
   },
   "homepage": "https://github.com/KhizarWeb/selleradise-widgets#readme",
   "devDependencies": {
+    "@babel/preset-react": "^7.14.5",
     "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.2.2",
     "laravel-mix": "^6.0.13",
     "postcss": "^8.2.6",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "date-fns": "^2.25.0",
+    "preact": "^10.5.15"
   }
 }

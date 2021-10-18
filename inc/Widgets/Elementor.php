@@ -21,6 +21,7 @@ class Elementor
             Elementor\Features::class,
             Elementor\Incentives::class,
             Elementor\CTA::class,
+            Elementor\SaleCountdown::class,
         ];
 
         if(class_exists('WooCommerce')) {

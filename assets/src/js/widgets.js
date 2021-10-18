@@ -5,6 +5,7 @@ import { Testimonials } from "./widgets/testimonials";
 import { Tabs } from "./widgets/tabs";
 import { Accordion } from "./widgets/accordion";
 import { Categories } from "./widgets/categories";
+import { Timer } from "./widgets/sale-timer";
 
 jQuery(window).on("elementor/frontend/init", () => {
   elementorFrontend.hooks.addAction(
@@ -65,6 +66,15 @@ jQuery(window).on("elementor/frontend/init", () => {
     "frontend/element_ready/selleradise-product-categories.default",
     function ($element) {
       elementorFrontend.elementsHandler.addHandler(Categories, {
+        $element,
+      });
+    }
+  );
+
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-sale-countdown.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Timer, {
         $element,
       });
     }
