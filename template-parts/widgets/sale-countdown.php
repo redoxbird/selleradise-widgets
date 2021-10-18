@@ -44,8 +44,12 @@ $attributes['title'] = $settings['title'];
     </div>
     
     <div class="selleradise_widgets_sale-countdown__timer" 
-      data-start-date="<?php echo esc_attr( $settings['start_date'] ) ?>" 
-      data-end-date="<?php echo esc_attr( $settings['end_date'] ) ?>">
+        data-start-date="<?php echo esc_attr( $settings['start_date'] ) ?>" 
+        data-end-date="<?php echo esc_attr( $settings['end_date'] ) ?>"
+        data-start-text="<?php echo esc_attr( $settings['sale_start_text'] ) ?>" 
+        data-end-text="<?php echo esc_attr( $settings['sale_end_text'] ) ?>" 
+        data-ended-text="<?php echo esc_attr( $settings['sale_ended_text'] ) ?>" 
+      >
     </div>
 
     <?php if (isset($settings['cta_text']) && $settings['cta_text']): ?>

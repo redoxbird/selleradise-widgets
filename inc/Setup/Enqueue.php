@@ -16,6 +16,7 @@ class Enqueue
     {
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
         add_action('elementor/editor/before_enqueue_scripts', array($this, 'enqueue_scripts_editor'));
+
     }
 
     public function enqueue_scripts()

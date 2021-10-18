@@ -18,6 +18,7 @@ export class Timer extends elementorModules.frontend.handlers.Base {
     ) {
       render(
         <SaleTimer
+          dataSet={countdownElement.dataset}
           startDate={countdownElement.dataset.startDate}
           endDate={countdownElement.dataset.endDate}
         />,

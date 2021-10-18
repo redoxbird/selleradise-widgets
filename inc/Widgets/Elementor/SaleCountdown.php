@@ -156,6 +156,45 @@ class SaleCountdown extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'sale_timer_title_heading',
+            [
+                'label' => __('Sale timer title', 'selleradise-widgets'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        
+        $this->add_control(
+            'sale_start_text',
+            [
+                'label' => __('Sale start text', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+                'default' => __('Sale starts in', 'selleradise-widgets'),
+            ]
+        );
+
+        $this->add_control(
+            'sale_end_text',
+            [
+                'label' => __('Sale end text', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+                'default' => __('Sale ends in', 'selleradise-widgets'),
+            ]
+        );
+
+        $this->add_control(
+            'sale_ended_text',
+            [
+                'label' => __('Sale has ended text', 'selleradise-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'input_type' => 'text',
+                'default' => __('Sale has ended', 'selleradise-widgets'),
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(

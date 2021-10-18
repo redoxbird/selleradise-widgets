@@ -1,5 +1,4 @@
-import { useState } from "preact/hooks";
-import { useEffect } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { intervalToDuration } from "date-fns";
 
 export default function SaleTimer(props) {
@@ -7,7 +6,7 @@ export default function SaleTimer(props) {
 
   const [startDate] = useState(new Date(props.startDate));
   const [endDate] = useState(new Date(props.endDate));
-  const [startOrEnd, setStartOrEnd] = useState("Ends");
+  const [startOrEnd, setStartOrEnd] = useState("");
 
   const [duration, setDuration] = useState({
     years: 0,
@@ -28,10 +27,15 @@ export default function SaleTimer(props) {
 
     if (now > startDate) {
       date2 = endDate;
-      setStartOrEnd("Ends");
+      setStartOrEnd(props.dataSet.endText);
     } else {
       date2 = startDate;
-      setStartOrEnd("Starts");
+      setStartOrEnd(props.dataSet.startText);
+    }
+
+    if (endDate < now) {
+      date2 = false;
+      setStartOrEnd(props.dataSet.endedText);
     }
 
     if (!date2) {
@@ -77,15 +81,9 @@ export default function SaleTimer(props) {
           })}
       </div>
 
-      {endDate > now ? (
-        <p class="selleradise_widgets_sale-countdown__timer-title">
-          Sale {startOrEnd} in
-        </p>
-      ) : (
-        <p class="selleradise_widgets_sale-countdown__timer-title">
-          Sale has ended
-        </p>
-      )}
+      <p class="selleradise_widgets_sale-countdown__timer-title">
+        {startOrEnd}
+      </p>
     </>
   );
 }
