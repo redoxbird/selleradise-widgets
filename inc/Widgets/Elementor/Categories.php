@@ -130,8 +130,8 @@ class Categories extends \Elementor\Widget_Base
                 'options' => [
                     'default' => esc_html__('Default', 'selleradise-widgets'),
                     'rounded' => esc_html__('Rounded', 'selleradise-widgets'),
-                    'cardSmall' => esc_html__('Small Card', 'selleradise-widgets'),
-                    'cardImage' => esc_html__('Image Card', 'selleradise-widgets'),
+                    'icon' => esc_html__('Icon', 'selleradise-widgets'),
+                    'card-image-alt' => esc_html__('Image Card Alt', 'selleradise-widgets'),
                     'onlyImage' => esc_html__('Image Only', 'selleradise-widgets'),
                     'onlyText' => esc_html__('Text Only', 'selleradise-widgets'),
                 ],
@@ -208,7 +208,7 @@ class Categories extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
                 'condition' => [
-                    'card_type' => ['default', 'onlyImage'],
+                    'card_type' => ['default', 'onlyImage', 'cardImage'],
                 ],
             ]
         );
@@ -220,7 +220,7 @@ class Categories extends \Elementor\Widget_Base
                 'type' => Controls_Manager::NUMBER,
                 'default' => 4,
                 'condition' => [
-                    'card_type' => ['default', 'onlyImage', 'cardImage'],
+                    'card_type' => ['default', 'onlyImage', 'cardImage', 'card-image-alt'],
                 ],
             ]
         );
@@ -232,7 +232,7 @@ class Categories extends \Elementor\Widget_Base
                 'type' => Controls_Manager::NUMBER,
                 'default' => 5,
                 'condition' => [
-                    'card_type' => ['default', 'onlyImage', 'cardImage'],
+                    'card_type' => ['default', 'onlyImage', 'cardImage', 'card-image-alt'],
                 ],
             ]
         );

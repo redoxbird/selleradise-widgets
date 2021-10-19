@@ -18,14 +18,17 @@ $hide_image = !in_array($settings['card_type'], ['onlyText']);
 
 $page_size = isset($settings["page_size"]) && $settings["page_size"] ? $settings["page_size"] : 8;
 
+$ratio = false;
 
-
+if(isset($settings['image_ratio_height']) && $settings['image_ratio_width']) {
+    $ratio = $settings['image_ratio_height'] / (int) $settings['image_ratio_width'];
+}
 ?>
 
 
 <div 
-    class="selleradiseWidgets_Categories <?php echo sprintf('selleradiseWidgets_Categories--%s', $settings['card_type']); ?>"
-    style="--ratio: <?php echo (int) $settings['image_ratio_height'] / (int) $settings['image_ratio_width']; ?>"
+    class="selleradiseWidgets_Categories selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>"
+    style="--ratio: <?php echo esc_attr( $ratio ); ?>"
     data-selleradise-categories-page-size="<?php echo $page_size; ?>">
 
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
