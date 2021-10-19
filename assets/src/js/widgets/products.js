@@ -29,6 +29,7 @@ export class Product extends elementorModules.frontend.handlers.Base {
         nextEl: ".selleradiseWidgets_Products__slider-button--right",
         prevEl: ".selleradiseWidgets_Products__slider-button--left",
       },
+      resizeObserver: this.isEdit,
       breakpoints: {
         768: {
           slidesPerView: 2,

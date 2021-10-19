@@ -26,6 +26,7 @@ class Elementor
             Elementor\Incentives::class,
             Elementor\CTA::class,
             Elementor\SaleCountdown::class,
+            Elementor\Posts::class,
         ];
 
         if(class_exists('WooCommerce')) {

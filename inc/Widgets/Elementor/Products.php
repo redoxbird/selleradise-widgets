@@ -20,10 +20,6 @@ class Products extends \Elementor\Widget_Base
 
         parent::__construct($data, $args);
 
-        // if ((\Elementor\Plugin::$instance->editor->is_edit_mode())) {
-        //     wp_register_script('selleradise-widgets', get_template_directory_uri() . '/assets/dist/js/app.js', ['elementor-frontend'], '1.0.0', true);
-        // }
-
         wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], time(), true);
 
     }

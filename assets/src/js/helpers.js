@@ -28,7 +28,7 @@ export async function checkElement(selector) {
 
 export function lazyLoad(context = document) {
   const images = context.querySelectorAll(
-    "[data-src]:not(.loading):not(.loaded):not(.selleradise_skip-lazy-load)"
+    "[data-src]:not(.loading):not(.loaded)"
   );
   const backgroundImages = context.querySelectorAll(
     "[data-image-src]:not(.loading):not(.loaded)"
