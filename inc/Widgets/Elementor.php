@@ -11,6 +11,10 @@ class Elementor
      */
     public static function get_widgets()
     {
+        if(!class_exists('Elementor\Plugin')) {
+            return;
+        }
+
         $classes = [
             Elementor\Hero::class,
             Elementor\HeroCarousel::class,

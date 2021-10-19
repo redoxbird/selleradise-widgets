@@ -10,12 +10,11 @@ class Setup
      */
     public function register()
     {
-        add_action('tgmpa_register', array($this, 'register_required_plugins'));
 
         register_activation_hook(__FILE__, [$this, 'activate']);
         register_deactivation_hook(__FILE__, [$this, 'deactivate']);
 
-        add_action('plugins_loaded', [$this, 'set_locale'], 'load_plugin_textdomain');
+        add_action('tgmpa_register', array($this, 'register_required_plugins'));
         add_action('init', [$this, 'register_elementor_widgets']);
         add_action('elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories']);
 
@@ -24,31 +23,15 @@ class Setup
     public static function activate()
     {
 
-    }
-
-    public static function deactivate()
-    {
-
-    }
-
-    /**
-     * Define the locale for this plugin for internationalization.
-     *
-     * Uses the Selleradise_Widgets_i18n class in order to set the domain and to register the hook
-     * with WordPress.
-     *
-     * @since    1.0.0
-     * @access   private
-     */
-
-    public function set_locale()
-    {
-
         load_plugin_textdomain(
             'selleradise-widgets',
             false,
             dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
         );
+    }
+
+    public static function deactivate()
+    {
 
     }
 
@@ -112,6 +95,9 @@ class Setup
 
     public function add_elementor_widget_categories($elements_manager)
     {
+        if (!class_exists('\Elementor\Widget_Base')) {
+            return;
+        }
 
         $elements_manager->add_category(
             'selleradise',
