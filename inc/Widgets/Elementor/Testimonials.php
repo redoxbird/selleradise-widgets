@@ -10,6 +10,7 @@
 namespace Selleradise_Widgets\Widgets\Elementor;
 
 use \Elementor\Controls_Manager;
+use WP_Query;
 
 class Testimonials extends \Elementor\Widget_Base
 {
@@ -124,83 +125,83 @@ class Testimonials extends \Elementor\Widget_Base
             ]
         );
 
-        $testimony = new \Elementor\Repeater();
+        // $testimony = new \Elementor\Repeater();
 
-        $testimony->add_control(
-            'title',
-            [
-                'label' => __('Title', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-            ]
-        );
+        // $testimony->add_control(
+        //     'title',
+        //     [
+        //         'label' => __('Title', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::TEXT,
+        //         'input_type' => 'text',
+        //     ]
+        // );
 
-        $testimony->add_control(
-            'quote',
-            [
-                'label' => __('Quote', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXTAREA,
-                'rows' => 5,
-            ]
-        );
+        // $testimony->add_control(
+        //     'quote',
+        //     [
+        //         'label' => __('Quote', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::TEXTAREA,
+        //         'rows' => 5,
+        //     ]
+        // );
 
-        $testimony->add_control(
-            'rating',
-            [
-                'label' => __('Rating', 'selleradise-widgets'),
-                'type' => Controls_Manager::NUMBER,
-                'min' => 0,
-                'max' => 5,
-                'step' => 0.1,
-                'default' => 4.5,
-            ]
-        );
+        // $testimony->add_control(
+        //     'rating',
+        //     [
+        //         'label' => __('Rating', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::NUMBER,
+        //         'min' => 0,
+        //         'max' => 5,
+        //         'step' => 0.1,
+        //         'default' => 4.5,
+        //     ]
+        // );
 
-        $testimony->add_control(
-            'profile_picture',
-            [
-                'label' => __('Choose Profile Picture', 'selleradise-widgets'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
+        // $testimony->add_control(
+        //     'profile_picture',
+        //     [
+        //         'label' => __('Choose Profile Picture', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::MEDIA,
+        //         'default' => [
+        //             'url' => \Elementor\Utils::get_placeholder_image_src(),
+        //         ],
 
-            ]
-        );
+        //     ]
+        // );
 
-        $testimony->add_control(
-            'profile_name',
-            [
-                'label' => __('Name', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-            ]
-        );
+        // $testimony->add_control(
+        //     'profile_name',
+        //     [
+        //         'label' => __('Name', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::TEXT,
+        //         'input_type' => 'text',
+        //     ]
+        // );
 
-        $testimony->add_control(
-            'profile_info',
-            [
-                'label' => __('Secondary Information', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-            ]
-        );
+        // $testimony->add_control(
+        //     'profile_info',
+        //     [
+        //         'label' => __('Secondary Information', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::TEXT,
+        //         'input_type' => 'text',
+        //     ]
+        // );
 
-        $this->add_control(
-            'testimonies',
-            [
-                'label' => __('Testimonies', 'selleradise-widgets'),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $testimony->get_controls(),
-                'title_field' => '{{{ title }}}',
-                'default' => [
-                    [
-                        'title' => __('Get the light where it is needed the most.', 'selleradise-widgets'),
-                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
-                    ],
-                ],
-            ]
-        );
+        // $this->add_control(
+        //     'testimonies',
+        //     [
+        //         'label' => __('Testimonies', 'selleradise-widgets'),
+        //         'type' => Controls_Manager::REPEATER,
+        //         'fields' => $testimony->get_controls(),
+        //         'title_field' => '{{{ title }}}',
+        //         'default' => [
+        //             [
+        //                 'title' => __('Get the light where it is needed the most.', 'selleradise-widgets'),
+        //                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
+        //             ],
+        //         ],
+        //     ]
+        // );
 
         $this->end_controls_section();
 
@@ -218,7 +219,14 @@ class Testimonials extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part('template-parts/widgets/testimonials', null, ["settings" => $settings]);
+        $args = [
+            'post_type' => 'testimonial',
+            'posts_per_page' => 8,
+        ];
+
+        $testimonials = new WP_Query($args);
+
+        selleradise_widgets_get_template_part('template-parts/widgets/testimonials', null, ["settings" => $settings, "testimonials" => $testimonials]);
     }
 
 }
