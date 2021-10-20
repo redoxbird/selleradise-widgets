@@ -21,10 +21,10 @@ export class Posts extends elementorModules.frontend.handlers.Base {
       },
       resizeObserver: this.isEdit,
       breakpoints: {
-        768: {
+        767: {
           slidesPerView: 2,
         },
-        1024: {
+        1025: {
           slidesPerView: 3,
         },
       },
