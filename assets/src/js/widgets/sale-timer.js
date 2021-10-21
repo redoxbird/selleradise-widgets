@@ -12,18 +12,10 @@ export class Timer extends elementorModules.frontend.handlers.Base {
       ".selleradise_widgets_sale-countdown__timer"
     );
 
-    if (
-      countdownElement.dataset.startDate &&
-      countdownElement.dataset.endDate
-    ) {
-      render(
-        <SaleTimer
-          dataSet={countdownElement.dataset}
-          startDate={countdownElement.dataset.startDate}
-          endDate={countdownElement.dataset.endDate}
-        />,
-        countdownElement
-      );
+    const settings = this.getElementSettings();
+
+    if (settings.start_date && settings.end_date && countdownElement) {
+      render(<SaleTimer settings={settings} />, countdownElement);
     }
   }
 }

@@ -172,6 +172,7 @@ class SaleCountdown extends \Elementor\Widget_Base
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
                 'default' => __('Sale starts in', 'selleradise-widgets'),
+                'frontend_available' => true,
             ]
         );
 
@@ -182,6 +183,7 @@ class SaleCountdown extends \Elementor\Widget_Base
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
                 'default' => __('Sale ends in', 'selleradise-widgets'),
+                'frontend_available' => true,
             ]
         );
 
@@ -192,6 +194,7 @@ class SaleCountdown extends \Elementor\Widget_Base
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
                 'default' => __('Sale has ended', 'selleradise-widgets'),
+                'frontend_available' => true,
             ]
         );
 
@@ -210,6 +213,7 @@ class SaleCountdown extends \Elementor\Widget_Base
             [
                 'label' => __('Start Date', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::DATE_TIME,
+                'frontend_available' => true
             ]
         );
 
@@ -218,6 +222,7 @@ class SaleCountdown extends \Elementor\Widget_Base
             [
                 'label' => __('End Date', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::DATE_TIME,
+                'frontend_available' => true
             ]
         );
 
