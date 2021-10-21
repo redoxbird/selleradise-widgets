@@ -35,23 +35,14 @@ if (!isset($settings)) {
 
       <?php if (isset($settings['cta_primary_text']) && $settings['cta_primary_text']): ?>
           <a
-              href="<?php echo esc_html($settings['cta_primary_url']['url'] ?? '#'); ?>"
-              target="<?php echo esc_html($settings['cta_primary_url']['is_external'] ? '_blank' : null); ?>"
+              href="<?php echo esc_url($settings['cta_primary_url']['url'] ?? '#'); ?>"
+              target="<?php echo esc_attr($settings['cta_primary_url']['is_external'] ? '_blank' : null); ?>"
               class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__primaryCTA"
           >
               <?php echo esc_html($settings['cta_primary_text']); ?>
           </a>
       <?php endif;?>
 
-      <?php if (isset($settings['cta_secondary_text']) && $settings['cta_secondary_text']): ?>
-          <a
-              href="<?php echo esc_html($settings['cta_secondary_url']['url'] ?? '#'); ?>"
-              target="<?php echo esc_html($settings['cta_secondary_url']['is_external'] ? '_blank' : null); ?>"
-              class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__secondaryCTA"
-          >
-              <?php echo esc_html($settings['cta_secondary_text']); ?>
-          </a>
-      <?php endif;?>
     </div>
 
 

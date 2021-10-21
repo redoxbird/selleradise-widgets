@@ -148,25 +148,6 @@ class Hero extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'overlay_heading',
-            [
-                'label' => __('Overlay', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'overlay',
-                'label' => __('Overlay', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .selleradise_Hero__content',
-            ]
-        );
-
-        $this->add_control(
             'primary_cta_heading',
             [
                 'label' => __('Primary CTA', 'selleradise-widgets'),
@@ -209,6 +190,24 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
+         $this->add_control(
+            'overlay_heading',
+            [
+                'label' => __('Overlay', 'selleradise-widgets'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'overlay',
+                'label' => __('Overlay', 'selleradise-widgets'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .selleradise_Hero__content',
+            ]
+        );
+
         $this->add_control(
             'text_color',
             [
@@ -217,9 +216,7 @@ class Hero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .selleradise_Hero__content' => 'color: {{value}};',
                 ],
-                'condition' => [
-                    'hero_type' => 'simple',
-                ]
+             
             ]
         );
 
