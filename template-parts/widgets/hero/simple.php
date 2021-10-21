@@ -17,13 +17,13 @@ if (!isset($settings)) {
 <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>">
 
   <div class="selleradise_Hero__image selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
-    <!-- <img
-      src="<?php echo selleradise_get_image_placeholder(); ?>"
-      data-src="<?php echo esc_url($settings['image']['url']); ?>"
-      alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
-    > -->
+    <img
+      src="<?php echo $settings['background_image']['url'] ?: selleradise_get_image_placeholder(); ?>"
+      alt="<?php echo esc_attr(get_post_meta($settings['background_image']['id'], '_wp_attachment_image_alt', true)); ?>"
+    >
+  </div>
 
-    <div class="selleradise_Hero__content selleradise_Hero--<?php echo $settings['hero_type'] ?>__content">
+   <div class="selleradise_Hero__content selleradise_Hero--<?php echo $settings['hero_type'] ?>__content">
 
       <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
         <h1 class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__title"><?php echo esc_html($settings['section_title']); ?></h1>
@@ -53,7 +53,6 @@ if (!isset($settings)) {
           </a>
       <?php endif;?>
     </div>
-  </div>
 
 
 </div>

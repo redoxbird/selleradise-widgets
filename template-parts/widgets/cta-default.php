@@ -22,8 +22,8 @@ if (isset($args)) {
 
     <a
         class="selleradise_CTA--default__linkPrimary"
-        href="<?php echo esc_html($settings['cta_url']['url'] ?? '#'); ?>"
-        target="<?php echo esc_html($settings['cta_target'] ? '_blank' : null); ?>">
+        href="<?php echo esc_attr($settings['cta_url']['url'] ?? '#'); ?>"
+        target="<?php echo esc_attr(isset($settings['cta_url']['is_external']) && $settings['cta_url']['is_external'] ? '_blank' : null); ?>">
         <span> <?php echo esc_html($settings['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?></span>
     </a>
   </div>

@@ -9,10 +9,12 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use Selleradise_Widgets\Controls\Elementor\Group_Background;
 use Selleradise_Widgets\Controls\Elementor\Group_Control_Link;
 use \Elementor\Controls_Manager;
 
 class Hero extends \Elementor\Widget_Base
+
 {
 
     public function __construct($data = [], $args = null)
@@ -136,24 +138,12 @@ class Hero extends \Elementor\Widget_Base
                 'default' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit cumque perferendis sequi minus placeat sint pariatur, similique obcaecati incidunt ab blanditiis maiores nisi inventore expedita laborum aut facere possimus aspernatur.',
             ]
         );
-        
-
-        $this->add_control(
-            'background_heading',
-            [
-                'label' => __('Background', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
 
         $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
+            Group_Background::get_type(),
             [
                 'name' => 'background',
                 'label' => __('Background', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient', 'video'],
-                'selector' => '{{WRAPPER}} .selleradise_Hero__image',
             ]
         );
 
@@ -176,18 +166,6 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        // $this->add_control(
-        //     'image',
-        //     [
-        //         'label' => __('Choose Image', 'selleradise-widgets'),
-        //         'type' => Controls_Manager::MEDIA,
-        //         'default' => [
-        //             'url' => \Elementor\Utils::get_placeholder_image_src(),
-        //         ],
-
-        //     ]
-        // );
-
         $this->add_control(
             'primary_cta_heading',
             [
@@ -204,7 +182,6 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Primary CTA', 'selleradise-widgets'),
             ]
         );
-
 
         $this->end_controls_section();
 
@@ -237,16 +214,12 @@ class Hero extends \Elementor\Widget_Base
             [
                 'label' => __('Text Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_2,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .selleradise_Hero__content' => 'color: {{value}};',
                 ],
                 'condition' => [
                     'hero_type' => 'simple',
-                ],
+                ]
             ]
         );
 

@@ -13,6 +13,7 @@ class Elementor
     {
         return [
             Elementor\Group_Control_Link::class,
+            Elementor\Group_Background::class,
         ];
     }
 
@@ -25,7 +26,7 @@ class Elementor
         foreach (self::get_widgets() as $class) {
             $service = self::instantiate($class);
             
-            \Elementor\Plugin::instance()->controls_manager->add_group_control('selleradise_link', $service);
+            \Elementor\Plugin::instance()->controls_manager->add_group_control($service->get_type(), $service);
         }
     }
 
