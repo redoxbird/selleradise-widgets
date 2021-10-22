@@ -33,6 +33,7 @@ if (!isset($settings)) {
             class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__primaryCTA"
         >
             <?php echo esc_html($settings['cta_primary_text']); ?>
+            <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
         </a>
     <?php endif;?>
 
@@ -40,9 +41,9 @@ if (!isset($settings)) {
 
   <div class="selleradise_Hero__image selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
     <img
-            src="<?php echo esc_url( $settings['background_image']['url'] ?: selleradise_get_image_placeholder() ); ?>"
-            alt="<?php echo esc_attr(get_post_meta($settings['background_image']['id'], '_wp_attachment_image_alt', true)); ?>"
-        >
-    </div>
+        src="<?php echo esc_url( $settings['background_image']['url'] ?: selleradise_get_image_placeholder() ); ?>"
+        alt="<?php echo esc_attr(get_post_meta($settings['background_image']['id'], '_wp_attachment_image_alt', true)); ?>"
+    >
+  </div>
 
 </div>

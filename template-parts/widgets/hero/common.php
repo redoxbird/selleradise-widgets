@@ -12,10 +12,19 @@ if(!isset($settings)) {
   return;
 }
 
+
+
+$class = 'selleradise_Hero--'. $settings['hero_type'];
+
+if (class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode() === false) {
+    $class .= ' selleradise_scroll_animate';
+}
+
+
 ?>
 
-<div class="selleradise_Hero--<?php echo $settings['hero_type'] ?> selleradise_scroll_animate">
-  <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
+<div class="<?php echo esc_attr( $class ); ?>">
+  <div class="selleradise_Hero__image selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
       <img
             src="<?php echo esc_url( $settings['background_image']['url'] ?: selleradise_get_image_placeholder() ); ?>"
             alt="<?php echo esc_attr(get_post_meta($settings['background_image']['id'], '_wp_attachment_image_alt', true)); ?>"
@@ -38,6 +47,7 @@ if(!isset($settings)) {
             class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__primaryCTA"
         >
             <?php echo esc_html($settings['cta_primary_text']); ?>
+            <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
         </a>
     <?php endif;?>
   </div>

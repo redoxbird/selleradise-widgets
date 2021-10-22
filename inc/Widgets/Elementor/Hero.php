@@ -175,7 +175,6 @@ class Hero extends \Elementor\Widget_Base
                     'common' => esc_html__('Common', 'selleradise-widgets'),
                     'simple' => esc_html__('Simple', 'selleradise-widgets'),
                     'centered' => esc_html__('Centered', 'selleradise-widgets'),
-                    'furniture' => esc_html__('Furniture', 'selleradise-widgets'),
                 ],
             ]
         );

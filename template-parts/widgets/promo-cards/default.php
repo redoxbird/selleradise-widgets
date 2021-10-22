@@ -35,6 +35,10 @@ if(!$cards) {
       if($settings['adaptive_colors'] === 'yes') {
         $class .= ' selleradise_adaptive_colors';
       }
+
+      $thumbnail = wp_get_attachment_image_src($card['image']['id'], 'thumbnail');
+      $image_alt = get_post_meta($card['image']['id'], '_wp_attachment_image_alt', true);
+
       ?>
       <li class="<?php echo esc_attr( $class ); ?>">
         <div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-content">
@@ -53,8 +57,8 @@ if(!$cards) {
           <img 
             class="<?php echo $settings['adaptive_colors'] === 'yes' ? 'selleradise_skip-lazy-load' : null; ?>"
             src="<?php echo selleradise_get_image_placeholder(); ?>" 
-            data-src="<?php echo esc_url($card['image']['url']); ?>" 
-            alt="<?php echo esc_attr(get_post_meta($card['image']['id'], '_wp_attachment_image_alt', true)); ?>">
+            data-src="<?php echo esc_url($thumbnail[0]); ?>" 
+            alt="<?php echo esc_attr($image_alt); ?>">
         </a>
       </li>
     <?php endforeach; ?>

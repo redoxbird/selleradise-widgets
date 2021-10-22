@@ -41,6 +41,7 @@ if(class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is
             class="selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__primaryCTA"
         >
             <?php echo esc_html($settings['cta_primary_text']); ?>
+            <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
         </a>
     <?php endif;?>
   </div>
