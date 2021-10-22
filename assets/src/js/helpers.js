@@ -40,7 +40,7 @@ export function lazyLoad(context = document) {
     observer
       .setup({
         step: images,
-        offset: 1,
+        offset: 0.9,
         once: true,
       })
       .onStepEnter((response) => {

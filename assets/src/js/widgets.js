@@ -7,6 +7,7 @@ import { Accordion } from "./widgets/accordion";
 import { Categories } from "./widgets/categories";
 import { Timer } from "./widgets/sale-timer";
 import { Posts } from "./widgets/posts";
+import { PromoCards } from "./widgets/promo-cards";
 
 jQuery(window).on("elementor/frontend/init", () => {
   elementorFrontend.hooks.addAction(
@@ -85,6 +86,15 @@ jQuery(window).on("elementor/frontend/init", () => {
     "frontend/element_ready/selleradise-posts.default",
     function ($element) {
       elementorFrontend.elementsHandler.addHandler(Posts, {
+        $element,
+      });
+    }
+  );
+
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-promo-cards.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(PromoCards, {
         $element,
       });
     }
