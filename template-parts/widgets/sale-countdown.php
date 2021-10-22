@@ -57,7 +57,7 @@ $attributes['title'] = $settings['title'];
           class="selleradise_widgets_sale-countdown__cta"
         >
           <?php echo esc_html($settings['cta_text']); ?>
-          <?php echo selleradise_widgets_svg('material/arrow-right'); ?>
+          <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
         </a>
       </div>
     <?php endif;?>

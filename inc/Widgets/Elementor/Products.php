@@ -136,8 +136,9 @@ class Products extends \Elementor\Widget_Base
                     'default' => esc_html__('Default', 'selleradise-widgets'),
                     'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
                     'simple' => esc_html__('Simple', 'selleradise-widgets'),
-                    'list' => esc_html__('Robust', 'selleradise-widgets'),
+                    'robust' => esc_html__('Robust', 'selleradise-widgets'),
                 ],
+                "frontend_available" => true,
             ]
         );
 
@@ -202,7 +203,7 @@ class Products extends \Elementor\Widget_Base
                 'min' => 1,
                 'max' => 50,
                 'step' => 1,
-                'default' => 5,
+                'default' => 9,
             ]
         );
 

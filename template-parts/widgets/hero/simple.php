@@ -39,7 +39,8 @@ if (!isset($settings)) {
               target="<?php echo esc_attr($settings['cta_primary_url']['is_external'] ? '_blank' : null); ?>"
               class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__primaryCTA"
           >
-              <?php echo esc_html($settings['cta_primary_text']); ?>
+            <?php echo esc_html($settings['cta_primary_text']); ?>
+            <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
           </a>
       <?php endif;?>
 

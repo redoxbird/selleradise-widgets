@@ -9,6 +9,9 @@ export class Product extends elementorModules.frontend.handlers.Base {
     if (this.isEdit) {
       lazyLoad(this.$element[0]);
     }
+
+    const settings = this.getElementSettings();
+
     const slider = new Swiper(".selleradiseWidgets_Products__slider", {
       duration: 600,
       lazy: {
@@ -18,9 +21,9 @@ export class Product extends elementorModules.frontend.handlers.Base {
         enabled: true,
         onlyInViewport: true,
       },
-      slidesPerView: 1,
+      slidesPerView: settings.card_type === "robust" ? 1 : 1.2,
+      spaceBetween: 25,
       watchSlidesVisibility: true,
-      spaceBetween: 55,
       pagination: {
         el: ".selleradiseWidgets_Products__slider > .swiper-pagination",
         type: "fraction",
@@ -32,10 +35,12 @@ export class Product extends elementorModules.frontend.handlers.Base {
       resizeObserver: this.isEdit,
       breakpoints: {
         767: {
-          slidesPerView: 2,
+          slidesPerView: settings.card_type === "robust" ? 1.5 : 2.4,
+          spaceBetween: 25,
         },
         1025: {
-          slidesPerView: 4,
+          slidesPerView: settings.card_type === "robust" ? 2.635 : 4,
+          spaceBetween: 55,
         },
       },
     });

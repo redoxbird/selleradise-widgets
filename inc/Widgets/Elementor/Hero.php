@@ -115,17 +115,7 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
-                'default' => 'This is a headline that engages people.',
-            ]
-        );
-
-        $this->add_control(
-            'section_subtitle',
-            [
-                'label' => __('Subtitle', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-                'default' => 'This provides additional information.',
+                'default' => __('Explore our winter collection', 'selleradise-widgets'),
             ]
         );
 
