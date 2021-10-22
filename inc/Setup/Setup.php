@@ -28,6 +28,8 @@ class Setup
             false,
             dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
         );
+
+        flush_rewrite_rules();
     }
 
     public static function deactivate()

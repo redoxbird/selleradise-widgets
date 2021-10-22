@@ -19,6 +19,7 @@ class Elementor
             Elementor\Hero::class,
             Elementor\PromoCards::class,
             Elementor\Accordion::class,
+            Elementor\FAQ::class,
             Elementor\Tabs::class,
             Elementor\Testimonials::class,
             Elementor\Features::class,

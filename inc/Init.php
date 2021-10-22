@@ -22,6 +22,7 @@ final class Init
 			Setup\Setup::class,
 			Setup\Enqueue::class,
 			Setup\PostTypes::class,
+			Setup\Taxonomies::class,
 		];
 	}
 
