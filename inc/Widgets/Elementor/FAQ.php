@@ -115,6 +115,20 @@ class FAQ extends \Elementor\Widget_Base
             ]
         );
 
+          $this->add_control(
+            'type',
+            [
+                'label' => __('Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'compact' => esc_html__('Compact', 'selleradise-widgets'),
+                    'split' => esc_html__('Split', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
     }
@@ -142,7 +156,7 @@ class FAQ extends \Elementor\Widget_Base
 
         $faqs = new WP_Query($args);
 
-        selleradise_widgets_get_template_part('template-parts/widgets/faq', null, ["settings" => $settings, "faqs" => $faqs, "categories" => $categories]);
+        selleradise_widgets_get_template_part("template-parts/widgets/faq", null, ["settings" => $settings, "faqs" => $faqs, "categories" => $categories]);
     }
 
 }

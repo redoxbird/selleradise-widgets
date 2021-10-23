@@ -12,30 +12,30 @@ $index = 0;
 
 ?>
 
-<section class="selleradise_faq">
+<section class="selleradise_faq selleradise_faq--<?php echo esc_attr($settings['type']) ?>">
 
-  <div class="selleradise_faq__head">
-      <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-      <h2 class="selleradise_faq__section-title"><?php echo esc_html($settings['section_title']); ?></h2>
+  <div class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__head">
+    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+      <h2 class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__section-title"><?php echo esc_html($settings['section_title']); ?></h2>
     <?php endif;?>
 
     <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-      <p class="selleradise_faq__section-subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+      <p class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__section-subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
     <?php endif;?>
   </div>
 
-  <div class="selleradise_faq__body">
+  <div class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__body">
 
     <?php if(!empty($categories)): ?>
-      <ul class="selleradise_faq__categories">
-        <li class="selleradise_faq__category" data-selleradise-slug="all">
+      <ul class="selleradise_faq__categories selleradise_faq--<?php echo esc_attr($settings['type']) ?>__categories">
+        <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="all">
           <button>
             <?php echo esc_html_e( 'All', 'selleradise-widgets' ); ?>
           </button>
         </li>
         <?php foreach($categories as $category): 
             $slug = $category->slug; ?>
-            <li class="selleradise_faq__category" data-selleradise-slug="<?php echo esc_attr($slug); ?>">
+            <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="<?php echo esc_attr($slug); ?>">
               <button>
                 <?php echo esc_html($category->name); ?>
               </button>
@@ -46,7 +46,7 @@ $index = 0;
 
     <?php if ( $faqs->have_posts() ) : ?>
 
-      <ul class="selleradise_faq__list">
+      <ul class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__list">
         <?php 
           while ($faqs->have_posts()) : $faqs->the_post();
           
@@ -61,12 +61,12 @@ $index = 0;
           
           ?>
         
-          <li class="selleradise_faq__item" data-selleradise-category="<?php echo esc_attr(implode(',', $category_slugs)); ?>">
-            <h3 class="selleradise_faq__title">
+          <li class="selleradise_faq__item selleradise_faq--<?php echo esc_attr($settings['type']) ?>__item" data-selleradise-category="<?php echo esc_attr(implode(',', $category_slugs)); ?>">
+            <h3 class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__title">
               <?php echo esc_html( get_the_title() ); ?>
             </h3>
 
-            <div class="selleradise_faq__content">
+            <div class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__content">
               <?php
                 the_content(
                     sprintf(
