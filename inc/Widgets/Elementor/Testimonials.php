@@ -127,6 +127,19 @@ class Testimonials extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'type',
+            [
+                'label' => __('Hero Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'cards' => esc_html__('cards', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
     }
@@ -150,7 +163,9 @@ class Testimonials extends \Elementor\Widget_Base
 
         $testimonials = new WP_Query($args);
 
-        selleradise_widgets_get_template_part('template-parts/widgets/testimonials', null, ["settings" => $settings, "testimonials" => $testimonials]);
+        $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
+
+        selleradise_widgets_get_template_part("template-parts/widgets/testimonials/$type", null, ["settings" => $settings, "testimonials" => $testimonials]);
     }
 
 }

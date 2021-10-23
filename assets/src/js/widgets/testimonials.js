@@ -50,5 +50,23 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
         swiper: thumbs,
       },
     });
+
+    new Swiper(".selleradise_Testimonials--cards__quotes", {
+      duration: 600,
+      spaceBetween: 20,
+      slidesPerView: 1.2,
+      navigation: {
+        nextEl:
+          ".selleradise_Testimonials--cards .selleradise_widgets__slider-button--right",
+        prevEl:
+          ".selleradise_Testimonials--cards .selleradise_widgets__slider-button--left",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3.5,
+          spaceBetween: 50,
+        },
+      },
+    });
   }
 }
