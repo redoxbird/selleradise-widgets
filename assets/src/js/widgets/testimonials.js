@@ -7,101 +7,48 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
-    const slider = new Swiper(".selleradise_Testimonials--default__quotes", {
+    let thumbs = new Swiper(".selleradise_Testimonials--default__profiles", {
+      spaceBetween: 10,
+      slidesPerView: 2,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+      lazy: {
+        loadPrevNext: false,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          direction: "vertical",
+        },
+      },
+    });
+
+    new Swiper(".selleradise_Testimonials--default__quotes", {
       duration: 600,
-      autoHeight: true,
       spaceBetween: 50,
+      autoHeight: true,
       lazy: {
         loadPrevNext: false,
       },
       keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      pagination: {
-        el: ".selleradise_Testimonials--default__quotes > .swiper-pagination",
-        type: "fraction",
+        enabled: false,
       },
       navigation: {
-        nextEl: ".productPage--default .navigation .next",
-        prevEl: ".productPage--default .navigation .previous",
+        nextEl:
+          ".selleradise_Testimonials--default .selleradise_widgets__slider-button--right",
+        prevEl:
+          ".selleradise_Testimonials--default .selleradise_widgets__slider-button--left",
       },
       breakpoints: {
         768: {
           direction: "vertical",
           spaceBetween: 0,
+          autoHeight: false,
         },
       },
-      on: {
-        init: function () {
-          profileItems(this);
-        },
+      thumbs: {
+        swiper: thumbs,
       },
     });
-
-    function profileItems(slider) {
-      const profileList = document.querySelector(
-        ".selleradise_Testimonials--default__profiles"
-      );
-
-      const profileItems = profileList.querySelectorAll(
-        ".selleradise_Testimonials--default__profile"
-      );
-
-      const highlighter = profileList.querySelector(
-        ".selleradise_Testimonials--default__highlighter"
-      );
-
-      if (profileItems.length < 1) {
-        return;
-      }
-
-      for (const index in profileItems) {
-        if (Object.hasOwnProperty.call(profileItems, index)) {
-          const item = profileItems[index];
-          const button = item.querySelector("button");
-
-          button.addEventListener("click", function (e) {
-            slider.slideTo(parseInt(item.getAttribute("data-slide-index")));
-          });
-        }
-      }
-
-      function toggleActiveElement() {
-        const active = document.querySelector(
-          `.selleradise_Testimonials--default__profile[data-slide-index="${slider.realIndex}"]`
-        );
-
-        if (!active) {
-          return;
-        }
-
-        if (device("desktop")) {
-          anime({
-            duration: 400,
-            targets: highlighter,
-            translateY: active.offsetTop,
-            translateX: active.offsetLeft,
-            height: active.offsetHeight,
-            width: active.offsetWidth,
-            easing: "easeOutExpo",
-          });
-        }
-
-        anime({
-          duration: 400,
-          targets: profileList,
-          easing: "easeOutExpo",
-          scrollTop: active.offsetTop,
-          scrollLeft: active.offsetLeft,
-        });
-      }
-
-      toggleActiveElement();
-
-      slider.on("slideChange", function () {
-        toggleActiveElement();
-      });
-    }
   }
 }

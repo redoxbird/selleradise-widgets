@@ -18,8 +18,8 @@ class Taxonomies
     {
         register_taxonomy('faq_category', array('faq'), array(
             'hierarchical' => true,
-            'label' => 'Categories',
-            'singular_label' => 'Category',
+            'label' => 'FAQ Categories',
+            'singular_label' => 'FAQ Category',
             'rewrite' => array('slug' => 'category', 'with_front' => false),
             )
         );
