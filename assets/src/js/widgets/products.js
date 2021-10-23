@@ -12,37 +12,40 @@ export class Product extends elementorModules.frontend.handlers.Base {
 
     const settings = this.getElementSettings();
 
-    const slider = new Swiper(".selleradiseWidgets_Products__slider", {
-      duration: 600,
-      lazy: {
-        loadPrevNext: false,
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      slidesPerView: settings.card_type === "robust" ? 1 : 1.2,
-      spaceBetween: 25,
-      watchSlidesVisibility: true,
-      pagination: {
-        el: ".selleradiseWidgets_Products__slider > .swiper-pagination",
-        type: "fraction",
-      },
-      navigation: {
-        nextEl: ".selleradiseWidgets_Products__slider-button--right",
-        prevEl: ".selleradiseWidgets_Products__slider-button--left",
-      },
-      resizeObserver: this.isEdit,
-      breakpoints: {
-        767: {
-          slidesPerView: settings.card_type === "robust" ? 1.5 : 2.4,
-          spaceBetween: 25,
+    const slider = new Swiper(
+      this.$element[0].querySelector(".selleradiseWidgets_Products__slider"),
+      {
+        duration: 600,
+        lazy: {
+          loadPrevNext: false,
         },
-        1025: {
-          slidesPerView: settings.card_type === "robust" ? 2.635 : 4,
-          spaceBetween: 55,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
         },
-      },
-    });
+        slidesPerView: settings.card_type === "robust" ? 1 : 1.2,
+        spaceBetween: 25,
+        watchSlidesVisibility: true,
+        navigation: {
+          nextEl: this.$element[0].querySelector(
+            ".selleradiseWidgets_Products__slider-button--right"
+          ),
+          prevEl: this.$element[0].querySelector(
+            ".selleradiseWidgets_Products__slider-button--left"
+          ),
+        },
+        resizeObserver: this.isEdit,
+        breakpoints: {
+          767: {
+            slidesPerView: settings.card_type === "robust" ? 1.5 : 2.4,
+            spaceBetween: 25,
+          },
+          1025: {
+            slidesPerView: settings.card_type === "robust" ? 2.635 : 4,
+            spaceBetween: 55,
+          },
+        },
+      }
+    );
   }
 }
