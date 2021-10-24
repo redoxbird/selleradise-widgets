@@ -135,7 +135,8 @@ class Testimonials extends \Elementor\Widget_Base
                 'default' => 'default',
                 'options' => [
                     'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'cards' => esc_html__('cards', 'selleradise-widgets'),
+                    'cards' => esc_html__('Cards', 'selleradise-widgets'),
+                    'standard' => esc_html__('Standard', 'selleradise-widgets'),
                 ],
             ]
         );

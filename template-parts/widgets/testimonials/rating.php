@@ -18,7 +18,7 @@ if($rating <= 0) {
 
 ?>
 
-<div class="selleradise_Testimonials--default__rating">
+<div class="selleradise_Testimonials__rating">
     <div class="back-stars">
         <?php for ($i = 1; $i <= 5; $i++): ?>
             <?php echo selleradise_widgets_svg('material/star'); ?>

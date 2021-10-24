@@ -19,29 +19,27 @@ $index = 0;
 
 <section class="selleradise_Testimonials--default">
 
-  <div class="selleradise_Testimonials--default__profiles-outer">
-  
-    <div class="selleradise_Testimonials--default__profiles-head">
-      <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-        <h2 class="selleradise_Testimonials--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
-      <?php endif;?>
+  <div class="selleradise_Testimonials--default__title-outer">
+    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
+      <h2 class="selleradise_Testimonials--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
+    <?php endif;?>
 
-      <div class="selleradise_widgets__slider-buttons">
-        <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
-          <?php echo selleradise_widgets_svg('unicons-line/arrow-up'); ?>
-        </button>
+    <div class="selleradise_widgets__slider-buttons">
+      <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
+        <?php echo selleradise_widgets_svg('unicons-line/arrow-up'); ?>
+      </button>
 
-        <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
-          <?php echo selleradise_widgets_svg('unicons-line/arrow-down'); ?>
-        </button>
-      </div>
+      <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
+        <?php echo selleradise_widgets_svg('unicons-line/arrow-down'); ?>
+      </button>
     </div>
 
     <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
       <p class="selleradise_Testimonials--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
     <?php endif;?>
+  </div>
 
-    
+  <div class="selleradise_Testimonials--default__profiles-outer">
     <ul class="selleradise_Testimonials--default__profiles">
       <?php if ( $testimonials->have_posts() ) : ?>
       <div class="swiper-wrapper">

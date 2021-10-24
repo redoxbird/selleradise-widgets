@@ -1,5 +1,3 @@
-import { device } from "../helpers";
-
 export class Testimonials extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
@@ -7,21 +5,29 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
-    let thumbs = new Swiper(".selleradise_Testimonials--default__profiles", {
-      spaceBetween: 10,
-      slidesPerView: 2,
-      watchSlidesVisibility: true,
-      watchSlidesProgress: true,
-      lazy: {
-        loadPrevNext: false,
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 3,
-          direction: "vertical",
+    let thumbs = {
+      default: null,
+      standard: null,
+    };
+
+    thumbs.default = new Swiper(
+      ".selleradise_Testimonials--default__profiles",
+      {
+        spaceBetween: 10,
+        slidesPerView: 2,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        lazy: {
+          loadPrevNext: false,
         },
-      },
-    });
+        breakpoints: {
+          768: {
+            slidesPerView: 4,
+            direction: "vertical",
+          },
+        },
+      }
+    );
 
     new Swiper(".selleradise_Testimonials--default__quotes", {
       duration: 600,
@@ -47,7 +53,7 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
         },
       },
       thumbs: {
-        swiper: thumbs,
+        swiper: thumbs.default,
       },
     });
 
@@ -55,6 +61,7 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
       duration: 600,
       spaceBetween: 20,
       slidesPerView: 1.2,
+      autoHeight: true,
       navigation: {
         nextEl:
           ".selleradise_Testimonials--cards .selleradise_widgets__slider-button--right",
@@ -66,6 +73,20 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
           slidesPerView: 3.5,
           spaceBetween: 50,
         },
+      },
+    });
+
+    new Swiper(".selleradise_Testimonials--standard__quotes", {
+      duration: 600,
+      slidesPerView: 1,
+      navigation: {
+        nextEl:
+          ".selleradise_Testimonials--standard .selleradise_widgets__slider-button--right",
+        prevEl:
+          ".selleradise_Testimonials--standard .selleradise_widgets__slider-button--left",
+      },
+      breakpoints: {
+        768: {},
       },
     });
   }
