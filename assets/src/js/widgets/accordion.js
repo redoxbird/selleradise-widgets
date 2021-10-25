@@ -97,7 +97,12 @@ export class Accordion extends elementorModules.frontend.handlers.Base {
             "data-selleradise-category"
           );
 
-          if (bellowCategory !== category) {
+          if (category === "all") {
+            bellow.classList.remove(`${bellowClass}--hidden`);
+            continue;
+          }
+
+          if (!bellowCategory.split(",").includes(category)) {
             bellow.classList.add(`${bellowClass}--hidden`);
           } else {
             bellow.classList.remove(`${bellowClass}--hidden`);

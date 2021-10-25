@@ -115,7 +115,7 @@ class FAQ extends \Elementor\Widget_Base
             ]
         );
 
-          $this->add_control(
+        $this->add_control(
             'type',
             [
                 'label' => __('Type', 'selleradise-widgets'),
@@ -126,6 +126,7 @@ class FAQ extends \Elementor\Widget_Base
                     'compact' => esc_html__('Compact', 'selleradise-widgets'),
                     'split' => esc_html__('Split', 'selleradise-widgets'),
                 ],
+                'frontend_available' => true,
             ]
         );
 

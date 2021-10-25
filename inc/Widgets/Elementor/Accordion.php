@@ -10,8 +10,10 @@
 namespace Selleradise_Widgets\Widgets\Elementor;
 
 use \Elementor\Controls_Manager;
+use WP_Query;
 
 class Accordion extends \Elementor\Widget_Base
+
 {
 
     /**
@@ -41,7 +43,7 @@ class Accordion extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Accordion', 'selleradise-widgets');
+        return __('FAQs Accordion', 'selleradise-widgets');
     }
 
     /**
@@ -89,7 +91,7 @@ class Accordion extends \Elementor\Widget_Base
             'content_section',
             [
                 'label' => __('Content', 'selleradise-widgets'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -99,6 +101,7 @@ class Accordion extends \Elementor\Widget_Base
                 'label' => __('Section Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('Frequently Asked Questions', 'selleradise-widgets'),
             ]
         );
 
@@ -108,66 +111,10 @@ class Accordion extends \Elementor\Widget_Base
                 'label' => __('Section Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('Find answers to most commonly asked question', 'selleradise-widgets'),
             ]
         );
 
-        $accordion = new \Elementor\Repeater();
-
-        $accordion->add_control(
-            'title',
-            [
-                'label' => __('Title', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-            ]
-        );
-
-        $accordion->add_control(
-            'description',
-            [
-                'label' => __('Description', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::WYSIWYG,
-            ]
-        );
-
-
-        $accordion->add_control(
-            'category_heading',
-            [
-                'label' => __('Category', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $accordion->add_control(
-            'category',
-            [
-                'label' => __('Category', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-            ]
-        );
-
-        $this->add_control(
-            'accordion',
-            [
-                'label' => __('Accordion', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $accordion->get_controls(),
-                'default' => [
-                    [
-                        'title' => __('What are some of the main features of selleradise?', 'selleradise-widgets'),
-                        'description' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet turpis in lacus finibus volutpat commodo at lectus. Phasellus rutrum orci eget tincidunt consequat. Morbi sed eros sit amet elit aliquet cursus id at nunc. Suspendisse tristique dignissim efficitur. Phasellus semper, quam ac maximus porta, ante risus commodo urna, in mattis elit arcu eget arcu. Proin ac dolor vel nibh gravida aliquam vel sit amet elit. Integer vel urna arcu. Morbi nec felis tempus, efficitur diam eget.', 'selleradise-widgets'),
-                        'category' => __('General', 'selleradise-widgets'),
-                    ],
-                    [
-                        'title' => __('Is selleradise theme accessible?', 'selleradise-widgets'),
-                        'description' => __('Yes, selleradise is fully accessible.', 'selleradise-widgets'),
-                        'category' => __('General', 'selleradise-widgets'),
-                    ],
-                ],
-                'title_field' => '{{{ title }}}',
-            ]
-        );
 
         $this->end_controls_section();
 
@@ -185,9 +132,18 @@ class Accordion extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part('template-parts/widgets/accordion', null, ["settings" => $settings]);
-    }
+        $args = [
+            'post_type' => 'faq',
+            'posts_per_page' => 100,
+        ];
 
-    
+        $faqs = new WP_Query($args);
+
+        $categories = get_terms('faq_category', array(
+            'hide_empty' => true,
+        ));
+
+        selleradise_widgets_get_template_part("template-parts/widgets/faq", 'accordion', ["settings" => $settings, "faqs" => $faqs, "categories" => $categories]);
+    }
 
 }
