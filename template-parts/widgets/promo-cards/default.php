@@ -57,7 +57,7 @@ if(!$cards) {
           <img 
             class="<?php echo $settings['adaptive_colors'] === 'yes' ? 'selleradise_skip-lazy-load' : null; ?>"
             src="<?php echo selleradise_get_image_placeholder(); ?>" 
-            data-src="<?php echo esc_url($thumbnail[0]); ?>" 
+            data-src="<?php echo esc_url($thumbnail ? $thumbnail[0] : selleradise_get_image_placeholder()); ?>" 
             alt="<?php echo esc_attr($image_alt); ?>">
         </a>
       </li>
