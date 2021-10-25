@@ -55,7 +55,7 @@ class Features extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Features List', 'selleradise-widgets');
+        return __('Features', 'selleradise-widgets');
     }
 
     /**
@@ -113,6 +113,7 @@ class Features extends \Elementor\Widget_Base
                 'label' => __('Section Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('Why choose us?', 'selleradise-widgets'),
             ]
         );
 
@@ -122,6 +123,7 @@ class Features extends \Elementor\Widget_Base
                 'label' => __('Section Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('Everything you need to quickly start your online store is here.', 'selleradise-widgets'),
             ]
         );
 
@@ -134,7 +136,7 @@ class Features extends \Elementor\Widget_Base
                 'options' => [
                     'default' => esc_html__('Default', 'selleradise-widgets'),
                     'simple' => esc_html__('Simple', 'selleradise-widgets'),
-                    'bullet' => esc_html__('Quick Points', 'selleradise-widgets'),
+                    'bullet' => esc_html__('Bullet', 'selleradise-widgets'),
                 ],
             ]
         );
@@ -173,12 +175,23 @@ class Features extends \Elementor\Widget_Base
         );
 
         $features->add_control(
-            'color_main',
+            'color_icon',
             [
-                'label' => __('Main Color', 'selleradise-widgets'),
+                'label' => __('Icon Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-main: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-icon: {{value}};',
+                ],
+            ]
+        );
+
+        $features->add_control(
+            'color_icon_background',
+            [
+                'label' => __('Icon Background Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-icon-background: {{value}};',
                 ],
             ]
         );
@@ -208,8 +221,36 @@ class Features extends \Elementor\Widget_Base
                 'title_field' => '{{{ title }}}',
                 'default' => [
                     [
-                        'title' => __('Get the light where it is needed the most.', 'selleradise-widgets'),
-                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper',
+                        'title' => __('Incredibly Fast.', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper.',
+                        'icon' => [
+                            'value' => 'fas fa-bolt',
+                            'library' => 'solid',
+                        ],
+                    ],
+                    [
+                        'title' => __('Amazingly responsive.', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper.',
+                        'icon' => [
+                            'value' => 'fas fa-mobile-alt',
+                            'library' => 'solid',
+                        ],
+                    ],
+                    [
+                        'title' => __('Exceptionally Accessible.', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper.',
+                        'icon' => [
+                            'value' => 'fab fa-accessible-icon',
+                            'library' => 'brand',
+                        ],
+                    ],
+                    [
+                        'title' => __('Beautifully designed.', 'selleradise-widgets'),
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet nisl ullamcorper.',
+                        'icon' => [
+                            'value' => 'fas fa-paint-brush',
+                            'library' => 'solid',
+                        ],
                     ],
                 ],
             ]

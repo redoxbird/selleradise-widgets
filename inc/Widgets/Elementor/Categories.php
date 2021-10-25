@@ -99,6 +99,7 @@ class Categories extends \Elementor\Widget_Base
                 'label' => __('Section Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('Categories', 'selleradise-widgets'),
             ]
         );
 
@@ -108,6 +109,7 @@ class Categories extends \Elementor\Widget_Base
                 'label' => __('Section Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('Explore the shop', 'selleradise-widgets'),
             ]
         );
 
