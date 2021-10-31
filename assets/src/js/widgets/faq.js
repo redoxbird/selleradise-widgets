@@ -71,3 +71,14 @@ export class FAQ extends elementorModules.frontend.handlers.Base {
     }
   }
 }
+
+jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-faq.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(FAQ, {
+        $element,
+      });
+    }
+  );
+});

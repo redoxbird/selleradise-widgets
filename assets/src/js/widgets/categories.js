@@ -73,3 +73,14 @@ export class Categories extends elementorModules.frontend.handlers.Base {
     pagination();
   }
 }
+
+jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-product-categories.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Categories, {
+        $element,
+      });
+    }
+  );
+});

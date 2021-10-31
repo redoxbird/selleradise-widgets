@@ -22,4 +22,12 @@ mix.babelConfig({
   plugins: ["@babel/plugin-proposal-class-properties"],
 });
 
-mix.js("assets/src/js/widgets.js", "assets/dist/js").react();
+mix
+  .js("assets/src/js/widgets.js", "assets/dist/js")
+  .js("assets/src/js/widgets/categories.js", "assets/dist/js/widgets")
+  .js("assets/src/js/widgets/products.js", "assets/dist/js/widgets")
+  .js("assets/src/js/widgets/sale-timer.js", "assets/dist/js/widgets")
+  .react()
+  .js("assets/src/js/widgets/posts.js", "assets/dist/js/widgets")
+  .js("assets/src/js/widgets/faq.js", "assets/dist/js/widgets")
+  .js("assets/src/js/widgets/testimonials.js", "assets/dist/js/widgets");

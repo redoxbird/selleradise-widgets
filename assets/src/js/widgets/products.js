@@ -1,5 +1,5 @@
 import { lazyLoad } from "../helpers";
-export class Product extends elementorModules.frontend.handlers.Base {
+export class Products extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
     this.init();
@@ -49,3 +49,14 @@ export class Product extends elementorModules.frontend.handlers.Base {
     );
   }
 }
+
+jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-products.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Products, {
+        $element,
+      });
+    }
+  );
+});

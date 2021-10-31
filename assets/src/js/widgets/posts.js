@@ -1,4 +1,3 @@
-import { lazyLoad } from "../helpers";
 export class Posts extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
@@ -14,7 +13,7 @@ export class Posts extends elementorModules.frontend.handlers.Base {
       },
       slidesPerView: 1,
       watchSlidesVisibility: true,
-      spaceBetween: 50,
+      spaceBetween: 25,
       navigation: {
         nextEl: ".selleradise_widget--posts__slider-button--right",
         prevEl: ".selleradise_widget--posts__slider-button--left",
@@ -31,3 +30,14 @@ export class Posts extends elementorModules.frontend.handlers.Base {
     });
   }
 }
+
+jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-posts.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Posts, {
+        $element,
+      });
+    }
+  );
+});

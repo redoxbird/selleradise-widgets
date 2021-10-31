@@ -91,3 +91,14 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
     });
   }
 }
+
+jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-testimonials.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Testimonials, {
+        $element,
+      });
+    }
+  );
+});

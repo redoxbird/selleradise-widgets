@@ -19,3 +19,14 @@ export class Timer extends elementorModules.frontend.handlers.Base {
     }
   }
 }
+
+jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-sale-countdown.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Timer, {
+        $element,
+      });
+    }
+  );
+});

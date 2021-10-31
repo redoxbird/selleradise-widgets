@@ -19,6 +19,7 @@
   "homepage": "https://github.com/KhizarWeb/selleradise-widgets#readme",
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
+    "babel-preset-preact": "^2.0.0",
     "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.2.2",
     "laravel-mix": "^6.0.13",

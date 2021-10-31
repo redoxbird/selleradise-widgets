@@ -12,7 +12,20 @@ namespace Selleradise_Widgets\Widgets\Elementor;
 use \Elementor\Controls_Manager;
 
 class Categories extends \Elementor\Widget_Base
+
 {
+    public function __construct($data = [], $args = null)
+    {
+        parent::__construct($data, $args);
+
+        wp_register_script('selleradise-widget-categories', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets/categories.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
+
+    }
+
+    public function get_script_depends()
+    {
+        return ['selleradise-widget-categories'];
+    }
 
     /**
      * Get widget name.
@@ -239,7 +252,6 @@ class Categories extends \Elementor\Widget_Base
             ]
         );
 
-
         $this->end_controls_section();
 
     }
@@ -255,9 +267,9 @@ class Categories extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        
+
         $terms = [];
-        
+
         $available_args = ["hide_empty", "orderby", "order", "number"];
 
         $args = [];

@@ -41,7 +41,7 @@ if ($args) {
 
         while ($posts->have_posts()): $posts->the_post();
 
-            selleradise_widgets_get_template_part('template-parts/components/post/card', $settings['card_type'] ?: 'default' . get_post_format(), ["classes" => 'swiper-slide']);
+            selleradise_widgets_get_template_part('template-parts/post/card', $settings['card_type'] ?: 'default' . get_post_format(), ["classes" => 'swiper-slide']);
 
         endwhile;
 
