@@ -79,7 +79,7 @@ if(isset($settings['image_ratio_height']) && $settings['image_ratio_width']) {
         <?php endforeach;?>
 
         <li class="selleradiseWidgets_Categories__loadMore">
-            <button aria-label="<?php esc_attr_e( "Load More", "selleradise-widgets" ); ?>">
+            <button class="selleradise_button--secondary" aria-label="<?php esc_attr_e( "Load More", "selleradise-widgets" ); ?>">
                 <?php echo selleradise_widgets_svg('material/chevron-down'); ?>
                 <span><?php esc_attr_e( "Load More", "selleradise-widgets" ); ?></span>
             </button>

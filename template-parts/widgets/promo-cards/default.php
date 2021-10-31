@@ -48,7 +48,7 @@ if(!$cards) {
           
           <a 
             href="<?php echo esc_url($card['cta_url']['url'] ?: '#'); ?>" 
-            class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-link"> 
+            class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-link selleradise_button--secondary"> 
             <?php echo esc_html($card['cta_text']); ?>
           </a>
         </div>

@@ -12,7 +12,7 @@ if ($args) {
 ?>
 
 <div 
-  class="selleradiseWidgets_Products"
+  class="selleradiseWidgets_Products selleradise_productCards"
   data-selleradise-card-type="<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
 
   <div class="selleradiseWidgets_Products__head">
@@ -52,7 +52,7 @@ if ($args) {
     </ul>
   </div>
 
-  <a href="<?php echo esc_url($more_link); ?>" class="selleradiseWidgets_Products__moreLink">
+  <a href="<?php echo esc_url($more_link); ?>" class="selleradiseWidgets_Products__moreLink selleradise_button--secondary">
     <?php echo _e('See all', 'selleradise-widgets'); ?> 
     <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?>
   </a>

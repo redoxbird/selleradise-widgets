@@ -30,7 +30,7 @@ if (!$features) {
       <a
           href="<?php echo esc_url($settings['cta_url']['url'] ?? '#'); ?>"
           target="<?php echo esc_attr($settings['cta_url']['is_external'] ? '_blank' : null); ?>"
-          class="selleradise_Features--default__cta"
+          class="selleradise_Features--default__cta selleradise_button--primary"
       >
         <?php echo esc_html($settings['cta_text']); ?>
         <?php echo Selleradise_Widgets_svg('unicons-line/arrow-right'); ?>

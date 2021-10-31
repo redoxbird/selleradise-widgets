@@ -54,7 +54,7 @@ $attributes['title'] = $settings['title'];
         <a
           href="<?php echo esc_url($settings['cta_url']['url'] ?? '#'); ?>"
           target="<?php echo esc_attr($settings['cta_url']['is_external'] ? '_blank' : null); ?>"
-          class="selleradise_widgets_sale-countdown__cta"
+          class="selleradise_widgets_sale-countdown__cta selleradise_button--accent"
         >
           <?php echo esc_html($settings['cta_text']); ?>
           <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>

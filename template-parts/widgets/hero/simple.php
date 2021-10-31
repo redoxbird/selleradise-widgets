@@ -37,7 +37,7 @@ if (!isset($settings)) {
           <a
               href="<?php echo esc_url($settings['cta_primary_url']['url'] ?? '#'); ?>"
               target="<?php echo esc_attr($settings['cta_primary_url']['is_external'] ? '_blank' : null); ?>"
-              class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__primaryCTA"
+              class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__primaryCTA selleradise_button--primary"
           >
             <?php echo esc_html($settings['cta_primary_text']); ?>
             <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
