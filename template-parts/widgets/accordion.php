@@ -64,10 +64,10 @@ $categories = [];
           id="selleradise_Accordion__trigger-<?php echo esc_attr($key); ?>"
           aria-controls="selleradise_Accordion__description-<?php echo esc_attr($key); ?>">
           <span class="selleradise_Accordion__icon-plus">
-            <?php echo selleradise_widgets_svg('material/plus'); ?>
+            <?php echo selleradise_widgets_svg('unicons-line/plus'); ?>
           </span>
           <span class="selleradise_Accordion__icon-minus">
-            <?php echo selleradise_widgets_svg('material/minus'); ?>
+            <?php echo selleradise_widgets_svg('unicons-line/minus'); ?>
           </span>
           <h3>
             <?php echo esc_html($bellow['title']); ?>

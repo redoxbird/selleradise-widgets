@@ -43,7 +43,7 @@ if (!$features) {
                 class="selleradise_Features--default__cta"
                 href="<?php echo esc_html($feature['cta_url']['url'] ?? '#'); ?>"
                 target="<?php echo esc_html($feature['cta_target'] ? '_blank' : null); ?>">
-                <?php echo selleradise_widgets_svg('material/arrow-right'); ?>
+                <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
                 <span> <?php echo esc_html($feature['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?></span>
             </a>
         <?php endif;?>

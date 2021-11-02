@@ -54,7 +54,7 @@ if ($args) {
 
   <a href="<?php echo esc_url($more_link); ?>" class="selleradiseWidgets_Products__moreLink selleradise_button--secondary">
     <?php echo _e('See all', 'selleradise-widgets'); ?> 
-    <?php echo Selleradise_Widgets_svg('material/chevron-right'); ?>
+    <?php echo Selleradise_Widgets_svg('unicons-line/angle-right'); ?>
   </a>
 
 </div>

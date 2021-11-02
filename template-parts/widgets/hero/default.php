@@ -48,7 +48,7 @@ if(class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is
 
   <div class="selleradise_Hero__image selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__image">
       <a href="#" data-smoothscroll-y="500" class="selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__button-scroll button--icon selleradise_trigger_smoothscroll">
-        <?php echo selleradise_widgets_svg('material/arrow-down'); ?>
+        <?php echo selleradise_widgets_svg('unicons-line/arrow-down'); ?>
       </a>
 
       <img
