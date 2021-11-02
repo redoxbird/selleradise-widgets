@@ -36,29 +36,17 @@ if(!$cards) {
         $class .= ' selleradise_adaptive_colors';
       }
 
-      $thumbnail = wp_get_attachment_image_src($card['image']['id'], 'thumbnail');
-      $image_alt = get_post_meta($card['image']['id'], '_wp_attachment_image_alt', true);
-
-      ?>
+    ?>
       <li class="<?php echo esc_attr( $class ); ?>">
-        <div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-content">
-          <p class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-title"><?php echo esc_html($card['title']) ?></p>
+        <a 
+          href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
+          target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
+          <div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-content">
+            <h3 class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-title"><?php echo esc_html($card['title']) ?></h3>
+            <p class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-subtitle"><?php echo esc_html($card['subtitle']) ?></p>
+          </div>
 
-          <h3 class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-subtitle"><?php echo esc_html($card['subtitle']) ?></h3>
-          
-          <a 
-            href="<?php echo esc_url($card['cta_url']['url'] ?: '#'); ?>" 
-            class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-link selleradise_button--secondary"> 
-            <?php echo esc_html($card['cta_text']); ?>
-          </a>
-        </div>
-
-        <a href="<?php echo esc_url($card['cta_url']['url'] ?: '#'); ?>" class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-image">
-          <img 
-            class="<?php echo $settings['adaptive_colors'] === 'yes' ? 'selleradise_skip-lazy-load' : null; ?>"
-            src="<?php echo selleradise_get_image_placeholder(); ?>" 
-            data-src="<?php echo esc_url($thumbnail ? $thumbnail[0] : selleradise_get_image_placeholder()); ?>" 
-            alt="<?php echo esc_attr($image_alt); ?>">
+          <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card]); ?>
         </a>
       </li>
     <?php endforeach; ?>

@@ -179,7 +179,7 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-         $this->add_control(
+        $this->add_control(
             'overlay_heading',
             [
                 'label' => __('Overlay', 'selleradise-widgets'),
@@ -187,13 +187,16 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
+
+        $this->add_control(
+            'overlay_background_color',
             [
-                'name' => 'overlay',
-                'label' => __('Overlay', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .selleradise_Hero__content',
+                'label' => __('Overlay Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_Hero__content' => 'background-color: {{value}};',
+                ],
+
             ]
         );
 
@@ -205,9 +208,46 @@ class Hero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .selleradise_Hero__content' => 'color: {{value}};',
                 ],
-             
+
             ]
         );
+
+        $this->add_control(
+            'overlay_blur',
+
+            [
+                'label' => __('Overlay Blur', 'selleradise-widgets'),
+
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['em'],
+                'range' => [
+                    'em' => [
+                        'min' => 0,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ]
+                ],
+                'default' => [
+                    'unit' => 'em',
+                    'size' => 0.25,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_Hero__content' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
+                ],
+            ]
+        );
+
+        $this->add_control(
+			'overlay_margin',
+			[
+				'label' => __( 'Overlay Margin', 'selleradise-widgets' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ '%', 'rem' ],
+				'selectors' => [
+					'{{WRAPPER}} .selleradise_Hero__content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
         $this->end_controls_section();
 

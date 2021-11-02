@@ -9,6 +9,7 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use Selleradise_Widgets\Widgets\Elementor\Products;
 use \Elementor\Controls_Manager;
 
 class Categories extends \Elementor\Widget_Base
@@ -178,14 +179,36 @@ class Categories extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'include',
+            [
+                'label' => __('Include', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT2,
+                'options' => $this->get_select_categories(),
+                'multiple' => true,
+            ]
+        );
+
+        $this->add_control(
+            'parent',
+            [
+                'label' => __('Top Level', 'selleradise-widgets'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'selleradise-widgets'),
+                'label_off' => __('No', 'selleradise-widgets'),
+                'return_value' => "yes",
+                'default' => false,
+            ]
+        );
+
+        $this->add_control(
             'hide_empty',
             [
                 'label' => __('Hide Empty', 'selleradise-widgets'),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'selleradise-widgets'),
                 'label_off' => __('No', 'selleradise-widgets'),
-                'return_value' => true,
-                'default' => true,
+                'return_value' => "yes",
+                'default' => "yes",
             ]
         );
 
@@ -270,7 +293,7 @@ class Categories extends \Elementor\Widget_Base
 
         $terms = [];
 
-        $available_args = ["hide_empty", "orderby", "order", "number"];
+        $available_args = ["orderby", "order", "number"];
 
         $args = [];
 
@@ -278,6 +301,18 @@ class Categories extends \Elementor\Widget_Base
             if (isset($settings[$arg]) && $settings[$arg]) {
                 $args[$arg] = $settings[$arg];
             }
+        }
+
+        if (isset($settings["parent"]) && $settings["parent"] === "yes") {
+            $args["parent"] = 0;
+        }
+
+        if (isset($settings["hide_empty"]) && $settings["hide_empty"] === "yes") {
+            $args["hide_empty"] = true;
+        }
+
+        if (isset($settings['include']) && $settings['include'] && !empty($settings['include'])) {
+            $args['include'] = $settings['include'];
         }
 
         $terms = get_terms('product_cat', $args);
@@ -289,6 +324,29 @@ class Categories extends \Elementor\Widget_Base
         selleradise_widgets_get_template_part('template-parts/widgets/categories', null,
             ["settings" => $settings, "categories" => $terms]
         );
+    }
+
+    public function get_select_categories($limit = 1000)
+    {
+        $terms = get_terms(array(
+            'taxonomy' => 'product_cat',
+            'hide_empty' => false,
+            'orderby' => 'count',
+            'order' => 'DESC',
+            'number' => $limit,
+        ));
+
+        if (!$terms) {
+            return;
+        }
+
+        $product_categories = [];
+
+        foreach ($terms as $term) {
+            $product_categories[$term->term_id] = $term->name;
+        }
+
+        return $product_categories;
     }
 
 }

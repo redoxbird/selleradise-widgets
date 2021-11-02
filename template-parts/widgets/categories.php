@@ -28,7 +28,7 @@ if(isset($settings['image_ratio_height']) && $settings['image_ratio_width']) {
 
 <div 
     class="selleradiseWidgets_Categories selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>"
-    style="--ratio: <?php echo esc_attr( $ratio ); ?>"
+    style="--ratio: <?php echo esc_attr( $ratio ); ?>; --chunk-size: <?php echo esc_attr( $settings["page_size"] ); ?>"
     data-selleradise-categories-page-size="<?php echo $page_size; ?>">
 
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>

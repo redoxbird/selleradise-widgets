@@ -9,10 +9,10 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
-use Selleradise_Widgets\Controls\Elementor\Group_Control_Link;
 use \Elementor\Controls_Manager;
 
 class PromoCards extends \Elementor\Widget_Base
+
 {
 
     public function __construct($data = [], $args = null)
@@ -128,15 +128,6 @@ class PromoCards extends \Elementor\Widget_Base
         );
 
         $card->add_control(
-            'promo_type',
-            [
-                'label' => __('Promo Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::TEXT,
-                'input_type' => 'text',
-            ]
-        );
-
-        $card->add_control(
             'cta_heading',
             [
                 'label' => __('Call to action', 'selleradise-widgets'),
@@ -145,11 +136,11 @@ class PromoCards extends \Elementor\Widget_Base
             ]
         );
 
-        $card->add_group_control(
-            Group_Control_Link::get_type(),
+        $card->add_control(
+            'link',
             [
-                'name' => 'cta',
-                'label' => __('Call to action', 'selleradise-widgets'),
+                'label' => __('Link', 'selleradise-widgets'),
+                'type' => Controls_Manager::URL,
             ]
         );
 
@@ -174,7 +165,6 @@ class PromoCards extends \Elementor\Widget_Base
             ]
         );
 
-
         // $card->add_control(
         //     'color_heading',
         //     [
@@ -183,7 +173,6 @@ class PromoCards extends \Elementor\Widget_Base
         //         'separator' => 'before',
         //     ]
         // );
-
 
         // $card->add_control(
         //     'color_main',
@@ -288,18 +277,17 @@ class PromoCards extends \Elementor\Widget_Base
             ]
         );
 
-
         $this->add_control(
-			'adaptive_colors',
-			[
-				'label' => __( 'Adaptive Colors', 'selleradise-widgets' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'selleradise-widgets' ),
-				'label_off' => __( 'No', 'selleradise-widgets' ),
-				'return_value' => 'yes',
-				'default' => 0,
-			]
-		);
+            'adaptive_colors',
+            [
+                'label' => __('Adaptive Colors', 'selleradise-widgets'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'selleradise-widgets'),
+                'label_off' => __('No', 'selleradise-widgets'),
+                'return_value' => 'yes',
+                'default' => 0,
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -319,7 +307,7 @@ class PromoCards extends \Elementor\Widget_Base
 
         $type = isset($settings['card_type']) && $settings['card_type'] ? $settings['card_type'] : 'default';
 
-        selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/'.$type, null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/' . $type, null, ["settings" => $settings]);
     }
 
 }
