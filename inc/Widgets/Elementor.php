@@ -18,7 +18,6 @@ class Elementor
         $classes = [
             Elementor\Hero::class,
             Elementor\PromoCards::class,
-            Elementor\Accordion::class,
             Elementor\FAQ::class,
             Elementor\Tabs::class,
             Elementor\Testimonials::class,

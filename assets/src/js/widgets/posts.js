@@ -5,29 +5,35 @@ export class Posts extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
-    const slider = new Swiper(".selleradise_widget--posts__slider", {
-      duration: 600,
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      slidesPerView: 1,
-      watchSlidesVisibility: true,
-      spaceBetween: 25,
-      navigation: {
-        nextEl: ".selleradise_widget--posts__slider-button--right",
-        prevEl: ".selleradise_widget--posts__slider-button--left",
-      },
-      resizeObserver: this.isEdit,
-      breakpoints: {
-        767: {
-          slidesPerView: 2,
+    const slider = new Swiper(
+      this.$element[0].querySelector(".selleradise_widget--posts__slider"),
+      {
+        duration: 600,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
         },
-        1025: {
-          slidesPerView: 3,
+        slidesPerView: 1,
+        watchSlidesVisibility: true,
+        spaceBetween: 25,
+        navigation: {
+          nextEl: this.$element[0].querySelector(
+            ".selleradise_widget--posts__slider-button--right"
+          ),
+          prevEl: this.$element[0].querySelector(
+            ".selleradise_widget--posts__slider-button--left"
+          ),
         },
-      },
-    });
+        breakpoints: {
+          767: {
+            slidesPerView: 2,
+          },
+          1025: {
+            slidesPerView: 3,
+          },
+        },
+      }
+    );
   }
 }
 
