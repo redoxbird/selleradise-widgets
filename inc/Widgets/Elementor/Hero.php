@@ -115,7 +115,7 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
-                'default' => __('Explore our winter collection', 'selleradise-widgets'),
+                'default' => __('Explore winter collection', 'selleradise-widgets'),
             ]
         );
 
@@ -140,7 +140,7 @@ class Hero extends \Elementor\Widget_Base
         $this->add_control(
             'primary_cta_heading',
             [
-                'label' => __('Primary CTA', 'selleradise-widgets'),
+                'label' => __('CTA', 'selleradise-widgets'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -184,9 +184,12 @@ class Hero extends \Elementor\Widget_Base
             [
                 'label' => __('Overlay', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::HEADING,
-            ]
-        );
+                'condition' => [
+                    'hero_type' => ['simple'],
+                ],
+            ],
 
+        );
 
         $this->add_control(
             'overlay_background_color',
@@ -196,7 +199,9 @@ class Hero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .selleradise_Hero__content' => 'background-color: {{value}};',
                 ],
-
+                'condition' => [
+                    'hero_type' => ['simple'],
+                ],
             ]
         );
 
@@ -208,14 +213,14 @@ class Hero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .selleradise_Hero__content' => 'color: {{value}};',
                 ],
-
+                'condition' => [
+                    'hero_type' => ['simple'],
+                ],
             ]
         );
 
         $this->add_control(
-            'overlay_blur',
-
-            [
+            'overlay_blur', [
                 'label' => __('Overlay Blur', 'selleradise-widgets'),
 
                 'type' => Controls_Manager::SLIDER,
@@ -225,7 +230,7 @@ class Hero extends \Elementor\Widget_Base
                         'min' => 0,
                         'max' => 10,
                         'step' => 0.1,
-                    ]
+                    ],
                 ],
                 'default' => [
                     'unit' => 'em',
@@ -234,20 +239,26 @@ class Hero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .selleradise_Hero__content' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
                 ],
+                'condition' => [
+                    'hero_type' => ['simple'],
+                ],
             ]
         );
 
         $this->add_control(
-			'overlay_margin',
-			[
-				'label' => __( 'Overlay Margin', 'selleradise-widgets' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ '%', 'rem' ],
-				'selectors' => [
-					'{{WRAPPER}} .selleradise_Hero__content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
+            'overlay_margin',
+            [
+                'label' => __('Overlay Margin', 'selleradise-widgets'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['%', 'rem'],
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_Hero__content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'hero_type' => ['simple'],
+                ],
+            ]
+        );
 
         $this->end_controls_section();
 
