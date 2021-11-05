@@ -30,7 +30,7 @@ $is_editor = class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->
     <?php 
       echo sprintf(
         '%s="%s"',
-        $is_editor ? 'src' : 'data-src', 
+        'data-src',
         esc_url($thumbnail ? $thumbnail[0] : selleradise_get_image_placeholder())
       ); 
     ?>

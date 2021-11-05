@@ -22,13 +22,19 @@ if(!$cards) {
   return;
 }
 
+$classes = sprintf('selleradise_PromoCards--%s', $settings['card_type']);
+
+if(selleradise_is_normal_mode()) {
+  $classes .= ' selleradise_scroll_animate';
+}
+
 ?>
 
-<div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>">
+<div class="<?php echo esc_attr( $classes ); ?>">
 
   <ul class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__list">
 
-    <?php foreach ($cards as $key => $card): 
+    <?php foreach ($cards as $index => $card): 
       $class = 'selleradise_PromoCards--'.$settings['card_type'].'__item';
       $class .= ' elementor-repeater-item-'.$card['_id'];
 
@@ -37,7 +43,9 @@ if(!$cards) {
       }
 
     ?>
-      <li class="<?php echo esc_attr( $class ); ?>">
+      <li 
+        class="<?php echo esc_attr( $class ); ?>"
+        style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
         <a 
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">

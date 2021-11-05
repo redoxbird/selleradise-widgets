@@ -40,7 +40,9 @@ if (!$features) {
 
   <ul class="selleradise_Features--default__list">
     <?php foreach ($features as $index => $feature): ?>
-      <li class="elementor-repeater-item-<?php echo $feature['_id']; ?>">
+      <li 
+        class="elementor-repeater-item-<?php echo $feature['_id']; ?>"
+        style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
         <div class="selleradise_Features--default__icon">
           <?php \Elementor\Icons_Manager::render_icon($feature['icon'], ['aria-hidden' => 'true']);?>
         </div>

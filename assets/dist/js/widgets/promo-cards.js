@@ -34,12 +34,12 @@
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-/*!**************************************!*\
-  !*** ./assets/src/js/widgets/faq.js ***!
-  \**************************************/
+/*!**********************************************!*\
+  !*** ./assets/src/js/widgets/promo-cards.js ***!
+  \**********************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FAQ": () => (/* binding */ FAQ)
+/* harmony export */   "PromoCards": () => (/* binding */ PromoCards)
 /* harmony export */ });
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -67,98 +67,44 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var FAQ = /*#__PURE__*/function (_elementorModules$fro) {
-  _inherits(FAQ, _elementorModules$fro);
+var PromoCards = /*#__PURE__*/function (_elementorModules$fro) {
+  _inherits(PromoCards, _elementorModules$fro);
 
-  var _super = _createSuper(FAQ);
+  var _super = _createSuper(PromoCards);
 
-  function FAQ() {
-    _classCallCheck(this, FAQ);
+  function PromoCards() {
+    _classCallCheck(this, PromoCards);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(FAQ, [{
+  _createClass(PromoCards, [{
     key: "onInit",
     value: function onInit() {
-      _get(_getPrototypeOf(FAQ.prototype), "onInit", this).call(this);
+      _get(_getPrototypeOf(PromoCards.prototype), "onInit", this).call(this);
 
       this.init();
     }
   }, {
     key: "init",
     value: function init() {
-      var selectedTab = "all";
-      var prefix = "selleradise_faq";
-      var itemClass = "".concat(prefix, "__item");
-      var section = document.querySelector(".".concat(prefix));
+      var settings = this.getElementSettings();
 
-      if (!section) {
-        return;
-      }
-
-      var items = section.querySelectorAll(".".concat(itemClass));
-      var categories = section.querySelectorAll(".".concat(prefix, "__categories li"));
-
-      if (items.length < 1 || categories.length < 1) {
-        return;
-      }
-
-      function setSelectedTab(category, item) {
-        selectedTab = category;
-        var current = section.querySelector(".selleradise_faq__category--selected");
-
-        if (current) {
-          current.classList.remove("selleradise_faq__category--selected");
+      if (this.isEdit && Selleradise) {
+        if (settings.adaptive_colors === "yes") {
+          Selleradise.adaptiveColors();
+        } else {
+          Selleradise.lazyLoad();
         }
-
-        item.classList.add("selleradise_faq__category--selected");
-
-        for (var index in items) {
-          if (Object.hasOwnProperty.call(items, index)) {
-            var _item = items[index];
-
-            var itemCategory = _item.getAttribute("data-selleradise-category");
-
-            if (category === "all") {
-              _item.classList.remove("".concat(itemClass, "--hidden"));
-
-              continue;
-            }
-
-            if (!itemCategory.split(",").includes(category)) {
-              _item.classList.add("".concat(itemClass, "--hidden"));
-            } else {
-              _item.classList.remove("".concat(itemClass, "--hidden"));
-            }
-          }
-        }
-      }
-
-      if (categories.length > 0) {
-        for (var index in categories) {
-          if (categories.hasOwnProperty.call(categories, index)) {
-            (function () {
-              var item = categories[index];
-              var category = item.getAttribute("data-selleradise-slug");
-              var button = item.querySelector("button");
-              button.addEventListener("click", function () {
-                setSelectedTab(category, item);
-              });
-            })();
-          }
-        }
-
-        setSelectedTab("all", categories[0]);
       }
     }
   }]);
 
-  return FAQ;
+  return PromoCards;
 }(elementorModules.frontend.handlers.Base);
 jQuery(window).on("elementor/frontend/init", function () {
-  elementorFrontend.hooks.addAction("frontend/element_ready/selleradise-faq.default", function ($element) {
-    elementorFrontend.elementsHandler.addHandler(FAQ, {
+  elementorFrontend.hooks.addAction("frontend/element_ready/selleradise-promo-cards.default", function ($element) {
+    elementorFrontend.elementsHandler.addHandler(PromoCards, {
       $element: $element
     });
   });

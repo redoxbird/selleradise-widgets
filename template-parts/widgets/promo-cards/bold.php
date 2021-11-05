@@ -22,32 +22,40 @@ if (!$cards) {
     return;
 }
 
+$classes = sprintf('selleradise_PromoCards--%s', $settings['card_type']);
+
+if(selleradise_is_normal_mode()) {
+  $classes .= ' selleradise_scroll_animate';
+}
+
 ?>
 
-<div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>">
+<div class="<?php echo esc_attr( $classes ); ?>">
 
   <ul class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__list">
 
-    <?php foreach ($cards as $key => $card): ?>
-      <li class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item  elementor-repeater-item-<?php echo $card['_id']; ?>">
-        <div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-content">
-          <p class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-subtitle"><?php echo esc_html($card['subtitle']) ?></p>
+    <?php foreach ($cards as $index => $card): 
+      $class = 'selleradise_PromoCards--' . $settings['card_type'] . '__item';
+      $class .= ' elementor-repeater-item-' . $card['_id'];
 
-          <p class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-promo-type"><?php echo esc_html($card['promo_type']) ?></p>
+      if ($settings['adaptive_colors'] === 'yes') {
+          $class .= ' selleradise_adaptive_colors';
+      }
 
-          <a
-            href="<?php echo esc_url($card['cta_url']['url'] ?: '#'); ?>"
-            class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-link">
-            <?php echo esc_html($card['cta_text']); ?>
-          </a>
-        </div>
+      ?>
+      <li 
+        class="<?php echo esc_attr( $class ); ?>"
+        style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
+        <a   
+          href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
+          target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
+          <div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-content">
+            <h3 class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-title"><?php echo esc_html($card['title']) ?></h3>
+            <p class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-subtitle"><?php echo esc_html($card['subtitle']) ?></p>
+          </div>
 
-        <div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-image">
-          <h3 class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-title"><?php echo esc_html($card['title']) ?></h3>
-          <img
-            src="<?php echo esc_url($card['image']['url']); ?>"
-            alt="<?php echo esc_attr(get_post_meta($card['image']['id'], '_wp_attachment_image_alt', true)); ?>">
-        </div>
+          <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card]);?>
+        </a>
       </li>
     <?php endforeach;?>
 

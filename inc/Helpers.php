@@ -209,3 +209,20 @@ if (!function_exists('selleradise_widgets_get_version')) {
         return $version;
     }
 }
+
+if (!function_exists('selleradise_is_normal_mode')) {
+
+    function selleradise_is_normal_mode()
+    {
+        if(!class_exists('\Elementor\Plugin')) {
+            return true;
+        }
+
+        if(\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+            return false;
+        }
+
+        return true;
+    }
+}
+

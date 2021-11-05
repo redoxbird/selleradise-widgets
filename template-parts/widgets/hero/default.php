@@ -47,7 +47,11 @@ if(class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is
   </div>
 
   <div class="selleradise_Hero__image selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__image">
-      <a href="#" data-tippy-content="<?php esc_html_e( 'Scroll', 'selleradise-widgets' ); ?>" data-smoothscroll-y="500" class="selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__button-scroll button--icon selleradise_trigger_smoothscroll">
+      <a href="#" 
+        data-tippy-content="<?php esc_html_e( 'Scroll down', 'selleradise-widgets' ); ?>" 
+        aria-label="<?php esc_html_e( 'Scroll down', 'selleradise-widgets' ); ?>"
+        data-smoothscroll-y="500" 
+        class="selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__button-scroll button--icon selleradise_trigger_smoothscroll">
         <?php echo selleradise_widgets_svg('unicons-line/arrow-down'); ?>
       </a>
 
