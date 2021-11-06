@@ -309,6 +309,8 @@ class Categories extends \Elementor\Widget_Base
 
         if (isset($settings["hide_empty"]) && $settings["hide_empty"] === "yes") {
             $args["hide_empty"] = true;
+        } else {
+            $args["hide_empty"] = 0;
         }
 
         if (isset($settings['include']) && $settings['include'] && !empty($settings['include'])) {
@@ -316,10 +318,6 @@ class Categories extends \Elementor\Widget_Base
         }
 
         $terms = get_terms('product_cat', $args);
-
-        if (empty($terms)) {
-            return;
-        }
 
         selleradise_widgets_get_template_part('template-parts/widgets/categories', null,
             ["settings" => $settings, "categories" => $terms]

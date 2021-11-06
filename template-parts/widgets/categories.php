@@ -46,7 +46,10 @@ if(selleradise_is_normal_mode()) {
     
     <ul class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__list">
         <?php foreach ($categories as $index => $category): 
-            $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true); ?>
+            $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true); 
+            $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'medium');
+            $image_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+            ?>
 
             <li 
                 class="selleradiseWidgets_Categories__item selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item"
@@ -62,17 +65,10 @@ if(selleradise_is_normal_mode()) {
                     <?php endif; ?>
 
                     <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemImage">
-                        <?php if($thumbnail_id): ?>
-                            <img
-                                src="<?php echo $thumbnail_id ? esc_url(wp_get_attachment_url($thumbnail_id)) : selleradise_get_image_placeholder(); ?>"
-                                alt="<?php echo get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>"
-                            />
-                        <?php else: ?>
-                            <img
-                                src="<?php echo selleradise_get_image_placeholder(); ?>"
-                                alt=""
-                            />
-                        <?php endif; ?>
+                        <img
+                            src="<?php echo esc_url($thumbnail_id ? $thumbnail[0] : selleradise_get_image_placeholder()); ?>"
+                            alt="<?php echo get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>"
+                        />
                     </div>
 
                     <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemContent">
