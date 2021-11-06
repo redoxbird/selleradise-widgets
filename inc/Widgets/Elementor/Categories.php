@@ -174,7 +174,7 @@ class Categories extends \Elementor\Widget_Base
                 'min' => 1,
                 'max' => 100,
                 'step' => 1,
-                'default' => 10,
+                'default' => 6,
             ]
         );
 

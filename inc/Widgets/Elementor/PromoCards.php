@@ -165,59 +165,6 @@ class PromoCards extends \Elementor\Widget_Base
             ]
         );
 
-        // $card->add_control(
-        //     'color_heading',
-        //     [
-        //         'label' => __('Colors', 'selleradise-widgets'),
-        //         'type' => Controls_Manager::HEADING,
-        //         'separator' => 'before',
-        //     ]
-        // );
-
-        // $card->add_control(
-        //     'color_main',
-        //     [
-        //         'label' => __('Main Color', 'selleradise-widgets'),
-        //         'type' => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-main: {{value}};',
-        //         ],
-        //     ]
-        // );
-
-        // $card->add_control(
-        //     'color_main_text',
-        //     [
-        //         'label' => __('Main Text Color', 'selleradise-widgets'),
-        //         'type' => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-main-text: {{value}};',
-        //         ],
-        //     ]
-        // );
-
-        // $card->add_control(
-        //     'color_accent',
-        //     [
-        //         'label' => __('Accent Color', 'selleradise-widgets'),
-        //         'type' => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-accent: {{value}};',
-        //         ],
-        //     ]
-        // );
-
-        // $card->add_control(
-        //     'color_accent_text',
-        //     [
-        //         'label' => __('Accent Text Color', 'selleradise-widgets'),
-        //         'type' => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-accent-text: {{value}};',
-        //         ],
-        //     ]
-        // );
-
         $this->add_control(
             'cards',
             [

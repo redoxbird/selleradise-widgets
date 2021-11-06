@@ -1042,7 +1042,7 @@ var Categories = /*#__PURE__*/function (_elementorModules$fro) {
       var section = this.$element[0].querySelector(".selleradiseWidgets_Categories");
       var loadMoreBtn = section.querySelector(".selleradiseWidgets_Categories__loadMore button");
       var pageSize = parseInt(section.getAttribute("data-selleradise-categories-page-size"));
-      var items = section.querySelectorAll(".selleradiseWidgets_Categories__item--hidden");
+      var items = section.querySelectorAll(".selleradiseWidgets_Categories__item[data-selleradise-status='hidden']");
 
       function pagination() {
         var offset = 0;
@@ -1072,7 +1072,7 @@ var Categories = /*#__PURE__*/function (_elementorModules$fro) {
                 delay: realIndex * 50,
                 easing: "easeOutExpo",
                 begin: function begin() {
-                  item.classList.remove("selleradiseWidgets_Categories__item--hidden");
+                  item.setAttribute("data-selleradise-status", "visible");
                 }
               });
             }

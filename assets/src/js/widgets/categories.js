@@ -23,7 +23,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
     );
 
     const items = section.querySelectorAll(
-      ".selleradiseWidgets_Categories__item--hidden"
+      ".selleradiseWidgets_Categories__item[data-selleradise-status='hidden']"
     );
 
     function pagination() {
@@ -44,7 +44,6 @@ export class Categories extends elementorModules.frontend.handlers.Base {
         for (let index = offset; index < offset + pageSize; index++) {
           const item = items[index];
           realIndex++;
-
           if (item) {
             anime({
               duration: 800,
@@ -54,9 +53,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
               delay: realIndex * 50,
               easing: "easeOutExpo",
               begin: function () {
-                item.classList.remove(
-                  "selleradiseWidgets_Categories__item--hidden"
-                );
+                item.setAttribute("data-selleradise-status", "visible");
               },
             });
           }

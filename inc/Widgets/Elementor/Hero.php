@@ -173,7 +173,7 @@ class Hero extends \Elementor\Widget_Base
                 'options' => [
                     'default' => esc_html__('Default', 'selleradise-widgets'),
                     'common' => esc_html__('Common', 'selleradise-widgets'),
-                    'simple' => esc_html__('Simple', 'selleradise-widgets'),
+                    'popular' => esc_html__('Popular', 'selleradise-widgets'),
                     'centered' => esc_html__('Centered', 'selleradise-widgets'),
                 ],
             ]
@@ -185,7 +185,7 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Overlay', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'condition' => [
-                    'hero_type' => ['simple'],
+                    'hero_type' => ['popular'],
                 ],
             ],
 
@@ -200,7 +200,7 @@ class Hero extends \Elementor\Widget_Base
                     '{{WRAPPER}} .selleradise_Hero__content' => 'background-color: {{value}};',
                 ],
                 'condition' => [
-                    'hero_type' => ['simple'],
+                    'hero_type' => ['popular'],
                 ],
             ]
         );
@@ -214,7 +214,7 @@ class Hero extends \Elementor\Widget_Base
                     '{{WRAPPER}} .selleradise_Hero__content' => 'color: {{value}};',
                 ],
                 'condition' => [
-                    'hero_type' => ['simple'],
+                    'hero_type' => ['popular'],
                 ],
             ]
         );
@@ -239,7 +239,7 @@ class Hero extends \Elementor\Widget_Base
                     '{{WRAPPER}} .selleradise_Hero__content' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
                 ],
                 'condition' => [
-                    'hero_type' => ['simple'],
+                    'hero_type' => ['popular'],
                 ],
             ]
         );
@@ -257,7 +257,7 @@ class Hero extends \Elementor\Widget_Base
                     '{{WRAPPER}} .selleradise_Hero__content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'hero_type' => ['simple'],
+                    'hero_type' => ['popular'],
                 ],
             ]
         );
