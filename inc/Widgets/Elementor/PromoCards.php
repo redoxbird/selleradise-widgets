@@ -110,18 +110,18 @@ class PromoCards extends \Elementor\Widget_Base
         $card = new \Elementor\Repeater();
 
         $card->add_control(
-            'subtitle',
+            'title',
             [
-                'label' => __('Subtitle', 'selleradise-widgets'),
+                'label' => __('Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
             ]
         );
 
         $card->add_control(
-            'title',
+            'subtitle',
             [
-                'label' => __('Title', 'selleradise-widgets'),
+                'label' => __('Subtitle', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
             ]
@@ -227,27 +227,18 @@ class PromoCards extends \Elementor\Widget_Base
                 'title_field' => '{{{ title }}}',
                 'default' => [
                     [
-                        'title' => __('Upto 50% off.', 'selleradise-widgets'),
-                        'subtitle' => __('Embrace the new style.', 'selleradise-widgets'),
-                        'image' => [
-                            "url" => 'https://redoxbird.com/selleradise/demos/assets/furniture/photo-1598300042247-d088f8ab3a91-removebg-preview.png',
-                        ],
+                        'title' => __('Embrace the new style.', 'selleradise-widgets'),
+                        'subtitle' => __('Upto 50% off.', 'selleradise-widgets'),
                         'cta_text' => 'Shop Now',
                     ],
                     [
-                        'title' => __('Buy 1 get 1 FREE.', 'selleradise-widgets'),
-                        'subtitle' => __('Most comfortable pillows.', 'selleradise-widgets'),
-                        'image' => [
-                            "url" => 'https://images.unsplash.com/photo-1559051668-9024c9b5e84b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
-                        ],
+                        'title' => __('Most comfortable pillows.', 'selleradise-widgets'),
+                        'subtitle' => __('Buy 1 get 1 FREE.', 'selleradise-widgets'),
                         'cta_text' => 'See Offer',
                     ],
                     [
-                        'title' => __('Starting from 500.', 'selleradise-widgets'),
-                        'subtitle' => __('Bestselling furniture.', 'selleradise-widgets'),
-                        'image' => [
-                            "url" => 'https://images.unsplash.com/photo-1616628198591-eaa25811775b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1256&q=80',
-                        ],
+                        'title' => __('Bestselling furniture.', 'selleradise-widgets'),
+                        'subtitle' => __('Starting from 500.', 'selleradise-widgets'),
                         'cta_text' => 'Shop Now',
                     ],
                 ],

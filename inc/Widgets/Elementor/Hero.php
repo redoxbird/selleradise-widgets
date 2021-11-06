@@ -191,7 +191,7 @@ class Hero extends \Elementor\Widget_Base
 
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'overlay_background_color',
             [
                 'label' => __('Overlay Color', 'selleradise-widgets'),
@@ -205,7 +205,7 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'text_color',
             [
                 'label' => __('Text Color', 'selleradise-widgets'),
@@ -219,10 +219,9 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'overlay_blur', [
                 'label' => __('Overlay Blur', 'selleradise-widgets'),
-
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['em'],
                 'range' => [
@@ -245,12 +244,15 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'overlay_margin',
             [
                 'label' => __('Overlay Margin', 'selleradise-widgets'),
                 'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['%', 'rem'],
+                'size_units' => ['%', 'em'],
+                'default' => [
+                    'unit' => '%',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .selleradise_Hero__content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],

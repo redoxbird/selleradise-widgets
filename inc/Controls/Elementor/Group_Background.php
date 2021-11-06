@@ -92,7 +92,7 @@ class Group_Background extends Group_Control_Base
         $fields['position'] = [
             'label' => _x('Position', 'Background Control', 'selleradise-widgets'),
             'type' => Controls_Manager::SELECT,
-            'default' => 'center-center',
+            'default' => 'center center',
             'options' => [
                 'top left' => esc_html__("Top left", "selleradise-widgets"),
                 'top center' => esc_html__("Top center", "selleradise-widgets"),
