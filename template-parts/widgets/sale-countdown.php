@@ -22,12 +22,8 @@ $attributes['title'] = $settings['title'];
 
   <div class="selleradise_widgets_sale-countdown__image">
     <img
-      <?php if( class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode() ): ?>
-        src="<?php echo esc_url($settings['image']['url'] ?: selleradise_get_image_placeholder()); ?>"
-      <?php else: ?>
-        src="<?php echo selleradise_get_image_placeholder(); ?>"
-        data-src="<?php echo esc_url($settings['image']['url'] ?: selleradise_get_image_placeholder()); ?>"
-      <?php endif; ?>
+      src="<?php echo selleradise_get_image_placeholder(); ?>"
+      data-src="<?php echo esc_url($settings['image']['url'] ?: selleradise_get_image_placeholder()); ?>"
       alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
     >
   </div>
@@ -35,11 +31,15 @@ $attributes['title'] = $settings['title'];
   <div class="selleradise_widgets_sale-countdown__content">
     <div class="selleradise_widgets_sale-countdown__title-outer">
       <?php if (isset($settings['title']) && $settings['title']): ?>
-        <h2 class="selleradise_widgets_sale-countdown__title"><?php echo esc_html($settings['title']); ?></h2>
+        <h2 class="selleradise_widgets_sale-countdown__title">
+          <?php echo esc_html($settings['title']); ?>
+        </h2>
       <?php endif;?>
 
       <?php if (isset($settings['subtitle']) && $settings['subtitle']): ?>
-        <p class="selleradise_widgets_sale-countdown__subtitle"><?php echo esc_html($settings['subtitle']); ?></p>
+        <p class="selleradise_widgets_sale-countdown__subtitle">
+          <?php echo esc_html($settings['subtitle']); ?>
+        </p>
       <?php endif;?>
     </div>
 

@@ -51,7 +51,7 @@ if (!$tabs) {
           role="region"
           id="selleradise_Tabs--default__tab-<?php echo esc_attr($key); ?>"
           aria-labelledby="selleradise_Tabs--default__trigger-<?php echo esc_attr($key); ?>">
-          <?php echo $tab['description']; ?>
+          <?php echo wp_kses_post($tab['description']); ?>
         </div>
       <?php endforeach; ?>
     </div>

@@ -130,10 +130,10 @@ class Setup
                     'name' => __('Quote', 'selleradise'),
                     'id' => 'quote',
                     'type' => 'wysiwyg',
-                    'options' => array(
+                    'options' => [
                         'textarea_rows' => 4,
                         'teeny' => true,
-                    ),
+                    ],
                 ],
                 [
                     'name' => __('Rating', 'selleradise'),

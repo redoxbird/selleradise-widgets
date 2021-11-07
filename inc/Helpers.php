@@ -147,13 +147,18 @@ if (!function_exists('selleradise_widgets_svg')) {
             return;
         }
 
+        global $wp_filesystem;
+        require_once ABSPATH . '/wp-admin/includes/file.php';
+
+        WP_Filesystem();
+
         $file_location = SELLERADISE_WIDGETS_DIR_PATH . 'assets/dist/svg/' . $filename . '.svg';
 
         if (!file_exists($file_location)) {
             return;
         }
 
-        return file_get_contents($file_location);
+        return $wp_filesystem->get_contents($file_location);
     }
 }
 
@@ -214,15 +219,14 @@ if (!function_exists('selleradise_is_normal_mode')) {
 
     function selleradise_is_normal_mode()
     {
-        if(!class_exists('\Elementor\Plugin')) {
+        if (!class_exists('\Elementor\Plugin')) {
             return true;
         }
 
-        if(\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+        if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
             return false;
         }
 
         return true;
     }
 }
-
