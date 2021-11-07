@@ -17,6 +17,7 @@ class Setup
         add_action('tgmpa_register', array($this, 'register_required_plugins'));
         add_action('init', [$this, 'register_elementor_widgets']);
         add_action('elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories']);
+        add_filter('rwmb_meta_boxes', [$this, 'meta_boxes']);
 
     }
 
@@ -48,6 +49,12 @@ class Setup
             array(
                 'name' => esc_html__('Elementor', 'selleradise-widgets'),
                 'slug' => 'elementor',
+                'required' => true,
+            ),
+
+            array(
+                'name' => esc_html__('Meta Box', 'selleradise-widgets'),
+                'slug' => 'meta-box',
                 'required' => true,
             ),
 
@@ -108,6 +115,55 @@ class Setup
                 'icon' => 'fa fa-umbrella-beach',
             ]
         );
+
+    }
+
+    public function meta_boxes($meta_boxes)
+    {
+        $meta_boxes[] = [
+            'title' => esc_html__('Testimonial Info', 'selleradise-widgets'),
+            'id' => 'testimonial',
+            'post_types' => ['testimonial'],
+            'context' => 'normal',
+            'fields' => [
+                [
+                    'name' => __('Quote', 'selleradise'),
+                    'id' => 'quote',
+                    'type' => 'wysiwyg',
+                    'options' => array(
+                        'textarea_rows' => 4,
+                        'teeny' => true,
+                    ),
+                ],
+                [
+                    'name' => __('Rating', 'selleradise'),
+                    'id' => 'rating',
+                    'type' => 'number',
+                    'min' => 0,
+                    'max' => 5,
+                    'step' => 0.1,
+                ],
+                [
+                    'name' => __('Profile Picture', 'selleradise'),
+                    'id' => 'profile_picture',
+                    'type' => 'image_advanced',
+                    'max_file_uploads' => 1,
+                    'image_size' => 'thumbnail',
+                ],
+                [
+                    'name' => __('Profile Name', 'selleradise'),
+                    'id' => 'profile_name',
+                    'type' => 'text',
+                ],
+                [
+                    'name' => __('Profile Title', 'selleradise'),
+                    'id' => 'profile_title',
+                    'type' => 'text',
+                ],
+            ],
+        ];
+
+        return $meta_boxes;
 
     }
 

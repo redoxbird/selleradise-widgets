@@ -9,7 +9,7 @@ if (isset($args)) {
 
 }
 
-if(!function_exists('carbon_get_post_meta')) {
+if(!function_exists('rwmb_meta')) {
   return '<p><b> Carbon fields not found</b> </p>';
 }
 
@@ -46,21 +46,21 @@ $index = 0;
     
     <div class="swiper-wrapper">
       <?php while ($testimonials->have_posts()) : $testimonials->the_post(); 
-          $profile_picture_id = carbon_get_post_meta(get_the_ID(), 'profile_picture' );
-          $profile_picture = wp_get_attachment_image_src($profile_picture_id, 'medium');
-          $profile_picture_alt = get_post_meta($profile_picture_id, '_wp_attachment_image_alt', true); ?>
+          $profile_pictures = rwmb_meta('profile_picture', array( 'limit' => 1 ));
+          $profile_picture = reset( $profile_pictures ); 
+        ?>
 
         <div class="selleradise_Testimonials--cards__quote swiper-slide">
           <h3><?php echo esc_html(get_the_title()); ?></h3>
-          <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/rating', null, ["rating" => carbon_get_post_meta( get_the_ID(), 'rating' )]); ?>
-          <blockquote><?php echo esc_html(carbon_get_post_meta( get_the_ID(), 'quote' )); ?></blockquote>
+          <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/rating', null, ["rating" => rwmb_meta('rating')]); ?>
+          <blockquote><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
 
             <div class="selleradise_Testimonials--cards__profile">
-              <img src="<?php echo esc_url($profile_picture[0] ?? \Elementor\Utils::get_placeholder_image_src()); ?>" alt="<?php echo esc_attr($profile_picture_alt); ?>">
+              <img src="<?php echo esc_url($profile_picture['url'] ?? \Elementor\Utils::get_placeholder_image_src()); ?>" alt="<?php echo esc_attr($profile_picture['alt']); ?>">
 
               <div>
-                <p><?php echo esc_html(carbon_get_post_meta(get_the_ID(), 'profile_name' )); ?></p>
-                <p><?php echo esc_html(carbon_get_post_meta(get_the_ID(), 'profile_title' )); ?></p>
+                <p><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+                <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
               </div>
             </div>
         </div>
