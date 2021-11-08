@@ -37,14 +37,20 @@ if(selleradise_is_normal_mode()) {
     data-selleradise-categories-page-size="<?php echo $page_size; ?>">
 
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-        <h2 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__title"><?php echo esc_html($settings['section_title']); ?></h2>
+        <h2 class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__title', $settings['card_type']) ); ?>">
+            <?php echo esc_html($settings['section_title']); ?>
+        </h2>
     <?php endif;?>
 
     <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-        <p class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+        <p class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__subtitle', $settings['card_type']) ); ?>">
+            <?php echo esc_html($settings['section_subtitle']); ?>
+        </p>
     <?php endif;?>
+
+    <?php if(!empty($categories)): ?>
     
-    <ul class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__list">
+    <ul class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__list', $settings['card_type']) ); ?>">
         <?php foreach ($categories as $index => $category): 
             $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true); 
             $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'medium');
@@ -52,36 +58,38 @@ if(selleradise_is_normal_mode()) {
             ?>
 
             <li 
-                class="selleradiseWidgets_Categories__item selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item"
+                class="selleradiseWidgets_Categories__item <?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item', $settings['card_type']) ); ?>"
                 data-selleradise-status="<?php echo $index >= $page_size ? 'hidden' : 'initial'; ?>"
                 style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
-                <a class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item-inner" href="<?php echo esc_url(get_term_link($category)); ?>">
+                <a 
+                    class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-inner', $settings['card_type']) ); ?>" 
+                    href="<?php echo esc_url(get_term_link($category)); ?>">
 
                     <?php if(in_array($settings['card_type'], ['rounded', 'onlyText'])): ?>
-                        <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item-count">
+                        <div class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-count', $settings['card_type']) ); ?>">
                             <span><?php echo $category->count; ?></span>
                             <span><?php _e('Products', 'selleradise'); ?></span>
                         </div>
                     <?php endif; ?>
 
-                    <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemImage">
+                    <div class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__itemImage', $settings['card_type']) ); ?>">
                         <img
                             src="<?php echo esc_url($thumbnail_id ? $thumbnail[0] : selleradise_get_image_placeholder()); ?>"
                             alt="<?php echo get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>"
                         />
                     </div>
 
-                    <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemContent">
-                        <h3 class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemName"><?php echo esc_html($category->name); ?></h3>
+                    <div class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__itemContent', $settings['card_type']) ); ?>">
+                        <h3 class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__itemName', $settings['card_type']) ); ?>"><?php echo esc_html($category->name); ?></h3>
 
                         <?php if($category->description): ?>
-                            <p class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__itemDescription">
+                            <p class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__itemDescription', $settings['card_type']) ); ?>">
                                 <?php echo selleradise_truncate(esc_html($category->description), 50); ?>
                             </p>
                         <?php endif; ?>
 
                         <?php if (in_array($settings['card_type'], ['default'])): ?>
-                            <div class="selleradiseWidgets_Categories--<?php echo $settings['card_type']; ?>__item-count">
+                            <div class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-count', $settings['card_type']) ); ?>">
                                 <span><?php echo $category->count; ?></span>
                                 <span><?php _e('Products', 'selleradise');?></span>
                             </div>
@@ -99,4 +107,11 @@ if(selleradise_is_normal_mode()) {
             </button>
         </li>
     </ul>
+    <?php 
+        else: 
+        
+        selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No categories found', 'selleradise-widgets')]); 
+
+        endif; 
+    ?>
 </div>

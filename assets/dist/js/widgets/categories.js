@@ -1040,9 +1040,18 @@ var Categories = /*#__PURE__*/function (_elementorModules$fro) {
       }
 
       var section = this.$element[0].querySelector(".selleradiseWidgets_Categories");
+
+      if (!section) {
+        return;
+      }
+
       var loadMoreBtn = section.querySelector(".selleradiseWidgets_Categories__loadMore button");
       var pageSize = parseInt(section.getAttribute("data-selleradise-categories-page-size"));
       var items = section.querySelectorAll(".selleradiseWidgets_Categories__item[data-selleradise-status='hidden']");
+
+      if (items.length < 1) {
+        return;
+      }
 
       function pagination() {
         var offset = 0;

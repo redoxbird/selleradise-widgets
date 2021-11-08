@@ -26,25 +26,28 @@ if ($args) {
       <?php endif;?>
     </div>
 
-    <div class="selleradiseWidgets_Products__slider-buttons">
-      <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--left">
-        <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
-      </button>
+    <?php if(!empty($products)): ?>
+      <div class="selleradiseWidgets_Products__slider-buttons">
+        <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--left">
+          <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
+        </button>
 
-      <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--right">
-        <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
-      </button>
-    </div>
+        <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--right">
+          <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
+        </button>
+      </div>
+    <?php endif; ?>
 
   </div>
 
+  <?php if(!empty($products)): ?>
 
   <div class="selleradiseWidgets_Products__slider" >
     <ul class="swiper-wrapper">
       <?php 
         foreach ($products as $key => $product) {
           selleradise_widgets_get_template_part(
-            'template-parts/components/product/card', 
+            'template-parts/product/card', 
             $settings['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']
           );
         }
@@ -56,5 +59,14 @@ if ($args) {
     <?php echo _e('See all', 'selleradise-widgets'); ?> 
     <?php echo Selleradise_Widgets_svg('unicons-line/angle-right'); ?>
   </a>
+
+  <?php else: 
+  
+    selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No products found', 'selleradise-widgets')]); 
+
+    endif; 
+  ?>
+
+
 
 </div>

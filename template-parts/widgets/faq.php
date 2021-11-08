@@ -25,25 +25,25 @@ $index = 0;
   </div>
 
   <div class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__body">
-
-    <?php if(!empty($categories)): ?>
-      <ul class="selleradise_faq__categories selleradise_faq--<?php echo esc_attr($settings['type']) ?>__categories">
-        <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="all">
-          <button>
-            <?php echo esc_html_e( 'All', 'selleradise-widgets' ); ?>
-          </button>
-        </li>
-        <?php foreach($categories as $category): $slug = $category->slug; ?>
-            <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="<?php echo esc_attr($slug); ?>">
-              <button>
-                <?php echo esc_html($category->name); ?>
-              </button>
-            </li>
-        <?php endforeach; ?>
-      </ul>
-    <?php endif; ?>
-
     <?php if ( $faqs->have_posts() ) : ?>
+
+      <?php if(!empty($categories)): ?>
+        <ul class="selleradise_faq__categories selleradise_faq--<?php echo esc_attr($settings['type']) ?>__categories">
+          <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="all">
+            <button>
+              <?php echo esc_html_e( 'All', 'selleradise-widgets' ); ?>
+            </button>
+          </li>
+          <?php foreach($categories as $category): $slug = $category->slug; ?>
+              <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="<?php echo esc_attr($slug); ?>">
+                <button>
+                  <?php echo esc_html($category->name); ?>
+                </button>
+              </li>
+          <?php endforeach; ?>
+        </ul>
+      <?php endif; ?>
+
 
       <ul class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__list">
         <?php 
@@ -90,11 +90,11 @@ $index = 0;
         <?php $index++; endwhile; ?>
       </ul>
 
-    <?php else: ?>
-      <div class="selleradise_faq__empty">
-        <p><?php esc_html_e( "Could not find any FAQs.", 'selleradise-widgets' ); ?></p>
-      </div>
-    <?php endif; wp_reset_postdata(); ?>
+    <?php else: 
+
+        selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No faqs found', 'selleradise-widgets')]);
+
+    endif; wp_reset_postdata(); ?>
   </div>
 
 

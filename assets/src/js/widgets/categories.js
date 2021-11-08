@@ -14,6 +14,10 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       ".selleradiseWidgets_Categories"
     );
 
+    if (!section) {
+      return;
+    }
+
     const loadMoreBtn = section.querySelector(
       ".selleradiseWidgets_Categories__loadMore button"
     );
@@ -25,6 +29,10 @@ export class Categories extends elementorModules.frontend.handlers.Base {
     const items = section.querySelectorAll(
       ".selleradiseWidgets_Categories__item[data-selleradise-status='hidden']"
     );
+
+    if (items.length < 1) {
+      return;
+    }
 
     function pagination() {
       let offset = 0;
