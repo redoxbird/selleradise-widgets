@@ -53,7 +53,7 @@ if(selleradise_is_normal_mode()) {
     <ul class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__list', $settings['card_type']) ); ?>">
         <?php foreach ($categories as $index => $category): 
             $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true); 
-            $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'medium');
+            $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'large');
             $image_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
             ?>
 

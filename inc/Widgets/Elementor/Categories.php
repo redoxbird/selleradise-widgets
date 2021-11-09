@@ -315,6 +315,7 @@ class Categories extends \Elementor\Widget_Base
 
         if (isset($settings['include']) && $settings['include'] && !empty($settings['include'])) {
             $args['include'] = $settings['include'];
+            $args['orderby'] = 0;
         }
 
         $terms = get_terms('product_cat', $args);

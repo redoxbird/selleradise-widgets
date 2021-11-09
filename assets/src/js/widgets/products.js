@@ -1,4 +1,3 @@
-import { lazyLoad } from "../helpers";
 export class Products extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
@@ -7,7 +6,7 @@ export class Products extends elementorModules.frontend.handlers.Base {
 
   init() {
     if (this.isEdit) {
-      lazyLoad(this.$element[0]);
+      Selleradise.lazyLoad();
     }
 
     const settings = this.getElementSettings();
@@ -16,6 +15,7 @@ export class Products extends elementorModules.frontend.handlers.Base {
       this.$element[0].querySelector(".selleradiseWidgets_Products__slider"),
       {
         duration: 600,
+        autoHeight: true,
         lazy: {
           loadPrevNext: false,
         },

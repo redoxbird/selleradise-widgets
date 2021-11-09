@@ -5,10 +5,14 @@ export class Posts extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
+    if (this.isEdit) {
+      Selleradise.lazyLoad();
+    }
     const slider = new Swiper(
       this.$element[0].querySelector(".selleradise_widget--posts__slider"),
       {
         duration: 600,
+        autoHeight: true,
         keyboard: {
           enabled: true,
           onlyInViewport: true,

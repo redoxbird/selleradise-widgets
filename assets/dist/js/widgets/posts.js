@@ -88,8 +88,13 @@ var Posts = /*#__PURE__*/function (_elementorModules$fro) {
   }, {
     key: "init",
     value: function init() {
+      if (this.isEdit) {
+        Selleradise.lazyLoad();
+      }
+
       var slider = new Swiper(this.$element[0].querySelector(".selleradise_widget--posts__slider"), {
         duration: 600,
+        autoHeight: true,
         keyboard: {
           enabled: true,
           onlyInViewport: true

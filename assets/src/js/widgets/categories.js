@@ -1,4 +1,3 @@
-import { lazyLoad } from "../helpers";
 export class Categories extends elementorModules.frontend.handlers.Base {
   onInit() {
     super.onInit();
@@ -7,7 +6,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
 
   init() {
     if (this.isEdit) {
-      lazyLoad(this.$element[0]);
+      Selleradise.lazyLoad();
     }
 
     const section = this.$element[0].querySelector(
@@ -31,16 +30,12 @@ export class Categories extends elementorModules.frontend.handlers.Base {
     );
 
     if (items.length < 1) {
+      loadMoreBtn.setAttribute("disabled", "disabled");
       return;
     }
 
     function pagination() {
       let offset = 0;
-
-      if (items.length < 1) {
-        loadMoreBtn.setAttribute("disabled", "disabled");
-        return;
-      }
 
       function loadItems() {
         let realIndex = -1;
