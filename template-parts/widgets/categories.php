@@ -28,12 +28,14 @@ if(selleradise_is_normal_mode()) {
   $classes .= ' selleradise_scroll_animate';
 }
 
+$names = [];
+
 ?>
 
 
 <div 
     class="<?php echo esc_attr( $classes ); ?>"
-    style="--ratio: <?php echo esc_attr( $ratio ); ?>; --chunk-size: <?php echo esc_attr( $settings["page_size"] ); ?>"
+    style="--ratio: <?php echo esc_attr( $ratio ); ?>;"
     data-selleradise-categories-page-size="<?php echo $page_size; ?>">
 
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
@@ -55,7 +57,14 @@ if(selleradise_is_normal_mode()) {
             $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true); 
             $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'large');
             $image_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-            ?>
+
+            if(in_array($category->name, $names) && $category->parent) {
+                $parent = get_term($category->parent, $category->taxonomy);
+                $category->name = sprintf('%s (%s)', $category->name, $parent->name);
+            } else {
+                $names[] = $category->name;
+            }
+        ?>
 
             <li 
                 class="selleradiseWidgets_Categories__item <?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item', $settings['card_type']) ); ?>"
@@ -68,7 +77,12 @@ if(selleradise_is_normal_mode()) {
                     <?php if(in_array($settings['card_type'], ['rounded', 'onlyText'])): ?>
                         <div class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-count', $settings['card_type']) ); ?>">
                             <span><?php echo $category->count; ?></span>
-                            <span><?php _e('Products', 'selleradise'); ?></span>
+
+                            <?php if($category->count == 1): ?>
+                                <span><?php _e('Product', 'selleradise'); ?></span>
+                            <?php else: ?>
+                                <span><?php _e('Products', 'selleradise'); ?></span>
+                            <?php endif; ?>
                         </div>
                     <?php endif; ?>
 
@@ -103,14 +117,14 @@ if(selleradise_is_normal_mode()) {
         <li class="selleradiseWidgets_Categories__loadMore">
             <button class="selleradise_button--secondary" aria-label="<?php esc_attr_e( "Load More", "selleradise-widgets" ); ?>">
                 <?php echo selleradise_widgets_svg('unicons-line/angle-down'); ?>
-                <span><?php esc_attr_e( "Load More", "selleradise-widgets" ); ?></span>
+                <span><?php _e( "Load More", "selleradise-widgets" ); ?></span>
             </button>
         </li>
     </ul>
     <?php 
         else: 
         
-        selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No categories found', 'selleradise-widgets')]); 
+        selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('Could not find any category', 'selleradise-widgets')]); 
 
         endif; 
     ?>

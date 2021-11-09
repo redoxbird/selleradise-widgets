@@ -166,6 +166,24 @@ class Categories extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'columns',
+            [
+                'label' => __('Columns', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 100,
+                'step' => 1,
+                'desktop_default' => 6,
+				'tablet_default' => 3,
+				'mobile_default' => 2,
+                'frontend_available' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .selleradiseWidgets_Categories' => '--columns: {{value}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'page_size',
             [
@@ -175,6 +193,7 @@ class Categories extends \Elementor\Widget_Base
                 'max' => 100,
                 'step' => 1,
                 'default' => 6,
+                'frontend_available' => true,
             ]
         );
 

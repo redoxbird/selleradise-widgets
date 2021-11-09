@@ -5,10 +5,6 @@ export class Categories extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
-    if (this.isEdit) {
-      Selleradise.lazyLoad();
-    }
-
     const section = this.$element[0].querySelector(
       ".selleradiseWidgets_Categories"
     );
@@ -21,10 +17,6 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       ".selleradiseWidgets_Categories__loadMore button"
     );
 
-    const pageSize = parseInt(
-      section.getAttribute("data-selleradise-categories-page-size")
-    );
-
     const items = section.querySelectorAll(
       ".selleradiseWidgets_Categories__item[data-selleradise-status='hidden']"
     );
@@ -33,6 +25,10 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       loadMoreBtn.setAttribute("disabled", "disabled");
       return;
     }
+
+    const settings = this.getElementSettings();
+
+    const pageSize = parseInt(settings.page_size);
 
     function pagination() {
       let offset = 0;
