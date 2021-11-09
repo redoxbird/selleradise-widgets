@@ -76,13 +76,14 @@ $names = [];
 
                     <?php if(in_array($settings['card_type'], ['rounded', 'onlyText'])): ?>
                         <div class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-count', $settings['card_type']) ); ?>">
-                            <span><?php echo $category->count; ?></span>
-
-                            <?php if($category->count == 1): ?>
-                                <span><?php _e('Product', 'selleradise'); ?></span>
-                            <?php else: ?>
-                                <span><?php _e('Products', 'selleradise'); ?></span>
-                            <?php endif; ?>
+                            <span><?php echo $category->count; var_dump($category->count); ?></span>
+                            <span>
+                                <?php if ($category->count == 1): ?>
+                                    <?php _e('Product', 'selleradise');?>
+                                <?php else: ?>
+                                    <?php _e('Products', 'selleradise');?>
+                                <?php endif;?>
+                            </span>
                         </div>
                     <?php endif; ?>
 

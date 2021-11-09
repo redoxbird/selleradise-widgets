@@ -190,7 +190,7 @@ if (!function_exists('selleradise_get_image_placeholder')) {
 
     function selleradise_get_image_placeholder()
     {
-        return selleradise_plugin_assets('images/placeholder.svg');
+        return selleradise_plugin_assets('images/placeholder.png');
     }
 }
 
