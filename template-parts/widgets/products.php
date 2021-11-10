@@ -55,8 +55,11 @@ if ($args) {
     </ul>
   </div>
 
-  <a href="<?php echo esc_url($more_link); ?>" class="selleradiseWidgets_Products__moreLink selleradise_button--secondary">
-    <?php echo _e('See all', 'selleradise-widgets'); ?> 
+  <a 
+    href="<?php echo esc_url($more_link); ?>" 
+    class="selleradiseWidgets_Products__moreLink selleradise_button--secondary"
+    aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
+    <?php _e('See all', 'selleradise-widgets'); ?> 
     <?php echo Selleradise_Widgets_svg('unicons-line/angle-right'); ?>
   </a>
 

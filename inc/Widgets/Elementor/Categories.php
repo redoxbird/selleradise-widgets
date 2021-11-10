@@ -9,7 +9,6 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
-use Selleradise_Widgets\Widgets\Elementor\Products;
 use \Elementor\Controls_Manager;
 
 class Categories extends \Elementor\Widget_Base
@@ -166,37 +165,6 @@ class Categories extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
-            'columns',
-            [
-                'label' => __('Columns', 'selleradise-widgets'),
-                'type' => Controls_Manager::NUMBER,
-                'min' => 1,
-                'max' => 100,
-                'step' => 1,
-                'desktop_default' => 6,
-				'tablet_default' => 3,
-				'mobile_default' => 2,
-                'frontend_available' => true,
-                'selectors' => [
-                    '{{WRAPPER}} .selleradiseWidgets_Categories' => '--columns: {{value}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'page_size',
-            [
-                'label' => __('Chunk Size', 'selleradise-widgets'),
-                'type' => Controls_Manager::NUMBER,
-                'min' => 1,
-                'max' => 100,
-                'step' => 1,
-                'default' => 6,
-                'frontend_available' => true,
-            ]
-        );
-
         $this->add_control(
             'include',
             [
@@ -259,11 +227,61 @@ class Categories extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'page_size',
+            [
+                'label' => __('Chunk Size', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 100,
+                'step' => 1,
+                'default' => 6,
+                'frontend_available' => true,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'width',
+            [
+                'label' => __('Item Width', 'selleradise-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['rem'],
+                'range' => [
+                    'rem' => [
+                        'min' => 5,
+                        'max' => 95,
+                        'step' => 0.5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'rem',
+                    'size' => 14,
+                ],
+                'desktop_default' => [
+                    'unit' => 'rem',
+                    'size' => 14,
+                ],
+                'tablet_default' => [
+                    'unit' => 'rem',
+                    'size' => 14,
+                ],
+                'mobile_default' => [
+                    'unit' => 'rem',
+                    'size' => 13,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .selleradiseWidgets_Categories' => '--width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'card_type' => ['default', 'card-image-alt', 'onlyImage', 'onlyText'],
+                ],
+            ]
+        );
+
+        $this->add_control(
             'aspect_ratio_heading',
             [
                 'label' => __('Image Aspect Ratio', 'selleradise-widgets'),
                 'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
                 'condition' => [
                     'card_type' => ['default', 'onlyImage', 'cardImage'],
                 ],
