@@ -56,7 +56,7 @@ $index = 0;
           <blockquote><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
 
             <div class="selleradise_Testimonials--cards__profile">
-              <img src="<?php echo esc_url($profile_picture['url'] ?? \Elementor\Utils::get_placeholder_image_src()); ?>" alt="<?php echo esc_attr($profile_picture['alt']); ?>">
+              <img src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>" alt="<?php echo esc_attr($profile_picture['alt']); ?>">
 
               <div>
                 <p><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
