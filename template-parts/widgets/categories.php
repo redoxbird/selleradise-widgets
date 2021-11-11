@@ -59,13 +59,27 @@ function category_count($settings, $category)
     HTML;
 }
 
-function category_image($settings, $category)
+function category_image($settings, $category, $page_size, $index)
 {
     $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
     $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'large');
     $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
     $class = esc_attr( sprintf('selleradiseWidgets_Categories--%s__itemImage', $settings['card_type']) );
-    $src = $thumbnail_id ? $thumbnail[0] : selleradise_get_image_placeholder();
+    $placeholder = wc_placeholder_img_src();
+    $src = $thumbnail_id ? $thumbnail[0] : wc_placeholder_img_src();
+
+    if($index <= $page_size) {
+        return <<<HTML
+            <div class="{$class}">
+                <img
+                    src="{$placeholder}"
+                    data-src="{$src}"
+                    alt="{$alt}"
+                />
+            </div>
+        HTML;
+
+    }
 
     return <<<HTML
         <div class="{$class}">
@@ -141,7 +155,7 @@ $duplicate_names = array_unique(array_diff_assoc($names, array_unique($names)));
                         endif;
                     ?>
                     
-                    <?php echo category_image($settings, $category); ?>
+                    <?php echo category_image($settings, $category, $page_size, $index); ?>
 
                     <div class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__itemContent', $settings['card_type']) ); ?>">
                         <?php echo category_name($settings, $duplicate_names, $category); ?>
@@ -164,10 +178,16 @@ $duplicate_names = array_unique(array_diff_assoc($names, array_unique($names)));
         <?php endforeach;?>
 
         <li class="selleradiseWidgets_Categories__loadMore">
-            <button class="selleradise_button--secondary" aria-label="<?php esc_attr_e( "Load More", "selleradise-widgets" ); ?>">
+            <button class="selleradise_button--secondary">
                 <?php echo selleradise_widgets_svg('unicons-line/angle-down'); ?>
                 <span><?php _e( "Load More", "selleradise-widgets" ); ?></span>
             </button>
+        </li>
+
+        <li class="selleradiseWidgets_Categories__toShop hidden">
+            <a href="<?php echo esc_url( wc_get_page_permalink('shop') ); ?>" class="selleradise_button--secondary">
+                <span><?php _e( "Go to shop", "selleradise-widgets" ); ?></span>
+            </a>
         </li>
     </ul>
     <?php 

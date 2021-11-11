@@ -17,12 +17,17 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       ".selleradiseWidgets_Categories__loadMore button"
     );
 
+    const topShop = section.querySelector(
+      ".selleradiseWidgets_Categories__toShop"
+    );
+
     const items = section.querySelectorAll(
       ".selleradiseWidgets_Categories__item[data-selleradise-status='hidden']"
     );
 
     if (items.length < 1) {
       loadMoreBtn.setAttribute("disabled", "disabled");
+      topShop.classList.remove("hidden");
       return;
     }
 
@@ -38,6 +43,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
 
         if (items.length <= offset + pageSize) {
           loadMoreBtn.setAttribute("disabled", "disabled");
+          topShop.classList.remove("hidden");
         }
 
         for (let index = offset; index < offset + pageSize; index++) {
