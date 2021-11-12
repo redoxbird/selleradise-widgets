@@ -19,12 +19,11 @@ if (!$tabs) {
 <section class="selleradise_Tabs--default">
 
   <div class="selleradise_Tabs--default__head">
-    <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-      <p class="selleradise_Tabs--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-    <?php endif;?>
-
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
       <h2 class="selleradise_Tabs--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
+    <?php endif;?>
+    <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
+      <p class="selleradise_Tabs--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
     <?php endif;?>
   </div>
 

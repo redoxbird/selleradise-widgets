@@ -9,23 +9,18 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
+use Selleradise_Widgets\Controls\Elementor\Group_Background;
 use Selleradise_Widgets\Controls\Elementor\Group_Control_Link;
 use \Elementor\Controls_Manager;
 
 class CTA extends \Elementor\Widget_Base
+
 {
 
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
 
-        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], time(), true);
-
-    }
-
-    public function get_script_depends()
-    {
-        return ['selleradise-widgets'];
     }
 
     /**
@@ -113,6 +108,7 @@ class CTA extends \Elementor\Widget_Base
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
+                'default' => __('The best fashion store in town', 'selleradise-widgets'),
             ]
         );
 
@@ -122,6 +118,15 @@ class CTA extends \Elementor\Widget_Base
                 'label' => __('Description', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXTAREA,
                 'rows' => 10,
+                'default' => __('Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat repudiandae accusamus aperiam provident quibusdam ratione quod id reprehenderit quidem autem porro ducimus dolorem consequuntur dolore quam, et ab at similique!', 'selleradise-widgets'),
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Background::get_type(),
+            [
+                'name' => 'background',
+                'label' => __('Background', 'selleradise-widgets'),
             ]
         );
 
@@ -144,29 +149,10 @@ class CTA extends \Elementor\Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'style_section',
+            'setting_section',
             [
-                'label' => __('Style', 'selleradise-widgets'),
+                'label' => __('Settings', 'selleradise-widgets'),
                 'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-         $this->add_control(
-            'background_heading',
-            [
-                'label' => __('Background', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'background',
-                'label' => __('Background', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient', 'video'],
-                'selector' => '{{WRAPPER}} .selleradise_CTA--default',
             ]
         );
 
@@ -179,13 +165,26 @@ class CTA extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'overlay',
-                'label' => __('Overlay', 'selleradise-widgets'),
-                'types' => ['classic', 'gradient', 'video'],
-                'selector' => '{{WRAPPER}} .selleradise_CTA--default__overlay',
+
+        $this->add_responsive_control(
+            'overlay_blur', [
+                'label' => __('Overlay Blur', 'selleradise-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['em'],
+                'range' => [
+                    'em' => [
+                        'min' => 0,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'em',
+                    'size' => 0,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
+                ],
             ]
         );
 
@@ -204,7 +203,18 @@ class CTA extends \Elementor\Widget_Base
                 'label' => __('Text Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}}' => '--selleradise-color-text: {{value}};',
+                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => 'color: {{value}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'color_background',
+            [
+                'label' => __('Background color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => 'background-color: {{value}};',
                 ],
             ]
         );
@@ -212,10 +222,10 @@ class CTA extends \Elementor\Widget_Base
         $this->add_control(
             'color_main',
             [
-                'label' => __('Main Color', 'selleradise-widgets'),
+                'label' => __('Button background color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}}' => '--selleradise-color-main: {{value}};',
+                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => '--selleradise-color-main: {{value}};',
                 ],
             ]
         );
@@ -223,10 +233,10 @@ class CTA extends \Elementor\Widget_Base
         $this->add_control(
             'color_main_text',
             [
-                'label' => __('Main Text Color', 'selleradise-widgets'),
+                'label' => __('Button Text Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}}' => '--selleradise-color-main-text: {{value}};',
+                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => '--selleradise-color-main-text: {{value}};',
                 ],
             ]
         );

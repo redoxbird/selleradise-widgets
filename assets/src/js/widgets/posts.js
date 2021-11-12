@@ -12,7 +12,6 @@ export class Posts extends elementorModules.frontend.handlers.Base {
       this.$element[0].querySelector(".selleradise_widget--posts__slider"),
       {
         duration: 600,
-        autoHeight: true,
         keyboard: {
           enabled: true,
           onlyInViewport: true,

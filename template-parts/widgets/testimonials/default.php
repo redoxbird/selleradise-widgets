@@ -87,7 +87,8 @@ $index = 0;
     </div>
 
     <?php else: 
-      esc_html_e( 'No testimonials found', 'selleradise-widgets' ); 
+      selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No testimonials found', 'selleradise-widgets')]);
+
       endif; wp_reset_postdata(); 
     ?>
 

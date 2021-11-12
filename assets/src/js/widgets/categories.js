@@ -13,9 +13,11 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       return;
     }
 
-    const loadMoreBtn = section.querySelector(
-      ".selleradiseWidgets_Categories__loadMore button"
+    const loadMore = section.querySelector(
+      ".selleradiseWidgets_Categories__loadMore"
     );
+
+    const loadMoreBtn = loadMore.querySelector("button");
 
     const topShop = section.querySelector(
       ".selleradiseWidgets_Categories__toShop"
@@ -26,7 +28,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
     );
 
     if (items.length < 1) {
-      loadMoreBtn.setAttribute("disabled", "disabled");
+      loadMore.classList.add("hidden");
       topShop.classList.remove("hidden");
       return;
     }
@@ -42,7 +44,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
         let realIndex = -1;
 
         if (items.length <= offset + pageSize) {
-          loadMoreBtn.setAttribute("disabled", "disabled");
+          loadMore.classList.add("hidden");
           topShop.classList.remove("hidden");
         }
 

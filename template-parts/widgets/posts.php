@@ -45,6 +45,10 @@ if ($args) {
 
         endwhile;
 
+        else:
+
+          selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No posts found', 'selleradise-widgets')]);
+
         endif;
 
         wp_reset_postdata();

@@ -30,8 +30,6 @@ $index = 0;
   </div>
 
 
-
-
   <div class="selleradise_Testimonials--standard__quotes">
 
     <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
@@ -67,7 +65,8 @@ $index = 0;
     </button>
 
     <?php else: 
-      esc_html_e( 'No testimonials found', 'selleradise-widgets' ); 
+      selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No testimonials found', 'selleradise-widgets')]);
+
       endif; wp_reset_postdata(); 
     ?>
   </div>

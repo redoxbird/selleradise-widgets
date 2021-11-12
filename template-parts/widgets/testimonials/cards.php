@@ -10,7 +10,7 @@ if (isset($args)) {
 }
 
 if(!function_exists('rwmb_meta')) {
-  return '<p><b> Carbon fields not found</b> </p>';
+  return '<p><b> Meta boxes not found </b> </p>';
 }
 
 $index = 0;
@@ -23,17 +23,18 @@ $index = 0;
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
       <h2 class="selleradise_Testimonials--cards__title"><?php echo esc_html($settings['section_title']); ?></h2>
     <?php endif;?>
-    
 
-    <div class="selleradise_widgets__slider-buttons">
-      <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
-        <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
-      </button>
+    <?php if ( $testimonials->have_posts() ) : ?>
+      <div class="selleradise_widgets__slider-buttons">
+        <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
+          <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
+        </button>
 
-      <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
-        <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
-      </button>
-    </div>
+        <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
+          <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
+        </button>
+      </div>
+    <?php endif;?>
   </div>
 
   <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
@@ -69,7 +70,8 @@ $index = 0;
     </div>
 
     <?php else: 
-      esc_html_e( 'No testimonials found', 'selleradise-widgets' ); 
+      selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No testimonials found', 'selleradise-widgets')]);
+
       endif; wp_reset_postdata(); 
     ?>
 

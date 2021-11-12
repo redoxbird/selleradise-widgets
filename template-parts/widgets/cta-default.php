@@ -11,6 +11,14 @@ if (isset($args)) {
 ?>
 
 <section class="selleradise_CTA--default">
+
+  <div class="selleradise_CTA--default__image">
+    <img
+      src="<?php echo $settings['background_image']['url'] ?: selleradise_get_image_placeholder(); ?>"
+      alt="<?php echo esc_attr(get_post_meta($settings['background_image']['id'], '_wp_attachment_image_alt', true)); ?>"
+    >
+  </div>
+
   <div class="selleradise_CTA--default__overlay">
     <?php if (isset($settings['title']) && $settings['title']): ?>
       <h2 class="selleradise_CTA--default__title"><?php echo esc_html($settings['title']); ?></h2>
@@ -21,7 +29,7 @@ if (isset($args)) {
     <?php endif;?>
 
     <a
-        class="selleradise_CTA--default__linkPrimary"
+        class="selleradise_button--primary"
         href="<?php echo esc_attr($settings['cta_url']['url'] ?? '#'); ?>"
         target="<?php echo esc_attr(isset($settings['cta_url']['is_external']) && $settings['cta_url']['is_external'] ? '_blank' : null); ?>">
         <span> <?php echo esc_html($settings['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?></span>
