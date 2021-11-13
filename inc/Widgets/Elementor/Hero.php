@@ -21,13 +21,13 @@ class Hero extends \Elementor\Widget_Base
     {
         parent::__construct($data, $args);
 
-        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], time(), true);
+        wp_register_script('selleradise-widget-hero', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets/hero.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
 
     }
 
     public function get_script_depends()
     {
-        return ['selleradise-widgets'];
+        return ['selleradise-widget-hero'];
     }
 
     /**

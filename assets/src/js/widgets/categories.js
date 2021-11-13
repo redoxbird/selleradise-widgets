@@ -5,6 +5,10 @@ export class Categories extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
+    if (this.isEdit) {
+      Selleradise.lazyLoad();
+    }
+
     const section = this.$element[0].querySelector(
       ".selleradiseWidgets_Categories"
     );

@@ -18,7 +18,7 @@ if (!isset($settings)) {
 
   <div class="selleradise_Hero__image selleradise_Hero--<?php echo $settings['hero_type'] ?>__image">
     <img
-      src="<?php echo $settings['background_image']['url'] ?: selleradise_get_image_placeholder(); ?>"
+      data-src="<?php echo $settings['background_image']['url'] ?: selleradise_get_image_placeholder(); ?>"
       alt="<?php echo esc_attr(get_post_meta($settings['background_image']['id'], '_wp_attachment_image_alt', true)); ?>"
     >
   </div>
