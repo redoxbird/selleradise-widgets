@@ -50,7 +50,7 @@ if(selleradise_is_normal_mode()) {
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
           <div class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-content">
-            <h3 class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-title"><?php echo esc_html($card['title']) ?></h3>
+            <h2 class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-title"><?php echo esc_html($card['title']) ?></h2>
             <p class="selleradise_PromoCards--<?php echo esc_html($settings['card_type']); ?>__item-subtitle"><?php echo esc_html($card['subtitle']) ?></p>
           </div>
 

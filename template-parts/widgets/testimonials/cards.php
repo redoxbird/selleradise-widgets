@@ -9,10 +9,6 @@ if (isset($args)) {
 
 }
 
-if(!function_exists('rwmb_meta')) {
-  return '<p><b> Meta boxes not found </b> </p>';
-}
-
 $index = 0;
 
 ?>
@@ -53,11 +49,14 @@ $index = 0;
 
         <div class="selleradise_Testimonials--cards__quote swiper-slide">
           <h3><?php echo esc_html(get_the_title()); ?></h3>
-          <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/rating', null, ["rating" => rwmb_meta('rating')]); ?>
+          <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
           <blockquote><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
 
             <div class="selleradise_Testimonials--cards__profile">
-              <img src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>" alt="<?php echo esc_attr($profile_picture['alt']); ?>">
+              <img 
+                src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>" 
+                alt="<?php echo esc_attr($profile_picture['alt']); ?>"
+              >
 
               <div>
                 <p><?php echo esc_html(rwmb_meta('profile_name')); ?></p>

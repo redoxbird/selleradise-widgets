@@ -8,6 +8,8 @@ if ($args) {
     extract($args);
 }
 
+$rating =  rwmb_meta('rating');
+
 if(!isset($rating)) {
   return;
 } 

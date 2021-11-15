@@ -34,12 +34,12 @@
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-/*!**************************************!*\
-  !*** ./assets/src/js/widgets/faq.js ***!
-  \**************************************/
+/*!***************************************!*\
+  !*** ./assets/src/js/widgets/tabs.js ***!
+  \***************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FAQ": () => (/* binding */ FAQ)
+/* harmony export */   "Tabs": () => (/* binding */ Tabs)
 /* harmony export */ });
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -67,98 +67,84 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var FAQ = /*#__PURE__*/function (_elementorModules$fro) {
-  _inherits(FAQ, _elementorModules$fro);
+var Tabs = /*#__PURE__*/function (_elementorModules$fro) {
+  _inherits(Tabs, _elementorModules$fro);
 
-  var _super = _createSuper(FAQ);
+  var _super = _createSuper(Tabs);
 
-  function FAQ() {
-    _classCallCheck(this, FAQ);
+  function Tabs() {
+    _classCallCheck(this, Tabs);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(FAQ, [{
+  _createClass(Tabs, [{
     key: "onInit",
     value: function onInit() {
-      _get(_getPrototypeOf(FAQ.prototype), "onInit", this).call(this);
+      _get(_getPrototypeOf(Tabs.prototype), "onInit", this).call(this);
 
       this.init();
     }
   }, {
     key: "init",
     value: function init() {
-      var selectedTab = "all";
-      var prefix = "selleradise_faq";
-      var itemClass = "".concat(prefix, "__item");
-      var section = document.querySelector(".".concat(prefix));
+      var selected = 0;
+      var triggerClass = "selleradise_Tabs--default__trigger";
+      var tabClass = "selleradise_Tabs--default__tab";
+      var section = document.querySelector(".selleradise_Tabs--default");
+      var triggers = section.querySelectorAll(".".concat(triggerClass));
+      var tabs = section.querySelectorAll(".".concat(tabClass));
+      var highlighter = section.querySelector(".selleradise_Tabs--default__highlighter");
 
-      if (!section) {
+      if (!section || triggers.length < 1 || tabs.length < 1) {
         return;
       }
 
-      var items = section.querySelectorAll(".".concat(itemClass));
-      var categories = section.querySelectorAll(".".concat(prefix, "__categories li"));
-
-      if (items.length < 1 || categories.length < 1) {
-        return;
+      function setSelected(oldVal, newVal) {
+        triggers[oldVal].classList.remove("".concat(triggerClass, "--selected"));
+        triggers[newVal].classList.add("".concat(triggerClass, "--selected"));
+        tabs[oldVal].classList.remove("".concat(tabClass, "--selected"));
+        tabs[newVal].classList.add("".concat(tabClass, "--selected"));
+        anime({
+          duration: 400,
+          targets: highlighter,
+          translateX: triggers[newVal].offsetLeft,
+          translateY: triggers[newVal].offsetTop,
+          width: triggers[newVal].offsetWidth,
+          height: triggers[newVal].offsetHeight,
+          easing: "easeOutExpo"
+        });
+        anime({
+          duration: 400,
+          targets: tabs[newVal],
+          translateX: [newVal < oldVal ? "-5rem" : "5rem", 0],
+          easing: "easeOutExpo"
+        });
       }
 
-      function setSelectedTab(category, item) {
-        selectedTab = category;
-        var current = section.querySelector(".selleradise_faq__category--selected");
-
-        if (current) {
-          current.classList.remove("selleradise_faq__category--selected");
+      var _loop = function _loop(index) {
+        if (triggers.hasOwnProperty.call(triggers, index)) {
+          var trigger = triggers[index];
+          trigger.addEventListener("click", function () {
+            setSelected(selected, index);
+            selected = index;
+          });
         }
+      };
 
-        item.classList.add("selleradise_faq__category--selected");
-
-        for (var index in items) {
-          if (Object.hasOwnProperty.call(items, index)) {
-            var _item = items[index];
-
-            var itemCategory = _item.getAttribute("data-selleradise-category");
-
-            if (category === "all") {
-              _item.classList.remove("".concat(itemClass, "--hidden"));
-
-              continue;
-            }
-
-            if (!itemCategory.split(",").includes(category)) {
-              _item.classList.add("".concat(itemClass, "--hidden"));
-            } else {
-              _item.classList.remove("".concat(itemClass, "--hidden"));
-            }
-          }
-        }
+      for (var index in triggers) {
+        _loop(index);
       }
 
-      if (categories.length > 0) {
-        for (var index in categories) {
-          if (categories.hasOwnProperty.call(categories, index)) {
-            (function () {
-              var item = categories[index];
-              var category = item.getAttribute("data-selleradise-slug");
-              var button = item.querySelector("button");
-              button.addEventListener("click", function () {
-                setSelectedTab(category, item);
-              });
-            })();
-          }
-        }
-
-        setSelectedTab("all", categories[0]);
-      }
+      setSelected(0, 0);
     }
   }]);
 
-  return FAQ;
+  return Tabs;
 }(elementorModules.frontend.handlers.Base);
 jQuery(window).on("elementor/frontend/init", function () {
-  elementorFrontend.hooks.addAction("frontend/element_ready/selleradise-faq.default", function ($element) {
-    elementorFrontend.elementsHandler.addHandler(FAQ, {
+  elementorFrontend.hooks.addAction("frontend/element_ready/selleradise-tabs.default", function ($element) {
+    elementorFrontend.elementsHandler.addHandler(Tabs, {
       $element: $element
     });
   });

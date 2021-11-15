@@ -59,3 +59,14 @@ export class Tabs extends elementorModules.frontend.handlers.Base {
     setSelected(0, 0);
   }
 }
+
+jQuery(window).on("elementor/frontend/init", () => {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/selleradise-tabs.default",
+    function ($element) {
+      elementorFrontend.elementsHandler.addHandler(Tabs, {
+        $element,
+      });
+    }
+  );
+});

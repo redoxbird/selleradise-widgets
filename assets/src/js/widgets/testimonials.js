@@ -5,6 +5,10 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
+    if (this.isEdit) {
+      Selleradise.lazyLoad();
+    }
+
     let thumbs = {
       default: null,
       standard: null,
@@ -79,6 +83,7 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
     new Swiper(".selleradise_Testimonials--standard__quotes", {
       duration: 600,
       slidesPerView: 1,
+      autoHeight: true,
       navigation: {
         nextEl:
           ".selleradise_Testimonials--standard .selleradise_widgets__slider-button--right",

@@ -166,6 +166,11 @@ class Testimonials extends \Elementor\Widget_Base
 
         $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
 
+        if(!function_exists('rwmb_meta')) {
+            selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('Meta Boxes not found', 'selleradise-widgets')]);
+            return;
+        }
+
         selleradise_widgets_get_template_part("template-parts/widgets/testimonials/$type", null, ["settings" => $settings, "testimonials" => $testimonials]);
     }
 

@@ -12,13 +12,8 @@ export class Posts extends elementorModules.frontend.handlers.Base {
       this.$element[0].querySelector(".selleradise_widget--posts__slider"),
       {
         duration: 600,
-        keyboard: {
-          enabled: true,
-          onlyInViewport: true,
-        },
-        slidesPerView: 1,
-        watchSlidesVisibility: true,
-        spaceBetween: 25,
+        slidesPerView: 1.2,
+        spaceBetween: 20,
         navigation: {
           nextEl: this.$element[0].querySelector(
             ".selleradise_widget--posts__slider-button--right"
@@ -29,10 +24,11 @@ export class Posts extends elementorModules.frontend.handlers.Base {
         },
         breakpoints: {
           767: {
-            slidesPerView: 2,
+            slidesPerView: 2.25,
           },
           1025: {
-            slidesPerView: 3,
+            slidesPerView: 3.25,
+            spaceBetween: 25,
           },
         },
       }
