@@ -21,9 +21,9 @@ if(class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is
 ?>
 
 <div class="<?php echo esc_attr( $class ); ?>">
-  <div class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__content">
+  <div class="selleradise_Hero--<?php echo esc_attr( $settings['hero_type'] ) ?>__content">
     <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-      <h1 class="selleradise_Hero--<?php echo $settings['hero_type'] ?>__title">
+      <h1 class="selleradise_Hero--<?php echo esc_attr( $settings['hero_type'] ) ?>__title">
         <?php echo esc_html($settings['section_title']); ?>
       </h1>
     <?php endif;?>

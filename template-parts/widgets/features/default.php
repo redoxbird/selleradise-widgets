@@ -41,7 +41,7 @@ if (!$features) {
   <ul class="selleradise_Features--default__list">
     <?php foreach ($features as $index => $feature): ?>
       <li 
-        class="elementor-repeater-item-<?php echo $feature['_id']; ?>"
+        class="elementor-repeater-item-<?php echo esc_attr( $feature['_id'] ); ?>"
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
         <div class="selleradise_Features--default__icon">
           <?php \Elementor\Icons_Manager::render_icon($feature['icon'], ['aria-hidden' => 'true']);?>
@@ -50,7 +50,7 @@ if (!$features) {
         <h3 class="selleradise_Features--default__list-title"><?php echo esc_html($feature['title']); ?></h3>
 
         <div class="selleradise_Features--default__list-description">
-          <?php echo $feature['description']; ?>
+          <?php echo esc_attr( $feature['description'] ); ?>
         </div>
       </li>
     <?php endforeach;?>

@@ -51,7 +51,7 @@ $index = 0;
 
       <div class="selleradise_Accordion__bellow" 
           data-selleradise-category="<?php echo esc_attr(implode(',', $category_slugs)); ?>"
-          data-selleradise-index="<?php echo $index; ?>">
+          data-selleradise-index="<?php echo esc_attr( $index ); ?>">
 
         <button
           class="selleradise_Accordion__trigger"

@@ -26,7 +26,7 @@ if (!isset($settings)) {
 
 	            <?php if (isset($slide['type']) && $slide['type'] === 'default'): ?>
 
-	                <div class="swiper-slide elementor-repeater-item-<?php echo $slide['_id']; ?>" style="background-image: url(<?php echo esc_url($slide['image']['url']); ?>)">
+	                <div class="swiper-slide elementor-repeater-item-<?php echo esc_attr( $slide['_id'] ); ?>" style="background-image: url(<?php echo esc_url($slide['image']['url']); ?>)">
 	                    <div
 	                        class="content">
 	                        <h2 class="title"><?php echo esc_html($slide['title']) ?></h2>

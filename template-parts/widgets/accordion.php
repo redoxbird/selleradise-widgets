@@ -47,7 +47,7 @@ $categories = [];
           }
         ?>
 
-          <li class="selleradise_Accordion__category" data-selleradise-slug="<?php echo $slug; ?>">
+          <li class="selleradise_Accordion__category" data-selleradise-slug="<?php echo esc_attr( $slug ); ?>">
             <button>
               <?php echo esc_html($bellow['category']); ?>
             </button>
@@ -58,7 +58,7 @@ $categories = [];
 
     <?php foreach ($bellows as $key => $bellow): ?>
 
-      <div class="selleradise_Accordion__bellow" data-selleradise-category="<?php echo sanitize_title($bellow['category']); ?>" data-selleradise-index="<?php echo $key; ?>">
+      <div class="selleradise_Accordion__bellow" data-selleradise-category="<?php echo sanitize_title($bellow['category']); ?>" data-selleradise-index="<?php echo esc_attr( $key ); ?>">
         <button
           class="selleradise_Accordion__trigger"
           id="selleradise_Accordion__trigger-<?php echo esc_attr($key); ?>"
@@ -79,7 +79,7 @@ $categories = [];
           id="selleradise_Accordion__description-<?php echo esc_attr($key); ?>"
           role="region"
           aria-labelledby="selleradise_Accordion__trigger-<?php echo esc_attr($key); ?>">
-          <?php echo $bellow['description']; ?>
+          <?php echo wp_kses_post( $bellow['description'] ); ?>
 
         </div>
       </div>

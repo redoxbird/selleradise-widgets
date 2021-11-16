@@ -36,7 +36,7 @@ if (!$features) {
           <h3 class="selleradise_Features--bullet__infoTitle"><?php echo esc_html($feature['title']); ?></h3>
 
           <div class="selleradise_Features--bullet__infoDescription">
-            <?php echo $feature['description']; ?>
+            <?php echo wp_kses_post( $feature['description'] ); ?>
           </div>
         </div>
 

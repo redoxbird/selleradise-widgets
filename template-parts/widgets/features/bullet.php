@@ -19,7 +19,7 @@ if (!$features) {
 <section class="selleradise_Features--bullet">
   <ul class="selleradise_Features--bullet__list">
     <?php foreach ($features as $index => $feature): ?>
-      <li class="elementor-repeater-item-<?php echo $feature['_id']; ?>">
+      <li class="elementor-repeater-item-<?php echo esc_attr( $feature['_id'] ); ?>">
         <div class="selleradise_Features--bullet__icon">
           <?php \Elementor\Icons_Manager::render_icon($feature['icon'], ['aria-hidden' => 'true']);?>
         </div>

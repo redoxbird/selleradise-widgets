@@ -25,7 +25,7 @@ $is_editor = class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->
 
 <div class="selleradise_PromoCards--<?php echo esc_attr($settings['card_type']); ?>__item-image">
   <img
-    class="<?php echo $settings['adaptive_colors'] === 'yes' ? 'selleradise_skip-lazy-load' : null; ?>"
+    class="<?php echo esc_attr( $settings['adaptive_colors'] === 'yes' ? 'selleradise_skip-lazy-load' : null ); ?>"
 
     <?php 
       echo sprintf(

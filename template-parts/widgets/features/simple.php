@@ -35,7 +35,7 @@ if (!$features) {
         <h3 class="selleradise_Features--simple__listTitle"><?php echo esc_html($feature['title']); ?></h3>
 
         <div class="selleradise_Features--simple__listDescription">
-          <?php echo $feature['description']; ?>
+          <?php echo esc_attr( $feature['description'] ); ?>
         </div>
       </li>
     <?php endforeach;?>
