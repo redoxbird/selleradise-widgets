@@ -220,6 +220,34 @@ class Hero extends \Elementor\Widget_Base
         );
 
         $this->add_responsive_control(
+            'button_color',
+            [
+                'label' => __('Button Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_button--primary' => 'background-color: {{value}};',
+                ],
+                'condition' => [
+                    'hero_type' => ['popular'],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_color_text',
+            [
+                'label' => __('Button Text Color', 'selleradise-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_button--primary' => 'color: {{value}};',
+                ],
+                'condition' => [
+                    'hero_type' => ['popular'],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
             'overlay_blur', [
                 'label' => __('Overlay Blur', 'selleradise-widgets'),
                 'type' => Controls_Manager::SLIDER,

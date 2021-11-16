@@ -71,7 +71,7 @@ function category_name($settings, $duplicate_names, $category)
 
     if(in_array($category->name, $duplicate_names) && $category->parent) {
         $parent = get_term($category->parent, $category->taxonomy);
-        return "<h3 class='$class'>$category->name<span>($parent->name)</span></h3>";
+        return "<h3 class='$class'>$category->name <span>($parent->name)</span></h3>";
     } else {
         return "<h3 class='$class'>$category->name</h3>";
     }
