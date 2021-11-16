@@ -21,9 +21,7 @@ function title($settings)
     $class = esc_attr( sprintf('selleradiseWidgets_Categories--%s__title', $settings['card_type']) );
     $title = esc_html( $settings['section_title'] );
 
-    return <<<HTML
-        <h2 class="{$class}">{$title}</h2>
-    HTML;
+    return "<h2 class='$class'>{$title}</h2>";
 }
 
 function subtitle($settings) 
@@ -34,11 +32,7 @@ function subtitle($settings)
 
     $class = esc_attr( sprintf('selleradiseWidgets_Categories--%s__subtitle', $settings['card_type']) );
 
-    return <<<HTML
-        <p class="{$class}">
-            {$settings['section_subtitle']}
-        </p>
-    HTML;
+    return "<p class='$class'>{$settings['section_subtitle']}</p>";
 }
 
 
@@ -51,12 +45,7 @@ function category_count($settings, $category)
     $class = esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-count', $settings['card_type']) );
     $text = $category->count == 1 ? __('Product', 'selleradise') : __('Products', 'selleradise');
 
-    return <<<HTML
-        <div class="{$class}">
-            <span>{$category->count}</span>
-            <span>{$text}</span>
-        </div>
-    HTML;
+    return "<div class='$class'><span>$category->count</span><span>$text</span></div>";
 }
 
 function category_image($settings, $category, $page_size, $index)
@@ -69,26 +58,11 @@ function category_image($settings, $category, $page_size, $index)
     $src = $thumbnail_id ? $thumbnail[0] : wc_placeholder_img_src();
 
     if($index <= $page_size) {
-        return <<<HTML
-            <div class="{$class}">
-                <img
-                    src="{$placeholder}"
-                    data-src="{$src}"
-                    alt="{$alt}"
-                />
-            </div>
-        HTML;
-
+        return "<div class='$class'><img src='$placeholder' data-src='$src' alt='$alt' /></div>";
     }
 
-    return <<<HTML
-        <div class="{$class}">
-            <img
-                src="{$src}"
-                alt="{$alt}"
-            />
-        </div>
-    HTML;
+    
+    return "<div class='$class'><img src='$src' alt='$alt' /></div>";
 }
 
 function category_name($settings, $duplicate_names, $category) 
@@ -97,13 +71,9 @@ function category_name($settings, $duplicate_names, $category)
 
     if(in_array($category->name, $duplicate_names) && $category->parent) {
         $parent = get_term($category->parent, $category->taxonomy);
-        return <<<HTML
-            <h3 class="{$class}">{$category->name} <span>({$parent->name})</span></h3>
-        HTML;
+        return "<h3 class='$class'>$category->name<span>($parent->name)</span></h3>";
     } else {
-        return <<<HTML
-            <h3 class="{$class}">{$category->name}</h3>
-        HTML;
+        return "<h3 class='$class'>$category->name</h3>";
     }
 }
 
