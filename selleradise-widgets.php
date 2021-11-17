@@ -11,7 +11,7 @@
  * Description:       This plugin is intended to be used with Selleradise theme. It contains code for Elementor widgets.
  * Version:           1.0.0
  * Author:            RedOxbird
- * Requires at least: 5.0
+ * Requires at least: 5.5
  * Tested up to:      5.9
  * Requires PHP:      7.3
  * Author URI:        https://redoxbird.com
