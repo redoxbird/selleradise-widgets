@@ -113,7 +113,7 @@ $duplicate_names = array_unique(array_diff_assoc($names, array_unique($names)));
         <?php foreach ($categories as $index => $category): ?>
             <li 
                 class="selleradiseWidgets_Categories__item <?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item', $settings['card_type']) ); ?>"
-                data-selleradise-status="<?php echo esc_attr( $index >= $page_size ? 'hidden' : 'initial' ); ?>"
+                data-selleradise-status="<?php echo esc_attr( $index < $page_size ? 'initial' : 'hidden' ); ?>"
                 style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
                 <a 
                     class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-inner', $settings['card_type']) ); ?>" 

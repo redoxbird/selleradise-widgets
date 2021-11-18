@@ -16,7 +16,7 @@ if (!$incentives) {
 
 ?>
 
-<section class="selleradise_incentives selleradise_incentives--<?php echo esc_attr( $settings['type'] ); echo selleradise_is_normal_mode() ?? ' selleradise_scroll_animate'; ?>">
+<section class="selleradise_incentives selleradise_incentives--<?php echo esc_attr( $settings['type'] ); echo selleradise_is_normal_mode() ? ' selleradise_scroll_animate' : ''; ?>">
   <ul class="selleradise_incentives--<?php echo esc_attr( $settings['type'] ); ?>__list">
     <?php foreach ($incentives as $index => $incentive): ?>
       <li 
