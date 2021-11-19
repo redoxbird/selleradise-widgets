@@ -12,46 +12,21 @@ if (!isset($settings)) {
     return;
 }
 
-$class = 'selleradise_Hero--'.$settings['hero_type'];
-
-if(class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode() === false) {
-  $class .= ' selleradise_scroll_animate';
-}
-
 ?>
 
 <div class="<?php echo esc_attr( $class ); ?>">
-  <div class="selleradise_Hero--<?php echo esc_attr( $settings['hero_type'] ) ?>__content">
-    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-      <h1 class="selleradise_Hero--<?php echo esc_attr( $settings['hero_type'] ) ?>__title">
-        <?php echo esc_html($settings['section_title']); ?>
-      </h1>
-    <?php endif;?>
-
-    <?php if (isset($settings['section_description']) && $settings['section_description']): ?>
-      <p class="selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__description">
-        <?php echo esc_html($settings['section_description']); ?>
-      </p>
-    <?php endif;?>
-
-    <?php if (isset($settings['cta_primary_text']) && $settings['cta_primary_text']): ?>
-        <a
-            href="<?php echo esc_url($settings['cta_primary_url']['url'] ?? '#'); ?>"
-            target="<?php echo esc_attr($settings['cta_primary_url']['is_external'] ? '_blank' : null); ?>"
-            class="selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__primaryCTA selleradise_button--primary"
-        >
-            <?php echo esc_html($settings['cta_primary_text']); ?>
-            <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
-        </a>
-    <?php endif;?>
+  <div class="<?php echo esc_attr($prefix) ?>__content">
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/title', null, ["settings" => $settings, "prefix" => $prefix]); ?>
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/description', null, ["settings" => $settings, "prefix" => $prefix]);?>
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/cta', 'primary', ["settings" => $settings, "prefix" => $prefix]);?>
   </div>
 
-  <div class="selleradise_Hero__image selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__image">
+  <div class="selleradise_Hero__image <?php echo esc_attr($prefix) ?>__image">
       <a href="#" 
         data-tippy-content="<?php esc_html_e( 'Scroll down', 'selleradise-widgets' ); ?>" 
         aria-label="<?php esc_html_e( 'Scroll down', 'selleradise-widgets' ); ?>"
         data-smoothscroll-y="500" 
-        class="selleradise_Hero--<?php echo esc_attr($settings['hero_type']) ?>__button-scroll button--icon selleradise_trigger_smoothscroll">
+        class="<?php echo esc_attr($prefix) ?>__button-scroll button--icon selleradise_trigger_smoothscroll">
         <?php echo selleradise_widgets_svg('unicons-line/arrow-down'); ?>
       </a>
 

@@ -115,7 +115,7 @@ class Hero extends \Elementor\Widget_Base
                 'label' => __('Title', 'selleradise-widgets'),
                 'type' => Controls_Manager::TEXT,
                 'input_type' => 'text',
-                'default' => __('Explore winter collection', 'selleradise-widgets'),
+                'default' => __('Explore Our Winter Collection', 'selleradise-widgets'),
             ]
         );
 
@@ -308,7 +308,15 @@ class Hero extends \Elementor\Widget_Base
 
         $type = isset($settings['hero_type']) && $settings['hero_type'] ? $settings['hero_type'] : 'default';
 
-        selleradise_widgets_get_template_part('template-parts/widgets/hero/' . $type, null, ["settings" => $settings]);
+        $prefix = 'selleradise_Hero--' . $type;
+
+        $class = $prefix;
+
+        if (selleradise_is_normal_mode()) {
+            $class .= ' selleradise_scroll_animate';
+        }
+
+        selleradise_widgets_get_template_part('template-parts/widgets/hero/' . $type, null, ["settings" => $settings, "prefix" => $prefix, "class" => $class]);
     }
 
 }
