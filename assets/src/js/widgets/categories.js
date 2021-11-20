@@ -47,7 +47,7 @@ export class Categories extends elementorModules.frontend.handlers.Base {
       function loadItems() {
         let realIndex = -1;
 
-        if (items.length < offset + pageSize) {
+        if (items.length <= offset + pageSize) {
           loadMore.classList.add("hidden");
           topShop.classList.remove("hidden");
         }

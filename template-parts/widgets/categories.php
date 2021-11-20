@@ -95,6 +95,7 @@ if (selleradise_is_normal_mode()) {
 $names = array_column($categories, "name");
 $duplicate_names = array_unique(array_diff_assoc($names, array_unique($names)));
 
+$index = 0;
 ?>
 
 
@@ -110,10 +111,10 @@ $duplicate_names = array_unique(array_diff_assoc($names, array_unique($names)));
     <?php if(!empty($categories)): ?>
     
     <ul class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__list', $settings['card_type']) ); ?>">
-        <?php foreach ($categories as $index => $category): ?>
+        <?php foreach ($categories as $category): ?>
             <li 
                 class="selleradiseWidgets_Categories__item <?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item', $settings['card_type']) ); ?>"
-                data-selleradise-status="<?php echo esc_attr( $index < $page_size ? 'initial' : 'hidden' ); ?>"
+                data-selleradise-status="<?php echo esc_attr( (int) $index < $page_size ? 'initial' : 'hidden' ); ?>"
                 style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
                 <a 
                     class="<?php echo esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-inner', $settings['card_type']) ); ?>" 
@@ -145,7 +146,7 @@ $duplicate_names = array_unique(array_diff_assoc($names, array_unique($names)));
                 </a>
             </li>
 
-        <?php endforeach;?>
+        <?php $index++; endforeach; ?>
 
         <li class="selleradiseWidgets_Categories__loadMore">
             <button class="selleradise_button--secondary">
