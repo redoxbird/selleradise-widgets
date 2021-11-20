@@ -20,7 +20,7 @@ if($rating <= 0) {
 
 ?>
 
-<div class="selleradise_Testimonials__rating productRating--normal">
+<div class="selleradise_Testimonials__rating selleradise_productRating--normal">
     <div class="back-stars">
         <?php for ($i = 1; $i <= 5; $i++): ?>
             <?php echo selleradise_widgets_svg('unicons-solid/star'); ?>
