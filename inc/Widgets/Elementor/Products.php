@@ -137,7 +137,8 @@ class Products extends \Elementor\Widget_Base
                     'default' => esc_html__('Default', 'selleradise-widgets'),
                     'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
                     'simple' => esc_html__('Simple', 'selleradise-widgets'),
-                    'robust' => esc_html__('Robust', 'selleradise-widgets'),
+                    'list' => esc_html__('List', 'selleradise-widgets'),
+                    'compact' => esc_html__('Compact', 'selleradise-widgets'),
                 ],
                 "frontend_available" => true,
             ]

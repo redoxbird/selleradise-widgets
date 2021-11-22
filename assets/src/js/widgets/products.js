@@ -11,6 +11,45 @@ export class Products extends elementorModules.frontend.handlers.Base {
 
     const settings = this.getElementSettings();
 
+    const options = {
+      mobile: {
+        slidesPerView: () => {
+          switch (settings.card_type) {
+            case "list":
+              return 1;
+            case "compact":
+              return 2.1;
+            default:
+              return 1.2;
+          }
+        },
+      },
+      tablet: {
+        slidesPerView: () => {
+          switch (settings.card_type) {
+            case "list":
+              return 1.5;
+            case "compact":
+              return 3.1;
+            default:
+              return 2.4;
+          }
+        },
+      },
+      desktop: {
+        slidesPerView: () => {
+          switch (settings.card_type) {
+            case "list":
+              return 2.635;
+            case "compact":
+              return 6.25;
+            default:
+              return 4;
+          }
+        },
+      },
+    };
+
     const slider = new Swiper(
       this.$element[0].querySelector(".selleradiseWidgets_Products__slider"),
       {
@@ -23,7 +62,7 @@ export class Products extends elementorModules.frontend.handlers.Base {
           enabled: true,
           onlyInViewport: true,
         },
-        slidesPerView: settings.card_type === "robust" ? 1 : 1.2,
+        slidesPerView: options.mobile.slidesPerView(),
         spaceBetween: 25,
         watchSlidesVisibility: true,
         navigation: {
@@ -37,11 +76,11 @@ export class Products extends elementorModules.frontend.handlers.Base {
         resizeObserver: this.isEdit,
         breakpoints: {
           767: {
-            slidesPerView: settings.card_type === "robust" ? 1.5 : 2.4,
+            slidesPerView: options.tablet.slidesPerView(),
             spaceBetween: 25,
           },
           1025: {
-            slidesPerView: settings.card_type === "robust" ? 2.635 : 4,
+            slidesPerView: options.desktop.slidesPerView(),
             spaceBetween: 55,
           },
         },

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Selleradise Widgets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-22 13:36+0000\n"
+"POT-Creation-Date: 2021-11-22 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Khizar Hasan <khizarhasan927@gmail.com>\n"
 "Language-Team: \n"
@@ -32,11 +32,11 @@ msgstr ""
 msgid "Amazingly responsive."
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:154
+#: inc/Widgets/Elementor/Products.php:153
 msgid "Any"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:184 inc/Widgets/Elementor/Posts.php:167
+#: inc/Widgets/Elementor/Products.php:183 inc/Widgets/Elementor/Posts.php:167
 #: inc/Widgets/Elementor/Categories.php:223
 msgid "Ascending"
 msgstr ""
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Cards"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:193 inc/Widgets/Elementor/Posts.php:176
+#: inc/Widgets/Elementor/Products.php:192 inc/Widgets/Elementor/Posts.php:176
 #: inc/Widgets/Elementor/Categories.php:115
 msgid "Categories"
 msgstr ""
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Common"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:141 inc/Widgets/Elementor/FAQ.php:139
+#: inc/Widgets/Elementor/FAQ.php:139
 msgid "Compact"
 msgstr ""
 
@@ -229,12 +229,12 @@ msgstr ""
 msgid "CTA"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:169 inc/Widgets/Elementor/Posts.php:152
+#: inc/Widgets/Elementor/Products.php:168 inc/Widgets/Elementor/Posts.php:152
 msgid "Date"
 msgstr ""
 
 #: inc/Widgets/Elementor/Products.php:137
-#: inc/Widgets/Elementor/Products.php:168 inc/Widgets/Elementor/FAQ.php:138
+#: inc/Widgets/Elementor/Products.php:167 inc/Widgets/Elementor/FAQ.php:138
 #: inc/Widgets/Elementor/Incentives.php:115
 #: inc/Widgets/Elementor/Testimonials.php:137
 #: inc/Widgets/Elementor/Hero.php:174 inc/Widgets/Elementor/Posts.php:138
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:185 inc/Widgets/Elementor/Posts.php:168
+#: inc/Widgets/Elementor/Products.php:184 inc/Widgets/Elementor/Posts.php:168
 #: inc/Widgets/Elementor/Categories.php:224
 msgid "Descending"
 msgstr ""
@@ -306,7 +306,7 @@ msgctxt "Feature"
 msgid "Title"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:155
+#: inc/Widgets/Elementor/Products.php:154
 msgid "Featured"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:203 inc/Widgets/Elementor/Posts.php:186
+#: inc/Widgets/Elementor/Products.php:202 inc/Widgets/Elementor/Posts.php:186
 #: inc/Widgets/Elementor/Categories.php:159
 msgid "Limit"
 msgstr ""
@@ -471,10 +471,6 @@ msgstr ""
 #: inc/Controls/Elementor/Group_Control_Link.php:63
 msgctxt "Link Control"
 msgid "URL"
-msgstr ""
-
-#: inc/Widgets/Elementor/Products.php:140
-msgid "List"
 msgstr ""
 
 #: template-parts/widgets/categories.php:154
@@ -546,16 +542,16 @@ msgstr ""
 msgid "Nothing found"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:156
+#: inc/Widgets/Elementor/Products.php:155
 msgid "On Sale"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:180 inc/Widgets/Elementor/Posts.php:163
+#: inc/Widgets/Elementor/Products.php:179 inc/Widgets/Elementor/Posts.php:163
 #: inc/Widgets/Elementor/Categories.php:219
 msgid "Order"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:164 inc/Widgets/Elementor/Posts.php:147
+#: inc/Widgets/Elementor/Products.php:163 inc/Widgets/Elementor/Posts.php:147
 #: inc/Widgets/Elementor/Categories.php:205
 msgid "Order By"
 msgstr ""
@@ -585,7 +581,7 @@ msgstr ""
 msgid "Posts"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:170
+#: inc/Widgets/Elementor/Products.php:169
 msgid "Price"
 msgstr ""
 
@@ -608,7 +604,7 @@ msgstr ""
 msgid "Promo Cards"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:172 inc/Widgets/Elementor/Posts.php:153
+#: inc/Widgets/Elementor/Products.php:171 inc/Widgets/Elementor/Posts.php:153
 msgid "Random"
 msgstr ""
 
@@ -622,6 +618,10 @@ msgstr ""
 
 #. Author of the plugin
 msgid "RedOxbird"
+msgstr ""
+
+#: inc/Widgets/Elementor/Products.php:140
+msgid "Robust"
 msgstr ""
 
 #: inc/Widgets/Elementor/Categories.php:147
@@ -749,7 +749,7 @@ msgstr ""
 msgid "Starting from 500."
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:150
+#: inc/Widgets/Elementor/Products.php:149
 msgid "Status"
 msgstr ""
 
@@ -792,7 +792,7 @@ msgid ""
 "for Elementor widgets."
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:171 inc/Widgets/Elementor/Tabs.php:135
+#: inc/Widgets/Elementor/Products.php:170 inc/Widgets/Elementor/Tabs.php:135
 #: inc/Widgets/Elementor/CTA.php:108 inc/Widgets/Elementor/Hero.php:115
 #: inc/Widgets/Elementor/Posts.php:154
 #: inc/Widgets/Elementor/SaleCountdown.php:114
