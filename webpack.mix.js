@@ -33,4 +33,5 @@ mix
   .js("assets/src/js/widgets/testimonials.js", "assets/dist/js/widgets")
   .js("assets/src/js/widgets/promo-cards.js", "assets/dist/js/widgets")
   .js("assets/src/js/widgets/hero.js", "assets/dist/js/widgets")
+  .js("assets/src/js/widgets/cta.js", "assets/dist/js/widgets")
   .js("assets/src/js/widgets/tabs.js", "assets/dist/js/widgets");

@@ -14,7 +14,8 @@ if (isset($args)) {
 
   <div class="selleradise_CTA--default__image">
     <img
-      src="<?php echo esc_url( $settings['background_image']['url'] ?: selleradise_get_image_placeholder() ); ?>"
+      src="<?php echo \Elementor\Utils::get_placeholder_image_src(); ?>"
+      data-src="<?php echo esc_url( $settings['background_image']['url'] ?: \Elementor\Utils::get_placeholder_image_src() ); ?>"
       alt="<?php echo esc_attr(get_post_meta($settings['background_image']['id'], '_wp_attachment_image_alt', true)); ?>"
     >
   </div>
