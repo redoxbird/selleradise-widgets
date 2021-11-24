@@ -30,7 +30,7 @@ if (isset($args)) {
     <?php endif;?>
 
     <a
-        class="selleradise_button--primary"
+        class="selleradise_button--accent"
         href="<?php echo esc_attr($settings['cta_url']['url'] ?? '#'); ?>"
         target="<?php echo esc_attr(isset($settings['cta_url']['is_external']) && $settings['cta_url']['is_external'] ? '_blank' : null); ?>">
         <span> <?php echo esc_html($settings['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?></span>

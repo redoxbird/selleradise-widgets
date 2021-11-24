@@ -8,6 +8,10 @@ export class Timer extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
+    if (this.isEdit) {
+      Selleradise.lazyLoad();
+    }
+
     const countdownElement = this.$element[0].querySelector(
       ".selleradise_widgets_sale-countdown__timer"
     );
