@@ -154,18 +154,6 @@ class Categories extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'number',
-            [
-                'label' => __('Limit', 'selleradise-widgets'),
-                'type' => Controls_Manager::NUMBER,
-                'min' => 1,
-                'max' => 1000,
-                'step' => 1,
-                'default' => 100,
-            ]
-        );
-
-        $this->add_control(
             'include',
             [
                 'label' => __('Include', 'selleradise-widgets'),
@@ -223,6 +211,18 @@ class Categories extends \Elementor\Widget_Base
                     'ASC' => __('Ascending', 'selleradise-widgets'),
                     'DESC' => __('Descending', 'selleradise-widgets'),
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'number',
+            [
+                'label' => __('Limit', 'selleradise-widgets'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 1000,
+                'step' => 1,
+                'default' => 100,
             ]
         );
 

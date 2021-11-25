@@ -232,11 +232,11 @@ class Incentives extends \Elementor\Widget_Base
                         ],
                     ],
                     [
-                        'title' => 'Safe Payments',
-                        'description' => 'Pay using safest payment systems.',
+                        'title' => 'Instant Delivery',
+                        'description' => 'Get products instantly delivered.',
                         'icon' => [
-                            'value' => 'fab fa-apple-pay',
-                            'library' => 'brands',
+                            'value' => 'far fa-handshake',
+                            'library' => 'regular',
                         ],
                     ],
                 ],
