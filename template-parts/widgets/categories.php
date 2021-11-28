@@ -43,7 +43,7 @@ function category_count($settings, $category)
     }
 
     $class = esc_attr( sprintf('selleradiseWidgets_Categories--%s__item-count', $settings['card_type']) );
-    $text = $category->count == 1 ? __('Product', 'selleradise') : __('Products', 'selleradise');
+    $text = $category->count == 1 ? __('Product', 'selleradise-widgets') : __('Products', 'selleradise-widgets');
 
     return "<div class='$class'><span>$category->count</span><span>$text</span></div>";
 }

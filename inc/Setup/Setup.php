@@ -127,7 +127,7 @@ class Setup
             'context' => 'normal',
             'fields' => [
                 [
-                    'name' => __('Quote', 'selleradise'),
+                    'name' => __('Quote', 'selleradise-widgets'),
                     'id' => 'quote',
                     'type' => 'wysiwyg',
                     'options' => [
@@ -136,7 +136,7 @@ class Setup
                     ],
                 ],
                 [
-                    'name' => __('Rating', 'selleradise'),
+                    'name' => __('Rating', 'selleradise-widgets'),
                     'id' => 'rating',
                     'type' => 'number',
                     'min' => 0,
@@ -144,19 +144,19 @@ class Setup
                     'step' => 0.1,
                 ],
                 [
-                    'name' => __('Profile Picture', 'selleradise'),
+                    'name' => __('Profile Picture', 'selleradise-widgets'),
                     'id' => 'profile_picture',
                     'type' => 'image_advanced',
                     'max_file_uploads' => 1,
                     'image_size' => 'thumbnail',
                 ],
                 [
-                    'name' => __('Profile Name', 'selleradise'),
+                    'name' => __('Profile Name', 'selleradise-widgets'),
                     'id' => 'profile_name',
                     'type' => 'text',
                 ],
                 [
-                    'name' => __('Profile Title', 'selleradise'),
+                    'name' => __('Profile Title', 'selleradise-widgets'),
                     'id' => 'profile_title',
                     'type' => 'text',
                 ],

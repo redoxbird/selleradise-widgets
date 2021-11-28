@@ -36,11 +36,11 @@ function selleradise_widgets_locate_template($template_names, $load = false, $re
             $located = plugin_dir_path(dirname(__FILE__)) . $template_name;
             break;
         }
-        if (file_exists(STYLESHEETPATH . '/' . $template_name)) {
-            $located = STYLESHEETPATH . '/' . $template_name;
+        if (file_exists(get_stylesheet_directory() . '/' . $template_name)) {
+            $located = get_stylesheet_directory() . '/' . $template_name;
             break;
-        } elseif (file_exists(TEMPLATEPATH . '/' . $template_name)) {
-            $located = TEMPLATEPATH . '/' . $template_name;
+        } elseif (file_exists(get_template_directory() . '/' . $template_name)) {
+            $located = get_template_directory() . '/' . $template_name;
             break;
         } elseif (file_exists(ABSPATH . WPINC . '/theme-compat/' . $template_name)) {
             $located = ABSPATH . WPINC . '/theme-compat/' . $template_name;

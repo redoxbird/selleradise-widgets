@@ -103,7 +103,7 @@ class Posts extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __('Content', 'plugin-name'),
+                'label' => __('Content', 'selleradise-widgets'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );

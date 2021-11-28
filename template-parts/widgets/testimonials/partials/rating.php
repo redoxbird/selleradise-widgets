@@ -26,7 +26,7 @@ if($rating <= 0) {
             <?php echo selleradise_widgets_svg('unicons-solid/star'); ?>
         <?php endfor;?>
 
-        <div class="front-stars" style="width: <?php echo ($rating / 5) * 100; ?>%;">
+        <div class="front-stars" style="width: <?php echo esc_attr( ($rating / 5) * 100 ) ?>%;">
             <?php for ($i = 1; $i <= 5; $i++): ?>
                 <?php echo selleradise_widgets_svg('unicons-solid/star'); ?>
             <?php endfor;?>
