@@ -12,7 +12,7 @@
  * Version:           1.0.0
  * Author:            RedOxbird
  * Requires at least: 5.5
- * Tested up to:      5.9
+ * Tested up to:      5.8
  * Requires PHP:      7.1
  * Author URI:        https://redoxbird.com
  * Text Domain:       selleradise-widgets

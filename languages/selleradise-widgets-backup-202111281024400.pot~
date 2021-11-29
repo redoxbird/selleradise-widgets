@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Selleradise Widgets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-28 10:24+0000\n"
+"POT-Creation-Date: 2021-11-22 13:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Khizar Hasan <khizarhasan927@gmail.com>\n"
 "Language-Team: \n"
@@ -24,18 +24,8 @@ msgstr ""
 msgid "Adaptive Colors"
 msgstr ""
 
-#: inc/Setup/PostTypes.php:76 inc/Setup/PostTypes.php:77
-#, php-format
-msgid "Add New %s"
-msgstr ""
-
 #: template-parts/widgets/faq.php:34
 msgid "All"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:82
-#, php-format
-msgid "All %s"
 msgstr ""
 
 #: inc/Widgets/Elementor/Features.php:232
@@ -47,7 +37,7 @@ msgid "Any"
 msgstr ""
 
 #: inc/Widgets/Elementor/Products.php:184 inc/Widgets/Elementor/Posts.php:167
-#: inc/Widgets/Elementor/Categories.php:211
+#: inc/Widgets/Elementor/Categories.php:223
 msgid "Ascending"
 msgstr ""
 
@@ -204,11 +194,11 @@ msgstr ""
 msgid "Compact"
 msgstr ""
 
-#: inc/Widgets/Elementor/Products.php:105 inc/Widgets/Elementor/FAQ.php:106
-#: inc/Widgets/Elementor/Tabs.php:105 inc/Widgets/Elementor/Incentives.php:149
-#: inc/Widgets/Elementor/CTA.php:100 inc/Widgets/Elementor/Accordion.php:93
+#: inc/Widgets/Elementor/FAQ.php:106 inc/Widgets/Elementor/Tabs.php:105
+#: inc/Widgets/Elementor/Incentives.php:149 inc/Widgets/Elementor/CTA.php:100
+#: inc/Widgets/Elementor/Accordion.php:93
 #: inc/Widgets/Elementor/Testimonials.php:105
-#: inc/Widgets/Elementor/Hero.php:107 inc/Widgets/Elementor/Posts.php:106
+#: inc/Widgets/Elementor/Hero.php:107
 #: inc/Widgets/Elementor/SaleCountdown.php:106
 #: inc/Widgets/Elementor/Categories.php:104
 #: inc/Widgets/Elementor/HeroCarousel.php:105
@@ -221,13 +211,6 @@ msgstr ""
 msgid "Content Position"
 msgstr ""
 
-#. %s: Name of current post.
-#: template-parts/widgets/faq-accordion.php:82
-#: template-parts/widgets/faq.php:76
-#, php-format
-msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
-msgstr ""
-
 #: template-parts/widgets/categories.php:166
 msgid "Could not find any category"
 msgstr ""
@@ -236,7 +219,7 @@ msgstr ""
 msgid "Could not find any FAQs."
 msgstr ""
 
-#: inc/Widgets/Elementor/Categories.php:198
+#: inc/Widgets/Elementor/Categories.php:210
 msgid "Count"
 msgstr ""
 
@@ -262,7 +245,7 @@ msgid "Default"
 msgstr ""
 
 #: inc/Widgets/Elementor/Products.php:185 inc/Widgets/Elementor/Posts.php:168
-#: inc/Widgets/Elementor/Categories.php:212
+#: inc/Widgets/Elementor/Categories.php:224
 msgid "Descending"
 msgstr ""
 
@@ -270,11 +253,6 @@ msgstr ""
 #: inc/Widgets/Elementor/Hero.php:125
 #: inc/Widgets/Elementor/HeroCarousel.php:152
 msgid "Description"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:79
-#, php-format
-msgid "Edit %s"
 msgstr ""
 
 #: inc/Setup/Setup.php:50
@@ -305,15 +283,7 @@ msgstr ""
 msgid "Explore the shop"
 msgstr ""
 
-#: inc/Setup/PostTypes.php:32
-msgid "FAQ"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:38
-msgid "FAQ Post Type"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:33 inc/Widgets/Elementor/FAQ.php:59
+#: inc/Widgets/Elementor/FAQ.php:59
 msgid "FAQs"
 msgstr ""
 
@@ -378,7 +348,7 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
-#: inc/Widgets/Elementor/Categories.php:181
+#: inc/Widgets/Elementor/Categories.php:193
 msgid "Hide Empty"
 msgstr ""
 
@@ -410,7 +380,7 @@ msgstr ""
 msgid "Icon Color"
 msgstr ""
 
-#: inc/Widgets/Elementor/Categories.php:199
+#: inc/Widgets/Elementor/Categories.php:211
 msgid "ID"
 msgstr ""
 
@@ -459,7 +429,7 @@ msgstr ""
 msgid "Incentives"
 msgstr ""
 
-#: inc/Widgets/Elementor/Categories.php:159
+#: inc/Widgets/Elementor/Categories.php:171
 msgid "Include"
 msgstr ""
 
@@ -475,7 +445,7 @@ msgstr ""
 msgid "Item Width"
 msgstr ""
 
-#: template-parts/widgets/cta-default.php:36
+#: template-parts/widgets/cta-default.php:35
 #: template-parts/widgets/features-list.php:47
 #: template-parts/widgets/features/simple.php:50
 #: template-parts/widgets/hero/carousel.php:45
@@ -484,7 +454,7 @@ msgid "Learn More"
 msgstr ""
 
 #: inc/Widgets/Elementor/Products.php:203 inc/Widgets/Elementor/Posts.php:186
-#: inc/Widgets/Elementor/Categories.php:220
+#: inc/Widgets/Elementor/Categories.php:159
 msgid "Limit"
 msgstr ""
 
@@ -540,29 +510,14 @@ msgstr ""
 msgid "Most comfortable pillows."
 msgstr ""
 
-#: inc/Widgets/Elementor/Categories.php:197
+#: inc/Widgets/Elementor/Categories.php:209
 msgid "Name"
 msgstr ""
 
-#: inc/Setup/PostTypes.php:78
-#, php-format
-msgid "New %s"
-msgstr ""
-
-#: inc/Widgets/Elementor/Categories.php:172
 #: inc/Widgets/Elementor/Categories.php:184
+#: inc/Widgets/Elementor/Categories.php:196
 #: inc/Widgets/Elementor/PromoCards.php:224
 msgid "No"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:85
-#, php-format
-msgid "No %s"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:86
-#, php-format
-msgid "No %s found in Trash"
 msgstr ""
 
 #: template-parts/widgets/faq.php:95
@@ -596,12 +551,12 @@ msgid "On Sale"
 msgstr ""
 
 #: inc/Widgets/Elementor/Products.php:180 inc/Widgets/Elementor/Posts.php:163
-#: inc/Widgets/Elementor/Categories.php:207
+#: inc/Widgets/Elementor/Categories.php:219
 msgid "Order"
 msgstr ""
 
 #: inc/Widgets/Elementor/Products.php:164 inc/Widgets/Elementor/Posts.php:147
-#: inc/Widgets/Elementor/Categories.php:193
+#: inc/Widgets/Elementor/Categories.php:205
 msgid "Order By"
 msgstr ""
 
@@ -620,11 +575,6 @@ msgstr ""
 
 #: inc/Widgets/Elementor/Hero.php:278
 msgid "Overlay Margin"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:84
-#, php-format
-msgid "Parent %s"
 msgstr ""
 
 #: inc/Widgets/Elementor/Hero.php:176
@@ -646,45 +596,20 @@ msgstr ""
 msgid "Primary CTA"
 msgstr ""
 
-#: template-parts/widgets/categories.php:46
-msgid "Product"
-msgstr ""
-
 #: inc/Widgets/Elementor/Categories.php:57
 msgid "Product Categories"
 msgstr ""
 
-#: template-parts/widgets/categories.php:46
 #: inc/Widgets/Elementor/Products.php:58 inc/Widgets/Elementor/Products.php:116
 msgid "Products"
-msgstr ""
-
-#: inc/Setup/Setup.php:154
-msgid "Profile Name"
-msgstr ""
-
-#: inc/Setup/Setup.php:147
-msgid "Profile Picture"
-msgstr ""
-
-#: inc/Setup/Setup.php:159
-msgid "Profile Title"
 msgstr ""
 
 #: inc/Widgets/Elementor/PromoCards.php:58
 msgid "Promo Cards"
 msgstr ""
 
-#: inc/Setup/Setup.php:130
-msgid "Quote"
-msgstr ""
-
 #: inc/Widgets/Elementor/Products.php:172 inc/Widgets/Elementor/Posts.php:153
 msgid "Random"
-msgstr ""
-
-#: inc/Setup/Setup.php:139
-msgid "Rating"
 msgstr ""
 
 #: inc/Widgets/Elementor/Posts.php:127
@@ -738,11 +663,6 @@ msgstr ""
 #: template-parts/widgets/hero/default.php:26
 #: template-parts/widgets/hero/default.php:27
 msgid "Scroll down"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:83
-#, php-format
-msgid "Search %s"
 msgstr ""
 
 #: inc/Widgets/Elementor/HeroCarousel.php:191
@@ -843,19 +763,11 @@ msgstr ""
 msgid "Tabs"
 msgstr ""
 
-#: inc/Setup/PostTypes.php:51
-msgid "Testimonial"
-msgstr ""
-
 #: inc/Setup/Setup.php:124
 msgid "Testimonial Info"
 msgstr ""
 
-#: inc/Setup/PostTypes.php:57
-msgid "Testimonial Post Type"
-msgstr ""
-
-#: inc/Setup/PostTypes.php:52 inc/Widgets/Elementor/Testimonials.php:58
+#: inc/Widgets/Elementor/Testimonials.php:58
 #: inc/Widgets/Elementor/Testimonials.php:116
 msgid "Testimonials"
 msgstr ""
@@ -905,7 +817,7 @@ msgstr ""
 msgid "Top left"
 msgstr ""
 
-#: inc/Widgets/Elementor/Categories.php:169
+#: inc/Widgets/Elementor/Categories.php:181
 msgid "Top Level"
 msgstr ""
 
@@ -927,11 +839,6 @@ msgstr ""
 msgid "Vertical"
 msgstr ""
 
-#: inc/Setup/PostTypes.php:80 inc/Setup/PostTypes.php:81
-#, php-format
-msgid "View %s"
-msgstr ""
-
 #: inc/Widgets/Elementor/Features.php:116
 msgid "Why choose us?"
 msgstr ""
@@ -944,8 +851,8 @@ msgstr ""
 msgid "Y"
 msgstr ""
 
-#: inc/Widgets/Elementor/Categories.php:171
 #: inc/Widgets/Elementor/Categories.php:183
+#: inc/Widgets/Elementor/Categories.php:195
 #: inc/Widgets/Elementor/PromoCards.php:223
 msgid "Yes"
 msgstr ""
