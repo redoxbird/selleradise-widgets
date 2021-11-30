@@ -9,7 +9,7 @@
  * Plugin Name:       Selleradise Widgets
  * Plugin URI:        https://selleradise.com/selleradise-widgets
  * Description:       This plugin is intended to be used with Selleradise theme. It contains code for Elementor widgets.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            RedOxbird
  * Requires at least: 5.5
  * Tested up to:      5.8
@@ -28,7 +28,7 @@ if (!defined('WPINC')) {
  * Currently plugin version.
  */
 
-define('SELLERADISE_WIDGETS_VERSION', '1.0.0');
+define('SELLERADISE_WIDGETS_VERSION', '1.1.0');
 define('SELLERADISE_WIDGETS_DIR_URI', plugin_dir_url(__FILE__));
 define('SELLERADISE_WIDGETS_DIR_PATH', plugin_dir_path(__FILE__));
 

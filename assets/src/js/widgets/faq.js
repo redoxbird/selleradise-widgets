@@ -24,16 +24,15 @@ export class FAQ extends elementorModules.frontend.handlers.Base {
 
     function setSelectedTab(category, item) {
       selectedTab = category;
+      const button = item.querySelector("button");
 
-      const current = section.querySelector(
-        ".selleradise_faq__category--selected"
-      );
+      const current = section.querySelector("button[aria-selected='true']");
 
       if (current) {
-        current.classList.remove("selleradise_faq__category--selected");
+        current.setAttribute("aria-selected", false);
       }
 
-      item.classList.add("selleradise_faq__category--selected");
+      button.setAttribute("aria-selected", true);
 
       for (const index in items) {
         if (Object.hasOwnProperty.call(items, index)) {

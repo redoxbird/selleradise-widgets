@@ -28,15 +28,15 @@ $index = 0;
     <?php if ( $faqs->have_posts() ) : ?>
 
       <?php if(!empty($categories)): ?>
-        <ul class="selleradise_faq__categories selleradise_faq--<?php echo esc_attr($settings['type']) ?>__categories">
+        <ul class="selleradise_faq__categories selleradise_tablist">
           <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="all">
-            <button>
+            <button class="selleradise_tablist__button">
               <?php echo esc_html_e( 'All', 'selleradise-widgets' ); ?>
             </button>
           </li>
           <?php foreach($categories as $category): $slug = $category->slug; ?>
               <li class="selleradise_faq--<?php echo esc_attr($settings['type']) ?>__category" data-selleradise-slug="<?php echo esc_attr($slug); ?>">
-                <button>
+                <button class="selleradise_tablist__button">
                   <?php echo esc_html($category->name); ?>
                 </button>
               </li>
