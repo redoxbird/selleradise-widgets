@@ -128,18 +128,31 @@ class Posts extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'card_type',
-            [
-                'label' => __('Card Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
-                ],
-            ]
-        );
+        if (class_exists('Selleradise\\Init')) {
+
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
+                    ],
+                ]
+            );
+
+        } else {
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'popular',
+                ]
+            );
+        }
 
         $this->add_control(
             'orderby',

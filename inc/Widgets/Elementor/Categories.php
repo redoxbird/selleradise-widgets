@@ -136,22 +136,34 @@ class Categories extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'card_type',
-            [
-                'label' => __('Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'rounded' => esc_html__('Rounded', 'selleradise-widgets'),
-                    'icon' => esc_html__('Icon', 'selleradise-widgets'),
-                    'card-image-alt' => esc_html__('Image Card Alt', 'selleradise-widgets'),
-                    'onlyImage' => esc_html__('Image Only', 'selleradise-widgets'),
-                    'onlyText' => esc_html__('Text Only', 'selleradise-widgets'),
-                ],
-            ]
-        );
+        if (class_exists('Selleradise\\Init')) {
+
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'rounded' => esc_html__('Rounded', 'selleradise-widgets'),
+                        'icon' => esc_html__('Icon', 'selleradise-widgets'),
+                        'card-image-alt' => esc_html__('Image Card Alt', 'selleradise-widgets'),
+                        'onlyImage' => esc_html__('Image Only', 'selleradise-widgets'),
+                        'onlyText' => esc_html__('Text Only', 'selleradise-widgets'),
+                    ],
+                ]
+            );
+        } else {
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'default',
+                ]
+            );
+        }
 
         $this->add_control(
             'include',

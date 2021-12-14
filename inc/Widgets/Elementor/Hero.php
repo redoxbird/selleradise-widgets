@@ -164,20 +164,33 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'hero_type',
-            [
-                'label' => __('Hero Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'common' => esc_html__('Common', 'selleradise-widgets'),
-                    'popular' => esc_html__('Popular', 'selleradise-widgets'),
-                    'centered' => esc_html__('Centered', 'selleradise-widgets'),
-                ],
-            ]
-        );
+        if (class_exists('Selleradise\\Init')) {
+
+            $this->add_control(
+                'hero_type',
+                [
+                    'label' => __('Hero Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'common' => esc_html__('Common', 'selleradise-widgets'),
+                        'popular' => esc_html__('Popular', 'selleradise-widgets'),
+                        'centered' => esc_html__('Centered', 'selleradise-widgets'),
+                    ],
+                ]
+            );
+
+        } else {
+            $this->add_control(
+                'hero_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'popular',
+                ]
+            );
+        }
 
         $this->add_control(
             'overlay_heading',
@@ -306,7 +319,7 @@ class Hero extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        $type = isset($settings['hero_type']) && $settings['hero_type'] ? $settings['hero_type'] : 'default';
+        $type = isset($settings['hero_type']) && $settings['hero_type'] ? $settings['hero_type'] : 'popular';
 
         $prefix = 'selleradise_Hero--' . $type;
 

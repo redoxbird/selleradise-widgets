@@ -9,10 +9,11 @@
 
 namespace Selleradise_Widgets\Widgets\Elementor;
 
-use \Elementor\Controls_Manager;
 use WP_Query;
+use \Elementor\Controls_Manager;
 
 class Testimonials extends \Elementor\Widget_Base
+
 {
 
     public function __construct($data = [], $args = null)
@@ -127,19 +128,32 @@ class Testimonials extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'type',
-            [
-                'label' => __('Hero Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'cards' => esc_html__('Cards', 'selleradise-widgets'),
-                    'standard' => esc_html__('Standard', 'selleradise-widgets'),
-                ],
-            ]
-        );
+        if (class_exists('Selleradise\\Init')) {
+
+            $this->add_control(
+                'type',
+                [
+                    'label' => __('Hero Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'cards' => esc_html__('Cards', 'selleradise-widgets'),
+                        'standard' => esc_html__('Standard', 'selleradise-widgets'),
+                    ],
+                ]
+            );
+
+        } else {
+            $this->add_control(
+                'type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'cards',
+                ]
+            );
+        }
 
         $this->end_controls_section();
 
@@ -164,9 +178,9 @@ class Testimonials extends \Elementor\Widget_Base
 
         $testimonials = new WP_Query($args);
 
-        $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
+        $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'cards';
 
-        if(!function_exists('rwmb_meta')) {
+        if (!function_exists('rwmb_meta')) {
             selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('Meta Boxes not found', 'selleradise-widgets')]);
             return;
         }

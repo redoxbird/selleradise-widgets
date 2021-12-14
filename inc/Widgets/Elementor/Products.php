@@ -13,6 +13,7 @@ use WC_Product_Query;
 use \Elementor\Controls_Manager;
 
 class Products extends \Elementor\Widget_Base
+
 {
 
     public function __construct($data = [], $args = null)
@@ -127,22 +128,34 @@ class Products extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'card_type',
-            [
-                'label' => __('Card Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
-                    'simple' => esc_html__('Simple', 'selleradise-widgets'),
-                    'list' => esc_html__('List', 'selleradise-widgets'),
-                    'compact' => esc_html__('Compact', 'selleradise-widgets'),
-                ],
-                "frontend_available" => true,
-            ]
-        );
+        if (class_exists('Selleradise\\Init')) {
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
+                        'simple' => esc_html__('Simple', 'selleradise-widgets'),
+                        'list' => esc_html__('List', 'selleradise-widgets'),
+                        'compact' => esc_html__('Compact', 'selleradise-widgets'),
+                    ],
+                    "frontend_available" => true,
+                ]
+            );
+        } else {
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'default',
+                    "frontend_available" => true,
+                ]
+            );
+        }
 
         $this->add_control(
             'status',
