@@ -10,12 +10,12 @@ if (isset($args)) {
 
 ?>
 
-<section class="selleradise_empty_state">
-  <div class="selleradise_empty_state__svg">
+<section class="selleradise_empty-state">
+  <div class="selleradise_empty-state__svg">
     <?php echo selleradise_widgets_svg('misc/empty-state'); ?>
   </div>
 
-  <p class="selleradise_empty_state__title" role="status">
+  <p class="selleradise_empty-state__title" role="status">
     <?php echo esc_attr( $title ) ?: __('Nothing found', 'selleradise-widgets'); ?>
   </p>
 </section>
