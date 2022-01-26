@@ -7,12 +7,12 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Selleradise Widgets
- * Plugin URI:        https://selleradise.com/selleradise-widgets
- * Description:       This plugin is intended to be used with Selleradise theme. It contains code for Elementor widgets.
- * Version:           1.2.1
+ * Plugin URI:        https://selleradise.com
+ * Description:       This is a plugin for the Selleradise theme. It contains Elementor widgets which are necessary to create a landing page shown in the Demo of Selleradise theme.
+ * Version:           1.2.2
  * Author:            RedOxbird
  * Requires at least: 5.5
- * Tested up to:      5.8
+ * Tested up to:      5.9
  * Requires PHP:      7.1
  * Author URI:        https://redoxbird.com
  * Text Domain:       selleradise-widgets
@@ -30,7 +30,7 @@ if (!defined('WPINC')) {
  * Currently plugin version.
  */
 
-define('SELLERADISE_WIDGETS_VERSION', '1.2.1');
+define('SELLERADISE_WIDGETS_VERSION', '1.2.2');
 define('SELLERADISE_WIDGETS_DIR_URI', plugin_dir_url(__FILE__));
 define('SELLERADISE_WIDGETS_DIR_PATH', plugin_dir_path(__FILE__));
 
