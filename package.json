@@ -4,7 +4,9 @@
   "description": "=== Plugin Name === Contributors: (this should be a list of wordpress.org userid's) Donate link: https://khizar.info Tags: comments, spam Requires at least: 3.0.1 Tested up to: 3.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "run-p dev:*",
+    "dev:mix": "npx mix watch",
+    "dev:tailwind": "npx tailwindcss -i ./assets/dist/css/tailwind.input.css -o ./assets/dist/css/tailwind.css --watch"
   },
   "repository": {
     "type": "git",
@@ -19,13 +21,16 @@
   "homepage": "https://github.com/KhizarWeb/selleradise-widgets#readme",
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
+    "autoprefixer": "^10.4.4",
     "babel-preset-preact": "^2.0.0",
     "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.2.2",
     "laravel-mix": "^6.0.13",
-    "postcss": "^8.2.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.12",
     "sass": "^1.32.8",
-    "sass-loader": "^10.1.1"
+    "sass-loader": "^10.1.1",
+    "tailwindcss": "^3.0.23"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.14.5",
