@@ -129,7 +129,6 @@ class Posts extends \Elementor\Widget_Base
         );
 
         if (class_exists('Selleradise\\Init')) {
-
             $this->add_control(
                 'card_type',
                 [
@@ -149,7 +148,7 @@ class Posts extends \Elementor\Widget_Base
                 [
                     'label' => __('Card Type', 'selleradise-widgets'),
                     'type' => Controls_Manager::HIDDEN,
-                    'default' => 'popular',
+                    'default' => 'default',
                 ]
             );
         }
