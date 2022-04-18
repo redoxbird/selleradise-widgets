@@ -3,7 +3,7 @@ Contributors: RedOxbird
 Tags:  e-commerce, left-sidebar, right-sidebar, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, theme-options, translation-ready
 Requires at least: 5.5
 Tested up to: 5.9
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 Requires PHP: 7.1
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt

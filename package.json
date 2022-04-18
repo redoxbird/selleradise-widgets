@@ -1,12 +1,15 @@
 {
   "name": "selleradise-widgets",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "=== Plugin Name === Contributors: (this should be a list of wordpress.org userid's) Donate link: https://khizar.info Tags: comments, spam Requires at least: 3.0.1 Tested up to: 3.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
   "main": "index.js",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:mix": "npx mix watch",
-    "dev:tailwind": "npx tailwindcss -i ./assets/dist/css/tailwind.input.css -o ./assets/dist/css/tailwind.css --watch"
+    "dev:tailwind": "npx tailwindcss -i ./assets/dist/css/tailwind.input.css -o ./assets/dist/css/tailwind.css --watch",
+    "build": "run-p build:*",
+    "build:mix": "npx mix --production",
+    "build:tailwind": "npx tailwindcss -i ./assets/dist/css/tailwind.input.css -o ./assets/dist/css/tailwind.css"
   },
   "repository": {
     "type": "git",
