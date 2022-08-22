@@ -5,6 +5,7 @@ export class HeroCarousel extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
+    return;
     new Swiper(".heroCarousel--default", {
       preloadImages: false,
       loop: true,

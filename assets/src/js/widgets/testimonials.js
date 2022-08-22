@@ -14,6 +14,8 @@ export class Testimonials extends elementorModules.frontend.handlers.Base {
       standard: null,
     };
 
+    return;
+
     thumbs.default = new Swiper(
       ".selleradise_Testimonials--default__profiles",
       {

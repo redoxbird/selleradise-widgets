@@ -22,7 +22,7 @@ class Enqueue
     public function enqueue_scripts()
     {
 
-        wp_enqueue_style('selleradise-widgets-tailwind', selleradise_plugin_assets('css/tailwind.css'), array(), selleradise_widgets_get_version(), 'all');
+        // wp_enqueue_style('selleradise-widgets-tailwind', selleradise_plugin_assets('css/tailwind.css'), array(), selleradise_widgets_get_version(), 'all');
 
     }
 

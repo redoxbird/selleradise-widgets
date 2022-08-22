@@ -18,7 +18,7 @@ if ($args) {
   <div class="selleradiseWidgets_Products__head">
     <div>
       <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-        <h2 class="selleradiseWidgets_Products__title"><?php echo esc_html($settings['section_title']); ?></h2>
+        <h2 class="text-2xl"><?php echo esc_html($settings['section_title']); ?></h2>
       <?php endif;?>
 
       <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
@@ -42,26 +42,24 @@ if ($args) {
 
   <?php if(!empty($products)): ?>
 
-  <div class="selleradiseWidgets_Products__slider" >
-    <ul class="swiper-wrapper">
+    <ul class="grid lg:grid-cols-4 gap-8">
       <?php 
         foreach ($products as $key => $product) {
           get_template_part(
             'template-parts/product/card', 
-            $settings['card_type'] ?: 'default', ['product' => $product, 'classes' => 'swiper-slide']
+            $settings['card_type'] ?: 'default', ['product' => $product]
           );
         }
       ?>
     </ul>
-  </div>
 
-  <a 
-    href="<?php echo esc_url($more_link); ?>" 
-    class="selleradiseWidgets_Products__moreLink selleradise_button--secondary"
-    aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
-    <?php _e('See all', 'selleradise-widgets'); ?> 
-    <?php echo Selleradise_Widgets_svg('unicons-line/angle-right'); ?>
-  </a>
+    <a 
+      href="<?php echo esc_url($more_link); ?>" 
+      class="mt-8 selleradise_button--secondary"
+      aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
+      <?php _e('See all', 'selleradise-widgets'); ?> 
+      <?php echo Selleradise_Widgets_svg('unicons-line/angle-right'); ?>
+    </a>
 
   <?php else: 
   

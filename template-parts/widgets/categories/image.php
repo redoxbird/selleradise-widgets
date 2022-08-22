@@ -24,7 +24,7 @@ $src = $thumbnail_id ? $thumbnail[0] : $placeholder;
   <div class="<?php echo esc_attr($prefix) ?>__itemImage">
     <img 
       src="<?php echo esc_attr($placeholder); ?>" 
-      data-src="<?php echo esc_attr($src); ?>" 
+      x-intersect.once="$setSrc('<?php echo esc_attr($src); ?>')"
       alt="<?php echo esc_attr($alt); ?>" />
   </div>
 <?php else: ?>

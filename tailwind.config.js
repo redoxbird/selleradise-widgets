@@ -50,7 +50,6 @@ module.exports = {
       gridTemplateRows: {
         8: "repeat(8, minmax(0, 1fr))",
       },
-
       zIndex: {
         1000: "1000",
         1001: "1001",

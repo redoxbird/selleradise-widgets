@@ -19,14 +19,6 @@ class Products extends \Elementor\Widget_Base
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
-
-        wp_register_script('selleradise-widget-products', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets/products.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
-
-    }
-
-    public function get_script_depends()
-    {
-        return ['selleradise-widget-products'];
     }
 
     /**
@@ -218,7 +210,7 @@ class Products extends \Elementor\Widget_Base
                 'min' => 1,
                 'max' => 50,
                 'step' => 1,
-                'default' => 9,
+                'default' => 8,
             ]
         );
 

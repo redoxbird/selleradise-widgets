@@ -6,10 +6,8 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:mix": "npx mix watch",
-    "dev:tailwind": "npx tailwindcss -i ./assets/dist/css/tailwind.input.css -o ./assets/dist/css/tailwind.css --watch",
     "build": "run-p build:*",
-    "build:mix": "npx mix --production",
-    "build:tailwind": "npx tailwindcss -i ./assets/dist/css/tailwind.input.css -o ./assets/dist/css/tailwind.css"
+    "build:mix": "npx mix --production"
   },
   "repository": {
     "type": "git",

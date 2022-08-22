@@ -50,6 +50,8 @@ export class Products extends elementorModules.frontend.handlers.Base {
       },
     };
 
+    return;
+
     const slider = new Swiper(
       this.$element[0].querySelector(".selleradiseWidgets_Products__slider"),
       {

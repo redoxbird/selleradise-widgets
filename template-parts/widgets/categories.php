@@ -57,7 +57,8 @@ $index = 0;
             <li 
                 class="selleradiseWidgets_Categories__item <?php echo esc_attr($prefix); ?>__item"
                 data-selleradise-status="<?php echo esc_attr( (int) $index < $page_size ? 'initial' : 'hidden' ); ?>"
-                style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
+                style="--selleradise-item-index: <?php echo esc_attr($index); ?>"
+                x-data>
                 <a 
                     class="<?php echo esc_attr($prefix); ?>__item-inner" 
                     href="<?php echo esc_url(get_term_link($category)); ?>">

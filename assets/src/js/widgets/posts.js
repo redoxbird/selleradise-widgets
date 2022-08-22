@@ -8,6 +8,9 @@ export class Posts extends elementorModules.frontend.handlers.Base {
     if (this.isEdit) {
       Selleradise.lazyLoad();
     }
+
+    return;
+
     const slider = new Swiper(
       this.$element[0].querySelector(".selleradise_widget--posts__slider"),
       {
