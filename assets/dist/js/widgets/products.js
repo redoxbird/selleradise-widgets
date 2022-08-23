@@ -88,96 +88,19 @@ var Products = /*#__PURE__*/function (_elementorModules$fro) {
   }, {
     key: "init",
     value: function init() {
-      if (this.isEdit) {
-        Selleradise.lazyLoad();
-      }
-
-      var settings = this.getElementSettings();
-      var options = {
-        mobile: {
-          slidesPerView: function slidesPerView() {
-            switch (settings.card_type) {
-              case "list":
-                return 1;
-
-              case "compact":
-                return 2.1;
-
-              default:
-                return 1.2;
-            }
-          }
-        },
-        tablet: {
-          slidesPerView: function slidesPerView() {
-            switch (settings.card_type) {
-              case "list":
-                return 1.5;
-
-              case "compact":
-                return 3.1;
-
-              default:
-                return 2.4;
-            }
-          }
-        },
-        desktop: {
-          slidesPerView: function slidesPerView() {
-            switch (settings.card_type) {
-              case "list":
-                return 2.635;
-
-              case "compact":
-                return 6.25;
-
-              default:
-                return 4;
-            }
-          }
-        }
-      };
-      return;
-      var slider = new Swiper(this.$element[0].querySelector(".selleradiseWidgets_Products__slider"), {
-        duration: 600,
-        autoHeight: true,
-        lazy: {
-          loadPrevNext: false
-        },
-        keyboard: {
-          enabled: true,
-          onlyInViewport: true
-        },
-        slidesPerView: options.mobile.slidesPerView(),
-        spaceBetween: 25,
-        watchSlidesVisibility: true,
-        navigation: {
-          nextEl: this.$element[0].querySelector(".selleradiseWidgets_Products__slider-button--right"),
-          prevEl: this.$element[0].querySelector(".selleradiseWidgets_Products__slider-button--left")
-        },
-        resizeObserver: this.isEdit,
-        breakpoints: {
-          767: {
-            slidesPerView: options.tablet.slidesPerView(),
-            spaceBetween: 25
-          },
-          1025: {
-            slidesPerView: options.desktop.slidesPerView(),
-            spaceBetween: 55
-          }
+      var initEvent = new CustomEvent("selleradise-widget-initialized", {
+        detail: {
+          name: "products",
+          settings: this.getElementSettings(),
+          isEdit: this.isEdit,
+          element: this.$element[0]
         }
       });
+      window.dispatchEvent(initEvent);
     }
   }]);
 
   return Products;
 }(elementorModules.frontend.handlers.Base);
-jQuery(window).on("elementor/frontend/init", function () {
-  elementorFrontend.hooks.addAction("frontend/element_ready/selleradise-products.default", function ($element) {
-    elementorFrontend.elementsHandler.addHandler(Products, {
-      $element: $element
-    });
-  });
-});
 /******/ })()
 ;

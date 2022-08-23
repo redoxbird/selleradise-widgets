@@ -88,20 +88,19 @@ var Hero = /*#__PURE__*/function (_elementorModules$fro) {
   }, {
     key: "init",
     value: function init() {
-      if (this.isEdit) {
-        Selleradise.lazyLoad();
-      }
+      var initEvent = new CustomEvent("selleradise-widget-initialized", {
+        detail: {
+          name: "hero",
+          settings: this.getElementSettings(),
+          isEdit: this.isEdit,
+          element: this.$element[0]
+        }
+      });
+      window.dispatchEvent(initEvent);
     }
   }]);
 
   return Hero;
 }(elementorModules.frontend.handlers.Base);
-jQuery(window).on("elementor/frontend/init", function () {
-  elementorFrontend.hooks.addAction("frontend/element_ready/selleradise-hero.default", function ($element) {
-    elementorFrontend.elementsHandler.addHandler(Hero, {
-      $element: $element
-    });
-  });
-});
 /******/ })()
 ;

@@ -20,8 +20,6 @@ if(!$settings['section_title']) {
   return;
 }
 
-?>
+echo esc_html($settings['section_title']);
 
-<h1 class="<?php echo esc_attr($prefix) ?>__title">
-  <?php echo esc_html($settings['section_title']); ?>
-</h1>
+?>

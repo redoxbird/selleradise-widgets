@@ -23,17 +23,14 @@ $is_editor = class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->
 
 ?>
 
-<div class="selleradise_PromoCards--<?php echo esc_attr($settings['card_type']); ?>__item-image">
-  <img
-    class="<?php echo esc_attr( $settings['adaptive_colors'] === 'yes' ? 'selleradise_skip-lazy-load' : null ); ?>"
-
-    <?php 
-      echo sprintf(
-        '%s="%s"',  
-        'data-src',
-        esc_url($thumbnail ? $thumbnail[0] : selleradise_get_image_placeholder())
-      ); 
-    ?>
-    src="<?php echo selleradise_get_image_placeholder(); ?>"
-    alt="<?php echo esc_attr($image_alt); ?>">
-</div>
+<img
+  class="<?php echo isset($classes) ? esc_attr($classes) : null ?>"
+  <?php 
+    echo sprintf(
+      '%s="%s"',  
+      'data-src',
+      esc_url($thumbnail ? $thumbnail[0] : selleradise_get_image_placeholder())
+    ); 
+  ?>
+  src="<?php echo selleradise_get_image_placeholder(); ?>"
+  alt="<?php echo esc_attr($image_alt); ?>">

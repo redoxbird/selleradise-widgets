@@ -92,11 +92,11 @@ var Testimonials = /*#__PURE__*/function (_elementorModules$fro) {
         Selleradise.lazyLoad();
       }
 
+      return;
       var thumbs = {
         "default": null,
         standard: null
       };
-      return;
       thumbs["default"] = new Swiper(".selleradise_Testimonials--default__profiles", {
         spaceBetween: 10,
         slidesPerView: 2,

@@ -20,8 +20,7 @@ if (!$settings['section_description']) {
     return;
 }
 
+echo esc_html($settings['section_description']);
+
 ?>
 
-<p class="<?php echo esc_attr($prefix) ?>__description">
-  <?php echo esc_html($settings['section_description']); ?>
-</p>

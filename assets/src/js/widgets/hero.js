@@ -5,19 +5,15 @@ export class Hero extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
-    if (this.isEdit) {
-      Selleradise.lazyLoad();
-    }
+    const initEvent = new CustomEvent("selleradise-widget-initialized", {
+      detail: {
+        name: "hero",
+        settings: this.getElementSettings(),
+        isEdit: this.isEdit,
+        element: this.$element[0],
+      },
+    });
+
+    window.dispatchEvent(initEvent);
   }
 }
-
-jQuery(window).on("elementor/frontend/init", () => {
-  elementorFrontend.hooks.addAction(
-    "frontend/element_ready/selleradise-hero.default",
-    function ($element) {
-      elementorFrontend.elementsHandler.addHandler(Hero, {
-        $element,
-      });
-    }
-  );
-});

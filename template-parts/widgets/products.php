@@ -18,26 +18,13 @@ if ($args) {
   <div class="selleradiseWidgets_Products__head">
     <div>
       <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-        <h2 class="text-2xl"><?php echo esc_html($settings['section_title']); ?></h2>
+        <h2 class="text-3xl"><?php echo esc_html($settings['section_title']); ?></h2>
       <?php endif;?>
 
       <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
         <p class="selleradiseWidgets_Products__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
       <?php endif;?>
     </div>
-
-    <?php if(!empty($products)): ?>
-      <div class="selleradiseWidgets_Products__slider-buttons">
-        <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--left">
-          <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
-        </button>
-
-        <button class="selleradiseWidgets_Products__slider-button selleradiseWidgets_Products__slider-button--right">
-          <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
-        </button>
-      </div>
-    <?php endif; ?>
-
   </div>
 
   <?php if(!empty($products)): ?>
@@ -67,7 +54,5 @@ if ($args) {
 
     endif; 
   ?>
-
-
 
 </div>

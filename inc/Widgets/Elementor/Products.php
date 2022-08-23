@@ -19,6 +19,12 @@ class Products extends \Elementor\Widget_Base
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
+        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
+    }
+
+    public function get_script_depends()
+    {
+        return ['selleradise-widgets'];
     }
 
     /**
@@ -196,7 +202,7 @@ class Products extends \Elementor\Widget_Base
             'categories',
             [
                 'label' => __('Categories', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT2,
+                'type' => Controls_Manager::SELECT,
                 'options' => $this->get_select_categories(),
                 'multiple' => true,
             ]
@@ -244,7 +250,7 @@ class Products extends \Elementor\Widget_Base
 
         if (isset($settings['categories']) && $settings['categories'] && !empty($settings['categories'])) {
             $args['category'] = $settings['categories'];
-            $url_params['product_cat'] = implode(',', $settings['categories']);
+            $url_params['product_cat'] = $settings['categories'];
         }
 
         if (isset($settings['status']) && $settings['status'] == 'featured') {
@@ -302,7 +308,7 @@ class Products extends \Elementor\Widget_Base
 
         $product_categories = [];
 
-        $product_categories['all'] = 'All Categories';
+        $product_categories[''] = 'All Categories';
 
         // dd($terms);
 
