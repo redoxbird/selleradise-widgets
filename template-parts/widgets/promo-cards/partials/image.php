@@ -19,18 +19,10 @@ if (!$card) {
 
 $thumbnail = wp_get_attachment_image_src($card['image']['id'], 'medium');
 $image_alt = get_post_meta($card['image']['id'], '_wp_attachment_image_alt', true);
-$is_editor = class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode();
 
 ?>
 
 <img
   class="<?php echo isset($classes) ? esc_attr($classes) : null ?>"
-  <?php 
-    echo sprintf(
-      '%s="%s"',  
-      'data-src',
-      esc_url($thumbnail ? $thumbnail[0] : selleradise_get_image_placeholder())
-    ); 
-  ?>
-  src="<?php echo selleradise_get_image_placeholder(); ?>"
+  <?php echo selleradise_lazy_src($thumbnail ? $thumbnail[0] : selleradise_get_image_placeholder()); ?>
   alt="<?php echo esc_attr($image_alt); ?>">

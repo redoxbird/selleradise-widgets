@@ -5,25 +5,15 @@ export class PromoCards extends elementorModules.frontend.handlers.Base {
   }
 
   init() {
-    const settings = this.getElementSettings();
+    const initEvent = new CustomEvent("selleradise-widget-initialized", {
+      detail: {
+        name: "promo-cards",
+        settings: this.getElementSettings(),
+        isEdit: this.isEdit,
+        element: this.$element[0],
+      },
+    });
 
-    if (this.isEdit && Selleradise) {
-      if (settings.adaptive_colors === "yes") {
-        Selleradise.adaptiveColors();
-      } else {
-        Selleradise.lazyLoad();
-      }
-    }
+    window.dispatchEvent(initEvent);
   }
 }
-
-jQuery(window).on("elementor/frontend/init", () => {
-  elementorFrontend.hooks.addAction(
-    "frontend/element_ready/selleradise-promo-cards.default",
-    function ($element) {
-      elementorFrontend.elementsHandler.addHandler(PromoCards, {
-        $element,
-      });
-    }
-  );
-});

@@ -168,3 +168,24 @@ if (!function_exists('selleradise_is_normal_mode')) {
         return true;
     }
 }
+
+if (!function_exists('selleradise_lazy_src')) {
+
+    function selleradise_lazy_src($src)
+    {
+        if (selleradise_is_normal_mode()) {
+            return sprintf(
+                '%s="%s" src="%s"',
+                'x-lazy:src',
+                $src,
+                \Elementor\Utils::get_placeholder_image_src()
+            );
+        } else {
+            return sprintf(
+                '%s="%s"',
+                'src',
+                $src
+            );
+        }
+    }
+}

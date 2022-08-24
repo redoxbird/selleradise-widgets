@@ -14,7 +14,7 @@ if (!isset($settings)) {
 
 ?>
 
-<div class="relative w-full flex flex-col lg:flex-row justify-between items-stretch px-page pt-8 lg:h-168 overflow-hidden">
+<div x-data class="relative w-full flex flex-col lg:flex-row justify-between items-stretch px-page pt-8 lg:h-168 overflow-hidden">
 
   <div class="absolute z-10 inset-0 children:h-auto children:w-full">
     <?php echo selleradise_widgets_svg('patterns/hero-1'); ?>

@@ -14,8 +14,6 @@ if (!isset($settings['section_subtitle']) || !$settings['section_subtitle']) {
 
 ?>
 
-<p class="<?php echo esc_attr($prefix) ?>__subtitle">
-  <?php echo esc_html($settings['section_subtitle']) ?>
-</p>
+<?php echo esc_html($settings['section_subtitle']) ?>
 
 <?php

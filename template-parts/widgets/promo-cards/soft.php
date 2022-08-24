@@ -29,21 +29,22 @@ if (!$cards) {
       $class = ' elementor-repeater-item-' . $card['_id'];
     ?>
       <li
-        class="border-text-100 border-1 rounded-2xl p-3 hover:border-text-200 transition-all"
+        class="border-text-200 border-1 rounded-2xl hover:border-text-200 transition-all overflow-hidden"
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
 
         <a
-          class="flex h-full justify-between items-stretch"
+          class="flex h-full justify-between items-stretch bg-text-50"
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
-          <div class="flex flex-col justify-between items-start p-3 w-1/2 flex-grow">
-            <h2 class="text-2xl mb-4 font-semibold"><?php echo esc_html($card['title']) ?></h2>
-            <p class="bg-text-900 text-background-50 px-4 py-2 rounded-full text-xs font-semibold">
+
+          <div class="flex flex-col justify-center items-start px-6 py-12 w-1/2 flex-grow trapezoid-bl">
+            <p class="text-md mb-4 font-medium"><?php echo esc_html($card['title']) ?></p>
+            <h2 class="text-xl font-semibold border-y-1 border-text-100 py-2">
               <?php echo esc_html($card['subtitle']) ?>
-            </p>
+            </h2>
           </div>
 
-          <div class="w-[35%] relative rounded-2xl overflow-hidden">
+          <div class="relative w-1/2 overflow-hidden">
             <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "absolute !h-full w-full inset-0 object-cover"]);?>
           </div>
         </a>

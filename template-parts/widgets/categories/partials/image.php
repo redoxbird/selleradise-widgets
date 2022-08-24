@@ -20,17 +20,8 @@ $src = $thumbnail_id ? $thumbnail[0] : $placeholder;
 
 ?>
 
-<?php if($index <= $page_size): ?>
-  <div class="<?php echo esc_attr($prefix) ?>__itemImage">
-    <img 
-      src="<?php echo esc_attr($placeholder); ?>" 
-      x-intersect.once="$setSrc('<?php echo esc_attr($src); ?>')"
-      alt="<?php echo esc_attr($alt); ?>" />
-  </div>
-<?php else: ?>
-  <div class="<?php echo esc_attr($prefix) ?>__itemImage">
-    <img src="<?php echo esc_attr($src); ?>" alt="<?php echo esc_attr($alt); ?>" />
-  </div>
-<?php endif; ?>
-
-<?php
+<img 
+  class="transition-all duration-700 ease-out-expo"
+  <?php echo selleradise_lazy_src($src); ?>
+  alt="<?php echo esc_attr($alt); ?>" 
+/>

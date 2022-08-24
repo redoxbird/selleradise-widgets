@@ -19,13 +19,12 @@ class PromoCards extends \Elementor\Widget_Base
     {
         parent::__construct($data, $args);
 
-        wp_register_script('selleradise-widget-promo-cards', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets/promo-cards.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
-
+        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
     }
 
     public function get_script_depends()
     {
-        return ['selleradise-widget-promo-cards'];
+        return ['selleradise-widgets'];
     }
 
     /**
@@ -211,20 +210,8 @@ class PromoCards extends \Elementor\Widget_Base
                 'options' => [
                     'default' => esc_html__('Default', 'selleradise-widgets'),
                     'bold' => esc_html__('Bold', 'selleradise-widgets'),
+                    'soft' => esc_html__('Soft', 'selleradise-widgets'),
                 ],
-            ]
-        );
-
-        $this->add_control(
-            'adaptive_colors',
-            [
-                'label' => __('Adaptive Colors', 'selleradise-widgets'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Yes', 'selleradise-widgets'),
-                'label_off' => __('No', 'selleradise-widgets'),
-                'return_value' => 'yes',
-                'default' => 0,
-                'frontend_available' => true,
             ]
         );
 

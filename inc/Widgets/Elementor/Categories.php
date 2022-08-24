@@ -169,7 +169,7 @@ class Categories extends \Elementor\Widget_Base
             'include',
             [
                 'label' => __('Include', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT2,
+                'type' => Controls_Manager::SELECT,
                 'options' => $this->get_select_categories(),
                 'multiple' => true,
             ]
@@ -369,7 +369,7 @@ class Categories extends \Elementor\Widget_Base
 
         $terms = get_terms('product_cat', $args);
 
-        selleradise_widgets_get_template_part('template-parts/widgets/categories', null,
+        selleradise_widgets_get_template_part('template-parts/widgets/categories/'.$settings['card_type'], null,
             ["settings" => $settings, "categories" => $terms]
         );
     }
