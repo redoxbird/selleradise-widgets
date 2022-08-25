@@ -21,12 +21,12 @@ class Hero extends \Elementor\Widget_Base
     {
         parent::__construct($data, $args);
 
-       wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
+        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
     }
 
     public function get_script_depends()
     {
-       return ['selleradise-widgets'];
+        return ['selleradise-widgets'];
     }
 
     /**
@@ -165,21 +165,21 @@ class Hero extends \Elementor\Widget_Base
 
         // if (class_exists('Selleradise\\Init')) {
 
-            $this->add_control(
-                'hero_type',
-                [
-                    'label' => __('Hero Type', 'selleradise-widgets'),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => 'default',
-                    'options' => [
-                        'default' => esc_html__('Default', 'selleradise-widgets'),
-                        'common' => esc_html__('Common', 'selleradise-widgets'),
-                        'popular' => esc_html__('Popular', 'selleradise-widgets'),
-                        'centered' => esc_html__('Centered', 'selleradise-widgets'),
-                        'standard' => esc_html__('Standard', 'selleradise-widgets'),
-                    ],
-                ]
-            );
+        $this->add_control(
+            'hero_type',
+            [
+                'label' => __('Hero Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'common' => esc_html__('Common', 'selleradise-widgets'),
+                    'popular' => esc_html__('Popular', 'selleradise-widgets'),
+                    'centered' => esc_html__('Centered', 'selleradise-widgets'),
+                    'standard' => esc_html__('Standard', 'selleradise-widgets'),
+                ],
+            ]
+        );
 
         // } else {
         //     $this->add_control(
@@ -191,6 +191,43 @@ class Hero extends \Elementor\Widget_Base
         //         ]
         //     );
         // }
+
+        $this->add_control(
+            'pattern',
+            [
+                'label' => __('Background Pattern', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => '1',
+                'options' => [
+                    '1' => esc_html__('Pattern 1', 'selleradise-widgets'),
+                    '2' => esc_html__('Pattern 2', 'selleradise-widgets'),
+                    '3' => esc_html__('Pattern 3', 'selleradise-widgets'),
+                    '4' => esc_html__('Pattern 4', 'selleradise-widgets'),
+                ],
+                'condition' => [
+                    'hero_type' => ['standard'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'image_shape',
+            [
+                'label' => __('Image Shape', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'oval',
+                'options' => [
+                    'oval' => esc_html__('Oval', 'selleradise-widgets'),
+                    'circle' => esc_html__('Circle', 'selleradise-widgets'),
+                    'square' => esc_html__('Square', 'selleradise-widgets'),
+                    'half-oval' => esc_html__('Half Oval', 'selleradise-widgets'),
+                    'none' => esc_html__('None', 'selleradise-widgets'),
+                ],
+                'condition' => [
+                    'hero_type' => ['standard'],
+                ],
+            ]
+        );
 
         $this->add_control(
             'overlay_heading',

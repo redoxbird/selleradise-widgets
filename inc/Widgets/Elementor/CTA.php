@@ -149,97 +149,39 @@ class CTA extends \Elementor\Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'setting_section',
+            'settings_section',
             [
                 'label' => __('Settings', 'selleradise-widgets'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        $this->add_control(
-            'overlay_heading',
-            [
-                'label' => __('Overlay', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-
-        $this->add_responsive_control(
-            'overlay_blur', [
-                'label' => __('Overlay Blur', 'selleradise-widgets'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['em'],
-                'range' => [
-                    'em' => [
-                        'min' => 0,
-                        'max' => 10,
-                        'step' => 0.1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'em',
-                    'size' => 0,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
-                ],
-            ]
-        );
+        // if (class_exists('Selleradise\\Init')) {
 
         $this->add_control(
-            'colors_heading',
+            'type',
             [
-                'label' => __('Colors', 'selleradise-widgets'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
-            'color_text',
-            [
-                'label' => __('Text Color', 'selleradise-widgets'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => 'color: {{value}};',
+                'label' => __('Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'floating' => esc_html__('Floating', 'selleradise-widgets'),
+                    'split' => esc_html__('Split', 'selleradise-widgets'),
                 ],
             ]
         );
 
-        $this->add_control(
-            'color_background',
-            [
-                'label' => __('Background color', 'selleradise-widgets'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => 'background-color: {{value}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'color_main',
-            [
-                'label' => __('Button background color', 'selleradise-widgets'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => '--selleradise-color-main: {{value}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'color_main_text',
-            [
-                'label' => __('Button Text Color', 'selleradise-widgets'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .selleradise_CTA--default__overlay' => '--selleradise-color-main-text: {{value}};',
-                ],
-            ]
-        );
+        // } else {
+        //     $this->add_control(
+        //         'type',
+        //         [
+        //             'label' => __('Type', 'selleradise-widgets'),
+        //             'type' => Controls_Manager::HIDDEN,
+        //             'default' => 'default',
+        //         ]
+        //     );
+        // }
 
         $this->end_controls_section();
 
@@ -256,10 +198,9 @@ class CTA extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
 
-        // $type = isset($settings['section_type']) && $settings['section_type'] ? $settings['section_type'] : 'list';
-
-        selleradise_widgets_get_template_part('template-parts/widgets/cta', 'default', ["settings" => $settings]);
+        selleradise_widgets_get_template_part('template-parts/widgets/cta/' . $type, null, ["settings" => $settings]);
     }
 
 }

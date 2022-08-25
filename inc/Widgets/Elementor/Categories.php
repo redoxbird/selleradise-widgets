@@ -136,7 +136,7 @@ class Categories extends \Elementor\Widget_Base
             ]
         );
 
-        if (class_exists('Selleradise\\Init')) {
+        // if (class_exists('Selleradise\\Init')) {
 
             $this->add_control(
                 'card_type',
@@ -154,16 +154,16 @@ class Categories extends \Elementor\Widget_Base
                     ],
                 ]
             );
-        } else {
-            $this->add_control(
-                'card_type',
-                [
-                    'label' => __('Card Type', 'selleradise-widgets'),
-                    'type' => Controls_Manager::HIDDEN,
-                    'default' => 'default',
-                ]
-            );
-        }
+        // } else {
+        //     $this->add_control(
+        //         'card_type',
+        //         [
+        //             'label' => __('Card Type', 'selleradise-widgets'),
+        //             'type' => Controls_Manager::HIDDEN,
+        //             'default' => 'default',
+        //         ]
+        //     );
+        // }
 
         $this->add_control(
             'include',
@@ -369,7 +369,7 @@ class Categories extends \Elementor\Widget_Base
 
         $terms = get_terms('product_cat', $args);
 
-        selleradise_widgets_get_template_part('template-parts/widgets/categories/'.$settings['card_type'], null,
+        selleradise_widgets_get_template_part('template-parts/widgets/categories/index', null,
             ["settings" => $settings, "categories" => $terms]
         );
     }
@@ -389,6 +389,8 @@ class Categories extends \Elementor\Widget_Base
         }
 
         $product_categories = [];
+        
+        $product_categories[''] = "All";
 
         foreach ($terms as $term) {
             $product_categories[$term->term_id] = $term->name;

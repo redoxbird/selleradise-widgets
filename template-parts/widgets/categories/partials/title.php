@@ -14,6 +14,6 @@ if (!isset($settings['section_title']) || !$settings['section_title']) {
 
 ?>
 
-<?php echo esc_html($settings['section_title']) ?>
-
-<?php
+<h2 class="text-4xl text-center mb-4 font-semibold">
+ <?php echo esc_html($settings['section_title']) ?>
+</h2>

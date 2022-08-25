@@ -21,7 +21,7 @@ $src = $thumbnail_id ? $thumbnail[0] : $placeholder;
 ?>
 
 <img 
-  class="transition-all duration-700 ease-out-expo"
+  class="w-full !h-full object-cover transition-all duration-700 ease-out-expo"
   <?php echo selleradise_lazy_src($src); ?>
   alt="<?php echo esc_attr($alt); ?>" 
 />

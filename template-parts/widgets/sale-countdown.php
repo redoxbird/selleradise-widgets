@@ -23,6 +23,12 @@ $attributes['title'] = $settings['title'];
     saleTo: '<?php echo esc_attr($settings['end_date']) ?>'
   })" 
   class="w-full h-auto relative overflow-hidden"
+  x-init="
+    $dispatch('selleradise-widget-initialized', { 
+      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+      element: $el
+    })
+  "
   >
 
   <img

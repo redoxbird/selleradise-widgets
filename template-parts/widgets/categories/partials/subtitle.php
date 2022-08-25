@@ -14,6 +14,6 @@ if (!isset($settings['section_subtitle']) || !$settings['section_subtitle']) {
 
 ?>
 
-<?php echo esc_html($settings['section_subtitle']) ?>
-
-<?php
+<p class="text-lg text-center opacity-75">
+  <?php echo esc_html($settings['section_subtitle']) ?>
+</p>
