@@ -126,7 +126,7 @@ class Products extends \Elementor\Widget_Base
             ]
         );
 
-        if (class_exists('Selleradise\\Init')) {
+        // if (class_exists('Selleradise\\Init')) {
             $this->add_control(
                 'card_type',
                 [
@@ -143,17 +143,17 @@ class Products extends \Elementor\Widget_Base
                     "frontend_available" => true,
                 ]
             );
-        } else {
-            $this->add_control(
-                'card_type',
-                [
-                    'label' => __('Card Type', 'selleradise-widgets'),
-                    'type' => Controls_Manager::HIDDEN,
-                    'default' => 'default',
-                    "frontend_available" => true,
-                ]
-            );
-        }
+        // } else {
+        //     $this->add_control(
+        //         'card_type',
+        //         [
+        //             'label' => __('Card Type', 'selleradise-widgets'),
+        //             'type' => Controls_Manager::HIDDEN,
+        //             'default' => 'default',
+        //             "frontend_available" => true,
+        //         ]
+        //     );
+        // }
 
         $this->add_control(
             'status',

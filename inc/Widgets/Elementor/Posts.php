@@ -186,7 +186,7 @@ class Posts extends \Elementor\Widget_Base
             'categories',
             [
                 'label' => __('Categories', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT2,
+                'type' => Controls_Manager::SELECT,
                 'options' => $this->get_select_categories(),
                 'multiple' => true,
             ]
@@ -200,7 +200,7 @@ class Posts extends \Elementor\Widget_Base
                 'min' => 1,
                 'max' => 50,
                 'step' => 1,
-                'default' => 5,
+                'default' => 4,
             ]
         );
 
@@ -223,11 +223,11 @@ class Posts extends \Elementor\Widget_Base
 
         $args = [
             'post_type' => 'post',
-            'posts_per_page' => $settings['limit'] ?? 8,
+            'posts_per_page' => $settings['limit'] ?? 4,
         ];
 
         if (isset($settings['categories']) && $settings['categories'] && !empty($settings['categories'])) {
-            $args['category_name'] = implode(',', $settings['categories']);
+            $args['category_name'] = $settings['categories'];
         }
 
         if (isset($settings['orderby']) && $settings['orderby']) {
@@ -238,10 +238,9 @@ class Posts extends \Elementor\Widget_Base
             $args['order'] = $settings['order'];
         }
 
-        $posts = new WP_Query($args);
 
         selleradise_widgets_get_template_part('template-parts/widgets/posts', null, [
-            'posts' => $posts,
+            'query_args' => $args,
             'settings' => $settings,
         ]);
 

@@ -369,7 +369,7 @@ class Categories extends \Elementor\Widget_Base
 
         $terms = get_terms('product_cat', $args);
 
-        selleradise_widgets_get_template_part('template-parts/widgets/categories/index', null,
+        selleradise_widgets_get_template_part('template-parts/widgets/categories', null,
             ["settings" => $settings, "categories" => $terms]
         );
     }

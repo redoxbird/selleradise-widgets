@@ -30,21 +30,23 @@ if (!$cards) {
     ?>
       <li
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
+
         <a
-          class="group border-text-200 border-1 rounded-2xl overflow-hidden hover:border-text-200 hover:bg-transparent transition-all flex h-full justify-between items-stretch bg-text-50"
+          class="relative group rounded-2xl overflow-hidden flex h-full justify-end items-stretch bg-text-100"
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
 
-          <div class="flex flex-col justify-center items-start px-6 py-6 lg:py-12 w-9/20 trapezoid-bl">
+          <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "left-4 z-20 top-1/2 -translate-y-1/2 absolute !w-auto !max-w-md !h-full group-hover:scale-105 duration-700 ease-out-expo origin-center"]);?>
+
+          <div
+            class="flex flex-col justify-center items-start pr-10 pl-44 lg:pl-56 py-6 lg:py-20 w-11/12 bg-main-900 text-main-text"
+            style="clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);">
             <p class="text-md mb-4 font-medium"><?php echo esc_html($card['title']) ?></p>
-            <h2 class="text-lg font-semibold border-y-1 border-text-100 py-2">
+            <h2 class="text-lg font-semibold border-y-1 border-main-text py-2">
               <?php echo esc_html($card['subtitle']) ?>
             </h2>
           </div>
 
-          <div class="relative w-1/2 flex-grow overflow-hidden">
-            <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "absolute !h-full w-full inset-0 object-cover group-hover:scale-110 transition-all duration-700 ease-out-expo origin-center"]);?>
-          </div>
         </a>
       </li>
     <?php endforeach;?>

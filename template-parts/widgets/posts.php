@@ -9,13 +9,22 @@ if ($args) {
     extract($args);
 }
 
+$posts = new WP_Query($query_args);
+
 ?>
 
-<div class="selleradise_widget--posts">
-  <div class="selleradise_widget--posts__head">
+<div 
+  class="px-page py-20" 
+  x-init="
+    $dispatch('selleradise-widget-initialized', { 
+      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+      element: $el
+    })
+  ">
+  <div class="flex justify-between items-center mb-10">
     <div>
       <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-        <h2 class="selleradise_widget--posts__title"><?php echo esc_html($settings['section_title']); ?></h2>
+        <h2 class="text-3xl"><?php echo esc_html($settings['section_title']); ?></h2>
       <?php endif;?>
 
       <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
@@ -23,37 +32,33 @@ if ($args) {
       <?php endif;?>
     </div>
 
-    <div class="selleradise_widget--posts__slider-buttons">
-      <button class="selleradise_widget--posts__slider-button selleradise_widget--posts__slider-button--left">
-        <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
-      </button>
-
-      <button class="selleradise_widget--posts__slider-button selleradise_widget--posts__slider-button--right">
-        <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
-      </button>
-    </div>
-
+    <a 
+      href="<?php echo esc_url(get_permalink( get_option( 'page_for_posts' ) )); ?>" 
+      class="mt-8 selleradise_button--secondary"
+      aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
+      <?php _e('See all', 'selleradise-widgets'); ?> 
+      <?php echo Selleradise_Widgets_svg('unicons-line/angle-right'); ?>
+    </a>
   </div>
-  <div class="selleradise_widget--posts__slider swiper-container">
-    <div class="swiper-wrapper">
-      <?php 
-        if ( $posts->have_posts() ) :
 
-        while ($posts->have_posts()): $posts->the_post();
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <?php 
+      if ( $posts->have_posts() ) :
 
-            get_template_part('template-parts/post/card', $settings['card_type'] ?: 'default' . get_post_format(), ["classes" => 'swiper-slide']);
+      while ($posts->have_posts()): $posts->the_post();
 
-        endwhile;
+          get_template_part('template-parts/post/card', $settings['card_type'] ?: 'default' . get_post_format(), ["classes" => 'swiper-slide']);
 
-        else:
+      endwhile;
 
-          selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No posts found', 'selleradise-widgets')]);
+      else:
 
-        endif;
+        selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No posts found', 'selleradise-widgets')]);
 
-        wp_reset_postdata();
-      ?>  
-    </div>
+      endif;
+
+      wp_reset_postdata();
+    ?>  
   </div>
 </div>
 

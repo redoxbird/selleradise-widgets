@@ -31,18 +31,21 @@ if (!$cards) {
       <li
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
         <a
-          class="group border-text-200 border-1 rounded-2xl overflow-hidden hover:border-text-200 hover:bg-transparent transition-all flex h-full justify-between items-stretch bg-text-50"
+          class="relative group rounded-2xl overflow-hidden flex h-full justify-between items-stretch bg-main-900 text-main-text pl-16 pb-16"
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
 
-          <div class="flex flex-col justify-center items-start px-6 py-6 lg:py-12 w-9/20 trapezoid-bl">
-            <p class="text-md mb-4 font-medium"><?php echo esc_html($card['title']) ?></p>
-            <h2 class="text-lg font-semibold border-y-1 border-text-100 py-2">
-              <?php echo esc_html($card['subtitle']) ?>
-            </h2>
-          </div>
+          <h2 class="absolute left-4 top-6 text-lg font-semibold" style="writing-mode: vertical-rl; text-orientation: mixed;">
+            <?php echo esc_html($card['subtitle']) ?>
+          </h2>
 
-          <div class="relative w-1/2 flex-grow overflow-hidden">
+          <span class="flex justify-center items-center absolute left-4 bottom-4 w-8 h-auto text-accent-900">
+            <?php echo selleradise_widgets_svg("tabler-icons/arrow-up-right-circle"); ?>
+          </span>
+
+          <p class="absolute right-6 bottom-2 text-sm mb-4 font-semibold"><?php echo esc_html($card['title']) ?></p>
+
+          <div class="relative h-60 w-full overflow-hidden rounded-bl-2xl">
             <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "absolute !h-full w-full inset-0 object-cover group-hover:scale-110 transition-all duration-700 ease-out-expo origin-center"]);?>
           </div>
         </a>

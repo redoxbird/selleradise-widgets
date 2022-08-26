@@ -17,7 +17,7 @@ if (!$card) {
 }
 
 
-$thumbnail = wp_get_attachment_image_src($card['image']['id'], 'medium');
+$thumbnail = wp_get_attachment_image_src($card['image']['id'], 'large');
 $image_alt = get_post_meta($card['image']['id'], '_wp_attachment_image_alt', true);
 
 ?>

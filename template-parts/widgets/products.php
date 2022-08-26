@@ -22,7 +22,7 @@ if ($args) {
       <?php endif;?>
 
       <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-        <p class="selleradiseWidgets_Products__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
+        <p class=""><?php echo esc_html($settings['section_subtitle']); ?></p>
       <?php endif;?>
     </div>
 

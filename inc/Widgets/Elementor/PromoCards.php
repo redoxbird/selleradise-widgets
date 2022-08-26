@@ -211,6 +211,11 @@ class PromoCards extends \Elementor\Widget_Base
                     'default' => esc_html__('Default', 'selleradise-widgets'),
                     'bold' => esc_html__('Bold', 'selleradise-widgets'),
                     'soft' => esc_html__('Soft', 'selleradise-widgets'),
+                    'fancy' => esc_html__('Fancy', 'selleradise-widgets'),
+                    'fancy-alt' => esc_html__('Fancy Alt', 'selleradise-widgets'),
+                    'floating' => esc_html__('Floating', 'selleradise-widgets'),
+                    'brochure' => esc_html__('Brochure', 'selleradise-widgets'),
+                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
                 ],
             ]
         );

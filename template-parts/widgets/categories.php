@@ -47,7 +47,7 @@ $index = 0;
 
   <?php if(!empty($categories)): ?>
   
-    <ul class="grid grid-cols-<?php echo esc_attr( $page_size ); ?> gap-8 mt-8">
+    <ul class="grid grid-cols-<?php echo esc_attr( round($page_size / 3) ); ?> md:grid-cols-<?php echo esc_attr( round($page_size / 2) ); ?> lg:grid-cols-<?php echo esc_attr( $page_size ); ?> gap-8 mt-8">
       <?php foreach ($categories as $category): ?>
         <?php selleradise_widgets_get_template_part('template-parts/widgets/categories/card', $settings['card_type'], ["settings" => $settings, "category" => $category, "index" => $index, "duplicate_names" => $duplicate_names, "ratio" => $ratio]); ?>
       <?php $index++; endforeach; ?>
