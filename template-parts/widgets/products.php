@@ -17,13 +17,7 @@ if ($args) {
 
   <div class="flex justify-between items-center mb-10">
     <div>
-      <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-        <h2 class="text-3xl"><?php echo esc_html($settings['section_title']); ?></h2>
-      <?php endif;?>
-
-      <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-        <p class=""><?php echo esc_html($settings['section_subtitle']); ?></p>
-      <?php endif;?>
+      <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]); ?>
     </div>
 
     <a 
@@ -37,7 +31,7 @@ if ($args) {
 
   <?php if(!empty($products)): ?>
 
-    <ul class="grid lg:grid-cols-4 gap-8">
+    <ul class="grid <?php echo function_exists("selleradise_products_classes") ? esc_attr(selleradise_products_classes($settings['card_type'], true)) : null ?> gap-8">
       <?php 
         foreach ($products as $key => $product) {
           get_template_part(
@@ -47,7 +41,6 @@ if ($args) {
         }
       ?>
     </ul>
-
 
   <?php else: 
   

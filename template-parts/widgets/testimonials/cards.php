@@ -11,67 +11,76 @@ $index = 0;
 
 ?>
 
-<section class="selleradise_Testimonials--cards">
+<section 
+  class="px-page w-full"
+  x-data="infiniteScroll({
+    total: <?php echo esc_attr(empty($testimonials->posts) ? 0 : count($testimonials->posts)); ?>,
+    pageSize: 4
+  })"
+  x-init="
+    $dispatch('selleradise-widget-initialized', { 
+      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+      element: $el,
+      widget: 'testimonials',
+      variation: 'cards',
+    })
+  ">
 
-  <div class="selleradise_Testimonials--cards__title-outer">
-    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-      <h2 class="selleradise_Testimonials--cards__title"><?php echo esc_html($settings['section_title']); ?></h2>
-    <?php endif;?>
-
-    <?php if ( $testimonials->have_posts() ) : ?>
-  
-      <div class="selleradise_widgets__slider-buttons">
-        <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
-          <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
-        </button>
-        <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
-          <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
-        </button>
-      </div>
-    <?php endif;?>
+  <div>
+    <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]);?>
   </div>
 
-  <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-    <p class="selleradise_Testimonials--cards__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-  <?php endif;?>
+  <?php if ( $testimonials->have_posts() ) : ?>
 
-  <div class="selleradise_Testimonials--cards__quotes">
-
-    <?php if ( $testimonials->have_posts() ) : ?>
-
-    <div class="swiper-wrapper">
-      <?php while ($testimonials->have_posts()) : $testimonials->the_post(); 
-          $profile_pictures = rwmb_meta('profile_picture', array( 'limit' => 1 ));
-          $profile_picture = reset( $profile_pictures ); 
-        ?>
-
-        <div class="selleradise_Testimonials--cards__quote swiper-slide">
-          <h3><?php echo esc_html(get_the_title()); ?></h3>
-          <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
-          <blockquote><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
-
-            <div class="selleradise_Testimonials--cards__profile">
-              <img 
-                src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>" 
-                alt="<?php echo esc_attr($profile_picture['alt']); ?>"
-              >
-
-              <div>
-                <p><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
-                <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
-              </div>
-            </div>
-        </div>
-
-       <?php endwhile; ?>
-
-    </div>
-
-    <?php 
-      else: 
-        selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No testimonials found', 'selleradise-widgets')]);
-      endif; 
-        wp_reset_postdata(); 
+  <ul class="grid lg:grid-cols-4 gap-8 mt-8">
+    <?php while ($testimonials->have_posts()) : $testimonials->the_post(); 
+      $profile_pictures = rwmb_meta('profile_picture', array( 'limit' => 1 ));
+      $profile_picture = reset( $profile_pictures ); 
     ?>
-  </div>
+
+    <li 
+      class="p-6 rounded-2xl border-1 border-text-100 flex flex-col justify-start items-start"
+      x-show="visible > <?php echo esc_attr( $index ); ?>"
+      x-transition>
+        <h3 class="mb-2 text-md">
+          <?php echo esc_html(get_the_title()); ?>
+        </h3>
+        
+        <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
+        
+        <blockquote class="mt-4 text-sm">
+          <?php echo wp_kses_post(rwmb_meta('quote')); ?>
+        </blockquote>
+        
+        <div class="pt-6 flex justify-start items-center mt-auto">
+          <img 
+            class="w-12 h-12 !rounded-full overflow-hidden object-cover mr-4"
+            src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>" 
+            alt="<?php echo esc_attr($profile_picture['alt']); ?>"
+          >
+
+          <div>
+            <p class="text-sm font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+            <p class="text-sm opacity-75"><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
+          </div>
+        </div>
+    </li>
+
+    <?php $index++; endwhile; ?>
+
+    <li x-show="!exhausted()" class="w-full col-span-full flex justify-center items-center mt-10">
+      <button x-on:click.prevent="more()" class="selleradise_button--secondary selleradise_button--sm">
+        <span class="mr-1"><?php esc_html_e( "Load More", "selleradise-widgets" ); ?></span>
+        <span class="w-4 h-4 flex justify-center items-center"><?php echo selleradise_widgets_svg('tabler-icons/chevron-down'); ?></span>
+      </button>
+    </li>
+
+  </ul>
+
+  <?php 
+    else: 
+      selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No testimonials found', 'selleradise-widgets')]);
+    endif; 
+      wp_reset_postdata(); 
+  ?>
 </section>

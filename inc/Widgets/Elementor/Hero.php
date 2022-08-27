@@ -203,6 +203,8 @@ class Hero extends \Elementor\Widget_Base
                     '2' => esc_html__('Pattern 2', 'selleradise-widgets'),
                     '3' => esc_html__('Pattern 3', 'selleradise-widgets'),
                     '4' => esc_html__('Pattern 4', 'selleradise-widgets'),
+                    '5' => esc_html__('Pattern 5', 'selleradise-widgets'),
+                    '6' => esc_html__('Pattern 6', 'selleradise-widgets'),
                 ],
                 'condition' => [
                     'hero_type' => ['standard'],

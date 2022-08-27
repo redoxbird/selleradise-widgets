@@ -53,15 +53,15 @@ $index = 0;
       <?php $index++; endforeach; ?>
 
       <li x-show="!exhausted()" class="w-full col-span-full flex justify-center items-center mt-10">
-        <button x-on:click.prevent="more()" class="selleradise_button--secondary">
-          <?php echo selleradise_widgets_svg('unicons-line/angle-down'); ?>
-          <span class="ml-2"><?php _e( "Load More", "selleradise-widgets" ); ?></span>
+        <button x-on:click.prevent="more()" class="selleradise_button--secondary selleradise_button--sm">
+          <span class="mr-1"><?php esc_html_e( "Load More", "selleradise-widgets" ); ?></span>
+          <span class="w-4 h-4 flex justify-center items-center"><?php echo selleradise_widgets_svg('tabler-icons/chevron-down'); ?></span>
         </button>
       </li>
 
       <li x-show="exhausted()" class="w-full col-span-full flex justify-center items-center mt-10">
-        <a href="<?php echo esc_url( wc_get_page_permalink('shop') ); ?>" class="selleradise_button--secondary">
-          <span><?php _e( "Go to shop", "selleradise-widgets" ); ?></span>
+        <a href="<?php echo esc_url( wc_get_page_permalink('shop') ); ?>" class="selleradise_button--secondary selleradise_button--sm">
+          <span><?php esc_html_e( "Go to shop", "selleradise-widgets" ); ?></span>
         </a>
       </li>
     </ul>

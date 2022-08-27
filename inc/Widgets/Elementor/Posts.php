@@ -262,7 +262,7 @@ class Posts extends \Elementor\Widget_Base
 
         $categories = [];
 
-        $categories['all'] = 'All Categories';
+        $categories[''] = 'All Categories';
 
         foreach ($terms as $term) {
             $categories[$term->slug] = $term->name;

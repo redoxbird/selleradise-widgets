@@ -12,6 +12,7 @@ namespace Selleradise_Widgets\Widgets\Elementor;
 use \Elementor\Controls_Manager;
 
 class Incentives extends \Elementor\Widget_Base
+
 {
 
     public function __construct($data = [], $args = null)
@@ -96,52 +97,6 @@ class Incentives extends \Elementor\Widget_Base
      */
     protected function register_controls()
     {
-
-        $this->start_controls_section(
-            'setting_section',
-            [
-                'label' => __('Settings', 'selleradise-widgets'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'type',
-            [
-                'label' => __('Section Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
-                    'minimal-alt' => esc_html__('Minimal Alt', 'selleradise-widgets'),
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'color_icon',
-            [
-                'label' => __('Icon Color', 'selleradise-widgets'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .selleradise_incentives' => '--selleradise-color-icon: {{value}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'color_icon_background',
-            [
-                'label' => __('Icon Background Color', 'selleradise-widgets'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .selleradise_incentives' => '--selleradise-color-icon-background: {{value}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
 
         $this->start_controls_section(
             'content_section',
@@ -245,6 +200,30 @@ class Incentives extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'setting_section',
+            [
+                'label' => __('Settings', 'selleradise-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'type',
+            [
+                'label' => __('Section Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
+                    'minimal-alt' => esc_html__('Minimal Alt', 'selleradise-widgets'),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
     }
 
     /**
@@ -261,7 +240,7 @@ class Incentives extends \Elementor\Widget_Base
 
         $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
 
-        selleradise_widgets_get_template_part("template-parts/widgets/incentives", null, ["settings" => $settings]);
+        selleradise_widgets_get_template_part("template-parts/widgets/incentives/" . $type, null, ["settings" => $settings]);
     }
 
 }

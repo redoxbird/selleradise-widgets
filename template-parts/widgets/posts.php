@@ -23,13 +23,7 @@ $posts = new WP_Query($query_args);
   ">
   <div class="flex justify-between items-center mb-10">
     <div>
-      <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-        <h2 class="text-3xl"><?php echo esc_html($settings['section_title']); ?></h2>
-      <?php endif;?>
-
-      <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-        <p class="selleradise_widget--posts__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-      <?php endif;?>
+      <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]); ?>
     </div>
 
     <a 
@@ -43,18 +37,13 @@ $posts = new WP_Query($query_args);
 
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
     <?php 
-      if ( $posts->have_posts() ) :
-
-      while ($posts->have_posts()): $posts->the_post();
-
-          get_template_part('template-parts/post/card', $settings['card_type'] ?: 'default' . get_post_format(), ["classes" => 'swiper-slide']);
-
-      endwhile;
+      if ( $posts->have_posts() ) : while ($posts->have_posts()): $posts->the_post();
+          get_template_part('template-parts/post/card', $settings['card_type'] ?: 'default' . get_post_format());
+        
+        endwhile;
 
       else:
-
         selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No posts found', 'selleradise-widgets')]);
-
       endif;
 
       wp_reset_postdata();

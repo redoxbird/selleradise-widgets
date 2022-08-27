@@ -65,7 +65,7 @@ if (!isset($settings)) {
   <?php endif; ?>
 
   <?php if(isset($settings["image_shape"]) && $settings["image_shape"] === 'none'): ?>
-    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "relative mr-40 z-50"]);?>
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "relative mx-auto w-full !h-auto lg:h-full w-auto lg:mr-40 z-50"]);?>
   <?php endif; ?>
 
 </div>

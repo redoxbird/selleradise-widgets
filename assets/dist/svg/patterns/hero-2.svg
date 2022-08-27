@@ -1,16 +1,16 @@
 <svg width="1920" height="750" viewBox="0 0 1920 750" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_568_32)">
-<path d="M1558.3 326.987C2465.55 402.081 1337.09 744.904 1988.86 30.2824" stroke="#FF0000" stroke-linecap="round" stroke-dasharray="8 8"/>
-<circle cx="0.5" cy="10.5" r="100.5" fill="#FFB7B7"/>
-<circle cx="1347" cy="398" r="328" fill="#FFD6D6"/>
-<ellipse cx="1549.5" cy="133" rx="79.5" ry="81" fill="#CDE7FF"/>
-<circle cx="1877.5" cy="708.5" r="89.5" fill="#FFB7B7"/>
-<circle cx="1112" cy="605" r="50" fill="#D7FFE2"/>
-<ellipse cx="1023" cy="346.5" rx="25" ry="24.5" fill="#FFE8BB"/>
-</g>
-<defs>
-<clipPath id="clip0_568_32">
-<rect width="1920" height="750" fill="white"/>
-</clipPath>
-</defs>
+  <g clip-path="url(#clip0_568_32)">
+    <path d="M1558.3 326.987C2465.55 402.081 1337.09 744.904 1988.86 30.2824" stroke="#FF0000" stroke-linecap="round" stroke-dasharray="8 8" />
+    <circle cx="0.5" cy="10.5" r="100.5" fill="#FFB7B7" />
+    <circle cx="1347" cy="398" r="328" fill="#FFD6D6" />
+    <ellipse cx="1549.5" cy="133" rx="79.5" ry="81" fill="#CDE7FF" />
+    <circle cx="1877.5" cy="708.5" r="89.5" fill="#FFB7B7" />
+    <circle cx="1112" cy="605" r="50" fill="#D7FFE2" />
+    <ellipse cx="1023" cy="346.5" rx="25" ry="24.5" fill="#FFE8BB" />
+  </g>
+  <defs>
+    <clipPath id="clip0_568_32">
+      <rect width="1920" height="750" fill="white" />
+    </clipPath>
+  </defs>
 </svg>

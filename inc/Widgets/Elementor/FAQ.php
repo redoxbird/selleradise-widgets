@@ -169,8 +169,9 @@ class FAQ extends \Elementor\Widget_Base
         ));
 
         $faqs = new WP_Query($args);
+        $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
 
-        selleradise_widgets_get_template_part("template-parts/widgets/faq", null, ["settings" => $settings, "faqs" => $faqs, "categories" => $categories]);
+        selleradise_widgets_get_template_part("template-parts/widgets/faqs/".$type, null, ["settings" => $settings, "faqs" => $faqs, "categories" => $categories]);
     }
 
 }
