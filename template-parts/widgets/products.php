@@ -13,6 +13,14 @@ if ($args) {
 
 <div 
   class="px-page py-20"
+  x-init="
+    $dispatch('selleradise-widget-initialized', { 
+      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+      element: $el,
+      widget: 'products',
+      variation: 'default',
+    })
+  "
   data-selleradise-card-type="<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
 
   <div class="flex justify-between items-center mb-10">
@@ -31,7 +39,7 @@ if ($args) {
 
   <?php if(!empty($products)): ?>
 
-    <ul class="grid <?php echo function_exists("selleradise_products_classes") ? esc_attr(selleradise_products_classes($settings['card_type'], true)) : null ?> gap-8">
+    <ul class="grid items-start <?php echo function_exists("selleradise_products_classes") ? esc_attr(selleradise_products_classes($settings['card_type'], true)) : null ?> gap-8">
       <?php 
         foreach ($products as $key => $product) {
           get_template_part(

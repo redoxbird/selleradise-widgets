@@ -20,13 +20,6 @@ class Hero extends \Elementor\Widget_Base
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
-
-        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
-    }
-
-    public function get_script_depends()
-    {
-        return ['selleradise-widgets'];
     }
 
     /**
@@ -177,6 +170,7 @@ class Hero extends \Elementor\Widget_Base
                     'popular' => esc_html__('Popular', 'selleradise-widgets'),
                     'centered' => esc_html__('Centered', 'selleradise-widgets'),
                     'standard' => esc_html__('Standard', 'selleradise-widgets'),
+                    'split' => esc_html__('Split', 'selleradise-widgets'),
                 ],
             ]
         );
@@ -199,6 +193,7 @@ class Hero extends \Elementor\Widget_Base
                 'type' => Controls_Manager::SELECT,
                 'default' => '1',
                 'options' => [
+                    '0' => esc_html__('None', 'selleradise-widgets'),
                     '1' => esc_html__('Pattern 1', 'selleradise-widgets'),
                     '2' => esc_html__('Pattern 2', 'selleradise-widgets'),
                     '3' => esc_html__('Pattern 3', 'selleradise-widgets'),

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -14,23 +14,19 @@ if (!isset($settings)) {
 
 ?>
 
-<div  
-  x-data 
-  class="relative w-full flex flex-col lg:flex-row justify-between items-stretch px-page lg:h-160 overflow-hidden"
+<div
+  x-data
+  class="relative w-full flex flex-col lg:flex-row justify-between items-stretch lg:min-h-screen-adjusted overflow-hidden"
   x-init="
-    $dispatch('selleradise-widget-initialized', { 
+    $dispatch('selleradise-widget-initialized', {
       isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
       element: $el,
       widget: 'hero',
-      variation: 'common',
+      variation: 'split',
     })
   ">
 
-  <div class="selleradise_Hero__image relative z-20 w-full my-8 lg:mr-20 lg:w-160 rounded-2xl overflow-hidden">
-    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "!w-full !h-full object-cover"]);?>
-  </div>
-
-  <div class="relative mb-10 lg:mb-0 z-20 flex w-full lg:w-2/3 flex-grow flex-col justify-center items-start">
+  <div class="relative px-page mb-10 lg:mb-0 z-20 flex w-full lg:w-1/2 flex-grow flex-col justify-center items-start">
     <h1 class="text-4xl lg:text-7xl lg:leading-snug font-bold">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/title', null, ["settings" => $settings]);?>
     </h1>
@@ -40,6 +36,10 @@ if (!isset($settings)) {
     <div class="mt-8 lg:mt-20">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/cta', 'primary', ["settings" => $settings]);?>
     </div>
+  </div>
+
+  <div class="selleradise_Hero__image relative z-20 w-full lg:w-1/2 overflow-hidden">
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "!w-full !h-full object-cover"]);?>
   </div>
 
 </div>

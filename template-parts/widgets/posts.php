@@ -9,7 +9,6 @@ if ($args) {
     extract($args);
 }
 
-$posts = new WP_Query($query_args);
 
 ?>
 
@@ -18,7 +17,9 @@ $posts = new WP_Query($query_args);
   x-init="
     $dispatch('selleradise-widget-initialized', { 
       isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el
+      element: $el,
+      widget: 'posts',
+      variation: 'default',
     })
   ">
   <div class="flex justify-between items-center mb-10">
@@ -37,6 +38,8 @@ $posts = new WP_Query($query_args);
 
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
     <?php 
+      $posts = new WP_Query($query_args);
+
       if ( $posts->have_posts() ) : while ($posts->have_posts()): $posts->the_post();
           get_template_part('template-parts/post/card', $settings['card_type'] ?: 'default' . get_post_format());
         

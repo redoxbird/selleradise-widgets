@@ -128,30 +128,33 @@ class Posts extends \Elementor\Widget_Base
             ]
         );
 
-        if (class_exists('Selleradise\\Init')) {
-            $this->add_control(
-                'card_type',
-                [
-                    'label' => __('Card Type', 'selleradise-widgets'),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => 'default',
-                    'options' => [
-                        'default' => esc_html__('Default', 'selleradise-widgets'),
-                        'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
-                    ],
-                ]
-            );
+        // if (class_exists('Selleradise\\Init')) {
+        $this->add_control(
+            'card_type',
+            [
+                'label' => __('Card Type', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => esc_html__('Default', 'selleradise-widgets'),
+                    'popular' => esc_html__('Popular', 'selleradise-widgets'),
+                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
+                    'text' => esc_html__('Text Only', 'selleradise-widgets'),
+                    'list' => esc_html__('List', 'selleradise-widgets'),
+                ],
+            ]
+        );
 
-        } else {
-            $this->add_control(
-                'card_type',
-                [
-                    'label' => __('Card Type', 'selleradise-widgets'),
-                    'type' => Controls_Manager::HIDDEN,
-                    'default' => 'default',
-                ]
-            );
-        }
+        // } else {
+        //     $this->add_control(
+        //         'card_type',
+        //         [
+        //             'label' => __('Card Type', 'selleradise-widgets'),
+        //             'type' => Controls_Manager::HIDDEN,
+        //             'default' => 'default',
+        //         ]
+        //     );
+        // }
 
         $this->add_control(
             'orderby',
@@ -223,6 +226,7 @@ class Posts extends \Elementor\Widget_Base
 
         $args = [
             'post_type' => 'post',
+            'ignore_sticky_posts' => 1,
             'posts_per_page' => $settings['limit'] ?? 4,
         ];
 
@@ -238,6 +242,7 @@ class Posts extends \Elementor\Widget_Base
             $args['order'] = $settings['order'];
         }
 
+        $posts = new WP_Query($args);
 
         selleradise_widgets_get_template_part('template-parts/widgets/posts', null, [
             'query_args' => $args,

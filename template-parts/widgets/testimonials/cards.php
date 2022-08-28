@@ -68,7 +68,7 @@ $index = 0;
 
     <?php $index++; endwhile; ?>
 
-    <li x-show="!exhausted()" class="w-full col-span-full flex justify-center items-center mt-10">
+    <li x-show="!exhausted()" class="w-full col-span-full flex justify-center items-center mt-6">
       <button x-on:click.prevent="more()" class="selleradise_button--secondary selleradise_button--sm">
         <span class="mr-1"><?php esc_html_e( "Load More", "selleradise-widgets" ); ?></span>
         <span class="w-4 h-4 flex justify-center items-center"><?php echo selleradise_widgets_svg('tabler-icons/chevron-down'); ?></span>

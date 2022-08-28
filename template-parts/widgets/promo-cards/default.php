@@ -22,7 +22,17 @@ if (!$cards) {
 
 ?>
 
-<div x-data class="px-page">
+<div
+  x-data
+  x-init="
+    $dispatch('selleradise-widget-initialized', { 
+      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+      element: $el,
+      widget: 'promo-cards',
+      variation: 'default',
+    })
+  " 
+  class="px-page">
 
   <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <?php foreach ($cards as $index => $card):
