@@ -28,5 +28,5 @@ if (!$settings['cta_primary_text']) {
     class="selleradise_button--primary"
 >
   <?php echo esc_html($settings['cta_primary_text']); ?>
-  <?php echo selleradise_widgets_svg('unicons-line/arrow-right'); ?>
+  <?php echo selleradise_widgets_svg('tabler-icons/arrow-right'); ?>
 </a>

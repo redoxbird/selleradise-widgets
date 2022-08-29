@@ -19,14 +19,6 @@ class SaleCountdown extends \Elementor\Widget_Base
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
-
-       wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
-
-    }
-
-    public function get_script_depends()
-    {
-        return ['selleradise-widgets'];
     }
 
     /**
@@ -238,10 +230,10 @@ class SaleCountdown extends \Elementor\Widget_Base
         $this->add_control(
             'color_overlay',
             [
-                'label' => __('Overlay', 'selleradise-widgets'),
+                'label' => __('Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .selleradise_widgets_sale-countdown' => '--selleradise-color-overlay: {{value}};',
+                    '{{WRAPPER}} .selleradise_widgets_sale-countdown-overlay' => 'background-color: {{value}};',
                 ],
             ]
         );
@@ -290,6 +282,32 @@ class SaleCountdown extends \Elementor\Widget_Base
             ]
         );
 
+        if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
+            $this->add_control(
+                'type',
+                [
+                    'label' => __('Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'floating' => esc_html__('Floating', 'selleradise-widgets'),
+                    ],
+                ]
+            );
+
+        } else {
+            $this->add_control(
+                'type',
+                [
+                    'label' => __('Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'default',
+                ]
+            );
+        }
+
+
         $this->end_controls_section();
 
     }
@@ -306,7 +324,9 @@ class SaleCountdown extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        selleradise_widgets_get_template_part("template-parts/widgets/sale-countdown", null, ["settings" => $settings]);
+        $type = isset($settings['type']) && $settings['type'] ? $settings['type'] : 'default';
+
+        selleradise_widgets_get_template_part("template-parts/widgets/sale-countdown/". $type, null, ["settings" => $settings]);
     }
 
 }

@@ -132,6 +132,20 @@ if (!function_exists('selleradise_get_image_placeholder')) {
     }
 }
 
+if (!function_exists('selleradise_is_local')) {
+
+    function selleradise_is_local()
+    {
+
+        if (!function_exists('wp_get_environment_type')) {
+            return false;
+        }
+
+        return wp_get_environment_type() === "local";
+
+    }
+}
+
 if (!function_exists('selleradise_widgets_get_version')) {
 
     function selleradise_widgets_get_version()

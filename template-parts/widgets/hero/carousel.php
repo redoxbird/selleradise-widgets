@@ -17,8 +17,8 @@ if (!isset($settings)) {
 <div class="heroCarousel--default">
 
     <div class="sliderNavButtons">
-        <button class="previous"> <?php echo selleradise_widgets_svg('unicons-line/angle-left'); ?></button>
-        <button class="next"> <?php echo selleradise_widgets_svg('unicons-line/angle-right'); ?></button>
+        <button class="previous"> <?php echo selleradise_widgets_svg('tabler-icons/chevron-left'); ?></button>
+        <button class="next"> <?php echo selleradise_widgets_svg('tabler-icons/chevron-right'); ?></button>
     </div>
 
     <div class="swiper-wrapper">

@@ -31,7 +31,7 @@ if (isset($args)) {
     <?php endif;?>
 
     <?php if (isset($settings['description']) && $settings['description']): ?>
-      <p class="text-md opacity-75 mb-12">
+      <p class="text-md mb-12">
         <?php echo esc_html($settings['description']); ?>
       </p>
     <?php endif;?>

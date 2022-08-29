@@ -38,7 +38,7 @@ if (!$features) {
           class="selleradise_Features--default__cta selleradise_button--primary"
       >
         <?php echo esc_html($settings['cta_text']); ?>
-        <?php echo Selleradise_Widgets_svg('unicons-line/arrow-right'); ?>
+        <?php echo Selleradise_Widgets_svg('tabler-icons/arrow-right'); ?>
       </a>
     <?php endif;?>
   </div>

@@ -22,11 +22,11 @@ $index = 0;
 
     <div class="selleradise_widgets__slider-buttons">
       <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
-        <?php echo selleradise_widgets_svg('unicons-line/arrow-up'); ?>
+        <?php echo selleradise_widgets_svg('tabler-icons/arrow-up'); ?>
       </button>
 
       <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
-        <?php echo selleradise_widgets_svg('unicons-line/arrow-down'); ?>
+        <?php echo selleradise_widgets_svg('tabler-icons/arrow-down'); ?>
       </button>
     </div>
 

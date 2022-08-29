@@ -156,35 +156,34 @@ class Hero extends \Elementor\Widget_Base
             ]
         );
 
-        // if (class_exists('Selleradise\\Init')) {
+        if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
+            $this->add_control(
+                'hero_type',
+                [
+                    'label' => __('Hero Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'common' => esc_html__('Common', 'selleradise-widgets'),
+                        'popular' => esc_html__('Popular', 'selleradise-widgets'),
+                        'centered' => esc_html__('Centered', 'selleradise-widgets'),
+                        'standard' => esc_html__('Standard', 'selleradise-widgets'),
+                        'split' => esc_html__('Split', 'selleradise-widgets'),
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'hero_type',
-            [
-                'label' => __('Hero Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'common' => esc_html__('Common', 'selleradise-widgets'),
-                    'popular' => esc_html__('Popular', 'selleradise-widgets'),
-                    'centered' => esc_html__('Centered', 'selleradise-widgets'),
-                    'standard' => esc_html__('Standard', 'selleradise-widgets'),
-                    'split' => esc_html__('Split', 'selleradise-widgets'),
-                ],
-            ]
-        );
-
-        // } else {
-        //     $this->add_control(
-        //         'hero_type',
-        //         [
-        //             'label' => __('Card Type', 'selleradise-widgets'),
-        //             'type' => Controls_Manager::HIDDEN,
-        //             'default' => 'popular',
-        //         ]
-        //     );
-        // }
+        } else {
+            $this->add_control(
+                'hero_type',
+                [
+                    'label' => __('Hero Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'popular',
+                ]
+            );
+        }
 
         $this->add_control(
             'pattern',
@@ -222,6 +221,22 @@ class Hero extends \Elementor\Widget_Base
                 ],
                 'condition' => [
                     'hero_type' => ['standard'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'split_pattern',
+            [
+                'label' => __('Split Pattern', 'selleradise-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 0,
+                'options' => [
+                    '0' => esc_html__('None', 'selleradise-widgets'),
+                    'slant' => esc_html__('Slant', 'selleradise-widgets'),
+                ],
+                'condition' => [
+                    'hero_type' => ['split'],
                 ],
             ]
         );
