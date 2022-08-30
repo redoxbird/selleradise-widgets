@@ -30,10 +30,12 @@ if ($args) {
 
     <a 
       href="<?php echo esc_url($more_link); ?>" 
-      class="mt-8 selleradise_button--secondary"
+      class="mt-8 selleradise_button--secondary selleradise_button--sm"
       aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
       <?php _e('See all', 'selleradise-widgets'); ?> 
-      <?php echo Selleradise_Widgets_svg('tabler-icons/chevron-right'); ?>
+      <span class="w-3 ml-1">
+        <?php echo Selleradise_Widgets_svg('tabler-icons/chevron-right'); ?>
+      </span>
     </a>
   </div>
 

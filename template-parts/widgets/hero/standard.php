@@ -30,7 +30,7 @@ if (!isset($settings)) {
     </div>
   <?php endif; ?>
 
-  <div class="relative mb-10 lg:mb-0 z-20 flex w-full lg:w-2/3 flex-grow flex-col justify-center items-start lg:pr-40">
+  <div class="relative my-10 lg:my-0 z-20 flex w-full lg:w-2/3 flex-grow flex-col justify-center items-start lg:pr-40">
     <h1 class="text-4xl lg:text-7xl lg:leading-snug font-bold">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/title', null, ["settings" => $settings]);?>
     </h1>
@@ -67,7 +67,7 @@ if (!isset($settings)) {
   <?php endif; ?>
 
   <?php if(isset($settings["image_shape"]) && $settings["image_shape"] === 'none'): ?>
-    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "relative mx-auto w-full !h-auto lg:h-full w-auto lg:mr-40 z-50"]);?>
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "relative mx-auto w-full !h-auto lg:h-full lg:w-auto lg:mr-40 z-50"]);?>
   <?php endif; ?>
 
 </div>

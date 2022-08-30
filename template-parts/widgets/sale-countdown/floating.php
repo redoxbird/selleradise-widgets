@@ -22,7 +22,7 @@ $attributes['title'] = $settings['title'];
     saleFrom: '<?php echo esc_attr($settings['start_date']) ?>',
     saleTo: '<?php echo esc_attr($settings['end_date']) ?>'
   })" 
-  class="w-full flex justify-center items-center h-auto relative overflow-hidden px-page"
+  class="w-full flex justify-center flex-col lg:flex-row items-center h-auto relative overflow-hidden px-page"
   x-init="
     $dispatch('selleradise-widget-initialized', { 
       isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
@@ -32,7 +32,7 @@ $attributes['title'] = $settings['title'];
   >
 
   <img
-    class="relative flex-shrink-0 z-10 !h-112 w-120 object-cover -mr-44 !rounded-2xl"
+    class="relative flex-shrink-0 z-10 lg:!h-112 lg:w-120 object-cover lg:-mr-44 !rounded-2xl"
     <?php echo selleradise_lazy_src($settings['image']['url']); ?>
     alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
   >

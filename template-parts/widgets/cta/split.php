@@ -17,13 +17,13 @@ if (isset($args)) {
         element: $el
       })
     "
-  class="flex justify-center items-stretch w-full px-page gap-10">
+  class="flex justify-center items-start lg:items-stretch flex-wrap lg:flex-nowrap w-full px-page gap-10">
   
-  <div class="relative w-1/2 overflow-hidden rounded-2xl">
+  <div class="relative w-full h-96 lg:h-auto lg:w-1/2 overflow-hidden rounded-2xl">
     <?php selleradise_widgets_get_template_part('template-parts/widgets/cta/partials/image', null, ["settings" => $settings, "classes" => "absolute inset-0 !w-full !h-full object-cover"]);?>
   </div>
   
-  <div class="w-1/2 flex flex-col justify-start items-start bg-main-900 text-main-text p-20 rounded-2xl">
+  <div class="w-full lg:w-1/2 flex flex-col justify-start items-start bg-main-900 text-main-text p-20 rounded-2xl">
     <?php if (isset($settings['title']) && $settings['title']): ?>
       <h2 class="text-5xl font-semibold mb-4 leading-snug">
         <?php echo esc_html($settings['title']); ?>
