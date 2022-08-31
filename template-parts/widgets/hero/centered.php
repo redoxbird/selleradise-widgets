@@ -38,7 +38,7 @@ if (!isset($settings)) {
     </div>
   </div>
 
-  <div class="selleradise_Hero__image relative z-20 w-full h-160 lg:w-full rounded-2xl overflow-hidden">
+  <div class="selleradise_Hero__image relative z-20 w-full h-96 lg:h-160 lg:w-full rounded-2xl overflow-hidden">
     <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "!w-full !h-full object-cover"]);?>
   </div>
 

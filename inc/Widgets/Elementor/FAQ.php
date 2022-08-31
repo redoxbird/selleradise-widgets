@@ -20,14 +20,8 @@ class FAQ extends \Elementor\Widget_Base
     {
         parent::__construct($data, $args);
 
-        wp_register_script('selleradise-widget-faq', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets/faq.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
-
     }
 
-    public function get_script_depends()
-    {
-        return ['selleradise-widget-faq'];
-    }
 
     /**
      * Get widget name.

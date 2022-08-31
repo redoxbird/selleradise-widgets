@@ -24,10 +24,10 @@ if (!$settings) {
   x-show="visible > <?php echo esc_attr( $index ); ?>"
   x-transition>
   <a 
-    class="w-full flex flex-col justify-center items-center bg-background-50 text-text-900" 
+    class="w-full flex flex-col justify-center items-center bg-background-900 text-text-900" 
     href="<?php echo esc_url(get_term_link($category)); ?>">
 
-    <div class="flex justify-center items-center overflow-hidden rounded-2xl h-ratio">
+    <div class="w-full flex justify-center items-center overflow-hidden rounded-2xl h-ratio">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/categories/partials/image', null, ["category" => $category]); ?>
     </div>
   </a>

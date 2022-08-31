@@ -30,7 +30,7 @@ if ($args) {
 
     <a 
       href="<?php echo esc_url($more_link); ?>" 
-      class="mt-8 selleradise_button--secondary selleradise_button--sm"
+      class="selleradise_button--secondary selleradise_button--sm"
       aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
       <?php _e('See all', 'selleradise-widgets'); ?> 
       <span class="w-3 ml-1">

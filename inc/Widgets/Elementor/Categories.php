@@ -18,13 +18,6 @@ class Categories extends \Elementor\Widget_Base
     {
         parent::__construct($data, $args);
 
-        wp_register_script('selleradise-widgets', SELLERADISE_WIDGETS_DIR_URI . '/assets/dist/js/widgets.js', ['elementor-frontend'], selleradise_widgets_get_version(), true);
-
-    }
-
-    public function get_script_depends()
-    {
-        return ['selleradise-widgets'];
     }
 
     /**
@@ -136,8 +129,7 @@ class Categories extends \Elementor\Widget_Base
             ]
         );
 
-        // if (class_exists('Selleradise\\Init')) {
-
+        if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
             $this->add_control(
                 'card_type',
                 [
@@ -154,16 +146,16 @@ class Categories extends \Elementor\Widget_Base
                     ],
                 ]
             );
-        // } else {
-        //     $this->add_control(
-        //         'card_type',
-        //         [
-        //             'label' => __('Card Type', 'selleradise-widgets'),
-        //             'type' => Controls_Manager::HIDDEN,
-        //             'default' => 'default',
-        //         ]
-        //     );
-        // }
+        } else {
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'default',
+                ]
+            );
+        }
 
         $this->add_control(
             'include',
@@ -248,44 +240,6 @@ class Categories extends \Elementor\Widget_Base
                 'step' => 1,
                 'default' => 6,
                 'frontend_available' => true,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'width',
-            [
-                'label' => __('Item Width', 'selleradise-widgets'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['rem'],
-                'range' => [
-                    'rem' => [
-                        'min' => 5,
-                        'max' => 95,
-                        'step' => 0.5,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'rem',
-                    'size' => 14,
-                ],
-                'desktop_default' => [
-                    'unit' => 'rem',
-                    'size' => 14,
-                ],
-                'tablet_default' => [
-                    'unit' => 'rem',
-                    'size' => 14,
-                ],
-                'mobile_default' => [
-                    'unit' => 'rem',
-                    'size' => 13,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .selleradiseWidgets_Categories' => '--width: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'card_type' => ['default', 'card-image-alt', 'onlyImage', 'onlyText'],
-                ],
             ]
         );
 
@@ -389,7 +343,7 @@ class Categories extends \Elementor\Widget_Base
         }
 
         $product_categories = [];
-        
+
         $product_categories[''] = "All";
 
         foreach ($terms as $term) {

@@ -19,12 +19,12 @@ if (isset($args)) {
     "
   class="w-full px-page">
 
-  <div class="w-full flex justify-start items-stretch bg-main-900 text-main-text p-6 rounded-2xl">
-    <div class="relative w-9/20 overflow-hidden rounded-2xl">
+  <div class="w-full flex justify-start items-stretch flex-col lg:flex-row bg-main-900 text-main-text p-4 lg:p-6 rounded-2xl">
+    <div class="relative w-full lg:w-9/20 h-96 lg:h-auto overflow-hidden rounded-2xl">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/cta/partials/image', null, ["settings" => $settings, "classes" => "absolute inset-0 !w-full !h-full object-cover"]);?>
     </div>
 
-    <div class="flex flex-col justify-center items-start w-1/2 flex-grow p-20">
+    <div class="flex flex-col justify-center items-start w-full lg:w-1/2 flex-grow py-10 px-page">
       <?php if (isset($settings['title']) && $settings['title']): ?>
         <h2 class="text-5xl font-semibold mb-4 leading-snug">
           <?php echo esc_html($settings['title']); ?>

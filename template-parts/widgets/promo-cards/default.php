@@ -49,12 +49,12 @@ if (!$cards) {
 
           <div class="flex flex-col justify-between items-start p-3 w-1/2 flex-grow">
             <h2 class="text-xl lg:text-2xl mb-8 font-semibold"><?php echo esc_html($card['title']) ?></h2>
-            <p class="bg-text-900 text-background-50 px-4 py-2 rounded-full text-xs font-semibold">
+            <p class="bg-text-900 text-background-900 px-4 py-2 rounded-full text-xs font-semibold">
               <?php echo esc_html($card['subtitle']) ?>
             </p>
           </div>
 
-          <div class="w-9/20 relative rounded-2xl overflow-hidden">
+          <div class="w-9/20 min-h-[11rem] relative rounded-2xl overflow-hidden">
             <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "absolute !h-full w-full inset-0 object-cover"]);?>
           </div>
         </a>

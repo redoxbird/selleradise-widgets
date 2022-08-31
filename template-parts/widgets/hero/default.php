@@ -26,7 +26,7 @@ if (!isset($settings)) {
     })
   ">
 
-  <div class="relative mb-10 lg:mb-0 z-20 flex w-full lg:w-2/3 flex-grow flex-col justify-center items-start lg:pr-40">
+  <div class="relative my-10 lg:mb-0 z-20 flex w-full lg:w-2/3 flex-grow flex-col justify-center items-start lg:pr-40">
     <h1 class="text-4xl lg:text-7xl lg:leading-snug font-bold">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/title', null, ["settings" => $settings]);?>
     </h1>
@@ -46,10 +46,10 @@ if (!isset($settings)) {
     <a href="#" 
       x-tooltip="heroDefaultTooltip"
       data-smoothscroll-y="500" 
-      class="selleradise_trigger_smoothscroll absolute z-50 bottom-8 left-4 w-20 h-20 p-5 flex justify-center items-center bg-accent-900 text-accent-text rounded-full">
+      class="selleradise_trigger_smoothscroll hidden absolute z-50 lg:bottom-8 left-4 w-20 h-20 p-5 lg:flex justify-center items-center bg-accent-900 text-accent-text rounded-full">
       <?php echo selleradise_widgets_svg('tabler-icons/arrow-down'); ?>
     </a>  
-    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "!w-full !h-full object-cover !rounded-full overflow-hidden"]);?>
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "!w-full !h-full object-cover !rounded-2xl lg:!rounded-full overflow-hidden"]);?>
   </div>
 
 </div>

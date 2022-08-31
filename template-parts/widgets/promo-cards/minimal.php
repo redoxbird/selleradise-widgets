@@ -41,7 +41,7 @@ if (!$cards) {
       <li
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
         <a
-          class="group  rounded-2xl overflow-hidden hover:border-text-200 hover:bg-transparent transition-all flex h-full justify-between items-stretch bg-text-50"
+          class="group border-text-100 border-1 rounded-2xl overflow-hidden hover:border-text-200 hover:bg-transparent transition-all flex h-full justify-between items-stretch bg-text-25"
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
 
@@ -49,7 +49,7 @@ if (!$cards) {
 
           <div class="flex flex-col justify-center items-start px-6 py-6 lg:py-12 w-9/20 border-text-200 border-1 rounded-2xl m-4">
             <p class="text-md mb-4 font-medium"><?php echo esc_html($card['title']) ?></p>
-            <h2 class="text-lg font-semibold border-y-1 border-text-100 py-2">
+            <h2 class="text-lg font-semibold py-2">
               <?php echo esc_html($card['subtitle']) ?>
             </h2>
           </div>

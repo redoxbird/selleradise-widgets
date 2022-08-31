@@ -1,0 +1,14 @@
+.git
+node_modules
+.vscode
+.rsyncignore
+.travis.yml
+.eslintrc.js
+.keep
+.phpcs.xml.dist
+.gitignore
+ruleset.xml
+package-lock.json
+mix-manifest.json
+composer.lock
+tailwind.config.js

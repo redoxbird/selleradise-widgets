@@ -23,7 +23,7 @@ if (isset($args)) {
     <?php selleradise_widgets_get_template_part('template-parts/widgets/cta/partials/image', null, ["settings" => $settings, "classes" => "absolute inset-0 !w-full !h-full object-cover"]);?>
   </div>
   
-  <div class="w-full lg:w-1/2 flex flex-col justify-start items-start bg-main-900 text-main-text p-20 rounded-2xl">
+  <div class="w-full lg:w-1/2 flex flex-col justify-start items-start bg-main-900 text-main-text p-8 lg:p-20 rounded-2xl">
     <?php if (isset($settings['title']) && $settings['title']): ?>
       <h2 class="text-5xl font-semibold mb-4 leading-snug">
         <?php echo esc_html($settings['title']); ?>

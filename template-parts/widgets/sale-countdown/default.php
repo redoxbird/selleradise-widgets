@@ -37,7 +37,7 @@ $attributes['title'] = $settings['title'];
     alt="<?php echo esc_attr(get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true)); ?>"
   >
 
-  <div class="selleradise_widgets_sale-countdown-overlay relative flex justify-center items-center w-full px-20 py-10 text-main-text bg-main-700">
+  <div class="selleradise_widgets_sale-countdown-overlay relative flex justify-center items-center flex-col lg:flex-row w-full px-page py-10 text-main-text bg-main-700">
     <div class="w-full text-center lg:text-left lg:w-3/10">
       <?php if (isset($settings['title']) && $settings['title']): ?>
         <h2 class="text-5xl m-0">
@@ -52,7 +52,20 @@ $attributes['title'] = $settings['title'];
       <?php endif;?>
     </div>
 
-    <div class="flex flex-col w-2/5 justify-center items-center">
+    <div class="flex flex-col w-full lg:w-2/5 justify-center items-center mt-10 lg:mt-0">
+
+      <p class="inline-flex text-sm w-auto font-semibold text-center mb-4">
+        <span x-show="status === 'started'">
+          <?php esc_html_e('Sale Ends In', 'selleradise-widgets')?>
+        </span>
+        <span x-show="status === 'starting'">
+          <?php esc_html_e('Sale Starts In', 'selleradise-widgets')?>
+        </span>
+        <span x-show="status === 'ended'">
+          <?php esc_html_e('Sale Has Ended', 'selleradise-widgets') ?>
+        </span>
+      </p>
+  
       <div x-show="interval" class="w-full flex justify-center items-center gap-8">
         <template x-for="label in ['months', 'days', 'hours', 'minutes', 'seconds']">
           <div x-show="getDurationByLabel(label)" class="flex flex-col justify-start items-center text-center">
@@ -62,19 +75,11 @@ $attributes['title'] = $settings['title'];
         </template>
       </div>
 
-      <p x-show="status === 'started'" class="inline-flex text-sm w-auto bg-text-900 font-semibold py-2 px-4 rounded-full text-center mt-6">
-        <?php esc_html_e('Sale Ends In', 'selleradise-widgets') ?>
-      </p>
-      <p x-show="status === 'starting'" class="inline-flex text-sm w-auto bg-text-900 font-semibold py-2 px-4 rounded-full text-center mt-6">
-        <?php esc_html_e('Sale Starts In', 'selleradise-widgets') ?>
-      </p>
-      <p x-show="status === 'ended'" class="inline-flex text-sm w-auto bg-text-900 font-semibold py-2 px-4 rounded-full text-center mt-6">
-        <?php esc_html_e('Sale Has Ended', 'selleradise-widgets') ?>
-      </p>
+     
     </div>
 
     <?php if (isset($settings['cta_text']) && $settings['cta_text']): ?>
-      <div class="w-full flex justify-end items-center lg:w-3/10">
+      <div class="w-full flex justify-center lg:justify-end items-center lg:w-3/10 mt-10 lg:mt-0">
         <a
           href="<?php echo esc_url($settings['cta_url']['url'] ?? '#'); ?>"
           target="<?php echo esc_attr($settings['cta_url']['is_external'] ? '_blank' : null); ?>"

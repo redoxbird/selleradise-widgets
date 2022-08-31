@@ -41,7 +41,7 @@ if (!$cards) {
       <li
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
         <a
-          class="group border-text-200 border-1 rounded-2xl overflow-hidden hover:border-text-200 hover:bg-transparent transition-all flex h-full justify-between items-stretch bg-text-50"
+          class="group border-text-100 border-1 rounded-2xl overflow-hidden hover:border-text-200 hover:bg-transparent transition-all flex h-full justify-between items-stretch bg-text-25"
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
 

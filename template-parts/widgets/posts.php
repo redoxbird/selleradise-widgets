@@ -29,7 +29,7 @@ if ($args) {
 
     <a 
       href="<?php echo esc_url(get_permalink( get_option( 'page_for_posts' ) )); ?>" 
-      class="mt-8 selleradise_button--secondary"
+      class="selleradise_button--secondary selleradise_button--sm"
       aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
       <?php _e('See all', 'selleradise-widgets'); ?> 
       <?php echo Selleradise_Widgets_svg('tabler-icons/chevron-right'); ?>
