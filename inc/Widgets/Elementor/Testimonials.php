@@ -128,8 +128,8 @@ class Testimonials extends \Elementor\Widget_Base
             ]
         );
 
-        // if (class_exists('Selleradise\\Init')) {
-
+        if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
+            
             $this->add_control(
                 'type',
                 [
@@ -144,16 +144,16 @@ class Testimonials extends \Elementor\Widget_Base
                 ]
             );
 
-        // } else {
-        //     $this->add_control(
-        //         'type',
-        //         [
-        //             'label' => __('Card Type', 'selleradise-widgets'),
-        //             'type' => Controls_Manager::HIDDEN,
-        //             'default' => 'cards',
-        //         ]
-        //     );
-        // }
+        } else {
+            $this->add_control(
+                'type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'cards',
+                ]
+            );
+        }
 
         $this->end_controls_section();
 

@@ -27,7 +27,7 @@ $index = 0;
 ?>
 
 <div 
-  class="my-20 px-page"
+  class="px-page"
   style="--ratio: <?php echo esc_attr( $ratio ); ?>;"
   data-selleradise-categories-page-size="<?php echo esc_attr( $page_size ); ?>"
   x-data="infiniteScroll({

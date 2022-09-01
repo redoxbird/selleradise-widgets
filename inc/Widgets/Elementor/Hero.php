@@ -169,7 +169,7 @@ class Hero extends \Elementor\Widget_Base
                         'popular' => esc_html__('Popular', 'selleradise-widgets'),
                         'centered' => esc_html__('Centered', 'selleradise-widgets'),
                         'standard' => esc_html__('Standard', 'selleradise-widgets'),
-                        'split' => esc_html__('Split', 'selleradise-widgets'),
+                        // 'split' => esc_html__('Split', 'selleradise-widgets'),
                     ],
                 ]
             );

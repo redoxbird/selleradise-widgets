@@ -49,7 +49,7 @@ if (!isset($settings)) {
   <?php endif; ?>
 
   <?php if(isset($settings["image_shape"]) && $settings["image_shape"] === 'square'): ?>
-    <div class="selleradise_Hero__image relative z-20 w-full mt-4 lg:mt-8 h-96 lg:h-auto lg:mr-20 lg:w-120 rounded-2xl lg:rounded-t-2xl overflow-hidden">
+    <div class="selleradise_Hero__image relative z-20 w-full mt-4 lg:mt-8 h-96 lg:h-auto lg:mr-20 lg:w-120 rounded-2xl lg:rounded-b-none overflow-hidden">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "!w-full !h-full object-cover"]);?>
     </div>
   <?php endif; ?>

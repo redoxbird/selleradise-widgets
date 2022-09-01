@@ -13,55 +13,76 @@ $index = 0;
 
 ?>
 
-<section class="selleradise_Testimonials--standard">
+<section
+  x-data
+  x-embla
+  class="px-page"
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', {
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'testimonials',
+        variation: 'default',
+      })
+    "
+  <?php endif;?>
+  >
 
-  <div class="selleradise_Testimonials--standard__title-outer">
-    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-      <h2 class="selleradise_Testimonials--standard__title"><?php echo esc_html($settings['section_title']); ?></h2>
-    <?php endif;?>
-
-    <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-      <p class="selleradise_Testimonials--standard__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-    <?php endif;?>
+  <div class="w-full mb-8 text-center">
+    <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]);?>
   </div>
 
 
-  <div class="selleradise_Testimonials--standard__quotes">
 
-    <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
-      <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
-    </button>
-
+  <div x-embla:main class="embla">
     <?php if ( $testimonials->have_posts() ) : ?>
-    
-    <div class="swiper-wrapper">
-      <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
+      
+      <ul class="embla__container">
+        <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
 
-        <div class="swiper-slide">
+          <li class="embla__slide flex flex-col justify-center items-center lg:px-72">
+            <span class="text-6xl opacity-25">&ldquo;</span>
 
-          <h3><?php echo esc_html(get_the_title()); ?></h3>
-          <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
-          <blockquote><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
+            <h3 class="text-md mb-4">
+              <?php echo esc_html(get_the_title()); ?>
+            </h3>
+            
+            <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
+            
+            <blockquote class="text-xl mt-4 text-center">
+              <?php echo wp_kses_post(rwmb_meta('quote')); ?>
+            </blockquote>
 
-          <div class="selleradise_Testimonials--standard__profile">
-            <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []);?>
-            <p class="selleradise_Testimonials--standard__profile-name"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
-            <p class="selleradise_Testimonials--standard__profile-title"><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
-          </div>
-        </div>
+            <div class="overflow-hidden flex justify-start items-center mt-8 text-sm">
+              <div class="w-8 h-8 mr-4 rounded-full overflow-hidden flex-shrink-0">
+                <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
+              </div>
+              <p class="font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+              <span class="px-2 opacity-50">|</span>
+              <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
+            </div>
+          </li>
 
-       <?php endwhile; ?>
-    </div>
+        <?php endwhile; ?>
+      </ul>
 
-    <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
-      <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
-    </button>
+      
 
     <?php else: 
       selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No testimonials found', 'selleradise-widgets')]);
 
       endif; wp_reset_postdata(); 
     ?>
+  </div>
+  
+  <div class="flex justify-center items-center mt-8">
+    <button x-embla:prev class="selleradise_widgets__slider-button">
+      <?php echo selleradise_widgets_svg('hero/arrow-narrow-left'); ?>
+    </button>
+    <button x-embla:next class="selleradise_widgets__slider-button">
+      <?php echo selleradise_widgets_svg('hero/arrow-narrow-right'); ?>
+    </button>
   </div>
 
 </section>

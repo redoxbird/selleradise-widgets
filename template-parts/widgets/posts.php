@@ -13,7 +13,7 @@ if ($args) {
 ?>
 
 <div 
-  class="px-page py-20" 
+  class="px-page" 
   x-init="
     $dispatch('selleradise-widget-initialized', { 
       isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
@@ -32,7 +32,7 @@ if ($args) {
       class="selleradise_button--secondary selleradise_button--sm"
       aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
       <?php _e('See all', 'selleradise-widgets'); ?> 
-      <?php echo Selleradise_Widgets_svg('tabler-icons/chevron-right'); ?>
+      <?php echo selleradise_widgets_svg('tabler-icons/chevron-right'); ?>
     </a>
   </div>
 

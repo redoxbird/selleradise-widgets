@@ -15,8 +15,7 @@ $alt = $profile_picture ? ($profile_picture['alt'] ?: '') : '';
 ?>
 
 <img
-  src="<?php echo \Elementor\Utils::get_placeholder_image_src(); ?>"
-  data-src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>"
+  <?php echo selleradise_lazy_src($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>
   alt="<?php echo esc_attr($alt); ?>"
 >
 

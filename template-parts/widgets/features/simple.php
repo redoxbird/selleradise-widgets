@@ -16,39 +16,41 @@ if (!$features) {
 
 ?>
 
-<section class="selleradise_Features--simple">
-  <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-    <h2 class="selleradise_Features--simple__title"><?php echo esc_html($settings['section_title']); ?></h2>
-  <?php endif;?>
+<section 
+  class="w-full px-page"
+  x-init="
+    $dispatch('selleradise-widget-initialized', { 
+      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+      element: $el,
+      widget: 'features',
+      variation: 'default',
+    })
+  ">
+  <div class="flex justify-between items-start lg:items-center flex-col lg:flex-row mb-10">
+    <div>
+      <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]); ?>
+    </div>
 
-  <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-    <p class="selleradise_Features--simple__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-  <?php endif;?>
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/features/partials/cta', null, ["settings" => $settings]);?>
+  </div>
 
-  <ul class="selleradise_Features--simple__list">
+  <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
     <?php foreach ($features as $index => $feature): ?>
-      <li>
-        <div class="selleradise_Features--simple__icon">
+      <li 
+        class="elementor-repeater-item-<?php echo esc_attr( $feature['_id'] ); ?> border-1 border-text-100 rounded-2xl p-8"
+        style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
+
+        <div class="selleradise_Features--icon text-xl text-main-900 mb-4 !bg-transparent">
           <?php \Elementor\Icons_Manager::render_icon($feature['icon'], ['aria-hidden' => 'true']);?>
         </div>
 
-        <h3 class="selleradise_Features--simple__listTitle"><?php echo esc_html($feature['title']); ?></h3>
+        <h3 class="text-lg mb-2"><?php echo esc_html($feature['title']); ?></h3>
 
-        <div class="selleradise_Features--simple__listDescription">
+        <div class="text-sm opacity-75">
           <?php echo esc_attr( $feature['description'] ); ?>
         </div>
       </li>
     <?php endforeach;?>
   </ul>
-
-  <?php if (isset($settings['cta_text']) && $settings['cta_text']): ?>
-    <a
-        href="<?php echo esc_html($settings['cta_url']['url'] ?? '#'); ?>"
-        target="<?php echo esc_html($settings['cta_url']['is_external'] ? '_blank' : null); ?>"
-        class="selleradise_Features--simple__cta"
-    >
-      <?php echo esc_html($settings['cta_text'] ?: __('Learn More', 'selleradise-widgets')); ?>
-    </a>
-  <?php endif;?>
 
 </section>

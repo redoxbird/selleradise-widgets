@@ -9,81 +9,104 @@ if (isset($args)) {
 
 }
 
-$index = 0;
+
 
 ?>
 
-<section class="selleradise_Testimonials--default">
-
-  <div class="selleradise_Testimonials--default__title-outer">
-    <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-      <h2 class="selleradise_Testimonials--default__title"><?php echo esc_html($settings['section_title']); ?></h2>
-    <?php endif;?>
-
-    <div class="selleradise_widgets__slider-buttons">
-      <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--left">
-        <?php echo selleradise_widgets_svg('tabler-icons/arrow-up'); ?>
-      </button>
-
-      <button class="selleradise_widgets__slider-button selleradise_widgets__slider-button--right">
-        <?php echo selleradise_widgets_svg('tabler-icons/arrow-down'); ?>
-      </button>
-    </div>
-
-    <?php if (isset($settings['section_subtitle']) && $settings['section_subtitle']): ?>
-      <p class="selleradise_Testimonials--default__subtitle"><?php echo esc_html($settings['section_subtitle']); ?></p>
-    <?php endif;?>
+<section
+  x-data
+  x-embla-tabs
+  class="flex justify-start flex-wrap items-stretch px-page"
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', {
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'testimonials',
+        variation: 'default',
+      })
+    "
+  <?php endif;?>
+  >
+  <div class="w-full mb-8">
+    <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]);?>
   </div>
 
-  <div class="selleradise_Testimonials--default__profiles-outer">
-    <ul class="selleradise_Testimonials--default__profiles">
-      <?php if ( $testimonials->have_posts() ) : ?>
-      <div class="swiper-wrapper">
-        
+  <div
+    x-embla-tabs:thumbs
+    class="w-full overflow-hidden lg:hidden">
+    <ul class="w-full flex gap-4">
+      <?php if ( $testimonials->have_posts() ) : $index = 0; ?>
         <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
+          <li class="w-full flex justify-start items-center">
+            <button
+              x-embla-tabs:thumb
+              data-index="<?php echo esc_attr( $index ); ?>"
+              x-bind:class="{'bg-text-50': isInView(<?php echo esc_attr($index); ?>) }"
+              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all hover:bg-text-25">
+              <div class="w-16 h-16 mr-4 rounded-xl overflow-hidden flex-shrink-0">
+                <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
+              </div>
 
-        <li class="selleradise_Testimonials--default__profile swiper-slide" data-slide-index="<?php echo esc_attr( $index ); ?>">
-          <button>
-            <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
-
-            <div>
-              <p><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
-              <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
-            </div>
-          </button>
-        </li>
-
-
+              <div class="flex flex-col justify-start items-start text-sm whitespace-nowrap pr-4">
+                <p class="font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+                <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
+              </div>
+            </button>
+          </li>
         <?php $index++; endwhile; ?>
-      </div> 
       <?php endif; wp_reset_postdata(); ?>
-
     </ul>
-
-
   </div>
 
-  <div class="selleradise_Testimonials--default__quotes">
+  <div
+    x-embla-tabs:thumbs.axis.y
+    class="hidden lg:block w-1/4 p-6 border-1 border-text-100 rounded-2xl max-h-96 overflow-y-scroll selleradise-hide-scrollbar">
+    <ul class="w-full flex flex-col gap-4">
+      <?php if ( $testimonials->have_posts() ) : $index = 0; ?>
+        <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
+          <li class="flex justify-start items-center">
+            <button
+              x-embla-tabs:thumb
+              data-index="<?php echo esc_attr( $index ); ?>"
+              x-bind:class="{'bg-text-50': isInView(<?php echo esc_attr($index); ?>) }"
+              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all hover:bg-text-25">
+              <div class="w-16 h-16 mr-4 rounded-xl overflow-hidden">
+                <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
+              </div>
 
-    <?php if ( $testimonials->have_posts() ) : ?>
+              <div class="flex flex-col justify-start items-start text-sm">
+                <p class="font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+                <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
+              </div>
+            </button>
+          </li>
+        <?php $index++; endwhile; ?>
+      <?php endif; wp_reset_postdata(); ?>
+    </ul>
+  </div>
+
+  <div
+    x-embla-tabs:panels.axis.y
+    class="overflow-hidden selleradise-hide-scrollbar max-h-96 lg:max-h-96 pt-8 lg:pt-0 lg:pl-20 w-full lg:w-3/4">
+    <?php if ( $testimonials->have_posts() ) : $index = 0; ?>
     
-    <div class="swiper-wrapper">
+    <ul class="w-full h-full flex flex-col gap-4">
       <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
-        <div class="swiper-slide">
-          <h3><?php echo esc_html(get_the_title()); ?></h3>
+        <li class="w-full h-full flex-grow flex-shrink-0">
+          <span class="text-6xl opacity-25">&ldquo;</span>
+          <h3 class="text-3xl mb-4"><?php echo esc_html(get_the_title()); ?></h3>
           <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
-          <blockquote><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
-        </div>
-       <?php endwhile; ?>
-    </div>
+          <blockquote class="mt-4"><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
+        </li>
+      <?php endwhile; ?>
+    </ul>
 
     <?php else: 
       selleradise_widgets_get_template_part('template-parts/empty-state', null, ["title" => __('No testimonials found', 'selleradise-widgets')]);
 
       endif; wp_reset_postdata(); 
     ?>
-
-
   </div>
 
 </section>

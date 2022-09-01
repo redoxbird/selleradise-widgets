@@ -121,33 +121,33 @@ class Posts extends \Elementor\Widget_Base
             ]
         );
 
-        // if (class_exists('Selleradise\\Init')) {
-        $this->add_control(
-            'card_type',
-            [
-                'label' => __('Card Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'popular' => esc_html__('Popular', 'selleradise-widgets'),
-                    'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
-                    'text' => esc_html__('Text Only', 'selleradise-widgets'),
-                    'list' => esc_html__('List', 'selleradise-widgets'),
-                ],
-            ]
-        );
+        if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'popular' => esc_html__('Popular', 'selleradise-widgets'),
+                        'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
+                        'text' => esc_html__('Text Only', 'selleradise-widgets'),
+                        'list' => esc_html__('List', 'selleradise-widgets'),
+                    ],
+                ]
+            );
 
-        // } else {
-        //     $this->add_control(
-        //         'card_type',
-        //         [
-        //             'label' => __('Card Type', 'selleradise-widgets'),
-        //             'type' => Controls_Manager::HIDDEN,
-        //             'default' => 'default',
-        //         ]
-        //     );
-        // }
+        } else {
+            $this->add_control(
+                'card_type',
+                [
+                    'label' => __('Card Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'default',
+                ]
+            );
+        }
 
         $this->add_control(
             'orderby',

@@ -24,7 +24,7 @@ $index = 0;
     })
   ">
 
-  <div class="">
+  <div>
     <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]);?>
   </div>
 

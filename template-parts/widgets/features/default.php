@@ -26,36 +26,27 @@ if (!$features) {
       variation: 'default',
     })
   ">
-  <div class="flex justify-between items-center mb-10">
+  <div class="flex justify-between items-start lg:items-center flex-col lg:flex-row mb-10">
     <div>
       <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]); ?>
     </div>
 
-    <?php if (isset($settings['cta_text']) && $settings['cta_text']): ?>
-      <a
-          href="<?php echo esc_url($settings['cta_url']['url'] ?? '#'); ?>"
-          target="<?php echo esc_attr($settings['cta_url']['is_external'] ? '_blank' : null); ?>"
-          class="selleradise_Features--default__cta selleradise_button--primary"
-      >
-        <?php echo esc_html($settings['cta_text']); ?>
-        <?php echo Selleradise_Widgets_svg('tabler-icons/arrow-right'); ?>
-      </a>
-    <?php endif;?>
+    <?php selleradise_widgets_get_template_part('template-parts/widgets/features/partials/cta', null, ["settings" => $settings]);?>
   </div>
 
-  <ul class="grid lg:grid-cols-3 gap-8">
+  <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
     <?php foreach ($features as $index => $feature): ?>
       <li 
         class="elementor-repeater-item-<?php echo esc_attr( $feature['_id'] ); ?>"
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
 
-        <div class="w-14 h-14 text-xl rounded-full flex justify-center items-center text-main-900 bg-main-100 mb-4">
+        <div class="selleradise_Features--icon w-14 h-14 text-xl rounded-full flex justify-center items-center text-main-900 bg-main-100 mb-4">
           <?php \Elementor\Icons_Manager::render_icon($feature['icon'], ['aria-hidden' => 'true']);?>
         </div>
 
-        <h3 class="text-xl mb-2"><?php echo esc_html($feature['title']); ?></h3>
+        <h3 class="text-lg mb-2"><?php echo esc_html($feature['title']); ?></h3>
 
-        <div class="opacity-75">
+        <div class="text-sm opacity-75">
           <?php echo esc_attr( $feature['description'] ); ?>
         </div>
       </li>

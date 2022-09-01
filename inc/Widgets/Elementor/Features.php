@@ -13,6 +13,7 @@ use Selleradise_Widgets\Controls\Elementor\Group_Control_Link;
 use \Elementor\Controls_Manager;
 
 class Features extends \Elementor\Widget_Base
+
 {
 
     public function __construct($data = [], $args = null)
@@ -20,7 +21,6 @@ class Features extends \Elementor\Widget_Base
         parent::__construct($data, $args);
 
     }
-
 
     /**
      * Get widget name.
@@ -122,16 +122,17 @@ class Features extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'section_type',
+            'image',
             [
-                'label' => __('Section Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'simple' => esc_html__('Simple', 'selleradise-widgets'),
-                    'bullet' => esc_html__('Bullet', 'selleradise-widgets'),
+                'label' => __('Choose Image', 'selleradise-widgets'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
+                'condition' => [
+                    'section_type' => ['bullet'],
+                ],
+
             ]
         );
 
@@ -174,7 +175,7 @@ class Features extends \Elementor\Widget_Base
                 'label' => __('Icon Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-icon: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .selleradise_Features--icon' => 'color: {{value}};',
                 ],
             ]
         );
@@ -185,7 +186,7 @@ class Features extends \Elementor\Widget_Base
                 'label' => __('Icon Background Color', 'selleradise-widgets'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => '--selleradise-color-icon-background: {{value}};',
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .selleradise_Features--icon' => 'background: {{value}};',
                 ],
             ]
         );
@@ -249,6 +250,42 @@ class Features extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'setting_section',
+            [
+                'label' => __('Settings', 'selleradise-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
+            $this->add_control(
+                'section_type',
+                [
+                    'label' => __('Section Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'simple' => esc_html__('Simple', 'selleradise-widgets'),
+                        'bullet' => esc_html__('Bullet', 'selleradise-widgets'),
+                    ],
+                ]
+            );
+
+        } else {
+            $this->add_control(
+                'section_type',
+                [
+                    'label' => __('Section Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'default',
+                ]
+            );
+        }
 
         $this->end_controls_section();
 

@@ -156,32 +156,32 @@ class CTA extends \Elementor\Widget_Base
             ]
         );
 
-        // if (class_exists('Selleradise\\Init')) {
+        if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
 
-        $this->add_control(
-            'type',
-            [
-                'label' => __('Type', 'selleradise-widgets'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => esc_html__('Default', 'selleradise-widgets'),
-                    'floating' => esc_html__('Floating', 'selleradise-widgets'),
-                    'split' => esc_html__('Split', 'selleradise-widgets'),
-                ],
-            ]
-        );
+            $this->add_control(
+                'type',
+                [
+                    'label' => __('Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'floating' => esc_html__('Floating', 'selleradise-widgets'),
+                        'split' => esc_html__('Split', 'selleradise-widgets'),
+                    ],
+                ]
+            );
 
-        // } else {
-        //     $this->add_control(
-        //         'type',
-        //         [
-        //             'label' => __('Type', 'selleradise-widgets'),
-        //             'type' => Controls_Manager::HIDDEN,
-        //             'default' => 'default',
-        //         ]
-        //     );
-        // }
+        } else {
+            $this->add_control(
+                'type',
+                [
+                    'label' => __('Type', 'selleradise-widgets'),
+                    'type' => Controls_Manager::HIDDEN,
+                    'default' => 'default',
+                ]
+            );
+        }
 
         $this->end_controls_section();
 

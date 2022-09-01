@@ -33,7 +33,7 @@ if (!$incentives) {
         class="elementor-repeater-item-<?php echo esc_attr( $incentive['_id'] ); ?> flex justify-start items-center" 
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
 
-        <div class="shrink-0 w-16 h-16 text-xl bg-text-50 rounded-full mr-4 flex justify-center items-center">
+        <div class="flex-shrink-0 w-16 h-16 text-xl bg-text-50 rounded-full mr-4 flex justify-center items-center">
           <?php \Elementor\Icons_Manager::render_icon($incentive['icon'], ['aria-hidden' => 'true']);?>
         </div>
 
