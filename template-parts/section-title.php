@@ -12,7 +12,7 @@ if (isset($args)) {
 ?>
 
 <?php if (isset($settings['section_title']) && $settings['section_title']): ?>
-  <h2 class="text-3xl">
+  <h2 class="text-3xl m-0">
     <?php echo esc_html($settings['section_title']); ?>
   </h2>
 <?php endif;?>

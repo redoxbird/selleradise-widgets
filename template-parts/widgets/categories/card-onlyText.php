@@ -20,7 +20,7 @@ if (!$settings) {
   x-show="visible > <?php echo esc_attr($index); ?>"
   x-transition>
   <a
-    class="w-full h-full flex flex-col justify-center items-center border-text-100 border-1 py-6 px-4 rounded-2xl hover:border-text-300"
+    class="w-full h-full flex flex-col justify-center items-center border-text-100 border-1 border-solid py-6 px-4 rounded-2xl hover:border-text-300"
     href="<?php echo esc_url(get_term_link($category)); ?>">
 
     <p class="bg-text-50 text-text-700 px-3 py-1.5 rounded-full text-xs font-semibold mb-4">

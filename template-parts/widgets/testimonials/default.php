@@ -35,7 +35,7 @@ if (isset($args)) {
   <div
     x-embla-tabs:thumbs
     class="w-full overflow-hidden lg:hidden">
-    <ul class="w-full flex gap-4">
+    <ul class="list-none m-0 p-0 w-full flex gap-4">
       <?php if ( $testimonials->have_posts() ) : $index = 0; ?>
         <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
           <li class="w-full flex justify-start items-center">
@@ -61,8 +61,8 @@ if (isset($args)) {
 
   <div
     x-embla-tabs:thumbs.axis.y
-    class="hidden lg:block w-1/4 p-6 border-1 border-text-100 rounded-2xl max-h-96 overflow-y-scroll selleradise-hide-scrollbar">
-    <ul class="w-full flex flex-col gap-4">
+    class="hidden lg:block w-1/4 p-6 border-1 border-solid border-text-100 rounded-2xl max-h-96 overflow-hidden">
+    <ul class="list-none m-0 p-0 w-full flex flex-col gap-4">
       <?php if ( $testimonials->have_posts() ) : $index = 0; ?>
         <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
           <li class="flex justify-start items-center">
@@ -70,14 +70,14 @@ if (isset($args)) {
               x-embla-tabs:thumb
               data-index="<?php echo esc_attr( $index ); ?>"
               x-bind:class="{'bg-text-50': isInView(<?php echo esc_attr($index); ?>) }"
-              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all hover:bg-text-25">
+              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all bg-transparent border-none p-0 hover:bg-text-25">
               <div class="w-16 h-16 mr-4 rounded-xl overflow-hidden">
                 <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
               </div>
 
               <div class="flex flex-col justify-start items-start text-sm">
-                <p class="font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
-                <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
+                <p class="font-semibold m-0"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+                <p class="m-0 mt-1"><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
               </div>
             </button>
           </li>
@@ -91,13 +91,13 @@ if (isset($args)) {
     class="overflow-hidden selleradise-hide-scrollbar max-h-96 lg:max-h-96 pt-8 lg:pt-0 lg:pl-20 w-full lg:w-3/4">
     <?php if ( $testimonials->have_posts() ) : $index = 0; ?>
     
-    <ul class="w-full h-full flex flex-col gap-4">
+    <ul class="list-none m-0 p-0 w-full h-full flex flex-col gap-4">
       <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
         <li class="w-full h-full flex-grow flex-shrink-0">
-          <span class="text-6xl opacity-25">&ldquo;</span>
+          <span class="text-6xl opacity-25 leading-none">&ldquo;</span>
           <h3 class="text-3xl mb-4"><?php echo esc_html(get_the_title()); ?></h3>
           <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
-          <blockquote class="mt-4"><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
+          <blockquote class="m-0 mt-4"><?php echo wp_kses_post(rwmb_meta('quote')); ?></blockquote>
         </li>
       <?php endwhile; ?>
     </ul>

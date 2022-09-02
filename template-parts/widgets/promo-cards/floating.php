@@ -34,7 +34,7 @@ if (!$cards) {
   " 
   class="px-page">
 
-  <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <?php foreach ($cards as $index => $card):
       $class = ' elementor-repeater-item-' . $card['_id'];
     ?>
@@ -51,8 +51,8 @@ if (!$cards) {
 
           <div
             class="relative z-20 bg-main-900 h-auto w-11/12 -mt-16 rounded-2xl mx-auto text-main-text flex flex-col justify-center items-center px-16 pb-8 pt-8 text-center group-hover:scale-105 transition-all duration-700 ease-out-expo">
-            <p class="text-sm mb-4 font-semibold text-center"><?php echo esc_html($card['title']) ?></p>
-            <h2 class="text-lg font-semibold border-y-1 border-main-text py-2 mt-2 text-center">
+            <p class="m-0 text-sm mb-4 font-semibold text-center"><?php echo esc_html($card['title']) ?></p>
+            <h2 class="m-0 text-lg font-semibold mt-2 text-center">
               <?php echo esc_html($card['subtitle']) ?>
             </h2>
           </div>

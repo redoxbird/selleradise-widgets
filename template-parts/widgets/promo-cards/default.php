@@ -34,12 +34,12 @@ if (!$cards) {
   " 
   class="px-page">
 
-  <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <?php foreach ($cards as $index => $card):
       $class = ' elementor-repeater-item-' . $card['_id'];
     ?>
       <li
-        class="border-text-100 border-1 rounded-2xl p-3 hover:border-text-200 transition-all"
+        class="border-text-100 border-1 border-solid rounded-2xl p-3 hover:border-text-200 transition-all"
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
 
         <a
@@ -48,8 +48,8 @@ if (!$cards) {
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
 
           <div class="flex flex-col justify-between items-start p-3 w-1/2 flex-grow">
-            <h2 class="text-xl lg:text-2xl mb-8 font-semibold"><?php echo esc_html($card['title']) ?></h2>
-            <p class="bg-text-900 text-background-900 px-4 py-2 rounded-full text-xs font-semibold">
+            <h2 class="text-xl lg:text-2xl mb-8 font-semibold m-0 text-text-900"><?php echo esc_html($card['title']) ?></h2>
+            <p class="bg-text-900 text-background-900 px-4 py-2 rounded-full text-xs font-semibold m-0">
               <?php echo esc_html($card['subtitle']) ?>
             </p>
           </div>

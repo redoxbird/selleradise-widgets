@@ -32,7 +32,7 @@ $index = 0;
     <?php if ( $faqs->have_posts() ) : ?>
 
       <?php if(!empty($categories)): ?>
-        <ul class="flex justify-start items-center gap-4">
+        <ul class="list-none m-0 p-0 flex justify-start items-center gap-4">
           <li>
             <button
               x-on:click="setActive('all')"
@@ -51,7 +51,7 @@ $index = 0;
         </ul>
       <?php endif; ?>
 
-      <ul class="mt-8 grid gap-8">
+      <ul class="list-none m-0 p-0 mt-8 grid gap-8">
         <?php 
           while ($faqs->have_posts()) : $faqs->the_post();
           
@@ -66,14 +66,14 @@ $index = 0;
         ?>
         
           <li 
-            class="flex justify-start items-start" 
+            class="flex justify-start lg:items-baseline flex-col lg:flex-row" 
             x-show="isActive('<?php echo esc_attr(implode(',', $category_slugs)); ?>')"
           >
-            <h3 class="text-lg w-2/5 flex justify-start mt-5">
+            <h3 class="w-full text-lg lg:w-2/5 flex justify-start m-0">
               <?php echo esc_html( get_the_title() ); ?>
             </h3>
 
-            <div class="selleradise_prose w-3/5">
+            <div class="selleradise_prose w-full lg:w-3/5">
               <?php
                 the_content(
                     sprintf(

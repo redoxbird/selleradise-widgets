@@ -36,7 +36,7 @@ if ($args) {
     </a>
   </div>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+  <div class="grid gap-8 items-start <?php echo function_exists("selleradise_posts_classes") ? esc_attr(selleradise_posts_classes($settings['card_type'], true)) : null ?>">
     <?php 
       $posts = new WP_Query($query_args);
 

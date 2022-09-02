@@ -22,7 +22,7 @@ $attributes['title'] = $settings['title'];
     saleFrom: '<?php echo esc_attr($settings['start_date']) ?>',
     saleTo: '<?php echo esc_attr($settings['end_date']) ?>'
   })" 
-  class="w-full px-page lg:pl-80"
+  class="w-full px-page pt-20 lg:pt-0 lg:pl-80"
   <?php if(!selleradise_is_normal_mode()): ?>
     x-init="
       $dispatch('selleradise-widget-initialized', { 
@@ -58,23 +58,25 @@ $attributes['title'] = $settings['title'];
           </h2>
         <?php endif;?>
       </div>
+      
+      <p class="text-sm font-medium mb-2 lg:mt-10">
+        <span x-show="status === 'started'">
+          <?php esc_html_e('Sale Ends In', 'selleradise-widgets')?>
+        </span>
+        <span x-show="status === 'starting'">
+          <?php esc_html_e('Sale Starts In', 'selleradise-widgets')?>
+        </span>
+        <span x-show="status === 'ended'">
+          <?php esc_html_e('Sale Has Ended', 'selleradise-widgets') ?>
+        </span>
+      </p>
 
-      <div class="w-full mt-10 flex flex-col lg:flex-row justify-between items-center">
+      <div class="w-full flex flex-col lg:flex-row justify-between items-center">
         <div class="flex flex-col flex-grow justify-start items-center lg:items-start">
-          <p x-show="status === 'started'" class="text-sm font-medium mb-2">
-            <?php esc_html_e('Sale Ends In', 'selleradise-widgets') ?>
-          </p>
-          <p x-show="status === 'starting'" class="text-sm font-medium mb-2">
-            <?php esc_html_e('Sale Starts In', 'selleradise-widgets') ?>
-          </p>
-          <p x-show="status === 'ended'" class="text-sm font-medium mb-2">
-            <?php esc_html_e('Sale Has Ended', 'selleradise-widgets') ?>
-          </p>
-
           <div x-show="interval" class="w-full flex justify-start items-start gap-8">
             <template x-for="label in ['months', 'days', 'hours', 'minutes', 'seconds']">
               <div x-show="getDurationByLabel(label)" class="flex flex-col justify-start items-center text-center">
-                <span class="text-5xl font-semibold" x-text="getDurationByLabel(label)"></span>
+                <span class="text-3xl font-semibold" x-text="getDurationByLabel(label)"></span>
                 <span class="text-sm" x-text="label"></span>
               </div>
             </template>

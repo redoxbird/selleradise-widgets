@@ -22,6 +22,7 @@ if (!$settings) {
     --width: 14rem;
   "
   x-show="visible > <?php echo esc_attr( $index ); ?>"
+  x-init="$el.style.setProperty('--width', $el.offsetWidth + 'px')"
   x-transition>
   <a 
     class="w-full flex flex-col justify-center items-center bg-background-900 text-text-900" 

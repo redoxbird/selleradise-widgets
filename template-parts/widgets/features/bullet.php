@@ -34,7 +34,7 @@ if (!$features) {
   </div>
 
   <div class="flex justify-center items-stretch flex-col lg:flex-row">
-    <ul class="w-full lg:w-1/2 flex flex-col gap-8 lg:py-20 lg:pr-20 order-2 lg:order-1 ">
+    <ul class="list-none m-0 p-0 w-full lg:w-1/2 flex flex-col gap-8 lg:py-20 lg:pr-20 order-2 lg:order-1 ">
       <?php foreach ($features as $index => $feature): ?>
         <li 
           class="elementor-repeater-item-<?php echo esc_attr( $feature['_id'] ); ?> flex justify-start items-baseline"
@@ -61,7 +61,7 @@ if (!$features) {
     </ul>
 
 
-    <div class="relative w-full lg:w-1/2 overflow-hidden rounded-2xl">
+    <div class="relative w-full lg:w-1/2 overflow-hidden rounded-2xl lg:order-2">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/features/partials/image', null, ["settings" => $settings, "classes" => "absolute inset-0 !w-full !h-full object-cover"]);?>
     </div>
 

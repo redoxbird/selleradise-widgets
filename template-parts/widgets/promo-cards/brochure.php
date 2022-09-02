@@ -34,7 +34,7 @@ if (!$cards) {
   " 
   class="px-page">
 
-  <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <?php foreach ($cards as $index => $card):
       $class = ' elementor-repeater-item-' . $card['_id'];
     ?>
@@ -45,7 +45,7 @@ if (!$cards) {
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
 
-          <h2 class="absolute left-4 top-6 text-lg font-semibold" style="writing-mode: vertical-rl; text-orientation: mixed;">
+          <h2 class="m-0 absolute left-4 top-6 text-lg font-semibold" style="writing-mode: vertical-rl; text-orientation: mixed;">
             <?php echo esc_html($card['subtitle']) ?>
           </h2>
 
@@ -53,7 +53,7 @@ if (!$cards) {
             <?php echo selleradise_widgets_svg("tabler-icons/arrow-up-right-circle"); ?>
           </span>
 
-          <p class="absolute right-6 bottom-2 text-sm mb-4 font-semibold"><?php echo esc_html($card['title']) ?></p>
+          <p class="m-0 absolute right-6 bottom-2 text-sm mb-4 font-semibold"><?php echo esc_html($card['title']) ?></p>
 
           <div class="relative h-60 w-full overflow-hidden rounded-bl-2xl">
             <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "absolute !h-full w-full inset-0 object-cover group-hover:scale-110 transition-all duration-700 ease-out-expo origin-center"]);?>

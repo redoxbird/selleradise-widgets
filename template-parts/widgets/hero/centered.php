@@ -27,7 +27,7 @@ if (!isset($settings)) {
   ">
 
   <div class="relative my-20 z-20 flex w-full flex-grow flex-col justify-center items-center text-center">
-    <h1 class="text-4xl lg:text-7xl lg:leading-snug font-bold">
+    <h1 class="m-0 text-4xl lg:text-7xl lg:leading-snug font-bold">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/title', null, ["settings" => $settings]);?>
     </h1>
     <p class="text-md lg:text-xl mt-4">

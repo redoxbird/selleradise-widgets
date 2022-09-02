@@ -32,27 +32,27 @@ $index = 0;
 
   <?php if ( $testimonials->have_posts() ) : ?>
 
-  <ul class="grid lg:grid-cols-4 gap-8 mt-8">
+  <ul class="list-none m-0 p-0 grid lg:grid-cols-4 gap-8 mt-8">
     <?php while ($testimonials->have_posts()) : $testimonials->the_post(); 
       $profile_pictures = rwmb_meta('profile_picture', array( 'limit' => 1 ));
       $profile_picture = reset( $profile_pictures ); 
     ?>
 
     <li 
-      class="p-6 rounded-2xl border-1 border-text-100 flex flex-col justify-start items-start"
+      class="p-6 rounded-2xl border-1 border-solid border-text-100 flex flex-col justify-start items-start"
       x-show="visible > <?php echo esc_attr( $index ); ?>"
       x-transition>
-        <h3 class="mb-2 text-md">
+        <h3 class="m-0 mb-2 text-md">
           <?php echo esc_html(get_the_title()); ?>
         </h3>
         
         <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
         
-        <blockquote class="mt-4 text-sm">
+        <blockquote class="m-0 p-0 text-sm">
           <?php echo wp_kses_post(rwmb_meta('quote')); ?>
         </blockquote>
         
-        <div class="pt-6 flex justify-start items-center mt-auto">
+        <div class="pt-4 flex justify-start items-center mt-auto">
           <img 
             class="w-12 h-12 !rounded-full overflow-hidden object-cover mr-4"
             src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>" 
@@ -60,8 +60,8 @@ $index = 0;
           >
 
           <div>
-            <p class="text-sm font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
-            <p class="text-sm opacity-75"><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
+            <p class="text-sm m-0 font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+            <p class="text-sm m-0 opacity-75"><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
           </div>
         </div>
     </li>

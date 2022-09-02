@@ -31,7 +31,7 @@ if (!isset($settings)) {
   </div>
 
   <div class="selleradise_Hero__content relative flex flex-col justify-start items-start mt-28 mr-[50%] px-28 bg-background-100 text-text-900 backdrop-blur-xl rounded-2xl p-14">
-    <h1 class="text-3xl lg:text-4xl lg:leading-snug font-bold">
+    <h1 class="m-0 text-3xl lg:text-4xl lg:leading-snug font-bold">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/title', null, ["settings" => $settings]);?>
     </h1>
     <p class="text-md lg:text-xl mt-4">

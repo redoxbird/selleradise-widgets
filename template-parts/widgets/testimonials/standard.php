@@ -50,7 +50,7 @@ $index = 0;
             
             <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
             
-            <blockquote class="text-xl mt-4 text-center">
+            <blockquote class="m-0 text-xl mt-4 text-center">
               <?php echo wp_kses_post(rwmb_meta('quote')); ?>
             </blockquote>
 

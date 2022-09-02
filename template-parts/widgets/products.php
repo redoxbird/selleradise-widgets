@@ -41,7 +41,7 @@ if ($args) {
 
   <?php if(!empty($products)): ?>
 
-    <ul class="grid items-start <?php echo function_exists("selleradise_products_classes") ? esc_attr(selleradise_products_classes($settings['card_type'], true)) : null ?> gap-8">
+    <ul class="list-none m-0 p-0 grid items-start gap-8 <?php echo function_exists("selleradise_products_classes") ? esc_attr(selleradise_products_classes($settings['card_type'], true)) : null ?>">
       <?php 
         foreach ($products as $key => $product) {
           get_template_part(

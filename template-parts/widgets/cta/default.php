@@ -26,7 +26,7 @@ if (isset($args)) {
 
     <div class="flex flex-col justify-center items-start w-full lg:w-1/2 flex-grow py-10 px-page">
       <?php if (isset($settings['title']) && $settings['title']): ?>
-        <h2 class="text-5xl font-semibold mb-4 leading-snug">
+        <h2 class="lg:text-5xl font-semibold m-0 mb-4 leading-snug">
           <?php echo esc_html($settings['title']); ?>
         </h2>
       <?php endif;?>

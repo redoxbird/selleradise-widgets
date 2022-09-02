@@ -22,6 +22,7 @@ if (!$settings) {
     --width: 14rem;
   "
   x-show="visible > <?php echo esc_attr( $index ); ?>"
+  x-init="$el.style.setProperty('--width', $el.offsetWidth + 'px')"
   x-transition>
   <a 
     class="w-full flex flex-col justify-center items-center bg-background-900 text-text-900" 
@@ -32,11 +33,11 @@ if (!$settings) {
     </div>
 
     <div class="p-4 w-full text-center">
-      <h3 class="text-md z-10 mb-2 align-baseline">
+      <h3 class="text-sm z-10 m-0 align-baseline">
         <?php selleradise_widgets_get_template_part('template-parts/widgets/categories/partials/name', null, ["category" => $category, "duplicate_names" => $duplicate_names]); ?>
       </h3>
 
-      <p class="text-text-700">
+      <p class="text-sm m-0 mt-2 text-text-700">
         <?php selleradise_widgets_get_template_part('template-parts/widgets/categories/partials/count', null, ["category" => $category]); ?>
       </p>
     </div>
