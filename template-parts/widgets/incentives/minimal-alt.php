@@ -27,7 +27,7 @@ if (!$incentives) {
       variation: 'minimal',
     })
   ">
-  <ul class="list-none m-0 grid lg:grid-cols-4 gap-8 bg-text-50 px-10 py-5 rounded-2xl lg:rounded-full">
+  <ul class="list-none m-0 grid md:grid-cols-2 lg:grid-cols-4 gap-8 bg-text-50 px-10 py-5 rounded-2xl lg:rounded-full">
     <?php foreach ($incentives as $index => $incentive): ?>
       <li
         class="elementor-repeater-item-<?php echo esc_attr( $incentive['_id'] ); ?> flex justify-center items-center" 

@@ -21,7 +21,6 @@ class Products extends \Elementor\Widget_Base
         parent::__construct($data, $args);
     }
 
-
     /**
      * Get widget name.
      *
@@ -121,6 +120,16 @@ class Products extends \Elementor\Widget_Base
             ]
         );
 
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'settings_section',
+            [
+                'label' => __('Settings', 'selleradise-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
         if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
             $this->add_control(
                 'card_type',
@@ -134,6 +143,7 @@ class Products extends \Elementor\Widget_Base
                         'simple' => esc_html__('Simple', 'selleradise-widgets'),
                         'list' => esc_html__('List', 'selleradise-widgets'),
                         'compact' => esc_html__('Compact', 'selleradise-widgets'),
+                        'rounded' => esc_html__('Rounded', '[TEXT_DOMAIN]'),
                     ],
                     "frontend_available" => true,
                 ]

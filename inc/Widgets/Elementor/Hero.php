@@ -179,8 +179,12 @@ class Hero extends \Elementor\Widget_Base
                 'hero_type',
                 [
                     'label' => __('Hero Type', 'selleradise-widgets'),
-                    'type' => Controls_Manager::HIDDEN,
-                    'default' => 'popular',
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'standard',
+                    'options' => [
+                        'popular' => esc_html__('Popular', 'selleradise-widgets'),
+                        'standard' => esc_html__('Standard', 'selleradise-widgets'),
+                    ],
                 ]
             );
         }

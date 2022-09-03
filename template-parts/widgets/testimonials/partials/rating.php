@@ -23,12 +23,12 @@ if($rating <= 0) {
 <div class="selleradise_Testimonials__rating selleradise_productRating--normal">
     <div class="back-stars">
         <?php for ($i = 1; $i <= 5; $i++): ?>
-            <?php echo selleradise_widgets_svg('unicons-solid/star'); ?>
+            <?php echo selleradise_widgets_svg('fontawesome/star-solid'); ?>
         <?php endfor;?>
 
         <div class="front-stars" style="width: <?php echo esc_attr( ($rating / 5) * 100 ) ?>%;">
             <?php for ($i = 1; $i <= 5; $i++): ?>
-                <?php echo selleradise_widgets_svg('unicons-solid/star'); ?>
+                <?php echo selleradise_widgets_svg('fontawesome/star-solid'); ?>
             <?php endfor;?>
         </div>
     </div>

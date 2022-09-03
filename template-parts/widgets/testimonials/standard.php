@@ -38,7 +38,7 @@ $index = 0;
   <div x-embla:main class="embla">
     <?php if ( $testimonials->have_posts() ) : ?>
       
-      <ul class="embla__container">
+      <ul class="list-none m-0 p-0 embla__container">
         <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
 
           <li class="embla__slide flex flex-col justify-center items-center lg:px-72">

@@ -51,7 +51,7 @@ $index = 0;
         </ul>
       <?php endif; ?>
 
-      <ul class="list-none p-0 mt-8 grid md:grid-cols-3 lg:grid-cols-3 gap-8">
+      <ul class="list-none p-0 mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <?php 
           while ($faqs->have_posts()) : $faqs->the_post();
           

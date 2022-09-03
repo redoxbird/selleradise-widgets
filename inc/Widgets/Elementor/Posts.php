@@ -121,6 +121,16 @@ class Posts extends \Elementor\Widget_Base
             ]
         );
 
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'settings_section',
+            [
+                'label' => __('Settings', 'selleradise-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
         if (selleradise_is_local() || class_exists('Selleradise\\Init')) {
             $this->add_control(
                 'card_type',

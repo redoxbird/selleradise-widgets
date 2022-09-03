@@ -43,14 +43,14 @@ if (isset($args)) {
               x-embla-tabs:thumb
               data-index="<?php echo esc_attr( $index ); ?>"
               x-bind:class="{'bg-text-50': isInView(<?php echo esc_attr($index); ?>) }"
-              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all hover:bg-text-25">
+              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all bg-transparent border-none p-0 hover:bg-text-25">
               <div class="w-16 h-16 mr-4 rounded-xl overflow-hidden flex-shrink-0">
                 <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
               </div>
 
               <div class="flex flex-col justify-start items-start text-sm whitespace-nowrap pr-4">
-                <p class="font-semibold"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
-                <p><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
+                <p class="font-semibold m-0"><?php echo esc_html(rwmb_meta('profile_name')); ?></p>
+                <p class="m-0 mt-1"><?php echo esc_html(rwmb_meta('profile_title')); ?></p>
               </div>
             </button>
           </li>
