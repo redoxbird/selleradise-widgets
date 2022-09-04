@@ -42,8 +42,8 @@ if (isset($args)) {
             <button
               x-embla-tabs:thumb
               data-index="<?php echo esc_attr( $index ); ?>"
-              x-bind:class="{'bg-text-50': isInView(<?php echo esc_attr($index); ?>) }"
-              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all bg-transparent border-none p-0 hover:bg-text-25">
+              x-bind:class="[isInView(<?php echo esc_attr($index); ?>) ? 'bg-text-50' : 'bg-transparent' ]"
+              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all border-none p-0 hover:bg-text-25">
               <div class="w-16 h-16 mr-4 rounded-xl overflow-hidden flex-shrink-0">
                 <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
               </div>
@@ -61,7 +61,7 @@ if (isset($args)) {
 
   <div
     x-embla-tabs:thumbs.axis.y
-    class="hidden lg:block w-1/4 p-6 border-1 border-solid border-text-100 rounded-2xl max-h-96 overflow-hidden">
+    class="hidden lg:block w-1/4 p-6 border-1 border-solid border-text-100 rounded-2xl max-h-96 overflow-y-scroll selleradise-hide-scrollbar">
     <ul class="list-none m-0 p-0 w-full flex flex-col gap-4">
       <?php if ( $testimonials->have_posts() ) : $index = 0; ?>
         <?php while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
@@ -69,8 +69,8 @@ if (isset($args)) {
             <button
               x-embla-tabs:thumb
               data-index="<?php echo esc_attr( $index ); ?>"
-              x-bind:class="{'bg-text-50': isInView(<?php echo esc_attr($index); ?>) }"
-              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all bg-transparent border-none p-0 hover:bg-text-25">
+              x-bind:class="[isInView(<?php echo esc_attr($index); ?>) ? 'bg-text-50' : 'bg-transparent' ]"
+              class="w-full rounded-xl overflow-hidden flex justify-start items-center transition-all border-none p-0 hover:bg-text-25">
               <div class="w-16 h-16 mr-4 rounded-xl overflow-hidden">
                 <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/image', null, []); ?>
               </div>

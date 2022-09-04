@@ -15,14 +15,17 @@ $index = 0;
 <section 
   class="px-page"
   x-data="faqs"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'faqs',
-      variation: 'split',
-    })
-  ">
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'faqs',
+        variation: 'split',
+      })
+    "
+  <?php endif;?>
+  >
 
   <div>
     <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]);?>

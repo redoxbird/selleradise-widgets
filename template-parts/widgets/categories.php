@@ -34,12 +34,14 @@ $index = 0;
     total: <?php echo esc_attr(empty($categories) ? 0 : count($categories)); ?>,
     pageSize: <?php echo esc_attr( $page_size ); ?>
   })"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el
-    })
-  "
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el
+      })
+    "
+  <?php endif;?>
  >
 
   <div class="text-center">

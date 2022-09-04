@@ -16,14 +16,16 @@ if (!isset($settings)) {
 
 <div 
   x-data
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'hero',
-      variation: 'popular',
-    })
-  "
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'hero',
+        variation: 'popular',
+      })
+    "
+  <?php endif;?>
   class="w-padding-adjusted p-0 h-auto my-4 mx-auto relative flex justify-center items-center">
 
   <div class="selleradise_Hero__image absolute inset-0 overflow-hidden bg-text-100 rounded-2xl">

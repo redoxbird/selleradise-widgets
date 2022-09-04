@@ -17,12 +17,15 @@ if (!isset($settings)) {
 <div 
   x-data 
   class="bg-text-25 relative w-full flex flex-col lg:flex-row justify-between items-stretch px-page lg:h-160 overflow-hidden"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el
-    })
-  ">
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el
+      })
+    "
+  <?php endif;?>
+  >
 
   <?php if(isset($settings["pattern"]) && $settings["pattern"]): ?>
     <div class="hidden lg:block absolute z-10 inset-0 children:h-auto children:w-full text-text-100">

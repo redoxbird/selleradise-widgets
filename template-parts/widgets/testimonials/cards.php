@@ -17,14 +17,17 @@ $index = 0;
     total: <?php echo esc_attr(empty($testimonials->posts) ? 0 : count($testimonials->posts)); ?>,
     pageSize: 4
   })"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'testimonials',
-      variation: 'cards',
-    })
-  ">
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'testimonials',
+        variation: 'cards',
+      })
+    "
+  <?php endif;?>
+  >
 
   <div>
     <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]);?>

@@ -18,14 +18,18 @@ if (!$features) {
 
 <section 
   class="w-full px-page lg:px-64"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'features',
-      variation: 'default',
-    })
-  ">
+  x-data
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'features',
+        variation: 'default',
+      })
+    "
+  <?php endif;?>
+  >
   <div class="flex justify-center items-center flex-col mb-10">
     <div class="w-full text-center">
       <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]); ?>

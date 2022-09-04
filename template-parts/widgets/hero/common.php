@@ -17,14 +17,17 @@ if (!isset($settings)) {
 <div  
   x-data 
   class="relative w-full flex flex-col lg:flex-row justify-between items-stretch px-page lg:h-160 overflow-hidden"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'hero',
-      variation: 'common',
-    })
-  ">
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'hero',
+        variation: 'common',
+      })
+    "
+  <?php endif;?>
+  >
 
   <div class="selleradise_Hero__image relative z-20 w-full my-8 lg:mr-20 min-h-[24rem] lg:w-160 rounded-2xl overflow-hidden">
     <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "absolute inset-0 !w-full !h-full object-cover"]);?>

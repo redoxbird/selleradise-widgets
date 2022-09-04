@@ -19,14 +19,17 @@ if (!$incentives) {
 
 <section 
   class="w-full px-page"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'incentives',
-      variation: 'minimal',
-    })
-  ">
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'incentives',
+        variation: 'minimal',
+      })
+    "
+  <?php endif;?>
+  >
   <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
     <?php foreach ($incentives as $index => $incentive): ?>
       <li

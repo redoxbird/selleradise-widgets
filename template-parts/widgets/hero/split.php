@@ -17,14 +17,17 @@ if (!isset($settings)) {
 <div
   x-data
   class="relative w-full flex flex-col lg:flex-row justify-between items-stretch min-h-fit lg:h-screen-adjusted overflow-hidden"
-  x-init="
-    $dispatch('selleradise-widget-initialized', {
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'hero',
-      variation: 'split',
-    })
-  ">
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', {
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'hero',
+        variation: 'split',
+      })
+    "
+  <?php endif;?>
+  >
 
   <?php if(!isset($settings['split_pattern']) || !$settings['split_pattern']): ?>
     <div class="relative px-page mb-10 lg:mb-0 z-20 flex w-full lg:w-1/2 flex-grow flex-col justify-center items-start">

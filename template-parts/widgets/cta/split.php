@@ -11,12 +11,15 @@ if (isset($args)) {
 ?>
 
 <section
-  x-init="
-    $dispatch('selleradise-widget-initialized', {
-        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-        element: $el
+  x-data
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', {
+          isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+          element: $el
       })
     "
+  <?php endif;?>
   class="flex justify-center items-start lg:items-stretch flex-wrap lg:flex-nowrap w-full px-page gap-10">
   
   <div class="relative w-full h-96 lg:h-auto lg:w-1/2 overflow-hidden rounded-2xl">

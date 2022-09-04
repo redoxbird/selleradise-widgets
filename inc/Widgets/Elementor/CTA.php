@@ -168,6 +168,7 @@ class CTA extends \Elementor\Widget_Base
                         'default' => esc_html__('Default', 'selleradise-widgets'),
                         'floating' => esc_html__('Floating', 'selleradise-widgets'),
                         'split' => esc_html__('Split', 'selleradise-widgets'),
+                        'centered' => esc_html__('Centered', 'selleradise-widgets'),
                     ],
                 ]
             );

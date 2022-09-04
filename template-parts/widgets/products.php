@@ -13,14 +13,16 @@ if ($args) {
 
 <div 
   class="px-page"
-  x-init="
-    $dispatch('selleradise-widget-initialized', { 
-      isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
-      element: $el,
-      widget: 'products',
-      variation: 'default',
-    })
-  "
+  <?php if (!selleradise_is_normal_mode()): ?>
+    x-init="
+      $dispatch('selleradise-widget-initialized', { 
+        isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
+        element: $el,
+        widget: 'products',
+        variation: 'default',
+      })
+    "
+  <?php endif;?>
   data-selleradise-card-type="<?php echo esc_attr($settings['card_type'] ?: 'default') ?>">
 
   <div class="flex justify-between items-center mb-10">
