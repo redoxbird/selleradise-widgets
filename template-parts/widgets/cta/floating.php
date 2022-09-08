@@ -29,7 +29,7 @@ if (isset($args)) {
 
     <div class="flex flex-col justify-center items-center text-center lg:text-left lg:items-start w-full lg:w-1/2 flex-grow py-6 lg:px-28">
       <?php if (isset($settings['title']) && $settings['title']): ?>
-        <h2 class="text-5xl font-semibold mb-4 leading-snug"><?php echo esc_html($settings['title']); ?></h2>
+        <h2 class="m-0 text-5xl font-semibold mb-4 leading-snug"><?php echo esc_html($settings['title']); ?></h2>
       <?php endif;?>
 
       <?php if (isset($settings['description']) && $settings['description']): ?>
