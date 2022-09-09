@@ -180,10 +180,14 @@ class Hero extends \Elementor\Widget_Base
                 [
                     'label' => __('Hero Type', 'selleradise-widgets'),
                     'type' => Controls_Manager::SELECT,
-                    'default' => 'standard',
+                    'default' => 'default',
                     'options' => [
+                        'default' => esc_html__('Default', 'selleradise-widgets'),
+                        'common' => esc_html__('Common', 'selleradise-widgets'),
                         'popular' => esc_html__('Popular', 'selleradise-widgets'),
+                        'centered' => esc_html__('Centered', 'selleradise-widgets'),
                         'standard' => esc_html__('Standard', 'selleradise-widgets'),
+                        // 'split' => esc_html__('Split', 'selleradise-widgets'),
                     ],
                 ]
             );
