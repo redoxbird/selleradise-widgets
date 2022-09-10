@@ -9,7 +9,7 @@
  * Plugin Name:       Selleradise Widgets
  * Plugin URI:        https://selleradise.com
  * Description:       This is a plugin for the Selleradise theme. It contains Elementor widgets which are necessary to create a landing page shown in the Demo of Selleradise theme.
- * Version:           2.0.0
+ * Version:           [THEME_VERSION]
  * Author:            RedOxbird
  * Requires at least: 5.5
  * Tested up to:      6.0
@@ -30,7 +30,7 @@ if (!defined('WPINC')) {
  * Currently plugin version.
  */
 
-define('SELLERADISE_WIDGETS_VERSION', '2.0.0');
+define('SELLERADISE_WIDGETS_VERSION', '[THEME_VERSION]');
 define('SELLERADISE_WIDGETS_DIR_URI', plugin_dir_url(__FILE__));
 define('SELLERADISE_WIDGETS_DIR_PATH', plugin_dir_path(__FILE__));
 

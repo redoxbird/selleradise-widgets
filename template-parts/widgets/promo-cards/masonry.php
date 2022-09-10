@@ -19,6 +19,14 @@ if (!$cards) {
     return;
 }
 
+$classes = [
+  "li" => [
+    0 => "lg:col-span-3",
+    1 => "lg:col-span-2",
+    2 => "lg:col-span-2",
+    3 => "lg:col-span-3",
+  ]
+];
 
 ?>
 
@@ -30,33 +38,34 @@ if (!$cards) {
         isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
         element: $el,
         widget: 'promo-cards',
-        variation: 'bold',
+        variation: 'default',
       })
-    "
+    " 
   <?php endif;?>
+  
   class="px-page">
 
-  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-5 gap-8">
     <?php foreach ($cards as $index => $card):
       $class = ' elementor-repeater-item-' . $card['_id'];
     ?>
       <li
+        class="rounded-2xl overflow-hidden <?php echo esc_attr($classes["li"][$index]); ?>"
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
+
         <a
-          class="relative group rounded-2xl overflow-hidden transition-all flex flex-col h-full justify-between items-start"
+          class="group relative flex h-full justify-between items-stretch bg-text-50"
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
           target="<?php echo esc_attr($card['link']['is_external'] ? '_blank' : null); ?>">
-       
-          <div class="relative w-full h-72 z-20 overflow-hidden rounded-b-[100%7rem]">
-            <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "absolute !h-full w-full inset-0 object-cover group-hover:scale-110 transition-all duration-700 ease-out-expo origin-center"]);?>
+          <div class="absolute inset-0">
+            <?php selleradise_widgets_get_template_part('template-parts/widgets/promo-cards/partials/image', null, ["settings" => $settings, "card" => $card, "classes" => "absolute !h-full w-full inset-0 object-cover group-hover:scale-105 ease-out-expo duration-700 transition-all"]);?>
           </div>
 
-          <div
-            class="relative z-10 bg-main-800 h-auto w-full text-main-text flex flex-col justify-center items-center px-16 pb-8 pt-24 text-center -mt-14">
-            <p class="m-0 text-md mb-4 font-semibold text-center"><?php echo esc_html($card['title']) ?></p>
-            <h2 class="m-0 text-xl font-semibold border-main-text mt-2 text-center">
+          <div class="relative flex flex-col justify-center items-start p-8 lg:px-12 lg:py-20 w-60 lg:w-72">
+            <h2 class="text-xl lg:text-2xl mb-8 font-semibold m-0 text-text-900"><?php echo esc_html($card['title']) ?></h2>
+            <p class="text-text-900 text-sm font-semibold m-0">
               <?php echo esc_html($card['subtitle']) ?>
-            </h2>
+            </p>
           </div>
 
         </a>

@@ -65,7 +65,7 @@ if (!$tabs) {
       <div class="embla__container">
         <?php foreach ($tabs as $key => $tab): ?>
           <div
-            class="embla__slide"
+            class="embla__slide selleradise_prose"
             role="region"
             id="selleradise_Tabs--default__tab-<?php echo esc_attr($key); ?>"
             aria-labelledby="selleradise_Tabs--default__trigger-<?php echo esc_attr($key); ?>">

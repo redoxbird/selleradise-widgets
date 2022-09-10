@@ -211,6 +211,7 @@ class PromoCards extends \Elementor\Widget_Base
                         'floating' => esc_html__('Floating', 'selleradise-widgets'),
                         'brochure' => esc_html__('Brochure', 'selleradise-widgets'),
                         'minimal' => esc_html__('Minimal', 'selleradise-widgets'),
+                        'masonry' => esc_html__('Masonry', 'selleradise-widgets'),
                     ],
                 ]
             );
@@ -225,6 +226,7 @@ class PromoCards extends \Elementor\Widget_Base
                     'options' => [
                         'default' => esc_html__('Default', 'selleradise-widgets'),
                         'bold' => esc_html__('Bold', 'selleradise-widgets'),
+                        'masonry' => esc_html__('Masonry', 'selleradise-widgets'),
                     ],
                 ]
             );

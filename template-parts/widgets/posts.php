@@ -30,13 +30,8 @@ if ($args) {
       <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]); ?>
     </div>
 
-    <a 
-      href="<?php echo esc_url(get_permalink( get_option( 'page_for_posts' ) )); ?>" 
-      class="selleradise_button--secondary selleradise_button--sm"
-      aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
-      <?php _e('See all', 'selleradise-widgets'); ?> 
-      <?php echo selleradise_widgets_svg('tabler-icons/chevron-right'); ?>
-    </a>
+    <?php selleradise_widgets_get_template_part('template-parts/see-all', null, ["link" => get_permalink( get_option( 'page_for_posts' ) ), "section_title" => $settings['section_title']]);?>
+
   </div>
 
   <div class="grid gap-8 items-start <?php echo function_exists("selleradise_posts_classes") ? esc_attr(selleradise_posts_classes($settings['card_type'], true)) : null ?>">

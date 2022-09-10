@@ -180,14 +180,13 @@ class Hero extends \Elementor\Widget_Base
                 [
                     'label' => __('Hero Type', 'selleradise-widgets'),
                     'type' => Controls_Manager::SELECT,
-                    'default' => 'default',
+                    'default' => 'popular',
                     'options' => [
                         'default' => esc_html__('Default', 'selleradise-widgets'),
                         'common' => esc_html__('Common', 'selleradise-widgets'),
                         'popular' => esc_html__('Popular', 'selleradise-widgets'),
                         'centered' => esc_html__('Centered', 'selleradise-widgets'),
                         'standard' => esc_html__('Standard', 'selleradise-widgets'),
-                        // 'split' => esc_html__('Split', 'selleradise-widgets'),
                     ],
                 ]
             );
@@ -207,6 +206,7 @@ class Hero extends \Elementor\Widget_Base
                     '4' => esc_html__('Pattern 4', 'selleradise-widgets'),
                     '5' => esc_html__('Pattern 5', 'selleradise-widgets'),
                     '6' => esc_html__('Pattern 6', 'selleradise-widgets'),
+                    '7' => esc_html__('Pattern 7', 'selleradise-widgets'),
                 ],
                 'condition' => [
                     'hero_type' => ['standard'],
@@ -338,6 +338,7 @@ class Hero extends \Elementor\Widget_Base
                 ],
                 'condition' => [
                     'hero_type' => ['popular'],
+
                 ],
             ]
         );
@@ -356,6 +357,25 @@ class Hero extends \Elementor\Widget_Base
                 ],
                 'condition' => [
                     'hero_type' => ['popular'],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_margin',
+            [
+                'label' => __('Image Margin', 'selleradise-widgets'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['%', 'em'],
+                'default' => [
+                    'unit' => '%',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .selleradise_Hero__image img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'hero_type' => ['standard'],
+                    'image_shape' => ['none'],
                 ],
             ]
         );

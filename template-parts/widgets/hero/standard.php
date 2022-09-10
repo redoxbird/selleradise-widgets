@@ -64,13 +64,15 @@ if (!isset($settings)) {
   <?php endif; ?>
 
   <?php if(isset($settings["image_shape"]) && $settings["image_shape"] === 'half-oval'): ?>
-    <div class="selleradise_Hero__image relative z-20 w-full mb-8 lg:mr-20 lg:w-120 rounded-b-full overflow-hidden">
+    <div class="selleradise_Hero__image relative z-20 w-full mb-8 lg:mr-20 lg:w-120 rounded-b-full overflow-hidden ">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "!w-full !h-full object-cover"]);?>
     </div>
   <?php endif; ?>
 
   <?php if(isset($settings["image_shape"]) && $settings["image_shape"] === 'none'): ?>
-    <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "relative mx-auto w-full !h-auto lg:h-full lg:w-auto lg:mr-40 z-50"]);?>
+    <div class="selleradise_Hero__image w-full lg:w-1/2">
+      <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "lg:absolute lg:right-0 lg:bottom-0 lg:!max-w-4xl lg:!max-h-160 w-full lg:w-auto !h-auto z-50"]);?>
+    </div>
   <?php endif; ?>
 
 </div>

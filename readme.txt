@@ -3,7 +3,7 @@ Contributors: RedOxbird
 Tags:  e-commerce, left-sidebar, right-sidebar, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, theme-options, translation-ready
 Requires at least: 5.5
 Tested up to: 6.0
-Stable tag: 2.0.0
+Stable tag: [THEME_VERSION]
 Requires PHP: 7.1
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -28,13 +28,17 @@ Selleradise Widgets is a plugin for the Selleradise theme. It contains Elementor
 
 ## Selleradise Theme
 * [Get The Theme](https://wordpress.org/themes/selleradise-lite)
-* [Read Documentation](https://docs.selleradise.com/docs/intro)
+* [Read Documentation](https://docs.selleradise.com/)
 * [Learn More](https://selleradise.com)
 
 ## Demos
 * [Fashion](http://selleradise.redoxbird.com/)
+* [Furniture](http://selleradise.redoxbird.com/furniture)
 
 == Changelog ==
+
+= 2.0.1 =
+* Fixed some design issues
 
 = 2.0.0 =
 * Migrated from SASS to Tailwind.

@@ -15,7 +15,7 @@ $index = 0;
   class="px-page w-full"
   x-data="infiniteScroll({
     total: <?php echo esc_attr(empty($testimonials->posts) ? 0 : count($testimonials->posts)); ?>,
-    pageSize: 4
+    pageSize: 3
   })"
   <?php if (!selleradise_is_normal_mode()): ?>
     x-init="
@@ -35,27 +35,27 @@ $index = 0;
 
   <?php if ( $testimonials->have_posts() ) : ?>
 
-  <ul class="list-none m-0 p-0 grid lg:grid-cols-4 gap-8 mt-8">
+  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
     <?php while ($testimonials->have_posts()) : $testimonials->the_post(); 
       $profile_pictures = rwmb_meta('profile_picture', array( 'limit' => 1 ));
       $profile_picture = reset( $profile_pictures ); 
     ?>
 
     <li 
-      class="p-6 rounded-2xl border-1 border-solid border-text-100 flex flex-col justify-start items-start"
+      class="p-10 rounded-2xl border-1 border-solid border-text-100 flex flex-col justify-start items-start"
       x-show="visible > <?php echo esc_attr( $index ); ?>"
       x-transition>
-        <h3 class="m-0 mb-2 text-md">
+        <h3 class="m-0 mb-3 text-lg">
           <?php echo esc_html(get_the_title()); ?>
         </h3>
         
         <?php selleradise_widgets_get_template_part('template-parts/widgets/testimonials/partials/rating', null, []); ?>
         
-        <blockquote class="m-0 p-0 text-sm">
+        <blockquote class="m-0 p-0 mt-3 text-sm">
           <?php echo wp_kses_post(rwmb_meta('quote')); ?>
         </blockquote>
         
-        <div class="pt-4 flex justify-start items-center mt-auto">
+        <div class="pt-3 flex justify-start items-center mt-auto">
           <img 
             class="w-12 h-12 !rounded-full overflow-hidden object-cover mr-4"
             src="<?php echo esc_url($profile_picture ? $profile_picture['url'] : \Elementor\Utils::get_placeholder_image_src()); ?>" 

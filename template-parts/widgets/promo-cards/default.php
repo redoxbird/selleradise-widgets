@@ -30,7 +30,7 @@ if (!$cards) {
         isEdit: <?php echo wp_json_encode(selleradise_is_normal_mode() ? false : true); ?>,
         element: $el,
         widget: 'promo-cards',
-        variation: 'default',
+        variation: 'simple',
       })
     " 
   <?php endif;?>

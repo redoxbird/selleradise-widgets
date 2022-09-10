@@ -30,15 +30,7 @@ if ($args) {
       <?php selleradise_widgets_get_template_part('template-parts/section-title', null, ["settings" => $settings]); ?>
     </div>
 
-    <a 
-      href="<?php echo esc_url($more_link); ?>" 
-      class="selleradise_button--secondary selleradise_button--sm"
-      aria-label="<?php echo sprintf(__('See all (%s)', 'selleradise-widgets'), esc_attr($settings['section_title'] ?: 'Products')); ?>">
-      <?php _e('See all', 'selleradise-widgets'); ?> 
-      <span class="w-3 ml-1">
-        <?php echo selleradise_widgets_svg('tabler-icons/chevron-right'); ?>
-      </span>
-    </a>
+    <?php selleradise_widgets_get_template_part('template-parts/see-all', null, ["link" => $more_link, "section_title" => $settings['section_title']]);?>
   </div>
 
   <?php if(!empty($products)): ?>
