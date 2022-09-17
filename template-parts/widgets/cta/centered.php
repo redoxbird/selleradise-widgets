@@ -44,8 +44,8 @@ if (isset($args)) {
     </div>
 
     <div class="relative flex flex-col justify-center items-center w-full lg:w-3/10 flex-grow bg-gray-100 lg:py-20">
-      <span class="hidden lg:inline-block w-2 h-2 bg-main-900 rounded-full absolute left-1/2 -translate-x-1/2 top-0"></span>
-      <span class="hidden lg:inline-block w-2 h-2 bg-main-900 rounded-full absolute left-1/2 -translate-x-1/2 bottom-0"></span>
+      <span class="hidden lg:inline-block w-2 h-2 bg-main-900 rounded-full absolute left-1/2 -translate-x-[0.3rem] top-0"></span>
+      <span class="hidden lg:inline-block w-2 h-2 bg-main-900 rounded-full absolute left-1/2 -translate-x-[0.3rem] bottom-0"></span>
       <div class="hidden lg:block absolute -z-[1] top-1/2 right-1/2 -translate-y-1/2 w-144 h-112 bg-transparent border-2 border-solid border-main-900 rounded-2xl"></div>
 
       <a

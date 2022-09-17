@@ -31,7 +31,9 @@ $classes = [
 ?>
 
 <div
-  x-data
+  x-data="{inView: false}"
+  x-intersect.once="inView = true"
+  xyz="fade stagger-0.5 left-2"
   <?php if (!selleradise_is_normal_mode()): ?>
     x-init="
       $dispatch('selleradise-widget-initialized', { 
@@ -51,8 +53,8 @@ $classes = [
     ?>
       <li
         class="rounded-2xl overflow-hidden <?php echo esc_attr($classes["li"][$index]); ?>"
-        style="--selleradise-item-index: <?php echo esc_attr($index); ?>">
-
+        style="--selleradise-item-index: <?php echo esc_attr($index); ?>"
+        x-bind:class="{'xyz-in': inView}">
         <a
           class="group relative flex h-full justify-between items-stretch bg-text-50"
           href="<?php echo esc_url($card['link']['url'] ?: '#'); ?>"
@@ -62,9 +64,11 @@ $classes = [
           </div>
 
           <div class="relative flex flex-col justify-center items-start p-8 lg:px-12 lg:py-20 w-60 lg:w-72">
-            <h2 class="text-xl lg:text-2xl mb-8 font-semibold m-0 text-text-900"><?php echo esc_html($card['title']) ?></h2>
-            <p class="text-text-900 text-sm font-semibold m-0">
+            <h2 class="text-xl lg:text-2xl mb-8 m-0 text-text-900">
               <?php echo esc_html($card['subtitle']) ?>
+            </h2>
+            <p class="text-text-900 text-sm font-semibold m-0">
+              <?php echo esc_html($card['title']) ?>
             </p>
           </div>
 

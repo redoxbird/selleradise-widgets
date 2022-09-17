@@ -34,6 +34,7 @@ $index = 0;
     total: <?php echo esc_attr(empty($categories) ? 0 : count($categories)); ?>,
     pageSize: <?php echo esc_attr( $page_size ); ?>
   })"
+  xyz="fade stagger-0.5 down-2"
   <?php if (!selleradise_is_normal_mode()): ?>
     x-init="
       $dispatch('selleradise-widget-initialized', { 

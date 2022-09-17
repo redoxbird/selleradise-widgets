@@ -34,13 +34,13 @@ if (!isset($settings)) {
   <?php endif; ?>
 
   <div class="relative my-10 lg:my-0 z-20 flex w-full lg:w-2/3 flex-grow flex-col justify-center items-start lg:pr-40">
-    <h1 class="m-0 text-4xl lg:text-7xl lg:leading-snug font-bold">
+    <h1 class="m-0 text-4xl lg:text-7xl lg:leading-snug font-bold xyz-in" xyz="fade left-2">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/title', null, ["settings" => $settings]);?>
     </h1>
-    <p class="text-md lg:text-xl mt-8">
+    <p class="text-md lg:text-xl mt-8 xyz-in" xyz="fade left-2 delay-1">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/description', null, ["settings" => $settings]);?>
     </p>
-    <div class="mt-8 lg:mt-20">
+    <div class="mt-8 lg:mt-20 xyz-in" xyz="fade left-2 delay-1.5">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/cta', 'primary', ["settings" => $settings]);?>
     </div>
   </div>
@@ -70,7 +70,7 @@ if (!isset($settings)) {
   <?php endif; ?>
 
   <?php if(isset($settings["image_shape"]) && $settings["image_shape"] === 'none'): ?>
-    <div class="selleradise_Hero__image w-full lg:w-1/2">
+    <div class="selleradise_Hero__image w-full z-20 lg:w-1/2">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/hero/partials/image', null, ["settings" => $settings, "classes" => "lg:absolute lg:right-0 lg:bottom-0 lg:!max-w-4xl lg:!max-h-160 w-full lg:w-auto !h-auto z-50"]);?>
     </div>
   <?php endif; ?>

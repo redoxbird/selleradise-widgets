@@ -15,7 +15,7 @@ if (!$settings) {
 ?>
 
 <li 
-  class="w-full"
+  class="w-full xyz-in"
   style="
     --selleradise-item-index: <?php echo esc_attr($index); ?>;
     --product-image-ratio: <?php echo esc_attr($ratio); ?>;
@@ -23,7 +23,7 @@ if (!$settings) {
   "
   x-show="visible > <?php echo esc_attr( $index ); ?>"
   x-init="$el.style.setProperty('--width', $el.offsetWidth + 'px')"
-  x-transition>
+  >
   <a 
     class="w-full flex flex-col justify-center items-center bg-background-900 text-text-900" 
     href="<?php echo esc_url(get_term_link($category)); ?>">
