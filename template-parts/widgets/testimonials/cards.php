@@ -12,6 +12,7 @@ $index = 0;
 ?>
 
 <section 
+  xyz="fade stagger-1 down-2 duration-4"
   class="px-page w-full"
   x-data="infiniteScroll({
     total: <?php echo esc_attr(empty($testimonials->posts) ? 0 : count($testimonials->posts)); ?>,
@@ -42,9 +43,9 @@ $index = 0;
     ?>
 
     <li 
-      class="p-10 rounded-2xl border-1 border-solid border-text-100 flex flex-col justify-start items-start"
+      class="p-8 rounded-2xl border-1 border-solid border-text-100 flex flex-col justify-start items-start"
       x-show="visible > <?php echo esc_attr( $index ); ?>"
-      x-transition>
+      x-intersect.once="$el.classList.add('xyz-in')">
         <h3 class="m-0 mb-3 text-lg">
           <?php echo esc_html(get_the_title()); ?>
         </h3>

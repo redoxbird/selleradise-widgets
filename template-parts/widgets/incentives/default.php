@@ -18,9 +18,9 @@ if (!$incentives) {
 ?>
 
 <section 
-  x-data="{inView: false}"
-  class="w-full px-page"
+  x-data
   xyz="fade stagger-1 left-2"
+  class="w-full px-page"
   <?php if (!selleradise_is_normal_mode()): ?>
     x-init="
       $dispatch('selleradise-widget-initialized', { 
@@ -32,12 +32,12 @@ if (!$incentives) {
     "
   <?php endif;?>
   >
-  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-4 gap-8" x-intersect.once="inView = true">
+  <ul class="list-none m-0 p-0 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
     <?php foreach ($incentives as $index => $incentive): ?>
       <li 
         class="elementor-repeater-item-<?php echo esc_attr( $incentive['_id'] ); ?> flex justify-start items-center" 
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>"
-        x-bind:class="{'xyz-in': inView}"
+        x-intersect.once="$el.classList.add('xyz-in')"
         >
 
         <div class="flex-shrink-0 w-16 h-16 text-xl bg-text-50 rounded-full mr-4 flex justify-center items-center">

@@ -18,6 +18,8 @@ if (!$incentives) {
 ?>
 
 <section 
+  x-data
+  xyz="fade stagger-1 left-2"
   class="w-full px-page"
   <?php if (!selleradise_is_normal_mode()): ?>
     x-init="
@@ -35,6 +37,7 @@ if (!$incentives) {
       <li
         class="elementor-repeater-item-<?php echo esc_attr( $incentive['_id'] ); ?> flex justify-center items-center" 
         style="--selleradise-item-index: <?php echo esc_attr($index); ?>"
+        x-intersect.once="$el.classList.add('xyz-in')"
       >
 
         <div class="flex-shrink-0 text-xl mr-4">

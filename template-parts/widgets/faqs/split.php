@@ -35,7 +35,7 @@ $index = 0;
     <?php if ( $faqs->have_posts() ) : ?>
 
       <?php if(!empty($categories)): ?>
-        <ul class="list-none m-0 p-0 flex justify-start items-center gap-4">
+        <ul class="!list-none !m-0 !p-0 flex justify-start items-center gap-4">
           <li>
             <button
               x-on:click="setActive('all')"
@@ -54,7 +54,7 @@ $index = 0;
         </ul>
       <?php endif; ?>
 
-      <ul class="list-none m-0 p-0 mt-8 grid gap-8">
+      <ul class="!list-none !p-0 mt-8 grid gap-8">
         <?php 
           while ($faqs->have_posts()) : $faqs->the_post();
           

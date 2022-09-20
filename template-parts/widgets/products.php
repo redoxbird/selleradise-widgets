@@ -12,10 +12,10 @@ if ($args) {
 ?>
 
 <div 
+  xyz="fade stagger-1 down-2 duration-4"
   class="px-page"
   x-data="{inView: false}"
   x-intersect.once="inView = true"
-  xyz="fade stagger-0.5 down-2"
   <?php if (!selleradise_is_normal_mode()): ?>
     x-init="
       $dispatch('selleradise-widget-initialized', { 
