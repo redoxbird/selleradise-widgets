@@ -43,7 +43,7 @@ $index = 0;
     ?>
 
     <li 
-      class="p-8 rounded-2xl border-1 border-solid border-text-100 flex flex-col justify-start items-start"
+      class="p-6 rounded-2xl border-1 border-solid border-text-100 flex flex-col justify-start items-start"
       x-show="visible > <?php echo esc_attr( $index ); ?>"
       x-intersect.once="$el.classList.add('xyz-in')">
         <h3 class="m-0 mb-3 text-lg">
