@@ -15,7 +15,7 @@ if (!$settings) {
 ?>
 
 <li
-  class="w-full"
+  class="w-full xyz-in"
   style="--selleradise-item-index: <?php echo esc_attr($index); ?>; --product-image-ratio: <?php echo esc_attr($ratio); ?>;"
   x-show="visible > <?php echo esc_attr($index); ?>"
   x-transition>

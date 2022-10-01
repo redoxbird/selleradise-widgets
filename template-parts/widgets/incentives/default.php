@@ -45,7 +45,7 @@ if (!$incentives) {
         </div>
 
         <div class="flex-grow">
-          <h3 class="text-md mb-1">
+          <h3 class="text-md m-0 mb-1">
             <?php echo esc_html(selleradise_truncate($incentive['title'], 35)); ?>
           </h3>
 

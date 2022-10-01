@@ -139,6 +139,7 @@ class Categories extends \Elementor\Widget_Base
                     'options' => [
                         'default' => esc_html__('Default', 'selleradise-widgets'),
                         'rounded' => esc_html__('Rounded', 'selleradise-widgets'),
+                        'simple' => esc_html__('Simple', 'selleradise-widgets'),
                         'icon' => esc_html__('Icon', 'selleradise-widgets'),
                         'card-image-alt' => esc_html__('Image Card Alt', 'selleradise-widgets'),
                         'onlyImage' => esc_html__('Image Only', 'selleradise-widgets'),

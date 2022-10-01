@@ -23,16 +23,16 @@ if (!$settings) {
   "
   x-show="visible > <?php echo esc_attr( $index ); ?>"
   x-init="$el.style.setProperty('--width', $el.offsetWidth + 'px')"
-  x-transition>
+  >
   <a 
-    class="w-full flex flex-col justify-center items-center bg-background-900 text-text-900" 
+    class="w-full flex flex-col justify-center items-center bg-background-900 text-text-900 p-2 border-1 border-text-100 border-solid rounded-2xl" 
     href="<?php echo esc_url(get_term_link($category)); ?>">
 
-    <div class="w-full relative z-10 flex justify-center items-center overflow-hidden rounded-2xl h-ratio hover:children:scale-110">
+    <div class="w-full flex justify-center items-center overflow-hidden rounded-2xl h-ratio hover:children:scale-110">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/categories/partials/image', null, ["category" => $category]); ?>
     </div>
 
-    <h3 class="relative bg-text-900 text-background-900 px-4 py-1.5 rounded-full -mt-4 text-center text-xs z-20">
+    <h3 class="text-sm z-10 m-0 mt-3 align-baseline">
       <?php selleradise_widgets_get_template_part('template-parts/widgets/categories/partials/name', null, ["category" => $category, "duplicate_names" => $duplicate_names]); ?>
     </h3>
   </a>
